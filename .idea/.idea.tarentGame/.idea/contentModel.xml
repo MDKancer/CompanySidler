@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ContentModelStore">
+    <e p="$USER_HOME$/.Rider2019.1/system/extResources" t="IncludeRecursive" />
+    <e p="$USER_HOME$/.Rider2019.1/system/resharper-host/local/Transient/ReSharperHost/v191/SolutionCaches/_tarentGame.1189745767.00" t="ExcludeRecursive" />
+    <e p="$PROJECT_DIR$" t="IncludeRecursive">
+      <e p="Assembly-CSharp.csproj" t="IncludeRecursive" />
+      <e p="Assets" t="Include">
+        <e p="ForeignCode" t="Include">
+          <e p="SimpleCameraController.cs" t="Include" />
+        </e>
+        <e p="Scripts" t="Include">
+          <e p="BootManager" t="Include">
+            <e p="Boot.cs" t="Include" />
+          </e>
+          <e p="Constants" t="Include">
+            <e p="Enums.cs" t="Include" />
+          </e>
+          <e p="GameCloud" t="Include">
+            <e p="Container.cs" t="Include" />
+          </e>
+          <e p="StateManager" t="Include">
+            <e p="StateController.cs" t="Include" />
+          </e>
+        </e>
+      </e>
+      <e p="Temp/bin" t="ExcludeRecursive" />
+      <e p="obj" t="ExcludeRecursive" />
+      <e p="packages" t="ExcludeRecursive" />
+      <e p="tarentGame.sln" t="IncludeFlat" />
+    </e>
+  </component>
+</project>

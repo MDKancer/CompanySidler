@@ -6,7 +6,6 @@
     <e p="$PROJECT_DIR$" t="IncludeRecursive">
       <e p="Assembly-CSharp.csproj" t="IncludeRecursive" />
       <e p="Assets" t="Include">
-        <e p=".gitignore" t="Include" />
         <e p="ForeignCode" t="Include">
           <e p="SimpleCameraController.cs" t="Include" />
         </e>

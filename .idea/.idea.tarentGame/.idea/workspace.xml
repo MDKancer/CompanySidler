@@ -2,16 +2,1060 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="76fb7938-faf3-40ef-a536-80ac4747bde9" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.tarentGame/.idea/contentModel.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.tarentGame/.idea/contentModel.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.tarentGame/.idea/indexLayout.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.tarentGame/.idea/indexLayout.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.tarentGame/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.tarentGame/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assembly-CSharp.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/Assembly-CSharp.csproj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/BootManager/Boot.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/BootManager/Boot.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Constants/Enums.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Constants/Enums.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/GameCloud/Container.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/GameCloud/Container.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/StateManager/StateController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/StateManager/StateController.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/APIUpdater/project-dependencies.graph" beforeDir="false" afterPath="$PROJECT_DIR$/Library/APIUpdater/project-dependencies.graph" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/CurrentLayout.dwlt" beforeDir="false" afterPath="$PROJECT_DIR$/Library/CurrentLayout.dwlt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Library/EditorInstance.json" beforeDir="false" afterPath="$PROJECT_DIR$/Library/EditorInstance.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/EditorUserBuildSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Library/EditorUserBuildSettings.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/PackageCache/com.unity.ads@2.0.8/CHANGELOG.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/PackageCache/com.unity.ads@2.0.8/CHANGELOG.md.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/PackageCache/com.unity.ads@2.0.8/Editor.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/PackageCache/com.unity.ads@2.0.8/Editor/Resources.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/PackageCache/com.unity.ads@2.0.8/Editor/Resources/Android.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/PackageCache/com.unity.ads@2.0.8/Editor/Resources/Android/builds.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/PackageCache/com.unity.ads@2.0.8/Editor/Resources/Android/builds/unity-ads.aar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/PackageCache/com.unity.ads@2.0.8/Editor/Resources/Android/builds/unity-ads.aar.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/PackageCache/com.unity.ads@2.0.8/Editor/Resources/Editor.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/PackageCache/com.unity.ads@2.0.8/Editor/Resources/Editor/landscape.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/PackageCache/com.unity.ads@2.0.8/Editor/Resources/Editor/landscape.jpg.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/PackageCache/com.unity.ads@2.0.8/Editor/Resources/Editor/portrait.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/PackageCache/com.unity.ads@2.0.8/Editor/Resources/Editor/portrait.jpg.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/PackageCache/com.unity.ads@2.0.8/Editor/Resources/iOS.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/PackageCache/com.unity.ads@2.0.8/Editor/Resources/iOS/builds.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/PackageCache/com.unity.ads@2.0.8/Editor/Resources/iOS/builds/UnityAds.framework.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/PackageCache/com.unity.ads@2.0.8/Editor/Resources/iOS/builds/UnityAds.framework/Headers.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/PackageCache/com.unity.ads@2.0.8/Editor/Resources/iOS/builds/UnityAds.framework/Headers/UADSInAppPurchaseMetaData.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/PackageCache/com.unity.ads@2.0.8/Editor/Resources/iOS/builds/UnityAds.framework/Headers/UADSInAppPurchaseMetaData.h.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/PackageCache/com.unity.ads@2.0.8/Editor/Resources/iOS/builds/UnityAds.framework/Headers/UADSJsonStorage.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/PackageCache/com.unity.ads@2.0.8/Editor/Resources/iOS/builds/UnityAds.framework/Headers/UADSJsonStorage.h.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/PackageCache/com.unity.ads@2.0.8/Editor/Resources/iOS/builds/UnityAds.framework/Headers/UADSMediationMetaData.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/PackageCache/com.unity.ads@2.0.8/Editor/Resources/iOS/builds/UnityAds.framework/Headers/UADSMediationMetaData.h.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/PackageCache/com.unity.ads@2.0.8/Editor/Resources/iOS/builds/UnityAds.framework/Headers/UADSMetaData.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/PackageCache/com.unity.ads@2.0.8/Editor/Resources/iOS/builds/UnityAds.framework/Headers/UADSMetaData.h.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/PackageCache/com.unity.ads@2.0.8/Editor/Resources/iOS/builds/UnityAds.framework/Headers/UADSPlayerMetaData.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/PackageCache/com.unity.ads@2.0.8/Editor/Resources/iOS/builds/UnityAds.framework/Headers/UADSPlayerMetaData.h.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/PackageCache/com.unity.ads@2.0.8/Editor/Resources/iOS/builds/UnityAds.framework/Headers/UnityAds.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/PackageCache/com.unity.ads@2.0.8/Editor/Resources/iOS/builds/UnityAds.framework/Headers/UnityAds.h.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/PackageCache/com.unity.ads@2.0.8/Editor/Resources/iOS/builds/UnityAds.framework/Headers/UnityAdsExtended.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/PackageCache/com.unity.ads@2.0.8/Editor/Resources/iOS/builds/UnityAds.framework/Headers/UnityAdsExtended.h.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/PackageCache/com.unity.ads@2.0.8/Editor/Resources/iOS/builds/UnityAds.framework/Headers/UnityAdsUnityDelegate.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/PackageCache/com.unity.ads@2.0.8/Editor/Resources/iOS/builds/UnityAds.framework/Headers/UnityAdsUnityDelegate.h.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/PackageCache/com.unity.ads@2.0.8/Editor/Resources/iOS/builds/UnityAds.framework/Info.plist" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/PackageCache/com.unity.ads@2.0.8/Editor/Resources/iOS/builds/UnityAds.framework/Info.plist.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/PackageCache/com.unity.ads@2.0.8/Editor/Resources/iOS/builds/UnityAds.framework/Modules.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/PackageCache/com.unity.ads@2.0.8/Editor/Resources/iOS/builds/UnityAds.framework/Modules/module.modulemap" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/PackageCache/com.unity.ads@2.0.8/Editor/Resources/iOS/builds/UnityAds.framework/Modules/module.modulemap.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/PackageCache/com.unity.ads@2.0.8/Editor/Resources/iOS/builds/UnityAds.framework/UnityAds" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/PackageCache/com.unity.ads@2.0.8/Editor/Resources/iOS/builds/UnityAds.framework/UnityAds.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/PackageCache/com.unity.ads@2.0.8/Editor/UnityEditor.Advertisements.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/PackageCache/com.unity.ads@2.0.8/Editor/UnityEditor.Advertisements.dll.mdb" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/PackageCache/com.unity.ads@2.0.8/Editor/UnityEditor.Advertisements.dll.mdb.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/PackageCache/com.unity.ads@2.0.8/Editor/UnityEditor.Advertisements.dll.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/PackageCache/com.unity.ads@2.0.8/License.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/PackageCache/com.unity.ads@2.0.8/License.md.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/PackageCache/com.unity.ads@2.0.8/README.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/PackageCache/com.unity.ads@2.0.8/README.md.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/PackageCache/com.unity.ads@2.0.8/UnityEngine.Advertisements.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/PackageCache/com.unity.ads@2.0.8/UnityEngine.Advertisements.dll.mdb" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/PackageCache/com.unity.ads@2.0.8/UnityEngine.Advertisements.dll.mdb.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/PackageCache/com.unity.ads@2.0.8/UnityEngine.Advertisements.dll.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/PackageCache/com.unity.ads@2.0.8/package.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/PackageCache/com.unity.ads@2.0.8/package.json.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/PackageCache/com.unity.collab-proxy@1.2.16/.npmignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/PackageCache/com.unity.collab-proxy@1.2.16/CHANGELOG.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/PackageCache/com.unity.collab-proxy@1.2.16/CHANGELOG.md.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/PackageCache/com.unity.collab-proxy@1.2.16/DEPENDENCIES.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/PackageCache/com.unity.collab-proxy@1.2.16/DEPENDENCIES.md.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/PackageCache/com.unity.collab-proxy@1.2.16/Documentation~/collab-proxy.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/PackageCache/com.unity.collab-proxy@1.2.16/Editor.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/PackageCache/com.unity.collab-proxy@1.2.16/Editor/AssemblyInfo.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/PackageCache/com.unity.collab-proxy@1.2.16/Editor/AssemblyInfo.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/PackageCache/com.unity.collab-proxy@1.2.16/Editor/Collab.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/PackageCache/com.unity.collab-proxy@1.2.16/Editor/Collab/Bootstrap.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/PackageCache/com.unity.collab-proxy@1.2.16/Editor/Collab/Bootstrap.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/PackageCache/com.unity.collab-proxy@1.2.16/Editor/Collab/CollabAnalytics.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/PackageCache/com.unity.collab-proxy@1.2.16/Editor/Collab/CollabAnalytics.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/PackageCache/com.unity.collab-proxy@1.2.16/Editor/Collab/CollabHistoryWindow.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/PackageCache/com.unity.collab-proxy@1.2.16/Editor/Collab/CollabHistoryWindow.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/PackageCache/com.unity.collab-proxy@1.2.16/Editor/Collab/CollabToolbarButton.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/PackageCache/com.unity.collab-proxy@1.2.16/Editor/Collab/CollabToolbarButton.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/PackageCache/com.unity.collab-proxy@1.2.16/Editor/Collab/CollabToolbarWindow.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/PackageCache/com.unity.collab-proxy@1.2.16/Editor/Collab/CollabToolbarWindow.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/PackageCache/com.unity.collab-proxy@1.2.16/Editor/Collab/Presenters.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/PackageCache/com.unity.collab-proxy@1.2.16/Editor/Collab/Presenters/CollabHistoryPresenter.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/PackageCache/com.unity.collab-proxy@1.2.16/Editor/Collab/Presenters/CollabHistoryPresenter.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/PackageCache/com.unity.collab-proxy@1.2.16/Editor/Collab/Views.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/PackageCache/com.unity.collab-proxy@1.2.16/Editor/Collab/Views/BuildStatusButton.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/PackageCache/com.unity.collab-proxy@1.2.16/Editor/Collab/Views/BuildStatusButton.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/PackageCache/com.unity.collab-proxy@1.2.16/Editor/Collab/Views/CollabHistoryDropDown.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/PackageCache/com.unity.collab-proxy@1.2.16/Editor/Collab/Views/CollabHistoryDropDown.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/PackageCache/com.unity.collab-proxy@1.2.16/Editor/Collab/Views/CollabHistoryDropDownItem.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/PackageCache/com.unity.collab-proxy@1.2.16/Editor/Collab/Views/CollabHistoryDropDownItem.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/PackageCache/com.unity.collab-proxy@1.2.16/Editor/Collab/Views/CollabHistoryItem.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/PackageCache/com.unity.collab-proxy@1.2.16/Editor/Collab/Views/CollabHistoryItem.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/PackageCache/com.unity.collab-proxy@1.2.16/Editor/Collab/Views/CollabHistoryItemFactory.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/PackageCache/com.unity.collab-proxy@1.2.16/Editor/Collab/Views/CollabHistoryItemFactory.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/PackageCache/com.unity.collab-proxy@1.2.16/Editor/Collab/Views/CollabHistoryRevisionLine.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/PackageCache/com.unity.collab-proxy@1.2.16/Editor/Collab/Views/CollabHistoryRevisionLine.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/PackageCache/com.unity.collab-proxy@1.2.16/Editor/Collab/Views/HistoryProgressSpinner.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/PackageCache/com.unity.collab-proxy@1.2.16/Editor/Collab/Views/HistoryProgressSpinner.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/PackageCache/com.unity.collab-proxy@1.2.16/Editor/Collab/Views/ICollabHistoryItemFactory.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/PackageCache/com.unity.collab-proxy@1.2.16/Editor/Collab/Views/ICollabHistoryItemFactory.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/PackageCache/com.unity.collab-proxy@1.2.16/Editor/Collab/Views/PagedListView.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/PackageCache/com.unity.collab-proxy@1.2.16/Editor/Collab/Views/PagedListView.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/PackageCache/com.unity.collab-proxy@1.2.16/Editor/Collab/Views/StatusView.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/PackageCache/com.unity.collab-proxy@1.2.16/Editor/Collab/Views/StatusView.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/PackageCache/com.unity.collab-proxy@1.2.16/Editor/Resources.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/PackageCache/com.unity.collab-proxy@1.2.16/Editor/Resources/Styles.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/PackageCache/com.unity.collab-proxy@1.2.16/Editor/Resources/Styles/CollabHistoryCommon.uss" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/PackageCache/com.unity.collab-proxy@1.2.16/Editor/Resources/Styles/CollabHistoryCommon.uss.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/PackageCache/com.unity.collab-proxy@1.2.16/Editor/Resources/Styles/CollabHistoryDark.uss" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/PackageCache/com.unity.collab-proxy@1.2.16/Editor/Resources/Styles/CollabHistoryDark.uss.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/PackageCache/com.unity.collab-proxy@1.2.16/Editor/Resources/Styles/CollabHistoryLight.uss" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/PackageCache/com.unity.collab-proxy@1.2.16/Editor/Resources/Styles/CollabHistoryLight.uss.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/PackageCache/com.unity.collab-proxy@1.2.16/Editor/Unity.CollabProxy.Editor.asmdef" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/PackageCache/com.unity.collab-proxy@1.2.16/Editor/Unity.CollabProxy.Editor.asmdef.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/PackageCache/com.unity.collab-proxy@1.2.16/LICENSE.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/PackageCache/com.unity.collab-proxy@1.2.16/LICENSE.md.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/PackageCache/com.unity.collab-proxy@1.2.16/README.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/PackageCache/com.unity.collab-proxy@1.2.16/README.md.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/PackageCache/com.unity.collab-proxy@1.2.16/Tests.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/PackageCache/com.unity.collab-proxy@1.2.16/Tests/Editor.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/PackageCache/com.unity.collab-proxy@1.2.16/Tests/Editor/HistoryTests.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/PackageCache/com.unity.collab-proxy@1.2.16/Tests/Editor/HistoryTests.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/PackageCache/com.unity.collab-proxy@1.2.16/Tests/Editor/Unity.CollabProxy.EditorTests.asmdef" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/PackageCache/com.unity.collab-proxy@1.2.16/Tests/Editor/Unity.CollabProxy.EditorTests.asmdef.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/PackageCache/com.unity.collab-proxy@1.2.16/package.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/PackageCache/com.unity.collab-proxy@1.2.16/package.json.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/PackageCache/com.unity.postprocessing@2.1.4/CHANGELOG.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/PackageCache/com.unity.postprocessing@2.1.4/CHANGELOG.md.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/PackageCache/com.unity.postprocessing@2.1.4/CONTRIBUTIONS.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/PackageCache/com.unity.postprocessing@2.1.4/CONTRIBUTIONS.md.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/PackageCache/com.unity.postprocessing@2.1.4/Documentation~/Ambient-Occlusion.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/PackageCache/com.unity.postprocessing@2.1.4/Documentation~/Anti-aliasing.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/PackageCache/com.unity.postprocessing@2.1.4/Documentation~/Auto-Exposure.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/PackageCache/com.unity.postprocessing@2.1.4/Documentation~/Bloom.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/PackageCache/com.unity.postprocessing@2.1.4/Documentation~/Chromatic-Aberration.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/PackageCache/com.unity.postprocessing@2.1.4/Documentation~/Color-Grading.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/PackageCache/com.unity.postprocessing@2.1.4/Documentation~/Debugging.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/PackageCache/com.unity.postprocessing@2.1.4/Documentation~/Deferred-Fog.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/PackageCache/com.unity.postprocessing@2.1.4/Documentation~/Depth-of-Field.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/PackageCache/com.unity.postprocessing@2.1.4/Documentation~/Grain.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/PackageCache/com.unity.postprocessing@2.1.4/Documentation~/Installation.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/PackageCache/com.unity.postprocessing@2.1.4/Documentation~/Lens-Distortion.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/PackageCache/com.unity.postprocessing@2.1.4/Documentation~/Manipulating-the-Stack.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/PackageCache/com.unity.postprocessing@2.1.4/Documentation~/Motion-Blur.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/PackageCache/com.unity.postprocessing@2.1.4/Documentation~/Quick-start.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/PackageCache/com.unity.postprocessing@2.1.4/Documentation~/Screen-space-Reflections.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/PackageCache/com.unity.postprocessing@2.1.4/Documentation~/TableOfContents.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/PackageCache/com.unity.postprocessing@2.1.4/Documentation~/Troubleshooting.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/PackageCache/com.unity.postprocessing@2.1.4/Documentation~/Vignette.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/PackageCache/com.unity.postprocessing@2.1.4/Documentation~/Writing-Custom-Effects.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/PackageCache/com.unity.postprocessing@2.1.4/Documentation~/images/aa-1.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/PackageCache/com.unity.postprocessing@2.1.4/Documentation~/images/aa-2.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/PackageCache/com.unity.postprocessing@2.1.4/Documentation~/images/aa-3.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/PackageCache/com.unity.postprocessing@2.1.4/Documentation~/images/autoexposure.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/PackageCache/com.unity.postprocessing@2.1.4/Documentation~/images/bloom.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/PackageCache/com.unity.postprocessing@2.1.4/Documentation~/images/chroma.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/PackageCache/com.unity.postprocessing@2.1.4/Documentation~/images/custom-effect-ordering.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/PackageCache/com.unity.postprocessing@2.1.4/Documentation~/images/deferredfog.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/PackageCache/com.unity.postprocessing@2.1.4/Documentation~/images/dof.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/PackageCache/com.unity.postprocessing@2.1.4/Documentation~/images/grading-1.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/PackageCache/com.unity.postprocessing@2.1.4/Documentation~/images/grading-10.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/PackageCache/com.unity.postprocessing@2.1.4/Documentation~/images/grading-11.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/PackageCache/com.unity.postprocessing@2.1.4/Documentation~/images/grading-2.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/PackageCache/com.unity.postprocessing@2.1.4/Documentation~/images/grading-3.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/PackageCache/com.unity.postprocessing@2.1.4/Documentation~/images/grading-4.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/PackageCache/com.unity.postprocessing@2.1.4/Documentation~/images/grading-5.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/PackageCache/com.unity.postprocessing@2.1.4/Documentation~/images/grading-6.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/PackageCache/com.unity.postprocessing@2.1.4/Documentation~/images/grading-7.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/PackageCache/com.unity.postprocessing@2.1.4/Documentation~/images/grading-8.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/PackageCache/com.unity.postprocessing@2.1.4/Documentation~/images/grading-9.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/PackageCache/com.unity.postprocessing@2.1.4/Documentation~/images/grain.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/PackageCache/com.unity.postprocessing@2.1.4/Documentation~/images/home-after.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/PackageCache/com.unity.postprocessing@2.1.4/Documentation~/images/home-before.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/PackageCache/com.unity.postprocessing@2.1.4/Documentation~/images/lensdistortion.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/PackageCache/com.unity.postprocessing@2.1.4/Documentation~/images/motionblur.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/PackageCache/com.unity.postprocessing@2.1.4/Documentation~/images/quickstart-1.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/PackageCache/com.unity.postprocessing@2.1.4/Documentation~/images/quickstart-2.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/PackageCache/com.unity.postprocessing@2.1.4/Documentation~/images/quickstart-3.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/PackageCache/com.unity.postprocessing@2.1.4/Documentation~/images/screenshot-antialiasing.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/PackageCache/com.unity.postprocessing@2.1.4/Documentation~/images/screenshot-ao.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/PackageCache/com.unity.postprocessing@2.1.4/Documentation~/images/screenshot-bloom.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/PackageCache/com.unity.postprocessing@2.1.4/Documentation~/images/screenshot-chroma.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/PackageCache/com.unity.postprocessing@2.1.4/Documentation~/images/screenshot-distortion.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/PackageCache/com.unity.postprocessing@2.1.4/Documentation~/images/screenshot-dof.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/PackageCache/com.unity.postprocessing@2.1.4/Documentation~/images/screenshot-fog.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/PackageCache/com.unity.postprocessing@2.1.4/Documentation~/images/screenshot-grading.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/PackageCache/com.unity.postprocessing@2.1.4/Documentation~/images/screenshot-motionblur.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/PackageCache/com.unity.postprocessing@2.1.4/Documentation~/images/screenshot-ssr.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/PackageCache/com.unity.postprocessing@2.1.4/Documentation~/images/screenshot-vignette.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/PackageCache/com.unity.postprocessing@2.1.4/Documentation~/images/ssao-1.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/PackageCache/com.unity.postprocessing@2.1.4/Documentation~/images/ssao-2.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/PackageCache/com.unity.postprocessing@2.1.4/Documentation~/images/ssr.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/PackageCache/com.unity.postprocessing@2.1.4/Documentation~/images/vignette-1.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/PackageCache/com.unity.postprocessing@2.1.4/Documentation~/images/vignette-2.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/PackageCache/com.unity.postprocessing@2.1.4/Documentation~/index.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/PackageCache/com.unity.postprocessing@2.1.4/LICENSE.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/PackageCache/com.unity.postprocessing@2.1.4/LICENSE.md.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/PackageCache/com.unity.postprocessing@2.1.4/PostProcessing.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/PackageCache/com.unity.postprocessing@2.1.4/PostProcessing/Editor.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/PackageCache/com.unity.postprocessing@2.1.4/PostProcessing/Editor/Attributes.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/PackageCache/com.unity.postprocessing@2.1.4/PostProcessing/Editor/Attributes/DecoratorAttribute.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/PackageCache/com.unity.postprocessing@2.1.4/PostProcessing/Editor/Attributes/DecoratorAttribute.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/PackageCache/com.unity.postprocessing@2.1.4/PostProcessing/Editor/Attributes/PostProcessEditorAttribute.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/PackageCache/com.unity.postprocessing@2.1.4/PostProcessing/Editor/Attributes/PostProcessEditorAttribute.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/PackageCache/com.unity.postprocessing@2.1.4/PostProcessing/Editor/BaseEditor.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/PackageCache/com.unity.postprocessing@2.1.4/PostProcessing/Editor/BaseEditor.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/PackageCache/com.unity.postprocessing@2.1.4/PostProcessing/Editor/Decorators.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/PackageCache/com.unity.postprocessing@2.1.4/PostProcessing/Editor/Decorators/AttributeDecorator.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/PackageCache/com.unity.postprocessing@2.1.4/PostProcessing/Editor/Decorators/AttributeDecorator.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/PackageCache/com.unity.postprocessing@2.1.4/PostProcessing/Editor/Decorators/Decorators.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/PackageCache/com.unity.postprocessing@2.1.4/PostProcessing/Editor/Decorators/Decorators.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/PackageCache/com.unity.postprocessing@2.1.4/PostProcessing/Editor/Decorators/TrackballDecorator.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/PackageCache/com.unity.postprocessing@2.1.4/PostProcessing/Editor/Decorators/TrackballDecorator.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/PackageCache/com.unity.postprocessing@2.1.4/PostProcessing/Editor/EffectListEditor.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/PackageCache/com.unity.postprocessing@2.1.4/PostProcessing/Editor/EffectListEditor.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/PackageCache/com.unity.postprocessing@2.1.4/PostProcessing/Editor/Effects.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/PackageCache/com.unity.postprocessing@2.1.4/PostProcessing/Editor/Effects/AmbientOcclusionEditor.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/PackageCache/com.unity.postprocessing@2.1.4/PostProcessing/Editor/Effects/AmbientOcclusionEditor.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/PackageCache/com.unity.postprocessing@2.1.4/PostProcessing/Editor/Effects/AutoExposureEditor.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/PackageCache/com.unity.postprocessing@2.1.4/PostProcessing/Editor/Effects/AutoExposureEditor.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/PackageCache/com.unity.postprocessing@2.1.4/PostProcessing/Editor/Effects/BloomEditor.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/PackageCache/com.unity.postprocessing@2.1.4/PostProcessing/Editor/Effects/BloomEditor.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/PackageCache/com.unity.postprocessing@2.1.4/PostProcessing/Editor/Effects/ChromaticAberrationEditor.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/PackageCache/com.unity.postprocessing@2.1.4/PostProcessing/Editor/Effects/ChromaticAberrationEditor.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/PackageCache/com.unity.postprocessing@2.1.4/PostProcessing/Editor/Effects/ColorGradingEditor.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/PackageCache/com.unity.postprocessing@2.1.4/PostProcessing/Editor/Effects/ColorGradingEditor.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/PackageCache/com.unity.postprocessing@2.1.4/PostProcessing/Editor/Effects/DefaultPostProcessEffectEditor.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/PackageCache/com.unity.postprocessing@2.1.4/PostProcessing/Editor/Effects/DefaultPostProcessEffectEditor.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/PackageCache/com.unity.postprocessing@2.1.4/PostProcessing/Editor/Effects/DepthOfFieldEditor.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/PackageCache/com.unity.postprocessing@2.1.4/PostProcessing/Editor/Effects/DepthOfFieldEditor.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/PackageCache/com.unity.postprocessing@2.1.4/PostProcessing/Editor/Effects/LensDistortionEditor.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/PackageCache/com.unity.postprocessing@2.1.4/PostProcessing/Editor/Effects/LensDistortionEditor.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/PackageCache/com.unity.postprocessing@2.1.4/PostProcessing/Editor/Effects/ScreenSpaceReflectionsEditor.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/PackageCache/com.unity.postprocessing@2.1.4/PostProcessing/Editor/Effects/ScreenSpaceReflectionsEditor.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/PackageCache/com.unity.postprocessing@2.1.4/PostProcessing/Editor/Effects/VignetteEditor.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/PackageCache/com.unity.postprocessing@2.1.4/PostProcessing/Editor/Effects/VignetteEditor.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/PackageCache/com.unity.postprocessing@2.1.4/PostProcessing/Editor/PostProcessDebugEditor.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/PackageCache/com.unity.postprocessing@2.1.4/PostProcessing/Editor/PostProcessDebugEditor.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/PackageCache/com.unity.postprocessing@2.1.4/PostProcessing/Editor/PostProcessEffectBaseEditor.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/PackageCache/com.unity.postprocessing@2.1.4/PostProcessing/Editor/PostProcessEffectBaseEditor.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/PackageCache/com.unity.postprocessing@2.1.4/PostProcessing/Editor/PostProcessEffectEditor.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/PackageCache/com.unity.postprocessing@2.1.4/PostProcessing/Editor/PostProcessEffectEditor.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/PackageCache/com.unity.postprocessing@2.1.4/PostProcessing/Editor/PostProcessLayerEditor.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/PackageCache/com.unity.postprocessing@2.1.4/PostProcessing/Editor/PostProcessLayerEditor.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/PackageCache/com.unity.postprocessing@2.1.4/PostProcessing/Editor/PostProcessProfileEditor.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/PackageCache/com.unity.postprocessing@2.1.4/PostProcessing/Editor/PostProcessProfileEditor.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/PackageCache/com.unity.postprocessing@2.1.4/PostProcessing/Editor/PostProcessVolumeEditor.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/PackageCache/com.unity.postprocessing@2.1.4/PostProcessing/Editor/PostProcessVolumeEditor.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/PackageCache/com.unity.postprocessing@2.1.4/PostProcessing/Editor/Tools.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/PackageCache/com.unity.postprocessing@2.1.4/PostProcessing/Editor/Tools/CubeLutAssetFactory.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/PackageCache/com.unity.postprocessing@2.1.4/PostProcessing/Editor/Tools/CubeLutAssetFactory.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/PackageCache/com.unity.postprocessing@2.1.4/PostProcessing/Editor/Tools/CubeLutAssetImporter.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/PackageCache/com.unity.postprocessing@2.1.4/PostProcessing/Editor/Tools/CubeLutAssetImporter.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/PackageCache/com.unity.postprocessing@2.1.4/PostProcessing/Editor/Tools/DefineSetter.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/PackageCache/com.unity.postprocessing@2.1.4/PostProcessing/Editor/Tools/DefineSetter.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/PackageCache/com.unity.postprocessing@2.1.4/PostProcessing/Editor/Tools/ProfileFactory.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/PackageCache/com.unity.postprocessing@2.1.4/PostProcessing/Editor/Tools/ProfileFactory.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/PackageCache/com.unity.postprocessing@2.1.4/PostProcessing/Editor/Tools/ResourceAssetFactory.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/PackageCache/com.unity.postprocessing@2.1.4/PostProcessing/Editor/Tools/ResourceAssetFactory.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/PackageCache/com.unity.postprocessing@2.1.4/PostProcessing/Editor/Tools/VolumeFactory.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/PackageCache/com.unity.postprocessing@2.1.4/PostProcessing/Editor/Tools/VolumeFactory.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/PackageCache/com.unity.postprocessing@2.1.4/PostProcessing/Editor/Unity.Postprocessing.Editor.asmdef" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/PackageCache/com.unity.postprocessing@2.1.4/PostProcessing/Editor/Unity.Postprocessing.Editor.asmdef.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/PackageCache/com.unity.postprocessing@2.1.4/PostProcessing/Editor/Utils.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/PackageCache/com.unity.postprocessing@2.1.4/PostProcessing/Editor/Utils/CurveEditor.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/PackageCache/com.unity.postprocessing@2.1.4/PostProcessing/Editor/Utils/CurveEditor.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/PackageCache/com.unity.postprocessing@2.1.4/PostProcessing/Editor/Utils/EditorUtilities.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/PackageCache/com.unity.postprocessing@2.1.4/PostProcessing/Editor/Utils/EditorUtilities.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/PackageCache/com.unity.postprocessing@2.1.4/PostProcessing/Editor/Utils/GlobalSettings.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/PackageCache/com.unity.postprocessing@2.1.4/PostProcessing/Editor/Utils/GlobalSettings.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/PackageCache/com.unity.postprocessing@2.1.4/PostProcessing/Editor/Utils/PostProcessShaderIncludePath.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/PackageCache/com.unity.postprocessing@2.1.4/PostProcessing/Editor/Utils/PostProcessShaderIncludePath.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/PackageCache/com.unity.postprocessing@2.1.4/PostProcessing/Editor/Utils/SerializedParameterOverride.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/PackageCache/com.unity.postprocessing@2.1.4/PostProcessing/Editor/Utils/SerializedParameterOverride.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/PackageCache/com.unity.postprocessing@2.1.4/PostProcessing/Editor/Utils/Styling.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/PackageCache/com.unity.postprocessing@2.1.4/PostProcessing/Editor/Utils/Styling.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/PackageCache/com.unity.postprocessing@2.1.4/PostProcessing/Gizmos.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/PackageCache/com.unity.postprocessing@2.1.4/PostProcessing/Gizmos/PostProcessLayer.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/PackageCache/com.unity.postprocessing@2.1.4/PostProcessing/Gizmos/PostProcessLayer.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/PackageCache/com.unity.postprocessing@2.1.4/PostProcessing/PostProcessResources.asset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/PackageCache/com.unity.postprocessing@2.1.4/PostProcessing/PostProcessResources.asset.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/PackageCache/com.unity.postprocessing@2.1.4/PostProcessing/Runtime.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/PackageCache/com.unity.postprocessing@2.1.4/PostProcessing/Runtime/Attributes.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/PackageCache/com.unity.postprocessing@2.1.4/PostProcessing/Runtime/Attributes/DisplayNameAttribute.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/PackageCache/com.unity.postprocessing@2.1.4/PostProcessing/Runtime/Attributes/DisplayNameAttribute.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/PackageCache/com.unity.postprocessing@2.1.4/PostProcessing/Runtime/Attributes/MaxAttribute.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/PackageCache/com.unity.postprocessing@2.1.4/PostProcessing/Runtime/Attributes/MaxAttribute.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/PackageCache/com.unity.postprocessing@2.1.4/PostProcessing/Runtime/Attributes/MinAttribute.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/PackageCache/com.unity.postprocessing@2.1.4/PostProcessing/Runtime/Attributes/MinAttribute.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/PackageCache/com.unity.postprocessing@2.1.4/PostProcessing/Runtime/Attributes/MinMaxAttribute.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/PackageCache/com.unity.postprocessing@2.1.4/PostProcessing/Runtime/Attributes/MinMaxAttribute.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/PackageCache/com.unity.postprocessing@2.1.4/PostProcessing/Runtime/Attributes/PostProcessAttribute.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/PackageCache/com.unity.postprocessing@2.1.4/PostProcessing/Runtime/Attributes/PostProcessAttribute.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/PackageCache/com.unity.postprocessing@2.1.4/PostProcessing/Runtime/Attributes/TrackballAttribute.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/PackageCache/com.unity.postprocessing@2.1.4/PostProcessing/Runtime/Attributes/TrackballAttribute.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/PackageCache/com.unity.postprocessing@2.1.4/PostProcessing/Runtime/Effects.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/PackageCache/com.unity.postprocessing@2.1.4/PostProcessing/Runtime/Effects/AmbientOcclusion.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/PackageCache/com.unity.postprocessing@2.1.4/PostProcessing/Runtime/Effects/AmbientOcclusion.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/PackageCache/com.unity.postprocessing@2.1.4/PostProcessing/Runtime/Effects/AutoExposure.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/PackageCache/com.unity.postprocessing@2.1.4/PostProcessing/Runtime/Effects/AutoExposure.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/PackageCache/com.unity.postprocessing@2.1.4/PostProcessing/Runtime/Effects/Bloom.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/PackageCache/com.unity.postprocessing@2.1.4/PostProcessing/Runtime/Effects/Bloom.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/PackageCache/com.unity.postprocessing@2.1.4/PostProcessing/Runtime/Effects/ChromaticAberration.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/PackageCache/com.unity.postprocessing@2.1.4/PostProcessing/Runtime/Effects/ChromaticAberration.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/PackageCache/com.unity.postprocessing@2.1.4/PostProcessing/Runtime/Effects/ColorGrading.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/PackageCache/com.unity.postprocessing@2.1.4/PostProcessing/Runtime/Effects/ColorGrading.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/PackageCache/com.unity.postprocessing@2.1.4/PostProcessing/Runtime/Effects/DepthOfField.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/PackageCache/com.unity.postprocessing@2.1.4/PostProcessing/Runtime/Effects/DepthOfField.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/PackageCache/com.unity.postprocessing@2.1.4/PostProcessing/Runtime/Effects/Dithering.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/PackageCache/com.unity.postprocessing@2.1.4/PostProcessing/Runtime/Effects/Dithering.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/PackageCache/com.unity.postprocessing@2.1.4/PostProcessing/Runtime/Effects/FastApproximateAntialiasing.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/PackageCache/com.unity.postprocessing@2.1.4/PostProcessing/Runtime/Effects/FastApproximateAntialiasing.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/PackageCache/com.unity.postprocessing@2.1.4/PostProcessing/Runtime/Effects/Fog.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/PackageCache/com.unity.postprocessing@2.1.4/PostProcessing/Runtime/Effects/Fog.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/PackageCache/com.unity.postprocessing@2.1.4/PostProcessing/Runtime/Effects/Grain.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/PackageCache/com.unity.postprocessing@2.1.4/PostProcessing/Runtime/Effects/Grain.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/PackageCache/com.unity.postprocessing@2.1.4/PostProcessing/Runtime/Effects/LensDistortion.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/PackageCache/com.unity.postprocessing@2.1.4/PostProcessing/Runtime/Effects/LensDistortion.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/PackageCache/com.unity.postprocessing@2.1.4/PostProcessing/Runtime/Effects/MotionBlur.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/PackageCache/com.unity.postprocessing@2.1.4/PostProcessing/Runtime/Effects/MotionBlur.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/PackageCache/com.unity.postprocessing@2.1.4/PostProcessing/Runtime/Effects/MultiScaleVO.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/PackageCache/com.unity.postprocessing@2.1.4/PostProcessing/Runtime/Effects/MultiScaleVO.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/PackageCache/com.unity.postprocessing@2.1.4/PostProcessing/Runtime/Effects/ScalableAO.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/PackageCache/com.unity.postprocessing@2.1.4/PostProcessing/Runtime/Effects/ScalableAO.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/PackageCache/com.unity.postprocessing@2.1.4/PostProcessing/Runtime/Effects/ScreenSpaceReflections.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/PackageCache/com.unity.postprocessing@2.1.4/PostProcessing/Runtime/Effects/ScreenSpaceReflections.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/PackageCache/com.unity.postprocessing@2.1.4/PostProcessing/Runtime/Effects/SubpixelMorphologicalAntialiasing.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/PackageCache/com.unity.postprocessing@2.1.4/PostProcessing/Runtime/Effects/SubpixelMorphologicalAntialiasing.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/PackageCache/com.unity.postprocessing@2.1.4/PostProcessing/Runtime/Effects/TemporalAntialiasing.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/PackageCache/com.unity.postprocessing@2.1.4/PostProcessing/Runtime/Effects/TemporalAntialiasing.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/PackageCache/com.unity.postprocessing@2.1.4/PostProcessing/Runtime/Effects/Vignette.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/PackageCache/com.unity.postprocessing@2.1.4/PostProcessing/Runtime/Effects/Vignette.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/PackageCache/com.unity.postprocessing@2.1.4/PostProcessing/Runtime/Monitors.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/PackageCache/com.unity.postprocessing@2.1.4/PostProcessing/Runtime/Monitors/HistogramMonitor.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/PackageCache/com.unity.postprocessing@2.1.4/PostProcessing/Runtime/Monitors/HistogramMonitor.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/PackageCache/com.unity.postprocessing@2.1.4/PostProcessing/Runtime/Monitors/LightMeterMonitor.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/PackageCache/com.unity.postprocessing@2.1.4/PostProcessing/Runtime/Monitors/LightMeterMonitor.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/PackageCache/com.unity.postprocessing@2.1.4/PostProcessing/Runtime/Monitors/Monitor.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/PackageCache/com.unity.postprocessing@2.1.4/PostProcessing/Runtime/Monitors/Monitor.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/PackageCache/com.unity.postprocessing@2.1.4/PostProcessing/Runtime/Monitors/VectorscopeMonitor.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/PackageCache/com.unity.postprocessing@2.1.4/PostProcessing/Runtime/Monitors/VectorscopeMonitor.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/PackageCache/com.unity.postprocessing@2.1.4/PostProcessing/Runtime/Monitors/WaveformMonitor.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/PackageCache/com.unity.postprocessing@2.1.4/PostProcessing/Runtime/Monitors/WaveformMonitor.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/PackageCache/com.unity.postprocessing@2.1.4/PostProcessing/Runtime/ParameterOverride.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/PackageCache/com.unity.postprocessing@2.1.4/PostProcessing/Runtime/ParameterOverride.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/PackageCache/com.unity.postprocessing@2.1.4/PostProcessing/Runtime/PostProcessBundle.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/PackageCache/com.unity.postprocessing@2.1.4/PostProcessing/Runtime/PostProcessBundle.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/PackageCache/com.unity.postprocessing@2.1.4/PostProcessing/Runtime/PostProcessDebug.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/PackageCache/com.unity.postprocessing@2.1.4/PostProcessing/Runtime/PostProcessDebug.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/PackageCache/com.unity.postprocessing@2.1.4/PostProcessing/Runtime/PostProcessDebugLayer.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/PackageCache/com.unity.postprocessing@2.1.4/PostProcessing/Runtime/PostProcessDebugLayer.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/PackageCache/com.unity.postprocessing@2.1.4/PostProcessing/Runtime/PostProcessEffectRenderer.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/PackageCache/com.unity.postprocessing@2.1.4/PostProcessing/Runtime/PostProcessEffectRenderer.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/PackageCache/com.unity.postprocessing@2.1.4/PostProcessing/Runtime/PostProcessEffectSettings.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/PackageCache/com.unity.postprocessing@2.1.4/PostProcessing/Runtime/PostProcessEffectSettings.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/PackageCache/com.unity.postprocessing@2.1.4/PostProcessing/Runtime/PostProcessEvent.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/PackageCache/com.unity.postprocessing@2.1.4/PostProcessing/Runtime/PostProcessEvent.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/PackageCache/com.unity.postprocessing@2.1.4/PostProcessing/Runtime/PostProcessLayer.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/PackageCache/com.unity.postprocessing@2.1.4/PostProcessing/Runtime/PostProcessLayer.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/PackageCache/com.unity.postprocessing@2.1.4/PostProcessing/Runtime/PostProcessManager.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/PackageCache/com.unity.postprocessing@2.1.4/PostProcessing/Runtime/PostProcessManager.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/PackageCache/com.unity.postprocessing@2.1.4/PostProcessing/Runtime/PostProcessProfile.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/PackageCache/com.unity.postprocessing@2.1.4/PostProcessing/Runtime/PostProcessProfile.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/PackageCache/com.unity.postprocessing@2.1.4/PostProcessing/Runtime/PostProcessRenderContext.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/PackageCache/com.unity.postprocessing@2.1.4/PostProcessing/Runtime/PostProcessRenderContext.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/PackageCache/com.unity.postprocessing@2.1.4/PostProcessing/Runtime/PostProcessResources.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/PackageCache/com.unity.postprocessing@2.1.4/PostProcessing/Runtime/PostProcessResources.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/PackageCache/com.unity.postprocessing@2.1.4/PostProcessing/Runtime/PostProcessVolume.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/PackageCache/com.unity.postprocessing@2.1.4/PostProcessing/Runtime/PostProcessVolume.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/PackageCache/com.unity.postprocessing@2.1.4/PostProcessing/Runtime/Unity.Postprocessing.Runtime.asmdef" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/PackageCache/com.unity.postprocessing@2.1.4/PostProcessing/Runtime/Unity.Postprocessing.Runtime.asmdef.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/PackageCache/com.unity.postprocessing@2.1.4/PostProcessing/Runtime/Utils.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/PackageCache/com.unity.postprocessing@2.1.4/PostProcessing/Runtime/Utils/ColorUtilities.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/PackageCache/com.unity.postprocessing@2.1.4/PostProcessing/Runtime/Utils/ColorUtilities.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/PackageCache/com.unity.postprocessing@2.1.4/PostProcessing/Runtime/Utils/HableCurve.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/PackageCache/com.unity.postprocessing@2.1.4/PostProcessing/Runtime/Utils/HableCurve.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/PackageCache/com.unity.postprocessing@2.1.4/PostProcessing/Runtime/Utils/HaltonSeq.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/PackageCache/com.unity.postprocessing@2.1.4/PostProcessing/Runtime/Utils/HaltonSeq.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/PackageCache/com.unity.postprocessing@2.1.4/PostProcessing/Runtime/Utils/LogHistogram.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/PackageCache/com.unity.postprocessing@2.1.4/PostProcessing/Runtime/Utils/LogHistogram.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/PackageCache/com.unity.postprocessing@2.1.4/PostProcessing/Runtime/Utils/MeshUtilities.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/PackageCache/com.unity.postprocessing@2.1.4/PostProcessing/Runtime/Utils/MeshUtilities.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/PackageCache/com.unity.postprocessing@2.1.4/PostProcessing/Runtime/Utils/PropertySheet.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/PackageCache/com.unity.postprocessing@2.1.4/PostProcessing/Runtime/Utils/PropertySheet.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/PackageCache/com.unity.postprocessing@2.1.4/PostProcessing/Runtime/Utils/PropertySheetFactory.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/PackageCache/com.unity.postprocessing@2.1.4/PostProcessing/Runtime/Utils/PropertySheetFactory.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/PackageCache/com.unity.postprocessing@2.1.4/PostProcessing/Runtime/Utils/RuntimeUtilities.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/PackageCache/com.unity.postprocessing@2.1.4/PostProcessing/Runtime/Utils/RuntimeUtilities.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/PackageCache/com.unity.postprocessing@2.1.4/PostProcessing/Runtime/Utils/ShaderIDs.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/PackageCache/com.unity.postprocessing@2.1.4/PostProcessing/Runtime/Utils/ShaderIDs.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/PackageCache/com.unity.postprocessing@2.1.4/PostProcessing/Runtime/Utils/Spline.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/PackageCache/com.unity.postprocessing@2.1.4/PostProcessing/Runtime/Utils/Spline.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/PackageCache/com.unity.postprocessing@2.1.4/PostProcessing/Runtime/Utils/TargetPool.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/PackageCache/com.unity.postprocessing@2.1.4/PostProcessing/Runtime/Utils/TargetPool.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/PackageCache/com.unity.postprocessing@2.1.4/PostProcessing/Runtime/Utils/TextureFormatUtilities.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/PackageCache/com.unity.postprocessing@2.1.4/PostProcessing/Runtime/Utils/TextureFormatUtilities.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/PackageCache/com.unity.postprocessing@2.1.4/PostProcessing/Runtime/Utils/TextureLerper.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/PackageCache/com.unity.postprocessing@2.1.4/PostProcessing/Runtime/Utils/TextureLerper.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/PackageCache/com.unity.postprocessing@2.1.4/PostProcessing/Runtime/Utils/XRSettings.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/PackageCache/com.unity.postprocessing@2.1.4/PostProcessing/Runtime/Utils/XRSettings.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/PackageCache/com.unity.postprocessing@2.1.4/PostProcessing/Shaders.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/PackageCache/com.unity.postprocessing@2.1.4/PostProcessing/Shaders/ACES.hlsl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/PackageCache/com.unity.postprocessing@2.1.4/PostProcessing/Shaders/ACES.hlsl.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/PackageCache/com.unity.postprocessing@2.1.4/PostProcessing/Shaders/API.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/PackageCache/com.unity.postprocessing@2.1.4/PostProcessing/Shaders/API/D3D11.hlsl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/PackageCache/com.unity.postprocessing@2.1.4/PostProcessing/Shaders/API/D3D11.hlsl.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/PackageCache/com.unity.postprocessing@2.1.4/PostProcessing/Shaders/API/D3D12.hlsl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/PackageCache/com.unity.postprocessing@2.1.4/PostProcessing/Shaders/API/D3D12.hlsl.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/PackageCache/com.unity.postprocessing@2.1.4/PostProcessing/Shaders/API/D3D9.hlsl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/PackageCache/com.unity.postprocessing@2.1.4/PostProcessing/Shaders/API/D3D9.hlsl.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/PackageCache/com.unity.postprocessing@2.1.4/PostProcessing/Shaders/API/Metal.hlsl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/PackageCache/com.unity.postprocessing@2.1.4/PostProcessing/Shaders/API/Metal.hlsl.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/PackageCache/com.unity.postprocessing@2.1.4/PostProcessing/Shaders/API/OpenGL.hlsl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/PackageCache/com.unity.postprocessing@2.1.4/PostProcessing/Shaders/API/OpenGL.hlsl.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/PackageCache/com.unity.postprocessing@2.1.4/PostProcessing/Shaders/API/PSP2.hlsl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/PackageCache/com.unity.postprocessing@2.1.4/PostProcessing/Shaders/API/PSP2.hlsl.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/PackageCache/com.unity.postprocessing@2.1.4/PostProcessing/Shaders/API/PSSL.hlsl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/PackageCache/com.unity.postprocessing@2.1.4/PostProcessing/Shaders/API/PSSL.hlsl.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/PackageCache/com.unity.postprocessing@2.1.4/PostProcessing/Shaders/API/Switch.hlsl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/PackageCache/com.unity.postprocessing@2.1.4/PostProcessing/Shaders/API/Switch.hlsl.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/PackageCache/com.unity.postprocessing@2.1.4/PostProcessing/Shaders/API/Vulkan.hlsl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/PackageCache/com.unity.postprocessing@2.1.4/PostProcessing/Shaders/API/Vulkan.hlsl.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/PackageCache/com.unity.postprocessing@2.1.4/PostProcessing/Shaders/API/XboxOne.hlsl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/PackageCache/com.unity.postprocessing@2.1.4/PostProcessing/Shaders/API/XboxOne.hlsl.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/PackageCache/com.unity.postprocessing@2.1.4/PostProcessing/Shaders/Builtins.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/PackageCache/com.unity.postprocessing@2.1.4/PostProcessing/Shaders/Builtins/AutoExposure.compute" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/PackageCache/com.unity.postprocessing@2.1.4/PostProcessing/Shaders/Builtins/AutoExposure.compute.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/PackageCache/com.unity.postprocessing@2.1.4/PostProcessing/Shaders/Builtins/Bloom.shader" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/PackageCache/com.unity.postprocessing@2.1.4/PostProcessing/Shaders/Builtins/Bloom.shader.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/PackageCache/com.unity.postprocessing@2.1.4/PostProcessing/Shaders/Builtins/Copy.shader" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/PackageCache/com.unity.postprocessing@2.1.4/PostProcessing/Shaders/Builtins/Copy.shader.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/PackageCache/com.unity.postprocessing@2.1.4/PostProcessing/Shaders/Builtins/CopyStd.shader" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/PackageCache/com.unity.postprocessing@2.1.4/PostProcessing/Shaders/Builtins/CopyStd.shader.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/PackageCache/com.unity.postprocessing@2.1.4/PostProcessing/Shaders/Builtins/CopyStdFromDoubleWide.shader" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/PackageCache/com.unity.postprocessing@2.1.4/PostProcessing/Shaders/Builtins/CopyStdFromDoubleWide.shader.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/PackageCache/com.unity.postprocessing@2.1.4/PostProcessing/Shaders/Builtins/CopyStdFromTexArray.shader" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/PackageCache/com.unity.postprocessing@2.1.4/PostProcessing/Shaders/Builtins/CopyStdFromTexArray.shader.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/PackageCache/com.unity.postprocessing@2.1.4/PostProcessing/Shaders/Builtins/DeferredFog.shader" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/PackageCache/com.unity.postprocessing@2.1.4/PostProcessing/Shaders/Builtins/DeferredFog.shader.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/PackageCache/com.unity.postprocessing@2.1.4/PostProcessing/Shaders/Builtins/DepthOfField.hlsl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/PackageCache/com.unity.postprocessing@2.1.4/PostProcessing/Shaders/Builtins/DepthOfField.hlsl.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/PackageCache/com.unity.postprocessing@2.1.4/PostProcessing/Shaders/Builtins/DepthOfField.shader" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/PackageCache/com.unity.postprocessing@2.1.4/PostProcessing/Shaders/Builtins/DepthOfField.shader.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/PackageCache/com.unity.postprocessing@2.1.4/PostProcessing/Shaders/Builtins/DiscardAlpha.shader" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/PackageCache/com.unity.postprocessing@2.1.4/PostProcessing/Shaders/Builtins/DiscardAlpha.shader.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/PackageCache/com.unity.postprocessing@2.1.4/PostProcessing/Shaders/Builtins/DiskKernels.hlsl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/PackageCache/com.unity.postprocessing@2.1.4/PostProcessing/Shaders/Builtins/DiskKernels.hlsl.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/PackageCache/com.unity.postprocessing@2.1.4/PostProcessing/Shaders/Builtins/Distortion.hlsl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/PackageCache/com.unity.postprocessing@2.1.4/PostProcessing/Shaders/Builtins/Distortion.hlsl.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/PackageCache/com.unity.postprocessing@2.1.4/PostProcessing/Shaders/Builtins/Dithering.hlsl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/PackageCache/com.unity.postprocessing@2.1.4/PostProcessing/Shaders/Builtins/Dithering.hlsl.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/PackageCache/com.unity.postprocessing@2.1.4/PostProcessing/Shaders/Builtins/ExposureHistogram.compute" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/PackageCache/com.unity.postprocessing@2.1.4/PostProcessing/Shaders/Builtins/ExposureHistogram.compute.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/PackageCache/com.unity.postprocessing@2.1.4/PostProcessing/Shaders/Builtins/ExposureHistogram.hlsl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/PackageCache/com.unity.postprocessing@2.1.4/PostProcessing/Shaders/Builtins/ExposureHistogram.hlsl.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/PackageCache/com.unity.postprocessing@2.1.4/PostProcessing/Shaders/Builtins/FastApproximateAntialiasing.hlsl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/PackageCache/com.unity.postprocessing@2.1.4/PostProcessing/Shaders/Builtins/FastApproximateAntialiasing.hlsl.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/PackageCache/com.unity.postprocessing@2.1.4/PostProcessing/Shaders/Builtins/FinalPass.shader" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/PackageCache/com.unity.postprocessing@2.1.4/PostProcessing/Shaders/Builtins/FinalPass.shader.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/PackageCache/com.unity.postprocessing@2.1.4/PostProcessing/Shaders/Builtins/Fog.hlsl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/PackageCache/com.unity.postprocessing@2.1.4/PostProcessing/Shaders/Builtins/Fog.hlsl.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/PackageCache/com.unity.postprocessing@2.1.4/PostProcessing/Shaders/Builtins/GaussianDownsample.compute" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/PackageCache/com.unity.postprocessing@2.1.4/PostProcessing/Shaders/Builtins/GaussianDownsample.compute.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/PackageCache/com.unity.postprocessing@2.1.4/PostProcessing/Shaders/Builtins/GrainBaker.shader" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/PackageCache/com.unity.postprocessing@2.1.4/PostProcessing/Shaders/Builtins/GrainBaker.shader.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/PackageCache/com.unity.postprocessing@2.1.4/PostProcessing/Shaders/Builtins/Lut2DBaker.shader" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/PackageCache/com.unity.postprocessing@2.1.4/PostProcessing/Shaders/Builtins/Lut2DBaker.shader.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/PackageCache/com.unity.postprocessing@2.1.4/PostProcessing/Shaders/Builtins/Lut3DBaker.compute" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/PackageCache/com.unity.postprocessing@2.1.4/PostProcessing/Shaders/Builtins/Lut3DBaker.compute.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/PackageCache/com.unity.postprocessing@2.1.4/PostProcessing/Shaders/Builtins/MotionBlur.shader" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/PackageCache/com.unity.postprocessing@2.1.4/PostProcessing/Shaders/Builtins/MotionBlur.shader.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/PackageCache/com.unity.postprocessing@2.1.4/PostProcessing/Shaders/Builtins/MultiScaleVO.shader" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/PackageCache/com.unity.postprocessing@2.1.4/PostProcessing/Shaders/Builtins/MultiScaleVO.shader.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/PackageCache/com.unity.postprocessing@2.1.4/PostProcessing/Shaders/Builtins/MultiScaleVODownsample1.compute" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/PackageCache/com.unity.postprocessing@2.1.4/PostProcessing/Shaders/Builtins/MultiScaleVODownsample1.compute.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/PackageCache/com.unity.postprocessing@2.1.4/PostProcessing/Shaders/Builtins/MultiScaleVODownsample2.compute" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/PackageCache/com.unity.postprocessing@2.1.4/PostProcessing/Shaders/Builtins/MultiScaleVODownsample2.compute.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/PackageCache/com.unity.postprocessing@2.1.4/PostProcessing/Shaders/Builtins/MultiScaleVORender.compute" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/PackageCache/com.unity.postprocessing@2.1.4/PostProcessing/Shaders/Builtins/MultiScaleVORender.compute.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/PackageCache/com.unity.postprocessing@2.1.4/PostProcessing/Shaders/Builtins/MultiScaleVOUpsample.compute" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/PackageCache/com.unity.postprocessing@2.1.4/PostProcessing/Shaders/Builtins/MultiScaleVOUpsample.compute.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/PackageCache/com.unity.postprocessing@2.1.4/PostProcessing/Shaders/Builtins/ScalableAO.hlsl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/PackageCache/com.unity.postprocessing@2.1.4/PostProcessing/Shaders/Builtins/ScalableAO.hlsl.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/PackageCache/com.unity.postprocessing@2.1.4/PostProcessing/Shaders/Builtins/ScalableAO.shader" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/PackageCache/com.unity.postprocessing@2.1.4/PostProcessing/Shaders/Builtins/ScalableAO.shader.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/PackageCache/com.unity.postprocessing@2.1.4/PostProcessing/Shaders/Builtins/ScreenSpaceReflections.hlsl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/PackageCache/com.unity.postprocessing@2.1.4/PostProcessing/Shaders/Builtins/ScreenSpaceReflections.hlsl.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/PackageCache/com.unity.postprocessing@2.1.4/PostProcessing/Shaders/Builtins/ScreenSpaceReflections.shader" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/PackageCache/com.unity.postprocessing@2.1.4/PostProcessing/Shaders/Builtins/ScreenSpaceReflections.shader.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/PackageCache/com.unity.postprocessing@2.1.4/PostProcessing/Shaders/Builtins/SubpixelMorphologicalAntialiasing.hlsl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/PackageCache/com.unity.postprocessing@2.1.4/PostProcessing/Shaders/Builtins/SubpixelMorphologicalAntialiasing.hlsl.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/PackageCache/com.unity.postprocessing@2.1.4/PostProcessing/Shaders/Builtins/SubpixelMorphologicalAntialiasing.shader" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/PackageCache/com.unity.postprocessing@2.1.4/PostProcessing/Shaders/Builtins/SubpixelMorphologicalAntialiasing.shader.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/PackageCache/com.unity.postprocessing@2.1.4/PostProcessing/Shaders/Builtins/SubpixelMorphologicalAntialiasingBridge.hlsl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/PackageCache/com.unity.postprocessing@2.1.4/PostProcessing/Shaders/Builtins/SubpixelMorphologicalAntialiasingBridge.hlsl.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/PackageCache/com.unity.postprocessing@2.1.4/PostProcessing/Shaders/Builtins/TemporalAntialiasing.shader" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/PackageCache/com.unity.postprocessing@2.1.4/PostProcessing/Shaders/Builtins/TemporalAntialiasing.shader.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/PackageCache/com.unity.postprocessing@2.1.4/PostProcessing/Shaders/Builtins/Texture2DLerp.shader" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/PackageCache/com.unity.postprocessing@2.1.4/PostProcessing/Shaders/Builtins/Texture2DLerp.shader.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/PackageCache/com.unity.postprocessing@2.1.4/PostProcessing/Shaders/Builtins/Texture3DLerp.compute" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/PackageCache/com.unity.postprocessing@2.1.4/PostProcessing/Shaders/Builtins/Texture3DLerp.compute.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/PackageCache/com.unity.postprocessing@2.1.4/PostProcessing/Shaders/Builtins/Uber.shader" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/PackageCache/com.unity.postprocessing@2.1.4/PostProcessing/Shaders/Builtins/Uber.shader.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/PackageCache/com.unity.postprocessing@2.1.4/PostProcessing/Shaders/Colors.hlsl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/PackageCache/com.unity.postprocessing@2.1.4/PostProcessing/Shaders/Colors.hlsl.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/PackageCache/com.unity.postprocessing@2.1.4/PostProcessing/Shaders/Debug.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/PackageCache/com.unity.postprocessing@2.1.4/PostProcessing/Shaders/Debug/Histogram.compute" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/PackageCache/com.unity.postprocessing@2.1.4/PostProcessing/Shaders/Debug/Histogram.compute.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/PackageCache/com.unity.postprocessing@2.1.4/PostProcessing/Shaders/Debug/Histogram.shader" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/PackageCache/com.unity.postprocessing@2.1.4/PostProcessing/Shaders/Debug/Histogram.shader.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/PackageCache/com.unity.postprocessing@2.1.4/PostProcessing/Shaders/Debug/LightMeter.shader" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/PackageCache/com.unity.postprocessing@2.1.4/PostProcessing/Shaders/Debug/LightMeter.shader.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/PackageCache/com.unity.postprocessing@2.1.4/PostProcessing/Shaders/Debug/Overlays.shader" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/PackageCache/com.unity.postprocessing@2.1.4/PostProcessing/Shaders/Debug/Overlays.shader.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/PackageCache/com.unity.postprocessing@2.1.4/PostProcessing/Shaders/Debug/Vectorscope.compute" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/PackageCache/com.unity.postprocessing@2.1.4/PostProcessing/Shaders/Debug/Vectorscope.compute.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/PackageCache/com.unity.postprocessing@2.1.4/PostProcessing/Shaders/Debug/Vectorscope.shader" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/PackageCache/com.unity.postprocessing@2.1.4/PostProcessing/Shaders/Debug/Vectorscope.shader.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/PackageCache/com.unity.postprocessing@2.1.4/PostProcessing/Shaders/Debug/Waveform.compute" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/PackageCache/com.unity.postprocessing@2.1.4/PostProcessing/Shaders/Debug/Waveform.compute.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/PackageCache/com.unity.postprocessing@2.1.4/PostProcessing/Shaders/Debug/Waveform.shader" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/PackageCache/com.unity.postprocessing@2.1.4/PostProcessing/Shaders/Debug/Waveform.shader.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/PackageCache/com.unity.postprocessing@2.1.4/PostProcessing/Shaders/Editor.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/PackageCache/com.unity.postprocessing@2.1.4/PostProcessing/Shaders/Editor/ConvertToLog.shader" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/PackageCache/com.unity.postprocessing@2.1.4/PostProcessing/Shaders/Editor/ConvertToLog.shader.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/PackageCache/com.unity.postprocessing@2.1.4/PostProcessing/Shaders/Editor/CurveGrid.shader" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/PackageCache/com.unity.postprocessing@2.1.4/PostProcessing/Shaders/Editor/CurveGrid.shader.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/PackageCache/com.unity.postprocessing@2.1.4/PostProcessing/Shaders/Editor/Trackball.shader" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/PackageCache/com.unity.postprocessing@2.1.4/PostProcessing/Shaders/Editor/Trackball.shader.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/PackageCache/com.unity.postprocessing@2.1.4/PostProcessing/Shaders/Sampling.hlsl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/PackageCache/com.unity.postprocessing@2.1.4/PostProcessing/Shaders/Sampling.hlsl.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/PackageCache/com.unity.postprocessing@2.1.4/PostProcessing/Shaders/StdLib.hlsl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/PackageCache/com.unity.postprocessing@2.1.4/PostProcessing/Shaders/StdLib.hlsl.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/PackageCache/com.unity.postprocessing@2.1.4/PostProcessing/Shaders/xRLib.hlsl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/PackageCache/com.unity.postprocessing@2.1.4/PostProcessing/Shaders/xRLib.hlsl.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/PackageCache/com.unity.postprocessing@2.1.4/PostProcessing/Textures.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/PackageCache/com.unity.postprocessing@2.1.4/PostProcessing/Textures/Blue Noise 256px.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/PackageCache/com.unity.postprocessing@2.1.4/PostProcessing/Textures/Blue Noise 256px/LDR_LLL1_0.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/PackageCache/com.unity.postprocessing@2.1.4/PostProcessing/Textures/Blue Noise 256px/LDR_LLL1_0.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/PackageCache/com.unity.postprocessing@2.1.4/PostProcessing/Textures/Blue Noise 256px/LDR_LLL1_1.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/PackageCache/com.unity.postprocessing@2.1.4/PostProcessing/Textures/Blue Noise 256px/LDR_LLL1_1.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/PackageCache/com.unity.postprocessing@2.1.4/PostProcessing/Textures/Blue Noise 256px/LDR_LLL1_2.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/PackageCache/com.unity.postprocessing@2.1.4/PostProcessing/Textures/Blue Noise 256px/LDR_LLL1_2.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/PackageCache/com.unity.postprocessing@2.1.4/PostProcessing/Textures/Blue Noise 256px/LDR_LLL1_3.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/PackageCache/com.unity.postprocessing@2.1.4/PostProcessing/Textures/Blue Noise 256px/LDR_LLL1_3.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/PackageCache/com.unity.postprocessing@2.1.4/PostProcessing/Textures/Blue Noise 256px/LDR_LLL1_4.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/PackageCache/com.unity.postprocessing@2.1.4/PostProcessing/Textures/Blue Noise 256px/LDR_LLL1_4.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/PackageCache/com.unity.postprocessing@2.1.4/PostProcessing/Textures/Blue Noise 256px/LDR_LLL1_5.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/PackageCache/com.unity.postprocessing@2.1.4/PostProcessing/Textures/Blue Noise 256px/LDR_LLL1_5.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/PackageCache/com.unity.postprocessing@2.1.4/PostProcessing/Textures/Blue Noise 256px/LDR_LLL1_6.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/PackageCache/com.unity.postprocessing@2.1.4/PostProcessing/Textures/Blue Noise 256px/LDR_LLL1_6.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/PackageCache/com.unity.postprocessing@2.1.4/PostProcessing/Textures/Blue Noise 256px/LDR_LLL1_7.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/PackageCache/com.unity.postprocessing@2.1.4/PostProcessing/Textures/Blue Noise 256px/LDR_LLL1_7.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/PackageCache/com.unity.postprocessing@2.1.4/PostProcessing/Textures/Blue Noise 64px.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/PackageCache/com.unity.postprocessing@2.1.4/PostProcessing/Textures/Blue Noise 64px/LDR_LLL1_0.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/PackageCache/com.unity.postprocessing@2.1.4/PostProcessing/Textures/Blue Noise 64px/LDR_LLL1_0.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/PackageCache/com.unity.postprocessing@2.1.4/PostProcessing/Textures/Blue Noise 64px/LDR_LLL1_1.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/PackageCache/com.unity.postprocessing@2.1.4/PostProcessing/Textures/Blue Noise 64px/LDR_LLL1_1.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/PackageCache/com.unity.postprocessing@2.1.4/PostProcessing/Textures/Blue Noise 64px/LDR_LLL1_10.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/PackageCache/com.unity.postprocessing@2.1.4/PostProcessing/Textures/Blue Noise 64px/LDR_LLL1_10.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/PackageCache/com.unity.postprocessing@2.1.4/PostProcessing/Textures/Blue Noise 64px/LDR_LLL1_11.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/PackageCache/com.unity.postprocessing@2.1.4/PostProcessing/Textures/Blue Noise 64px/LDR_LLL1_11.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/PackageCache/com.unity.postprocessing@2.1.4/PostProcessing/Textures/Blue Noise 64px/LDR_LLL1_12.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/PackageCache/com.unity.postprocessing@2.1.4/PostProcessing/Textures/Blue Noise 64px/LDR_LLL1_12.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/PackageCache/com.unity.postprocessing@2.1.4/PostProcessing/Textures/Blue Noise 64px/LDR_LLL1_13.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/PackageCache/com.unity.postprocessing@2.1.4/PostProcessing/Textures/Blue Noise 64px/LDR_LLL1_13.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/PackageCache/com.unity.postprocessing@2.1.4/PostProcessing/Textures/Blue Noise 64px/LDR_LLL1_14.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/PackageCache/com.unity.postprocessing@2.1.4/PostProcessing/Textures/Blue Noise 64px/LDR_LLL1_14.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/PackageCache/com.unity.postprocessing@2.1.4/PostProcessing/Textures/Blue Noise 64px/LDR_LLL1_15.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/PackageCache/com.unity.postprocessing@2.1.4/PostProcessing/Textures/Blue Noise 64px/LDR_LLL1_15.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/PackageCache/com.unity.postprocessing@2.1.4/PostProcessing/Textures/Blue Noise 64px/LDR_LLL1_16.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/PackageCache/com.unity.postprocessing@2.1.4/PostProcessing/Textures/Blue Noise 64px/LDR_LLL1_16.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/PackageCache/com.unity.postprocessing@2.1.4/PostProcessing/Textures/Blue Noise 64px/LDR_LLL1_17.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/PackageCache/com.unity.postprocessing@2.1.4/PostProcessing/Textures/Blue Noise 64px/LDR_LLL1_17.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/PackageCache/com.unity.postprocessing@2.1.4/PostProcessing/Textures/Blue Noise 64px/LDR_LLL1_18.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/PackageCache/com.unity.postprocessing@2.1.4/PostProcessing/Textures/Blue Noise 64px/LDR_LLL1_18.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/PackageCache/com.unity.postprocessing@2.1.4/PostProcessing/Textures/Blue Noise 64px/LDR_LLL1_19.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/PackageCache/com.unity.postprocessing@2.1.4/PostProcessing/Textures/Blue Noise 64px/LDR_LLL1_19.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/PackageCache/com.unity.postprocessing@2.1.4/PostProcessing/Textures/Blue Noise 64px/LDR_LLL1_2.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/PackageCache/com.unity.postprocessing@2.1.4/PostProcessing/Textures/Blue Noise 64px/LDR_LLL1_2.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/PackageCache/com.unity.postprocessing@2.1.4/PostProcessing/Textures/Blue Noise 64px/LDR_LLL1_20.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/PackageCache/com.unity.postprocessing@2.1.4/PostProcessing/Textures/Blue Noise 64px/LDR_LLL1_20.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/PackageCache/com.unity.postprocessing@2.1.4/PostProcessing/Textures/Blue Noise 64px/LDR_LLL1_21.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/PackageCache/com.unity.postprocessing@2.1.4/PostProcessing/Textures/Blue Noise 64px/LDR_LLL1_21.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/PackageCache/com.unity.postprocessing@2.1.4/PostProcessing/Textures/Blue Noise 64px/LDR_LLL1_22.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/PackageCache/com.unity.postprocessing@2.1.4/PostProcessing/Textures/Blue Noise 64px/LDR_LLL1_22.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/PackageCache/com.unity.postprocessing@2.1.4/PostProcessing/Textures/Blue Noise 64px/LDR_LLL1_23.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/PackageCache/com.unity.postprocessing@2.1.4/PostProcessing/Textures/Blue Noise 64px/LDR_LLL1_23.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/PackageCache/com.unity.postprocessing@2.1.4/PostProcessing/Textures/Blue Noise 64px/LDR_LLL1_24.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/PackageCache/com.unity.postprocessing@2.1.4/PostProcessing/Textures/Blue Noise 64px/LDR_LLL1_24.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/PackageCache/com.unity.postprocessing@2.1.4/PostProcessing/Textures/Blue Noise 64px/LDR_LLL1_25.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/PackageCache/com.unity.postprocessing@2.1.4/PostProcessing/Textures/Blue Noise 64px/LDR_LLL1_25.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/PackageCache/com.unity.postprocessing@2.1.4/PostProcessing/Textures/Blue Noise 64px/LDR_LLL1_26.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/PackageCache/com.unity.postprocessing@2.1.4/PostProcessing/Textures/Blue Noise 64px/LDR_LLL1_26.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/PackageCache/com.unity.postprocessing@2.1.4/PostProcessing/Textures/Blue Noise 64px/LDR_LLL1_27.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/PackageCache/com.unity.postprocessing@2.1.4/PostProcessing/Textures/Blue Noise 64px/LDR_LLL1_27.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/PackageCache/com.unity.postprocessing@2.1.4/PostProcessing/Textures/Blue Noise 64px/LDR_LLL1_28.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/PackageCache/com.unity.postprocessing@2.1.4/PostProcessing/Textures/Blue Noise 64px/LDR_LLL1_28.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/PackageCache/com.unity.postprocessing@2.1.4/PostProcessing/Textures/Blue Noise 64px/LDR_LLL1_29.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/PackageCache/com.unity.postprocessing@2.1.4/PostProcessing/Textures/Blue Noise 64px/LDR_LLL1_29.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/PackageCache/com.unity.postprocessing@2.1.4/PostProcessing/Textures/Blue Noise 64px/LDR_LLL1_3.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/PackageCache/com.unity.postprocessing@2.1.4/PostProcessing/Textures/Blue Noise 64px/LDR_LLL1_3.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/PackageCache/com.unity.postprocessing@2.1.4/PostProcessing/Textures/Blue Noise 64px/LDR_LLL1_30.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/PackageCache/com.unity.postprocessing@2.1.4/PostProcessing/Textures/Blue Noise 64px/LDR_LLL1_30.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/PackageCache/com.unity.postprocessing@2.1.4/PostProcessing/Textures/Blue Noise 64px/LDR_LLL1_31.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/PackageCache/com.unity.postprocessing@2.1.4/PostProcessing/Textures/Blue Noise 64px/LDR_LLL1_31.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/PackageCache/com.unity.postprocessing@2.1.4/PostProcessing/Textures/Blue Noise 64px/LDR_LLL1_32.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/PackageCache/com.unity.postprocessing@2.1.4/PostProcessing/Textures/Blue Noise 64px/LDR_LLL1_32.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/PackageCache/com.unity.postprocessing@2.1.4/PostProcessing/Textures/Blue Noise 64px/LDR_LLL1_33.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/PackageCache/com.unity.postprocessing@2.1.4/PostProcessing/Textures/Blue Noise 64px/LDR_LLL1_33.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/PackageCache/com.unity.postprocessing@2.1.4/PostProcessing/Textures/Blue Noise 64px/LDR_LLL1_34.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/PackageCache/com.unity.postprocessing@2.1.4/PostProcessing/Textures/Blue Noise 64px/LDR_LLL1_34.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/PackageCache/com.unity.postprocessing@2.1.4/PostProcessing/Textures/Blue Noise 64px/LDR_LLL1_35.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/PackageCache/com.unity.postprocessing@2.1.4/PostProcessing/Textures/Blue Noise 64px/LDR_LLL1_35.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/PackageCache/com.unity.postprocessing@2.1.4/PostProcessing/Textures/Blue Noise 64px/LDR_LLL1_36.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/PackageCache/com.unity.postprocessing@2.1.4/PostProcessing/Textures/Blue Noise 64px/LDR_LLL1_36.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/PackageCache/com.unity.postprocessing@2.1.4/PostProcessing/Textures/Blue Noise 64px/LDR_LLL1_37.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/PackageCache/com.unity.postprocessing@2.1.4/PostProcessing/Textures/Blue Noise 64px/LDR_LLL1_37.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/PackageCache/com.unity.postprocessing@2.1.4/PostProcessing/Textures/Blue Noise 64px/LDR_LLL1_38.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/PackageCache/com.unity.postprocessing@2.1.4/PostProcessing/Textures/Blue Noise 64px/LDR_LLL1_38.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/PackageCache/com.unity.postprocessing@2.1.4/PostProcessing/Textures/Blue Noise 64px/LDR_LLL1_39.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/PackageCache/com.unity.postprocessing@2.1.4/PostProcessing/Textures/Blue Noise 64px/LDR_LLL1_39.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/PackageCache/com.unity.postprocessing@2.1.4/PostProcessing/Textures/Blue Noise 64px/LDR_LLL1_4.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/PackageCache/com.unity.postprocessing@2.1.4/PostProcessing/Textures/Blue Noise 64px/LDR_LLL1_4.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/PackageCache/com.unity.postprocessing@2.1.4/PostProcessing/Textures/Blue Noise 64px/LDR_LLL1_40.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/PackageCache/com.unity.postprocessing@2.1.4/PostProcessing/Textures/Blue Noise 64px/LDR_LLL1_40.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/PackageCache/com.unity.postprocessing@2.1.4/PostProcessing/Textures/Blue Noise 64px/LDR_LLL1_41.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/PackageCache/com.unity.postprocessing@2.1.4/PostProcessing/Textures/Blue Noise 64px/LDR_LLL1_41.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/PackageCache/com.unity.postprocessing@2.1.4/PostProcessing/Textures/Blue Noise 64px/LDR_LLL1_42.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/PackageCache/com.unity.postprocessing@2.1.4/PostProcessing/Textures/Blue Noise 64px/LDR_LLL1_42.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/PackageCache/com.unity.postprocessing@2.1.4/PostProcessing/Textures/Blue Noise 64px/LDR_LLL1_43.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/PackageCache/com.unity.postprocessing@2.1.4/PostProcessing/Textures/Blue Noise 64px/LDR_LLL1_43.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/PackageCache/com.unity.postprocessing@2.1.4/PostProcessing/Textures/Blue Noise 64px/LDR_LLL1_44.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/PackageCache/com.unity.postprocessing@2.1.4/PostProcessing/Textures/Blue Noise 64px/LDR_LLL1_44.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/PackageCache/com.unity.postprocessing@2.1.4/PostProcessing/Textures/Blue Noise 64px/LDR_LLL1_45.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/PackageCache/com.unity.postprocessing@2.1.4/PostProcessing/Textures/Blue Noise 64px/LDR_LLL1_45.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/PackageCache/com.unity.postprocessing@2.1.4/PostProcessing/Textures/Blue Noise 64px/LDR_LLL1_46.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/PackageCache/com.unity.postprocessing@2.1.4/PostProcessing/Textures/Blue Noise 64px/LDR_LLL1_46.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/PackageCache/com.unity.postprocessing@2.1.4/PostProcessing/Textures/Blue Noise 64px/LDR_LLL1_47.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/PackageCache/com.unity.postprocessing@2.1.4/PostProcessing/Textures/Blue Noise 64px/LDR_LLL1_47.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/PackageCache/com.unity.postprocessing@2.1.4/PostProcessing/Textures/Blue Noise 64px/LDR_LLL1_48.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/PackageCache/com.unity.postprocessing@2.1.4/PostProcessing/Textures/Blue Noise 64px/LDR_LLL1_48.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/PackageCache/com.unity.postprocessing@2.1.4/PostProcessing/Textures/Blue Noise 64px/LDR_LLL1_49.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/PackageCache/com.unity.postprocessing@2.1.4/PostProcessing/Textures/Blue Noise 64px/LDR_LLL1_49.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/PackageCache/com.unity.postprocessing@2.1.4/PostProcessing/Textures/Blue Noise 64px/LDR_LLL1_5.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/PackageCache/com.unity.postprocessing@2.1.4/PostProcessing/Textures/Blue Noise 64px/LDR_LLL1_5.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/PackageCache/com.unity.postprocessing@2.1.4/PostProcessing/Textures/Blue Noise 64px/LDR_LLL1_50.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/PackageCache/com.unity.postprocessing@2.1.4/PostProcessing/Textures/Blue Noise 64px/LDR_LLL1_50.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/PackageCache/com.unity.postprocessing@2.1.4/PostProcessing/Textures/Blue Noise 64px/LDR_LLL1_51.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/PackageCache/com.unity.postprocessing@2.1.4/PostProcessing/Textures/Blue Noise 64px/LDR_LLL1_51.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/PackageCache/com.unity.postprocessing@2.1.4/PostProcessing/Textures/Blue Noise 64px/LDR_LLL1_52.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/PackageCache/com.unity.postprocessing@2.1.4/PostProcessing/Textures/Blue Noise 64px/LDR_LLL1_52.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/PackageCache/com.unity.postprocessing@2.1.4/PostProcessing/Textures/Blue Noise 64px/LDR_LLL1_53.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/PackageCache/com.unity.postprocessing@2.1.4/PostProcessing/Textures/Blue Noise 64px/LDR_LLL1_53.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/PackageCache/com.unity.postprocessing@2.1.4/PostProcessing/Textures/Blue Noise 64px/LDR_LLL1_54.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/PackageCache/com.unity.postprocessing@2.1.4/PostProcessing/Textures/Blue Noise 64px/LDR_LLL1_54.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/PackageCache/com.unity.postprocessing@2.1.4/PostProcessing/Textures/Blue Noise 64px/LDR_LLL1_55.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/PackageCache/com.unity.postprocessing@2.1.4/PostProcessing/Textures/Blue Noise 64px/LDR_LLL1_55.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/PackageCache/com.unity.postprocessing@2.1.4/PostProcessing/Textures/Blue Noise 64px/LDR_LLL1_56.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/PackageCache/com.unity.postprocessing@2.1.4/PostProcessing/Textures/Blue Noise 64px/LDR_LLL1_56.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/PackageCache/com.unity.postprocessing@2.1.4/PostProcessing/Textures/Blue Noise 64px/LDR_LLL1_57.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/PackageCache/com.unity.postprocessing@2.1.4/PostProcessing/Textures/Blue Noise 64px/LDR_LLL1_57.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/PackageCache/com.unity.postprocessing@2.1.4/PostProcessing/Textures/Blue Noise 64px/LDR_LLL1_58.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/PackageCache/com.unity.postprocessing@2.1.4/PostProcessing/Textures/Blue Noise 64px/LDR_LLL1_58.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/PackageCache/com.unity.postprocessing@2.1.4/PostProcessing/Textures/Blue Noise 64px/LDR_LLL1_59.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/PackageCache/com.unity.postprocessing@2.1.4/PostProcessing/Textures/Blue Noise 64px/LDR_LLL1_59.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/PackageCache/com.unity.postprocessing@2.1.4/PostProcessing/Textures/Blue Noise 64px/LDR_LLL1_6.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/PackageCache/com.unity.postprocessing@2.1.4/PostProcessing/Textures/Blue Noise 64px/LDR_LLL1_6.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/PackageCache/com.unity.postprocessing@2.1.4/PostProcessing/Textures/Blue Noise 64px/LDR_LLL1_60.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/PackageCache/com.unity.postprocessing@2.1.4/PostProcessing/Textures/Blue Noise 64px/LDR_LLL1_60.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/PackageCache/com.unity.postprocessing@2.1.4/PostProcessing/Textures/Blue Noise 64px/LDR_LLL1_61.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/PackageCache/com.unity.postprocessing@2.1.4/PostProcessing/Textures/Blue Noise 64px/LDR_LLL1_61.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/PackageCache/com.unity.postprocessing@2.1.4/PostProcessing/Textures/Blue Noise 64px/LDR_LLL1_62.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/PackageCache/com.unity.postprocessing@2.1.4/PostProcessing/Textures/Blue Noise 64px/LDR_LLL1_62.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/PackageCache/com.unity.postprocessing@2.1.4/PostProcessing/Textures/Blue Noise 64px/LDR_LLL1_63.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/PackageCache/com.unity.postprocessing@2.1.4/PostProcessing/Textures/Blue Noise 64px/LDR_LLL1_63.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/PackageCache/com.unity.postprocessing@2.1.4/PostProcessing/Textures/Blue Noise 64px/LDR_LLL1_7.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/PackageCache/com.unity.postprocessing@2.1.4/PostProcessing/Textures/Blue Noise 64px/LDR_LLL1_7.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/PackageCache/com.unity.postprocessing@2.1.4/PostProcessing/Textures/Blue Noise 64px/LDR_LLL1_8.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/PackageCache/com.unity.postprocessing@2.1.4/PostProcessing/Textures/Blue Noise 64px/LDR_LLL1_8.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/PackageCache/com.unity.postprocessing@2.1.4/PostProcessing/Textures/Blue Noise 64px/LDR_LLL1_9.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/PackageCache/com.unity.postprocessing@2.1.4/PostProcessing/Textures/Blue Noise 64px/LDR_LLL1_9.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/PackageCache/com.unity.postprocessing@2.1.4/PostProcessing/Textures/Cubes.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/PackageCache/com.unity.postprocessing@2.1.4/PostProcessing/Textures/Cubes/Linear to Unity Log r1.cube" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/PackageCache/com.unity.postprocessing@2.1.4/PostProcessing/Textures/Cubes/Linear to Unity Log r1.cube.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/PackageCache/com.unity.postprocessing@2.1.4/PostProcessing/Textures/Cubes/Linear to sRGB r1.cube" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/PackageCache/com.unity.postprocessing@2.1.4/PostProcessing/Textures/Cubes/Linear to sRGB r1.cube.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/PackageCache/com.unity.postprocessing@2.1.4/PostProcessing/Textures/Cubes/Unity Log to Linear r1.cube" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/PackageCache/com.unity.postprocessing@2.1.4/PostProcessing/Textures/Cubes/Unity Log to Linear r1.cube.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/PackageCache/com.unity.postprocessing@2.1.4/PostProcessing/Textures/Cubes/Unity Log to sRGB r1.cube" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/PackageCache/com.unity.postprocessing@2.1.4/PostProcessing/Textures/Cubes/Unity Log to sRGB r1.cube.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/PackageCache/com.unity.postprocessing@2.1.4/PostProcessing/Textures/Cubes/sRGB to Linear r1.cube" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/PackageCache/com.unity.postprocessing@2.1.4/PostProcessing/Textures/Cubes/sRGB to Linear r1.cube.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/PackageCache/com.unity.postprocessing@2.1.4/PostProcessing/Textures/Cubes/sRGB to Unity Log r1.cube" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/PackageCache/com.unity.postprocessing@2.1.4/PostProcessing/Textures/Cubes/sRGB to Unity Log r1.cube.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/PackageCache/com.unity.postprocessing@2.1.4/PostProcessing/Textures/LUTs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/PackageCache/com.unity.postprocessing@2.1.4/PostProcessing/Textures/LUTs/NeutralLdrLut.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/PackageCache/com.unity.postprocessing@2.1.4/PostProcessing/Textures/LUTs/NeutralLdrLut.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/PackageCache/com.unity.postprocessing@2.1.4/PostProcessing/Textures/Lens Dirt.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/PackageCache/com.unity.postprocessing@2.1.4/PostProcessing/Textures/Lens Dirt/LensDirt00.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/PackageCache/com.unity.postprocessing@2.1.4/PostProcessing/Textures/Lens Dirt/LensDirt00.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/PackageCache/com.unity.postprocessing@2.1.4/PostProcessing/Textures/Lens Dirt/LensDirt01.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/PackageCache/com.unity.postprocessing@2.1.4/PostProcessing/Textures/Lens Dirt/LensDirt01.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/PackageCache/com.unity.postprocessing@2.1.4/PostProcessing/Textures/Lens Dirt/LensDirt02.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/PackageCache/com.unity.postprocessing@2.1.4/PostProcessing/Textures/Lens Dirt/LensDirt02.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/PackageCache/com.unity.postprocessing@2.1.4/PostProcessing/Textures/Lens Dirt/LensDirt03.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/PackageCache/com.unity.postprocessing@2.1.4/PostProcessing/Textures/Lens Dirt/LensDirt03.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/PackageCache/com.unity.postprocessing@2.1.4/PostProcessing/Textures/SMAA.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/PackageCache/com.unity.postprocessing@2.1.4/PostProcessing/Textures/SMAA/AreaTex.tga" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/PackageCache/com.unity.postprocessing@2.1.4/PostProcessing/Textures/SMAA/AreaTex.tga.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/PackageCache/com.unity.postprocessing@2.1.4/PostProcessing/Textures/SMAA/SearchTex.tga" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/PackageCache/com.unity.postprocessing@2.1.4/PostProcessing/Textures/SMAA/SearchTex.tga.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/PackageCache/com.unity.postprocessing@2.1.4/PostProcessing/Textures/Spectral LUTs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/PackageCache/com.unity.postprocessing@2.1.4/PostProcessing/Textures/Spectral LUTs/SpectralLut_BlueRed.tga" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/PackageCache/com.unity.postprocessing@2.1.4/PostProcessing/Textures/Spectral LUTs/SpectralLut_BlueRed.tga.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/PackageCache/com.unity.postprocessing@2.1.4/PostProcessing/Textures/Spectral LUTs/SpectralLut_GreenPurple.tga" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/PackageCache/com.unity.postprocessing@2.1.4/PostProcessing/Textures/Spectral LUTs/SpectralLut_GreenPurple.tga.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/PackageCache/com.unity.postprocessing@2.1.4/PostProcessing/Textures/Spectral LUTs/SpectralLut_PurpleGreen.tga" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/PackageCache/com.unity.postprocessing@2.1.4/PostProcessing/Textures/Spectral LUTs/SpectralLut_PurpleGreen.tga.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/PackageCache/com.unity.postprocessing@2.1.4/PostProcessing/Textures/Spectral LUTs/SpectralLut_RedBlue.tga" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/PackageCache/com.unity.postprocessing@2.1.4/PostProcessing/Textures/Spectral LUTs/SpectralLut_RedBlue.tga.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/PackageCache/com.unity.postprocessing@2.1.4/README.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/PackageCache/com.unity.postprocessing@2.1.4/README.md.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/PackageCache/com.unity.postprocessing@2.1.4/Tests.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/PackageCache/com.unity.postprocessing@2.1.4/Tests/.tests.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/PackageCache/com.unity.postprocessing@2.1.4/Tests/Editor.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/PackageCache/com.unity.postprocessing@2.1.4/Tests/Editor/PostProcessEditorTests.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/PackageCache/com.unity.postprocessing@2.1.4/Tests/Editor/PostProcessEditorTests.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/PackageCache/com.unity.postprocessing@2.1.4/Tests/Editor/Unity.Postprocessing.Editor.Tests.asmdef" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/PackageCache/com.unity.postprocessing@2.1.4/Tests/Editor/Unity.Postprocessing.Editor.Tests.asmdef.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/PackageCache/com.unity.postprocessing@2.1.4/Tests/Runtime.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/PackageCache/com.unity.postprocessing@2.1.4/Tests/Runtime/PostProcessingRuntimeTests.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/PackageCache/com.unity.postprocessing@2.1.4/Tests/Runtime/PostProcessingRuntimeTests.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/PackageCache/com.unity.postprocessing@2.1.4/Tests/Runtime/Scenes.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/PackageCache/com.unity.postprocessing@2.1.4/Tests/Runtime/Scenes/0010_Volumes.unity" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/PackageCache/com.unity.postprocessing@2.1.4/Tests/Runtime/Scenes/0010_Volumes.unity.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/PackageCache/com.unity.postprocessing@2.1.4/Tests/Runtime/Scenes/0011_Weight.unity" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/PackageCache/com.unity.postprocessing@2.1.4/Tests/Runtime/Scenes/0011_Weight.unity.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/PackageCache/com.unity.postprocessing@2.1.4/Tests/Runtime/Scenes/0012_Intersect.unity" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/PackageCache/com.unity.postprocessing@2.1.4/Tests/Runtime/Scenes/0012_Intersect.unity.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/PackageCache/com.unity.postprocessing@2.1.4/Tests/Runtime/Scenes/0013_Priority.unity" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/PackageCache/com.unity.postprocessing@2.1.4/Tests/Runtime/Scenes/0013_Priority.unity.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/PackageCache/com.unity.postprocessing@2.1.4/Tests/Runtime/Scenes/Global Profile.asset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/PackageCache/com.unity.postprocessing@2.1.4/Tests/Runtime/Scenes/Global Profile.asset.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/PackageCache/com.unity.postprocessing@2.1.4/Tests/Runtime/Scenes/Local Profile.asset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/PackageCache/com.unity.postprocessing@2.1.4/Tests/Runtime/Scenes/Local Profile.asset.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/PackageCache/com.unity.postprocessing@2.1.4/Tests/Runtime/Unity.Postprocessing.Runtime.Tests.asmdef" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/PackageCache/com.unity.postprocessing@2.1.4/Tests/Runtime/Unity.Postprocessing.Runtime.Tests.asmdef.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/PackageCache/com.unity.postprocessing@2.1.4/package.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/PackageCache/com.unity.postprocessing@2.1.4/package.json.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/PackageCache/com.unity.purchasing@2.0.6/CHANGELOG.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/PackageCache/com.unity.purchasing@2.0.6/CHANGELOG.md.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/PackageCache/com.unity.purchasing@2.0.6/Documentation~/IAP.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/PackageCache/com.unity.purchasing@2.0.6/Documentation~/IAP.md.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/PackageCache/com.unity.purchasing@2.0.6/Editor.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/PackageCache/com.unity.purchasing@2.0.6/Editor/UnityEditor.Purchasing.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/PackageCache/com.unity.purchasing@2.0.6/Editor/UnityEditor.Purchasing.dll.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/PackageCache/com.unity.purchasing@2.0.6/License.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/PackageCache/com.unity.purchasing@2.0.6/License.md.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/PackageCache/com.unity.purchasing@2.0.6/README.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/PackageCache/com.unity.purchasing@2.0.6/README.md.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/PackageCache/com.unity.purchasing@2.0.6/Tests.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/PackageCache/com.unity.purchasing@2.0.6/Tests/.tests.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/PackageCache/com.unity.purchasing@2.0.6/Tests/.tests.json.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/PackageCache/com.unity.purchasing@2.0.6/Tests/Editor.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/PackageCache/com.unity.purchasing@2.0.6/Tests/Editor/PurchasingEditorTest.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/PackageCache/com.unity.purchasing@2.0.6/Tests/Editor/PurchasingEditorTest.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/PackageCache/com.unity.purchasing@2.0.6/Tests/Editor/Unity.IAP.purchasing.EditorTests.asmdef" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/PackageCache/com.unity.purchasing@2.0.6/Tests/Editor/Unity.IAP.purchasing.EditorTests.asmdef.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/PackageCache/com.unity.purchasing@2.0.6/Tests/Runtime.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/PackageCache/com.unity.purchasing@2.0.6/Tests/Runtime/PurchasingRuntimeTest.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/PackageCache/com.unity.purchasing@2.0.6/Tests/Runtime/PurchasingRuntimeTest.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/PackageCache/com.unity.purchasing@2.0.6/Tests/Runtime/Unity.IAP.purchasing.RunTimeTests.asmdef" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/PackageCache/com.unity.purchasing@2.0.6/Tests/Runtime/Unity.IAP.purchasing.RunTimeTests.asmdef.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/PackageCache/com.unity.purchasing@2.0.6/UnityEngine.Purchasing.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/PackageCache/com.unity.purchasing@2.0.6/UnityEngine.Purchasing.dll.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/PackageCache/com.unity.purchasing@2.0.6/package.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/PackageCache/com.unity.purchasing@2.0.6/package.json.meta" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/Library/ProtocolInstance.json" beforeDir="false" afterPath="$PROJECT_DIR$/Library/ProtocolInstance.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/SceneVisibilityState.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Library/SceneVisibilityState.asset" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Library/ScriptAssemblies/Assembly-CSharp.dll" beforeDir="false" afterPath="$PROJECT_DIR$/Library/ScriptAssemblies/Assembly-CSharp.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/ScriptAssemblies/Assembly-CSharp.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/Library/ScriptAssemblies/Assembly-CSharp.pdb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/ScriptAssemblies/Unity.Analytics.DataPrivacy.dll" beforeDir="false" afterPath="$PROJECT_DIR$/Library/ScriptAssemblies/Unity.Analytics.DataPrivacy.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/ScriptAssemblies/Unity.CollabProxy.Editor.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/ScriptAssemblies/Unity.CollabProxy.Editor.pdb" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/ScriptAssemblies/Unity.Postprocessing.Editor.dll" beforeDir="false" afterPath="$PROJECT_DIR$/Library/ScriptAssemblies/Unity.Postprocessing.Editor.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/ScriptAssemblies/Unity.Postprocessing.Editor.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/Library/ScriptAssemblies/Unity.Postprocessing.Editor.pdb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/ScriptAssemblies/Unity.Postprocessing.Runtime.dll" beforeDir="false" afterPath="$PROJECT_DIR$/Library/ScriptAssemblies/Unity.Postprocessing.Runtime.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/ScriptAssemblies/Unity.Postprocessing.Runtime.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/Library/ScriptAssemblies/Unity.Postprocessing.Runtime.pdb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/ScriptAssemblies/Unity.RenderPipelines.Core.Editor.dll" beforeDir="false" afterPath="$PROJECT_DIR$/Library/ScriptAssemblies/Unity.RenderPipelines.Core.Editor.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/ScriptAssemblies/Unity.RenderPipelines.Core.Runtime.dll" beforeDir="false" afterPath="$PROJECT_DIR$/Library/ScriptAssemblies/Unity.RenderPipelines.Core.Runtime.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/ScriptAssemblies/Unity.RenderPipelines.Core.ShaderLibrary.dll" beforeDir="false" afterPath="$PROJECT_DIR$/Library/ScriptAssemblies/Unity.RenderPipelines.Core.ShaderLibrary.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/ScriptAssemblies/Unity.RenderPipelines.Lightweight.Editor.dll" beforeDir="false" afterPath="$PROJECT_DIR$/Library/ScriptAssemblies/Unity.RenderPipelines.Lightweight.Editor.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/ScriptAssemblies/Unity.RenderPipelines.Lightweight.Runtime.dll" beforeDir="false" afterPath="$PROJECT_DIR$/Library/ScriptAssemblies/Unity.RenderPipelines.Lightweight.Runtime.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/ScriptAssemblies/Unity.RenderPipelines.ShaderGraph.ShaderGraphLibrary.dll" beforeDir="false" afterPath="$PROJECT_DIR$/Library/ScriptAssemblies/Unity.RenderPipelines.ShaderGraph.ShaderGraphLibrary.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/ScriptAssemblies/Unity.ShaderGraph.Editor.dll" beforeDir="false" afterPath="$PROJECT_DIR$/Library/ScriptAssemblies/Unity.ShaderGraph.Editor.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/ScriptAssemblies/Unity.TextMeshPro.Editor.dll" beforeDir="false" afterPath="$PROJECT_DIR$/Library/ScriptAssemblies/Unity.TextMeshPro.Editor.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/ScriptAssemblies/Unity.TextMeshPro.dll" beforeDir="false" afterPath="$PROJECT_DIR$/Library/ScriptAssemblies/Unity.TextMeshPro.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/ScriptAssemblies/Unity.Timeline.Editor.dll" beforeDir="false" afterPath="$PROJECT_DIR$/Library/ScriptAssemblies/Unity.Timeline.Editor.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/ScriptAssemblies/Unity.Timeline.dll" beforeDir="false" afterPath="$PROJECT_DIR$/Library/ScriptAssemblies/Unity.Timeline.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/ScriptMapper" beforeDir="false" afterPath="$PROJECT_DIR$/Library/ScriptMapper" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Library/ShaderCache/EditorEncounteredVariants" beforeDir="false" afterPath="$PROJECT_DIR$/Library/ShaderCache/EditorEncounteredVariants" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Library/StateCache/Hierarchy/2ed20e-mainStage.json" beforeDir="false" afterPath="$PROJECT_DIR$/Library/StateCache/Hierarchy/2ed20e-mainStage.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/StateCache/SceneView/e3c9da-mainStage.json" beforeDir="false" afterPath="$PROJECT_DIR$/Library/StateCache/SceneView/e3c9da-mainStage.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Library/assetDatabase3" beforeDir="false" afterPath="$PROJECT_DIR$/Library/assetDatabase3" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/expandedItems" beforeDir="false" afterPath="$PROJECT_DIR$/Library/expandedItems" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/metadata/02/0217a80286f79419daa202f69409f19b" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/metadata/02/0217a80286f79419daa202f69409f19b.info" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/metadata/08/08e9894bdf0834710b22d3c0aa245ac0" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/metadata/08/08e9894bdf0834710b22d3c0aa245ac0.info" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/metadata/10/10bf81265ad87424d946598c575f45a0" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/metadata/10/10bf81265ad87424d946598c575f45a0.info" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/metadata/13/1322fd896bbb15bb6e335591b766ae62" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/metadata/13/1322fd896bbb15bb6e335591b766ae62.info" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/metadata/13/1369382d2c5e64dc5b2ec0b6b0a94531" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/metadata/13/1369382d2c5e64dc5b2ec0b6b0a94531.info" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/metadata/17/17b632677410799367a53dc7ab96a8c2" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/metadata/17/17b632677410799367a53dc7ab96a8c2.info" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/metadata/19/19d205ceab90d42038ad1d376affc356" beforeDir="false" afterPath="$PROJECT_DIR$/Library/metadata/19/19d205ceab90d42038ad1d376affc356" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/metadata/1a/1adad61bfb44214ee3e887b5febc4396" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/metadata/1a/1adad61bfb44214ee3e887b5febc4396.info" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/metadata/1b/1b32bcce201b4494ea8848326290c5d5" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/metadata/1b/1b32bcce201b4494ea8848326290c5d5.info" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/metadata/23/23a56a19774ed42b6b65646af08a003c" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/metadata/23/23a56a19774ed42b6b65646af08a003c.info" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/metadata/27/2705889b3a9580a47b334f039bfdcb00" beforeDir="false" afterPath="$PROJECT_DIR$/Library/metadata/27/2705889b3a9580a47b334f039bfdcb00" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/metadata/2d/2d4d46c70fdd242668a56e99799e8540" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/metadata/2d/2d4d46c70fdd242668a56e99799e8540.info" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/metadata/35/35b4e72ca46f44581b85082c4dc21d13" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/metadata/35/35b4e72ca46f44581b85082c4dc21d13.info" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/metadata/3a/3a2d94c8977984b67984caeff9fa666e" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/metadata/3a/3a2d94c8977984b67984caeff9fa666e.info" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/metadata/3b/3b07d432cba2a4c4f8a2fdea984620b8" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/metadata/3b/3b07d432cba2a4c4f8a2fdea984620b8.info" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/metadata/3c/3c737f7a9d78541d1ab25f28f045dd32" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/metadata/3c/3c737f7a9d78541d1ab25f28f045dd32.info" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/metadata/3c/3cebe1a96232b44388b30b2f72dde434" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/metadata/3c/3cebe1a96232b44388b30b2f72dde434.info" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/metadata/3f/3f0c4389c854bcaf848af1ea310dbada" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/metadata/3f/3f0c4389c854bcaf848af1ea310dbada.info" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/metadata/40/40b924e2dad56384a8df2a1e111bb675" beforeDir="false" afterPath="$PROJECT_DIR$/Library/metadata/40/40b924e2dad56384a8df2a1e111bb675" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/metadata/44/44760bd4e62c482cbe0bd4e4b928a54a" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/metadata/44/44760bd4e62c482cbe0bd4e4b928a54a.info" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/metadata/44/44f39a74ca5ee4bf5936b17e901f251c" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/metadata/44/44f39a74ca5ee4bf5936b17e901f251c.info" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/metadata/45/4506ac79f5b274cb1b249ed7f4abfb9a" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/metadata/45/4506ac79f5b274cb1b249ed7f4abfb9a.info" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/metadata/45/453f100e6bdae4dfd9e655927819dc85" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/metadata/45/453f100e6bdae4dfd9e655927819dc85.info" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/metadata/47/470530e667ad4475786b28fa3187ce95" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/metadata/47/470530e667ad4475786b28fa3187ce95.info" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/metadata/48/48986928cc2a449dbaecdd1654bc9bf6" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/metadata/48/48986928cc2a449dbaecdd1654bc9bf6.info" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/metadata/48/48a79b01ea5641d4aa6daa2e23605641" beforeDir="false" afterPath="$PROJECT_DIR$/Library/metadata/48/48a79b01ea5641d4aa6daa2e23605641" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/metadata/4c/4c6fe94acbb24417c988bab18cbd5209" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/metadata/4c/4c6fe94acbb24417c988bab18cbd5209.info" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/metadata/4f/4f234578336894dc081edf696f2ff5f2" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/metadata/4f/4f234578336894dc081edf696f2ff5f2.info" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/metadata/50/50de529b6a28f4a7093045e08810a5df" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/metadata/50/50de529b6a28f4a7093045e08810a5df.info" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/metadata/55/556797029e73b2347956b6579e77e05b" beforeDir="false" afterPath="$PROJECT_DIR$/Library/metadata/55/556797029e73b2347956b6579e77e05b" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/metadata/57/57b0c806ba25b48aa8a6ecb3345a4a9b" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/metadata/57/57b0c806ba25b48aa8a6ecb3345a4a9b.info" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/metadata/5a/5a7fc26078c70a6469392d9775f433be" beforeDir="false" afterPath="$PROJECT_DIR$/Library/metadata/5a/5a7fc26078c70a6469392d9775f433be" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/metadata/5e/5e57a6c62c1ec47d0bceb70495845164" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/metadata/5e/5e57a6c62c1ec47d0bceb70495845164.info" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/metadata/60/6050e2d5de785ce4d931e4dbdbf2d755" beforeDir="false" afterPath="$PROJECT_DIR$/Library/metadata/60/6050e2d5de785ce4d931e4dbdbf2d755" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/metadata/62/62772aad98ed04f0d955b7d20de61f7f" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/metadata/62/62772aad98ed04f0d955b7d20de61f7f.info" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/metadata/62/62e2b920ea5fcaa4982e7fc50bf690a8" beforeDir="false" afterPath="$PROJECT_DIR$/Library/metadata/62/62e2b920ea5fcaa4982e7fc50bf690a8" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/metadata/64/645165c8169474bfbbeb8fb0bcfd26f5" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/metadata/64/645165c8169474bfbbeb8fb0bcfd26f5.info" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/metadata/65/6597c6ea86d36477081342001145d8d9" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/metadata/65/6597c6ea86d36477081342001145d8d9.info" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/metadata/65/65d58d50c3db54f979b1ffae3777d74b" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/metadata/65/65d58d50c3db54f979b1ffae3777d74b.info" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/metadata/66/66e7c554ae821304d939dbeb119f6ed4" beforeDir="false" afterPath="$PROJECT_DIR$/Library/metadata/66/66e7c554ae821304d939dbeb119f6ed4" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/metadata/6b/6b1ae1e78552c459d9ce27048ff51c7f" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/metadata/6b/6b1ae1e78552c459d9ce27048ff51c7f.info" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/metadata/6e/6e7c8cfeedae74eb3a562055e069e441" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/metadata/6e/6e7c8cfeedae74eb3a562055e069e441.info" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/metadata/6f/6f516f1ec21a54a59a92bf99db2d9535" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/metadata/6f/6f516f1ec21a54a59a92bf99db2d9535.info" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/metadata/70/70d4d75a2877243758b0750cbc75b6eb" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/metadata/70/70d4d75a2877243758b0750cbc75b6eb.info" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/metadata/74/746d96105fe656f44a10e8103d450126" beforeDir="false" afterPath="$PROJECT_DIR$/Library/metadata/74/746d96105fe656f44a10e8103d450126" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/metadata/74/74ec20bed7de47b89058cdca2f952d81" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/metadata/74/74ec20bed7de47b89058cdca2f952d81.info" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/metadata/75/75066207954ccc44aa9d134af49040de" beforeDir="false" afterPath="$PROJECT_DIR$/Library/metadata/75/75066207954ccc44aa9d134af49040de" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/metadata/75/75be0b76c5da33a41a2e679cfb7f453c" beforeDir="false" afterPath="$PROJECT_DIR$/Library/metadata/75/75be0b76c5da33a41a2e679cfb7f453c" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/metadata/76/76eb0b51417a8442180aa67edda7d01a" beforeDir="false" afterPath="$PROJECT_DIR$/Library/metadata/76/76eb0b51417a8442180aa67edda7d01a" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/metadata/78/782c49e6e68074dc7ba12c95537825ce" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/metadata/78/782c49e6e68074dc7ba12c95537825ce.info" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/metadata/78/782de34c17796430ba8d0ceddb60944e" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/metadata/78/782de34c17796430ba8d0ceddb60944e.info" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/metadata/79/7927683d1fc5848b5abfb54ebb1028ec" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/metadata/79/7927683d1fc5848b5abfb54ebb1028ec.info" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/metadata/79/79bcacdc12404b979ddd7bd92e278008" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/metadata/79/79bcacdc12404b979ddd7bd92e278008.info" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/metadata/7a/7a34fa72bd4185749832024e9c8010bf" beforeDir="false" afterPath="$PROJECT_DIR$/Library/metadata/7a/7a34fa72bd4185749832024e9c8010bf" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/metadata/7c/7c3a5d6e39b874f468b2691537168513" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/metadata/7c/7c3a5d6e39b874f468b2691537168513.info" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/metadata/80/804f8e2fdce14479b7d4c3ca3dded60d" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/metadata/80/804f8e2fdce14479b7d4c3ca3dded60d.info" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/metadata/81/8198773f354b4ca692ad23ed3074c95e" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/metadata/81/8198773f354b4ca692ad23ed3074c95e.info" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/metadata/82/821f5482c5a3f4389885f4432433f56f" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/metadata/82/821f5482c5a3f4389885f4432433f56f.info" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/metadata/86/86c008322e7c647149878156c5b81940" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/metadata/86/86c008322e7c647149878156c5b81940.info" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/metadata/87/874bfa228c9213f47892793a95f9fc4f" beforeDir="false" afterPath="$PROJECT_DIR$/Library/metadata/87/874bfa228c9213f47892793a95f9fc4f" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/metadata/88/882f1a4147a284f028899b9c018e63eb" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/metadata/88/882f1a4147a284f028899b9c018e63eb.info" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/metadata/8a/8aa8171e088f94069bbd1978a053f7dd" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/metadata/8a/8aa8171e088f94069bbd1978a053f7dd.info" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/metadata/90/90791303b72ec4ae198f99d637dfdf6c" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/metadata/90/90791303b72ec4ae198f99d637dfdf6c.info" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/metadata/94/948f4100a11a5c24981795d21301da5c" beforeDir="false" afterPath="$PROJECT_DIR$/Library/metadata/94/948f4100a11a5c24981795d21301da5c" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/metadata/99/99ddb49592ff84811804420a1910cb89" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/metadata/99/99ddb49592ff84811804420a1910cb89.info" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/metadata/9b/9b77c5407dc277943b591ade9e6b18c5" beforeDir="false" afterPath="$PROJECT_DIR$/Library/metadata/9b/9b77c5407dc277943b591ade9e6b18c5" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/metadata/a2/a2d895ccfaf94d5fa62c9208f65623c7" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/metadata/a2/a2d895ccfaf94d5fa62c9208f65623c7.info" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/metadata/a2/a2ed510c13db63f4ea5749ef503a99b5" beforeDir="false" afterPath="$PROJECT_DIR$/Library/metadata/a2/a2ed510c13db63f4ea5749ef503a99b5" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/metadata/a3/a342381d77833427fa10621e38fbae10" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/metadata/a3/a342381d77833427fa10621e38fbae10.info" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/metadata/a3/a37e18887fa954edf92bc36bc353b879" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/metadata/a3/a37e18887fa954edf92bc36bc353b879.info" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/metadata/a4/a483595b0257945278dc75c5ff7d82ee" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/metadata/a4/a483595b0257945278dc75c5ff7d82ee.info" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/metadata/a6/a6842a74831964edc8fefa1c0aed89dc" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/metadata/a6/a6842a74831964edc8fefa1c0aed89dc.info" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/metadata/a6/a6ab6fd2b91214e8a9c8ec2224a528de" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/metadata/a6/a6ab6fd2b91214e8a9c8ec2224a528de.info" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/metadata/a7/a7c91a123806d41a0873fcdcb629b1c4" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/metadata/a7/a7c91a123806d41a0873fcdcb629b1c4.info" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/metadata/ac/ac281230df7b14becb40b3c479f1b429" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/metadata/ac/ac281230df7b14becb40b3c479f1b429.info" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/metadata/ad/adb84e30e02715445aeb9959894e3b4d" beforeDir="false" afterPath="$PROJECT_DIR$/Library/metadata/ad/adb84e30e02715445aeb9959894e3b4d" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/metadata/b1/b146e0fbfba5484d91c800907c51799f" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/metadata/b1/b146e0fbfba5484d91c800907c51799f.info" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/metadata/b3/b32abd1c9d73a4cce8389f084ac12b11" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/metadata/b3/b32abd1c9d73a4cce8389f084ac12b11.info" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/metadata/b3/b3f6f3f7c722b4544b97e3c75840aa33" beforeDir="false" afterPath="$PROJECT_DIR$/Library/metadata/b3/b3f6f3f7c722b4544b97e3c75840aa33" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/metadata/b5/b52bde26a83564960bcb90217f72b910" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/metadata/b5/b52bde26a83564960bcb90217f72b910.info" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/metadata/b5/b52e557db2c2b4eebb10444f1d582029" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/metadata/b5/b52e557db2c2b4eebb10444f1d582029.info" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/metadata/b5/b5f4343795a0e4626ac1fe4a9e6fce59" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/metadata/b5/b5f4343795a0e4626ac1fe4a9e6fce59.info" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/metadata/b7/b7733f6a6fd11474e8fc598901f90fab" beforeDir="false" afterPath="$PROJECT_DIR$/Library/metadata/b7/b7733f6a6fd11474e8fc598901f90fab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/metadata/b9/b94fcd11afffcb142908bfcb1e261fba" beforeDir="false" afterPath="$PROJECT_DIR$/Library/metadata/b9/b94fcd11afffcb142908bfcb1e261fba" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/metadata/bb/bb15697a279504a90b825c44dc355047" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/metadata/bb/bb15697a279504a90b825c44dc355047.info" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/metadata/c1/c18cb9388313e4287ad5895ee735c47d" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/metadata/c1/c18cb9388313e4287ad5895ee735c47d.info" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/metadata/c1/c1cb7e9e120078f43bce4f0b1be547a7" beforeDir="false" afterPath="$PROJECT_DIR$/Library/metadata/c1/c1cb7e9e120078f43bce4f0b1be547a7" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/metadata/c4/c4c1445ee948a4124bfa9fb818a17e36" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/metadata/c4/c4c1445ee948a4124bfa9fb818a17e36.info" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/metadata/c5/c564cc69bd8582a48b2e0a2090d28361" beforeDir="false" afterPath="$PROJECT_DIR$/Library/metadata/c5/c564cc69bd8582a48b2e0a2090d28361" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/metadata/c5/c5ba7626a737840ff88a3bd84b100482" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/metadata/c5/c5ba7626a737840ff88a3bd84b100482.info" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/metadata/c7/c754112a02f354a6696fa4f2b99e95a5" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/metadata/c7/c754112a02f354a6696fa4f2b99e95a5.info" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/metadata/c9/c99bfe4fc4e5c4dc3917c14075acd117" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/metadata/c9/c99bfe4fc4e5c4dc3917c14075acd117.info" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/metadata/cc/cc1b50b5501f748da8bec762294d9136" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/metadata/cc/cc1b50b5501f748da8bec762294d9136.info" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/metadata/ce/ce4395ccdb12cf62fca756358be1a892" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/metadata/ce/ce4395ccdb12cf62fca756358be1a892.info" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/metadata/cf/cf6aca931950a4a6a886e214e9e649c4" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/metadata/cf/cf6aca931950a4a6a886e214e9e649c4.info" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/metadata/d1/d1c1a2d988f5148fd9ab17b2460d271e" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/metadata/d1/d1c1a2d988f5148fd9ab17b2460d271e.info" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/metadata/d3/d31e5d760880a4e52a3a75322481d0d2" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/metadata/d3/d31e5d760880a4e52a3a75322481d0d2.info" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/metadata/d4/d437fe60bb34f45728664a5d930c1635" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/metadata/d4/d437fe60bb34f45728664a5d930c1635.info" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/metadata/d4/d4ef26aa386b44923b61c9c4b505a67c" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/metadata/d4/d4ef26aa386b44923b61c9c4b505a67c.info" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/metadata/d6/d65e486e4de6e5448a8fbb43dc8756a0" beforeDir="false" afterPath="$PROJECT_DIR$/Library/metadata/d6/d65e486e4de6e5448a8fbb43dc8756a0" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/metadata/d9/d912d4873af534bd4a9d44bf1b52f14e" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/metadata/d9/d912d4873af534bd4a9d44bf1b52f14e.info" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/metadata/d9/d929147d9f78c487397abb40f2c257b0" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/metadata/d9/d929147d9f78c487397abb40f2c257b0.info" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/metadata/da/da7ac24b815941b4daa4b7e19dfeaa3a" beforeDir="false" afterPath="$PROJECT_DIR$/Library/metadata/da/da7ac24b815941b4daa4b7e19dfeaa3a" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/metadata/da/da7ac24b815941b4daa4b7e19dfeaa3a.info" beforeDir="false" afterPath="$PROJECT_DIR$/Library/metadata/da/da7ac24b815941b4daa4b7e19dfeaa3a.info" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/metadata/dc/dced8f6ea9f964e8e8e61574ea889d21" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/metadata/dc/dced8f6ea9f964e8e8e61574ea889d21.info" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/metadata/ee/eeed6954b3c264ca0b28a92aa6289bf0" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/metadata/ee/eeed6954b3c264ca0b28a92aa6289bf0.info" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/metadata/ef/efd3e892ff9d0b94c94e039ad5619e5d" beforeDir="false" afterPath="$PROJECT_DIR$/Library/metadata/ef/efd3e892ff9d0b94c94e039ad5619e5d" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/metadata/f1/f1045c695c5bf4fb7b8509687bc60fc0" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/metadata/f1/f1045c695c5bf4fb7b8509687bc60fc0.info" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/metadata/f2/f28fcced5af094cf78eb4e1109a71981" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/metadata/f2/f28fcced5af094cf78eb4e1109a71981.info" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/metadata/f3/f3b0ecb61e2f1e54ebd4572178bfd8b1" beforeDir="false" afterPath="$PROJECT_DIR$/Library/metadata/f3/f3b0ecb61e2f1e54ebd4572178bfd8b1" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/metadata/f5/f59da4cf1b7dee244bc37fa6add23b00" beforeDir="false" afterPath="$PROJECT_DIR$/Library/metadata/f5/f59da4cf1b7dee244bc37fa6add23b00" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/metadata/f9/f944311c8fff2479fa3ba741f6039fc8" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/metadata/f9/f944311c8fff2479fa3ba741f6039fc8.info" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/metadata/fc/fc46f91ea1e8e4ca2ab693fef9156dbe" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/metadata/fc/fc46f91ea1e8e4ca2ab693fef9156dbe.info" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/metadata/fd/fd0a39b4d296d4d509b4f1dbd08d0630" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/metadata/fd/fd0a39b4d296d4d509b4f1dbd08d0630.info" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/metadata/fe/fed9dda667cab45d398d06402bba03f4" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/metadata/fe/fed9dda667cab45d398d06402bba03f4.info" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/Library/shadercompiler-UnityShaderCompiler0.log" beforeDir="false" afterPath="$PROJECT_DIR$/Library/shadercompiler-UnityShaderCompiler0.log" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tarentGame.sln" beforeDir="false" afterPath="$PROJECT_DIR$/tarentGame.sln" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/shadercompiler-UnityShaderCompiler1.log" beforeDir="false" afterPath="$PROJECT_DIR$/Library/shadercompiler-UnityShaderCompiler1.log" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/shadercompiler-UnityShaderCompiler2.log" beforeDir="false" afterPath="$PROJECT_DIR$/Library/shadercompiler-UnityShaderCompiler2.log" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/shadercompiler-UnityShaderCompiler3.log" beforeDir="false" afterPath="$PROJECT_DIR$/Library/shadercompiler-UnityShaderCompiler3.log" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/shadercompiler-UnityShaderCompiler4.log" beforeDir="false" afterPath="$PROJECT_DIR$/Library/shadercompiler-UnityShaderCompiler4.log" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/shadercompiler-UnityShaderCompiler5.log" beforeDir="false" afterPath="$PROJECT_DIR$/Library/shadercompiler-UnityShaderCompiler5.log" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/shadercompiler-UnityShaderCompiler6.log" beforeDir="false" afterPath="$PROJECT_DIR$/Library/shadercompiler-UnityShaderCompiler6.log" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/shadercompiler-UnityShaderCompiler7.log" beforeDir="false" afterPath="$PROJECT_DIR$/Library/shadercompiler-UnityShaderCompiler7.log" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Packages/manifest.json" beforeDir="false" afterPath="$PROJECT_DIR$/Packages/manifest.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProjectSettings/ProjectSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/ProjectSettings.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Temp/UnityTempFile-0a95a7e0f14afae0eb06d14cb257942f" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Temp/UnityTempFile-0feb221b74582eabfa616f48ffc111ab" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Temp/UnityTempFile-138d3cac8075a09ca81d05842edb6be9" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Temp/UnityTempFile-2af5281fd34bb6e57ac7a3257fdef592" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Temp/UnityTempFile-30ddfe6202f8fa05fadeeeef5ad5dcca" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Temp/UnityTempFile-320d24b83399de4049b53d16891a487f" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Temp/UnityTempFile-370e06e15469600b48fa374815da7b6b" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Temp/UnityTempFile-384bada6aec969207986269f20e983b2" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Temp/UnityTempFile-3c6d3041dc62553348d3d3faf9fa7213" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Temp/UnityTempFile-4c630e97e9092b2ed9f6795190691ce5" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Temp/UnityTempFile-4df4672789a7e1b92b4555f383759f7f" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Temp/UnityTempFile-55cf06a46005941d4a11d5f1046ef243" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Temp/UnityTempFile-57fab981951efdff985f0dd49b7af5bc" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Temp/UnityTempFile-5cf48025b193483a0a930499c60da1e6" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Temp/UnityTempFile-5e6455611af2858b5a55ffec3e75a3c0" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Temp/UnityTempFile-65d0c5cfdee1a969fbbd3403b6ba6483" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Temp/UnityTempFile-6854404409028ab29a0ec7147e3421a9" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Temp/UnityTempFile-6b2d89b3648f161a3b422f7e54435abe" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Temp/UnityTempFile-8872c642e9837426a8b85fc4c0c65e14" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Temp/UnityTempFile-887ea39722f96eca3814be4ee7288e97" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Temp/UnityTempFile-8f8c43bffd913fd33bad4a64a2788618" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Temp/UnityTempFile-9cd03ab0e91f1fe71a2e9e5737fc6d14" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Temp/UnityTempFile-a04226351d6659c4d9e5d48d8529b9a5" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Temp/UnityTempFile-a4949f493f6ee3223b610f8c12947d72" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Temp/UnityTempFile-b95822e2c135edd5986dfe2721516bbc" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Temp/UnityTempFile-c6c2047d926a7cf4b811e91f436885cc" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Temp/UnityTempFile-cfea1373838d39f5cb3e2facdcd2f87f" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Temp/UnityTempFile-d0ccc7e783e62bcf7b3c1a46fb6e08cd" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Temp/UnityTempFile-e8b337d400870ec83a18651d10f393f5" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Temp/UnityTempFile-f90fdaa1d0be9286a89be396f7bff516" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Temp/UnityTempFile-fd350f40718182f53a5656fbfcbfa85d" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Temp/UnityTempFile-fea54e0b57e48b9ca9e78ddfd4ba3832" beforeDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -24,34 +1068,74 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Assets/Scripts/GameCloud/Container.cs">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="45">
-              <caret line="6" column="26" selection-start-line="6" selection-start-column="17" selection-end-line="6" selection-end-column="26" />
+            <state relative-caret-position="300">
+              <caret line="24" selection-start-line="24" selection-end-line="24" />
               <folding>
-                <marker date="1565038118000" expanded="false" signature="6:66" ph="..." />
-                <marker date="1565038118000" expanded="true" signature="87:898" ph="{...}" />
-                <marker date="1565038118000" expanded="true" signature="118:896" ph="{...}" />
-                <marker date="1565038118000" expanded="true" signature="431:464" ph="{...}" />
-                <marker date="1565038118000" expanded="true" signature="510:543" ph="{...}" />
-                <marker date="1565038118000" expanded="true" signature="669:789" ph="{...}" />
+                <marker date="1565121597903" expanded="false" signature="6:118" ph="..." />
+                <marker date="1565121597903" expanded="true" signature="139:1747" ph="{...}" />
+                <marker date="1565121597903" expanded="true" signature="170:1745" ph="{...}" />
+                <marker date="1565121597903" expanded="true" signature="499:801" ph="{...}" />
+                <marker date="1565121597903" expanded="true" signature="1055:1412" ph="{...}" />
+                <marker date="1565121597903" expanded="true" signature="1214:1370" ph="{...}" />
+                <marker date="1565121597903" expanded="true" signature="1273:1356" ph="{...}" />
+                <marker date="1565121597903" expanded="true" signature="1591:1739" ph="{...}" />
+                <marker date="1565121597903" expanded="true" signature="1645:1729" ph="{...}" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Assets/Scripts/Constants/Enums.cs">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-406">
+              <caret column="18" selection-start-column="18" selection-end-column="18" />
+              <folding>
+                <marker date="1565118651167" expanded="true" signature="19:828" ph="{...}" />
+                <marker date="1565118651167" expanded="true" signature="48:177" ph="{...}" />
+                <marker date="1565118651167" expanded="true" signature="207:328" ph="{...}" />
+                <marker date="1565118651167" expanded="true" signature="352:481" ph="{...}" />
+                <marker date="1565118651167" expanded="true" signature="512:561" ph="{...}" />
+                <marker date="1565118651167" expanded="true" signature="589:660" ph="{...}" />
+                <marker date="1565118651167" expanded="true" signature="685:826" ph="{...}" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Assets/Scripts/BootManager/Boot.cs">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="630">
+              <caret line="42" column="39" selection-start-line="42" selection-start-column="39" selection-end-line="42" selection-end-column="39" />
+              <folding>
+                <marker date="1565119625083" expanded="true" signature="6:72" ph="..." />
+                <marker date="1565119625083" expanded="true" signature="95:1247" ph="{...}" />
+                <marker date="1565119625083" expanded="true" signature="135:1245" ph="{...}" />
+                <marker date="1565119625083" expanded="true" signature="467:1020" ph="{...}" />
+                <marker date="1565119625083" expanded="true" signature="516:879" ph="{...}" />
+                <marker date="1565119625083" expanded="true" signature="896:961" ph="{...}" />
+                <marker date="1565119625083" expanded="true" signature="1041:1085" ph="{...}" />
+                <marker date="1565119625083" expanded="true" signature="1115:1175" ph="{...}" />
+                <marker date="1565119625083" expanded="true" signature="1206:1239" ph="{...}" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/Assets/Scripts/BootManager/Boot.cs">
+        <entry file="file://$PROJECT_DIR$/Assets/Scripts/StateManager/StateController.cs">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="300">
-              <caret line="22" column="12" selection-start-line="22" selection-start-column="12" selection-end-line="22" selection-end-column="12" />
+            <state relative-caret-position="30">
+              <caret line="2" column="17" selection-start-line="2" selection-start-column="17" selection-end-line="2" selection-end-column="17" />
               <folding>
-                <marker date="1565039314000" expanded="false" signature="6:52" ph="..." />
-                <marker date="1565039314000" expanded="true" signature="87:1012" ph="{...}" />
-                <marker date="1565039314000" expanded="true" signature="391:868" ph="{...}" />
-                <marker date="1565039314000" expanded="true" signature="432:759" ph="{...}" />
-                <marker date="1565039314000" expanded="true" signature="772:825" ph="{...}" />
-                <marker date="1565039314000" expanded="true" signature="885:917" ph="{...}" />
-                <marker date="1565039314000" expanded="true" signature="943:962" ph="{...}" />
-                <marker date="1565039314000" expanded="true" signature="989:1010" ph="{...}" />
+                <marker date="1565118193284" expanded="true" signature="37:815" ph="{...}" />
+                <marker date="1565118193284" expanded="true" signature="75:813" ph="{...}" />
+                <marker date="1565118193284" expanded="true" signature="205:308" ph="{...}" />
+                <marker date="1565118193284" expanded="true" signature="335:446" ph="{...}" />
+                <marker date="1565118193284" expanded="true" signature="487:798" ph="{...}" />
+                <marker date="1565118193284" expanded="true" signature="513:654" ph="{...}" />
+                <marker date="1565118193284" expanded="true" signature="686:775" ph="{...}" />
               </folding>
             </state>
           </provider>
@@ -73,18 +1157,19 @@
       <list>
         <option value="$PROJECT_DIR$/Assets/Scripts/Cache/Cache.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Cache/Container.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/StateManager/StateController.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/BootManager/Boot.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/Constants/Enums.cs" />
         <option value="$PROJECT_DIR$/Assets/.gitignore" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/StateManager/StateController.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Constants/Enums.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/BootManager/Boot.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/GameCloud/Container.cs" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="1413" />
-    <option name="y" value="-21" />
-    <option name="width" value="960" />
-    <option name="height" value="746" />
+    <option name="x" value="-1" />
+    <option name="y" value="24" />
+    <option name="width" value="944" />
+    <option name="height" value="744" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectView">
@@ -92,6 +1177,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="AssemblyExplorer" />
       <pane id="UnityExplorer">
         <subPane>
           <expand>
@@ -99,44 +1185,16 @@
               <item name="" type="e068e287:UnityExplorerRootNode" />
               <item name="Assets" type="8711f2a6:AssetsRoot" />
             </path>
-            <path>
-              <item name="" type="e068e287:UnityExplorerRootNode" />
-              <item name="Assets" type="8711f2a6:AssetsRoot" />
-              <item name="Scripts" type="1045f7f1:UnityExplorerNode" />
-            </path>
-            <path>
-              <item name="" type="e068e287:UnityExplorerRootNode" />
-              <item name="Assets" type="8711f2a6:AssetsRoot" />
-              <item name="Scripts" type="1045f7f1:UnityExplorerNode" />
-              <item name="BootManager" type="1045f7f1:UnityExplorerNode" />
-            </path>
-            <path>
-              <item name="" type="e068e287:UnityExplorerRootNode" />
-              <item name="Assets" type="8711f2a6:AssetsRoot" />
-              <item name="Scripts" type="1045f7f1:UnityExplorerNode" />
-              <item name="GameCloud" type="1045f7f1:UnityExplorerNode" />
-            </path>
-            <path>
-              <item name="" type="e068e287:UnityExplorerRootNode" />
-              <item name="Assets" type="8711f2a6:AssetsRoot" />
-              <item name="Scripts" type="1045f7f1:UnityExplorerNode" />
-              <item name="StateManager" type="1045f7f1:UnityExplorerNode" />
-            </path>
-            <path>
-              <item name="" type="e068e287:UnityExplorerRootNode" />
-              <item name="Packages" type="4e2708dd:PackagesRoot" />
-            </path>
           </expand>
           <select />
         </subPane>
         <option name="show-hidden-items" value="false" />
         <option name="show-project-names" value="true" />
       </pane>
-      <pane id="AssemblyExplorer" />
-      <pane id="FileSystemExplorer" />
       <pane id="SolutionExplorer">
         <option name="show-all-files" value="false" />
       </pane>
+      <pane id="FileSystemExplorer" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -145,6 +1203,12 @@
     <property name="Rider.ProjectViewActivator.IsNotFirstRun" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="node.js.detected.package.eslint" value="true" />
+    <property name="node.js.detected.package.tslint" value="true" />
+    <property name="node.js.path.for.package.eslint" value="project" />
+    <property name="node.js.path.for.package.tslint" value="project" />
+    <property name="node.js.selected.package.eslint" value="(autodetect)" />
+    <property name="node.js.selected.package.tslint" value="(autodetect)" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
   </component>
@@ -187,12 +1251,13 @@
       <option name="presentableId" value="Default" />
       <updated>1565035659874</updated>
       <workItem from="1565035672548" duration="3147000" />
-      <workItem from="1565042082619" duration="1214000" />
+      <workItem from="1565042082619" duration="1316000" />
+      <workItem from="1565118052277" duration="4595000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="4361000" />
+    <option name="totallyTimeSpent" value="9058000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -206,7 +1271,7 @@
   <component name="ToolWindowManager">
     <frame x="-1" y="24" width="1922" height="1033" extended-state="6" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.2529349" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.32017076" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Image Layers" order="2" />
       <window_info id="Capture Tool" order="3" />
@@ -225,7 +1290,7 @@
       <window_info anchor="bottom" id="Unity" order="11" />
       <window_info anchor="bottom" id="Database Changes" order="12" />
       <window_info anchor="bottom" id="Unit Tests" order="13" />
-      <window_info active="true" anchor="bottom" id="Terminal" order="14" visible="true" weight="0.33038673" />
+      <window_info anchor="bottom" id="Terminal" order="14" visible="true" weight="0.33038673" />
       <window_info anchor="bottom" id="Event Log" order="15" side_tool="true" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
@@ -256,72 +1321,72 @@
     <entry file="file://$PROJECT_DIR$/Assets/Scripts/Cache/ICache.cs" />
     <entry file="file://$PROJECT_DIR$/Assets/Scripts/Cache/Container.cs" />
     <entry file="file://$PROJECT_DIR$/Assets/Scripts/GameContainer/Container.cs" />
-    <entry file="file://$PROJECT_DIR$/Assets/Scripts/StateManager/StateController.cs">
+    <entry file="file://$PROJECT_DIR$/Assets/Scripts/SimpleCameraController.cs" />
+    <entry file="file://$PROJECT_DIR$/Assets/.gitignore" />
+    <entry file="file://$PROJECT_DIR$/Assets/Scripts/BootManager/Boot.cs">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="221">
-          <caret line="13" column="22" selection-start-line="13" selection-start-column="13" selection-end-line="13" selection-end-column="22" />
+        <state relative-caret-position="630">
+          <caret line="42" column="39" selection-start-line="42" selection-start-column="39" selection-end-line="42" selection-end-column="39" />
           <folding>
-            <marker date="1565039245708" expanded="true" signature="46:656" ph="{...}" />
-            <marker date="1565039245708" expanded="true" signature="152:239" ph="{...}" />
-            <marker date="1565039245708" expanded="true" signature="262:357" ph="{...}" />
-            <marker date="1565039245708" expanded="true" signature="394:649" ph="{...}" />
-            <marker date="1565039245708" expanded="true" signature="412:533" ph="{...}" />
-            <marker date="1565039245708" expanded="true" signature="561:634" ph="{...}" />
+            <marker date="1565119625083" expanded="true" signature="6:72" ph="..." />
+            <marker date="1565119625083" expanded="true" signature="95:1247" ph="{...}" />
+            <marker date="1565119625083" expanded="true" signature="135:1245" ph="{...}" />
+            <marker date="1565119625083" expanded="true" signature="467:1020" ph="{...}" />
+            <marker date="1565119625083" expanded="true" signature="516:879" ph="{...}" />
+            <marker date="1565119625083" expanded="true" signature="896:961" ph="{...}" />
+            <marker date="1565119625083" expanded="true" signature="1041:1085" ph="{...}" />
+            <marker date="1565119625083" expanded="true" signature="1115:1175" ph="{...}" />
+            <marker date="1565119625083" expanded="true" signature="1206:1239" ph="{...}" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/Assets/Scripts/Constants/Enums.cs">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="642">
-          <caret line="45" selection-start-line="45" selection-end-line="45" />
+        <state relative-caret-position="-406">
+          <caret column="18" selection-start-column="18" selection-end-column="18" />
           <folding>
-            <marker date="1565039542500" expanded="true" signature="19:730" ph="{...}" />
-            <marker date="1565039542500" expanded="true" signature="48:177" ph="{...}" />
-            <marker date="1565039542500" expanded="true" signature="207:328" ph="{...}" />
-            <marker date="1565039542500" expanded="true" signature="352:481" ph="{...}" />
-            <marker date="1565039542500" expanded="true" signature="512:561" ph="{...}" />
-            <marker date="1565039542500" expanded="true" signature="586:728" ph="{...}" />
+            <marker date="1565118651167" expanded="true" signature="19:828" ph="{...}" />
+            <marker date="1565118651167" expanded="true" signature="48:177" ph="{...}" />
+            <marker date="1565118651167" expanded="true" signature="207:328" ph="{...}" />
+            <marker date="1565118651167" expanded="true" signature="352:481" ph="{...}" />
+            <marker date="1565118651167" expanded="true" signature="512:561" ph="{...}" />
+            <marker date="1565118651167" expanded="true" signature="589:660" ph="{...}" />
+            <marker date="1565118651167" expanded="true" signature="685:826" ph="{...}" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Assets/Scripts/SimpleCameraController.cs" />
     <entry file="file://$PROJECT_DIR$/Assets/Scripts/GameCloud/Container.cs">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="45">
-          <caret line="6" column="26" selection-start-line="6" selection-start-column="17" selection-end-line="6" selection-end-column="26" />
+        <state relative-caret-position="300">
+          <caret line="24" selection-start-line="24" selection-end-line="24" />
           <folding>
-            <marker date="1565038118000" expanded="false" signature="6:66" ph="..." />
-            <marker date="1565038118000" expanded="true" signature="87:898" ph="{...}" />
-            <marker date="1565038118000" expanded="true" signature="118:896" ph="{...}" />
-            <marker date="1565038118000" expanded="true" signature="431:464" ph="{...}" />
-            <marker date="1565038118000" expanded="true" signature="510:543" ph="{...}" />
-            <marker date="1565038118000" expanded="true" signature="669:789" ph="{...}" />
+            <marker date="1565121597903" expanded="false" signature="6:118" ph="..." />
+            <marker date="1565121597903" expanded="true" signature="139:1747" ph="{...}" />
+            <marker date="1565121597903" expanded="true" signature="170:1745" ph="{...}" />
+            <marker date="1565121597903" expanded="true" signature="499:801" ph="{...}" />
+            <marker date="1565121597903" expanded="true" signature="1055:1412" ph="{...}" />
+            <marker date="1565121597903" expanded="true" signature="1214:1370" ph="{...}" />
+            <marker date="1565121597903" expanded="true" signature="1273:1356" ph="{...}" />
+            <marker date="1565121597903" expanded="true" signature="1591:1739" ph="{...}" />
+            <marker date="1565121597903" expanded="true" signature="1645:1729" ph="{...}" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Assets/.gitignore">
+    <entry file="file://$PROJECT_DIR$/Assets/Scripts/StateManager/StateController.cs">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="525">
-          <caret line="35" column="14" selection-start-line="35" selection-start-column="14" selection-end-line="35" selection-end-column="14" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Assets/Scripts/BootManager/Boot.cs">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="300">
-          <caret line="22" column="12" selection-start-line="22" selection-start-column="12" selection-end-line="22" selection-end-column="12" />
+        <state relative-caret-position="30">
+          <caret line="2" column="17" selection-start-line="2" selection-start-column="17" selection-end-line="2" selection-end-column="17" />
           <folding>
-            <marker date="1565039314000" expanded="false" signature="6:52" ph="..." />
-            <marker date="1565039314000" expanded="true" signature="87:1012" ph="{...}" />
-            <marker date="1565039314000" expanded="true" signature="391:868" ph="{...}" />
-            <marker date="1565039314000" expanded="true" signature="432:759" ph="{...}" />
-            <marker date="1565039314000" expanded="true" signature="772:825" ph="{...}" />
-            <marker date="1565039314000" expanded="true" signature="885:917" ph="{...}" />
-            <marker date="1565039314000" expanded="true" signature="943:962" ph="{...}" />
-            <marker date="1565039314000" expanded="true" signature="989:1010" ph="{...}" />
+            <marker date="1565118193284" expanded="true" signature="37:815" ph="{...}" />
+            <marker date="1565118193284" expanded="true" signature="75:813" ph="{...}" />
+            <marker date="1565118193284" expanded="true" signature="205:308" ph="{...}" />
+            <marker date="1565118193284" expanded="true" signature="335:446" ph="{...}" />
+            <marker date="1565118193284" expanded="true" signature="487:798" ph="{...}" />
+            <marker date="1565118193284" expanded="true" signature="513:654" ph="{...}" />
+            <marker date="1565118193284" expanded="true" signature="686:775" ph="{...}" />
           </folding>
         </state>
       </provider>

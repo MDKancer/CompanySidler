@@ -1,36 +1,39 @@
 ﻿using System;
 
-public class StateController<T>
+namespace StateMachine
 {
-    private T currentState;
-    private T lastState;
-    private T temp;
-    
-    public T CurrentState
+    public class StateController<T>
     {
-        set { currentState = value; }
-        get { return currentState; }
-    }
-    public T LastState
-    {
-        private set { currentState = value; }
-        get { return currentState; }
-    }
-
-    public void SwitchToLastState()
-    {
-        try
+        private T currentState;
+        private T lastState;
+        private T temp;
+        
+        public T CurrentState
         {
-            temp = lastState;
-            LastState = currentState;
-            currentState = temp;
+            set { currentState = value; }
+            get { return currentState; }
         }
-        catch (Exception e)
+        public T LastState
         {
-            Console.WriteLine(e);
-            throw;
+            private set { currentState = value; }
+            get { return currentState; }
+        }
+
+        public void SwitchToLastState()
+        {
+            try
+            {
+                temp = lastState;
+                LastState = currentState;
+                currentState = temp;
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e);
+                throw;
+            }
+            
         }
         
     }
-    
 }

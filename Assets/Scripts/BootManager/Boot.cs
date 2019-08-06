@@ -1,46 +1,50 @@
-﻿using Constatns;
+﻿using Constants;
 using GameCloud;
+using StateMachine;
 using UnityEngine;
 
-public class Boot : MonoBehaviour
+namespace BootManager
 {
-    public static Boot boot_Instance { get; private set; }
-
-    public static MonoBehaviour monobehaviour;
-    public static Container container;
-    public static StateController<GameState> gameStateController;
-    public static StateController<RuntimeState> runtimeStateController;
-
-    void Awake()
+    public class Boot : MonoBehaviour
     {
-        if (boot_Instance == null)
+        public static Boot boot_Instance { get; private set; }
+
+        public static MonoBehaviour monobehaviour;
+        public static Container container;
+        public static StateController<GameState> gameStateController;
+        public static StateController<RuntimeState> runtimeStateController;
+
+        void Awake()
         {
-            boot_Instance = this;
-            monobehaviour = this;
-            container = new Container();
-            gameStateController = new StateController<GameState>();
-            runtimeStateController = new StateController<RuntimeState>();
+            if (boot_Instance == null)
+            {
+                boot_Instance = this;
+                monobehaviour = this;
+                container = new Container();
+                gameStateController = new StateController<GameState>();
+                runtimeStateController = new StateController<RuntimeState>();
+                
+                DontDestroyOnLoad(gameObject);
+            }
+            else
+            {
+                Destroy(gameObject);
+            }
             
-            DontDestroyOnLoad(gameObject);
+            Booting();
+            
         }
-        else
+        void Start()
         {
-            Destroy(gameObject);
+            AllBegin();
         }
-        
-        Booting();
-        
-    }
-    void Start()
-    {
-        AllBegin();
-    }
-    public void Booting()
-    {
-      
-    }
-    public void AllBegin()
-    {
-        
+        public void Booting()
+        {
+          container.LoadAllResources();
+        }
+        public void AllBegin()
+        {
+            
+        }
     }
 }

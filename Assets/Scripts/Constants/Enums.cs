@@ -1,4 +1,4 @@
-﻿namespace Constatns
+﻿namespace Constants
 {
     public enum GameState 
     {
@@ -34,6 +34,13 @@
         HOUSE = 1
     }
 
+    public enum EntityType
+    {
+        NONE = -1,
+        HUMAN = 0,
+        BUILDING = 2
+    }
+
     public enum Actions
     {
         NULL = -1,
@@ -41,6 +48,6 @@
         ROTATE_LEFT = 1,
         FOCUS_ON = 2,
         MENU = 3,
-        RETURN = 4,
+        RETURN = 4
     }
 }

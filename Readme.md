@@ -57,7 +57,7 @@ Gebäude (Größe, Anzahl,Arbeitsplätze):
     Hier befinden sich alle Resourcen was man während des Spiel braucht. Die Resourcen sind im **Awake** Zustand hochgeladen und im Container gespeichert. 
     <br>Die Objecte was die gespawnt wird oder die Materialen und Texturen was währen des Speil generiert wird sollen sich im Container befinden.
 *  ##### StateManager :
-    <br>Es ist eine generische Klasse was um den Zustand des Spieles sich kümmert.
+    Es ist eine generische Klasse was um den Zustand des Spieles sich kümmert.
 *  ##### Boot :
     Es ist ein **Singelton**, die alle wichtige und HauptKlassen initialisiert und lässt du verfügugn für alle anderen Klassen.
 *  ##### SpawnManager :

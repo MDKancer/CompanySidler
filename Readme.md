@@ -3,12 +3,12 @@
 ##### Mitglieder
 |Name| Role |
 |:----|:-----:|
-|Serena Bräuer |Dev|
+|Serena Bräuer |Developer|
 |Julius Marx|Artist|
-|Julian Koch|Dev|
-|Markus Andreas|Dev|
+|Julian Koch|Developer|
+|Markus Andreas|Developer|
 |Tim Herkenrath|Artist|
-|Daniel Lozanu|Dev-Artist|
+|Daniel Lozanu|Developer-Artist|
 ***
 ### Beschreibung
 

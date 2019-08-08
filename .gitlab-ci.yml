@@ -10,19 +10,12 @@ stages:
 variables:
   BUILD_NAME: ExampleProjectName
 
-.unity_before_script: &unity_before_script
-  before_script:
-    - chmod +x ./ci/before_script.sh && ./ci/before_script.sh
 
 .test: &test
   stage: test
-  <<: *unity_before_script
   script:
-    - chmod +x ./ci/test.sh && ./ci/test.sh
-  artifacts:
-    paths:
-      - $(pwd)/$TEST_PLATFORM-results.xml
-
+    - echo "finished"
+    
 test-editmode:
   <<: *test
   variables:
@@ -37,7 +30,6 @@ test-playmode:
   stage: build
   #tip: you can reuse same stage to do everything in parallel and reduce overall time
   # stage: test
-  <<: *unity_before_script
   script:
     - chmod +x ./ci/build.sh && ./ci/build.sh
 
@@ -68,15 +60,6 @@ build-StandaloneWindows64:
   <<: *build
   variables:
     BUILD_TARGET: StandaloneWindows64
-
-build-WebGL:
-  <<: *build
-  variables:
-    BUILD_TARGET: WebGL
-  after_script:
-    - mv ./Builds/WebGL/$BUILD_NAME ./Builds/
-    - rm -rf ./Builds/WebGL
-    - mv ./Builds/$BUILD_NAME/ ./Builds/WebGL/
 
 pages:
   image: alpine:latest

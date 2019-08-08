@@ -1,4 +1,6 @@
 {
-  "process_id": 23410,
-  "version": "2019.1.11f1"
+	"process_id" : 17952,
+	"version" : "2019.1.11f1",
+	"app_path" : "/home/dlozan/Unity/Hub/Editor/2019.1.11f1/Editor/Unity",
+	"app_contents_path" : "/home/dlozan/Unity/Hub/Editor/2019.1.11f1/Editor/Data"
 }

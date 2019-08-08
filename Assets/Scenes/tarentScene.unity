@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 2138677392}
-  m_IndirectSpecularColor: {r: 0.2850269, g: 0.3713935, b: 0.49601045, a: 1}
+  m_IndirectSpecularColor: {r: 0.28502658, g: 0.37139314, b: 0.49600947, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -553,6 +553,61 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2040187786515808940, guid: 2cc53fec42ad255499081e357ef796cd,
+        type: 3}
+      propertyPath: m_Name
+      value: Office
+      objectReference: {fileID: 0}
+    - target: {fileID: 2040187786712817020, guid: 2cc53fec42ad255499081e357ef796cd,
+        type: 3}
+      propertyPath: m_Name
+      value: Server
+      objectReference: {fileID: 0}
+    - target: {fileID: 2040187787501342026, guid: 2cc53fec42ad255499081e357ef796cd,
+        type: 3}
+      propertyPath: m_Name
+      value: Buchhaltung
+      objectReference: {fileID: 0}
+    - target: {fileID: 2040187787749605898, guid: 2cc53fec42ad255499081e357ef796cd,
+        type: 3}
+      propertyPath: m_Name
+      value: Azubis
+      objectReference: {fileID: 0}
+    - target: {fileID: 2040187787780277113, guid: 2cc53fec42ad255499081e357ef796cd,
+        type: 3}
+      propertyPath: m_Name
+      value: Dev_Ops
+      objectReference: {fileID: 0}
+    - target: {fileID: 2040187787988994309, guid: 2cc53fec42ad255499081e357ef796cd,
+        type: 3}
+      propertyPath: m_Name
+      value: TarentTown
+      objectReference: {fileID: 0}
+    - target: {fileID: 2040187788083185847, guid: 2cc53fec42ad255499081e357ef796cd,
+        type: 3}
+      propertyPath: m_Name
+      value: Marketing
+      objectReference: {fileID: 0}
+    - target: {fileID: 2040187788250353318, guid: 2cc53fec42ad255499081e357ef796cd,
+        type: 3}
+      propertyPath: m_Name
+      value: TomTown
+      objectReference: {fileID: 0}
+    - target: {fileID: 2040187788268661819, guid: 2cc53fec42ad255499081e357ef796cd,
+        type: 3}
+      propertyPath: m_Name
+      value: REWETown
+      objectReference: {fileID: 0}
+    - target: {fileID: 2040187788350179344, guid: 2cc53fec42ad255499081e357ef796cd,
+        type: 3}
+      propertyPath: m_Name
+      value: Admin
+      objectReference: {fileID: 0}
+    - target: {fileID: 2040187788404634081, guid: 2cc53fec42ad255499081e357ef796cd,
+        type: 3}
+      propertyPath: m_Name
+      value: Sozialraum
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2cc53fec42ad255499081e357ef796cd, type: 3}

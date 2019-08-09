@@ -2,31 +2,23 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="76fb7938-faf3-40ef-a536-80ac4747bde9" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.tarentGame/.idea/contentModel.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.tarentGame/.idea/contentModel.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Resources/Prefabs/Firma.prefab" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Resources/Prefabs/Humans/Worker.prefab" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Resources/Prefabs/Humans/Worker.prefab.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Resources/Prefabs/Stadt.prefab.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/SpawnManager.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/SpawnManager/SpawnController.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/SpawnManager/SpawnController.cs.meta" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.tarentGame/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.tarentGame/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assembly-CSharp.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/Assembly-CSharp.csproj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Resources/Materials/BeginColor/Black.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/Materials/BeginColor/Black.mat" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Resources/Materials/BeginColor/Gray.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/Materials/BeginColor/Gray.mat" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Resources/Prefabs/Terrain.prefab" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Resources/Prefabs/Terrain.prefab.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Resources/Prefabs/Terrain.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/Prefabs/Stadt.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Resources/Prefabs/Terrain.prefab.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/Prefabs/Firma.prefab.meta" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scenes/tarentScene.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/tarentScene.unity" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scenes/tarentScene/NavMesh.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/tarentScene/NavMesh.asset" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/BootManager/Boot.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/BootManager/Boot.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/GameCloud/Container.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/GameCloud/Container.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Library/CurrentLayout.dwlt" beforeDir="false" afterPath="$PROJECT_DIR$/Library/CurrentLayout.dwlt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Library/EditorInstance.json" beforeDir="false" afterPath="$PROJECT_DIR$/Library/EditorInstance.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Library/InspectorExpandedItems.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Library/InspectorExpandedItems.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Library/PackageCache/com.unity.render-pipelines.lightweight@5.7.2/Runtime/Materials/Lit.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Library/PackageCache/com.unity.render-pipelines.lightweight@5.7.2/Runtime/Materials/Lit.mat" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Library/ProtocolInstance.json" beforeDir="false" afterPath="$PROJECT_DIR$/Library/ProtocolInstance.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Library/ScriptAssemblies/Assembly-CSharp.dll" beforeDir="false" afterPath="$PROJECT_DIR$/Library/ScriptAssemblies/Assembly-CSharp.dll" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Library/ScriptAssemblies/Assembly-CSharp.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/Library/ScriptAssemblies/Assembly-CSharp.pdb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Library/ShaderCache/EditorEncounteredVariants" beforeDir="false" afterPath="$PROJECT_DIR$/Library/ShaderCache/EditorEncounteredVariants" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Library/StateCache/Hierarchy/2ed20e-mainStage.json" beforeDir="false" afterPath="$PROJECT_DIR$/Library/StateCache/Hierarchy/2ed20e-mainStage.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Library/StateCache/SceneView/e3c9da-mainStage.json" beforeDir="false" afterPath="$PROJECT_DIR$/Library/StateCache/SceneView/e3c9da-mainStage.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/ScriptAssemblies/BuiltinAssemblies.stamp" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/Library/assetDatabase3" beforeDir="false" afterPath="$PROJECT_DIR$/Library/assetDatabase3" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Library/metadata/26/2612ceb2b1e6b634e8e716cbb0805729" beforeDir="false" afterPath="$PROJECT_DIR$/Library/metadata/26/2612ceb2b1e6b634e8e716cbb0805729" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Library/metadata/2c/2cc53fec42ad255499081e357ef796cd" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Library/metadata/2c/2cc53fec42ad255499081e357ef796cd.info" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/Library/metadata/31/31321ba15b8f8eb4c954353edc038b1d.info" beforeDir="false" afterPath="$PROJECT_DIR$/Library/metadata/31/31321ba15b8f8eb4c954353edc038b1d.info" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Library/metadata/46/463798deba97f5c41bb8ae988f602e74" beforeDir="false" afterPath="$PROJECT_DIR$/Library/metadata/46/463798deba97f5c41bb8ae988f602e74" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Library/metadata/46/463798deba97f5c41bb8ae988f602e74.info" beforeDir="false" afterPath="$PROJECT_DIR$/Library/metadata/46/463798deba97f5c41bb8ae988f602e74.info" afterDir="false" />
@@ -34,14 +26,6 @@
       <change beforePath="$PROJECT_DIR$/Library/metadata/75/752ed3cf30f15e947a3a7d05d6f16741.info" beforeDir="false" afterPath="$PROJECT_DIR$/Library/metadata/75/752ed3cf30f15e947a3a7d05d6f16741.info" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Library/metadata/87/874bfa228c9213f47892793a95f9fc4f" beforeDir="false" afterPath="$PROJECT_DIR$/Library/metadata/87/874bfa228c9213f47892793a95f9fc4f" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Library/metadata/da/da7ac24b815941b4daa4b7e19dfeaa3a" beforeDir="false" afterPath="$PROJECT_DIR$/Library/metadata/da/da7ac24b815941b4daa4b7e19dfeaa3a" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Library/shadercompiler-UnityShaderCompiler0.log" beforeDir="false" afterPath="$PROJECT_DIR$/Library/shadercompiler-UnityShaderCompiler0.log" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Library/shadercompiler-UnityShaderCompiler1.log" beforeDir="false" afterPath="$PROJECT_DIR$/Library/shadercompiler-UnityShaderCompiler1.log" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Library/shadercompiler-UnityShaderCompiler2.log" beforeDir="false" afterPath="$PROJECT_DIR$/Library/shadercompiler-UnityShaderCompiler2.log" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Library/shadercompiler-UnityShaderCompiler3.log" beforeDir="false" afterPath="$PROJECT_DIR$/Library/shadercompiler-UnityShaderCompiler3.log" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Library/shadercompiler-UnityShaderCompiler4.log" beforeDir="false" afterPath="$PROJECT_DIR$/Library/shadercompiler-UnityShaderCompiler4.log" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Library/shadercompiler-UnityShaderCompiler5.log" beforeDir="false" afterPath="$PROJECT_DIR$/Library/shadercompiler-UnityShaderCompiler5.log" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Library/shadercompiler-UnityShaderCompiler6.log" beforeDir="false" afterPath="$PROJECT_DIR$/Library/shadercompiler-UnityShaderCompiler6.log" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Library/shadercompiler-UnityShaderCompiler7.log" beforeDir="false" afterPath="$PROJECT_DIR$/Library/shadercompiler-UnityShaderCompiler7.log" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Readme.md" beforeDir="false" afterPath="$PROJECT_DIR$/Readme.md" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -53,89 +37,10 @@
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Assets/Scripts/GameCloud/Container.cs">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="255">
-              <caret line="21" selection-start-line="21" selection-end-line="21" />
-              <folding>
-                <marker date="1565370887616" expanded="false" signature="6:118" ph="..." />
-                <marker date="1565370887616" expanded="true" signature="139:1763" ph="{...}" />
-                <marker date="1565370887616" expanded="true" signature="170:1761" ph="{...}" />
-                <marker date="1565370887616" expanded="true" signature="499:801" ph="{...}" />
-                <marker date="1565370887616" expanded="true" signature="1071:1428" ph="{...}" />
-                <marker date="1565370887616" expanded="true" signature="1230:1386" ph="{...}" />
-                <marker date="1565370887616" expanded="true" signature="1289:1372" ph="{...}" />
-                <marker date="1565370887616" expanded="true" signature="1607:1755" ph="{...}" />
-                <marker date="1565370887616" expanded="true" signature="1661:1745" ph="{...}" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Assets/Scripts/Constants/Enums.cs">
-          <provider selected="true" editor-type-id="text-editor">
-            <state>
-              <caret column="18" selection-start-column="18" selection-end-column="18" />
-              <folding>
-                <marker date="1565118651167" expanded="true" signature="19:828" ph="{...}" />
-                <marker date="1565118651167" expanded="true" signature="48:177" ph="{...}" />
-                <marker date="1565118651167" expanded="true" signature="207:328" ph="{...}" />
-                <marker date="1565118651167" expanded="true" signature="352:481" ph="{...}" />
-                <marker date="1565118651167" expanded="true" signature="512:561" ph="{...}" />
-                <marker date="1565118651167" expanded="true" signature="589:660" ph="{...}" />
-                <marker date="1565118651167" expanded="true" signature="685:826" ph="{...}" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Assets/Scripts/StateManager/StateController.cs">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="30">
-              <caret line="2" column="17" selection-start-line="2" selection-start-column="17" selection-end-line="2" selection-end-column="17" />
-              <folding>
-                <marker date="1565118193284" expanded="true" signature="37:815" ph="{...}" />
-                <marker date="1565118193284" expanded="true" signature="75:813" ph="{...}" />
-                <marker date="1565118193284" expanded="true" signature="205:308" ph="{...}" />
-                <marker date="1565118193284" expanded="true" signature="335:446" ph="{...}" />
-                <marker date="1565118193284" expanded="true" signature="487:798" ph="{...}" />
-                <marker date="1565118193284" expanded="true" signature="513:654" ph="{...}" />
-                <marker date="1565118193284" expanded="true" signature="686:775" ph="{...}" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/Assets/Scripts/BootManager/Boot.cs">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="218">
-              <caret line="19" column="86" selection-start-line="19" selection-start-column="86" selection-end-line="19" selection-end-column="86" />
-              <folding>
-                <marker date="1565371858507" expanded="true" signature="6:92" ph="..." />
-                <marker date="1565371858507" expanded="true" signature="115:1774" ph="{...}" />
-                <marker date="1565371858507" expanded="true" signature="155:1772" ph="{...}" />
-                <marker date="1565371858507" expanded="true" signature="530:653" ph="/// Hier wird alles referenzen Instanziert. und den Boot als Singelton gemacht ... " />
-                <marker date="1565371858507" expanded="true" signature="674:1267" ph="{...}" />
-                <marker date="1565371858507" expanded="true" signature="723:1126" ph="{...}" />
-                <marker date="1565371858507" expanded="true" signature="1143:1208" ph="{...}" />
-                <marker date="1565371858507" expanded="true" signature="1288:1332" ph="{...}" />
-                <marker date="1565371858507" expanded="true" signature="1341:1444" ph="/// Hier wird alles Inizialisiert was man im Awake braucht ... " />
-                <marker date="1565371858507" expanded="true" signature="1474:1602" ph="{...}" />
-                <marker date="1565371858507" expanded="true" signature="1611:1715" ph="/// Hier wird alles Inizialisiert was man am Start braucht. ... " />
-                <marker date="1565371858507" expanded="true" signature="1746:1766" ph="{...}" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Readme.md">
           <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
             <state split_layout="SPLIT">
-              <first_editor relative-caret-position="489">
+              <first_editor relative-caret-position="497">
                 <caret line="96" column="23" selection-start-line="96" selection-start-column="23" selection-end-line="96" selection-end-column="23" />
               </first_editor>
               <second_editor />
@@ -143,34 +48,49 @@
           </provider>
         </entry>
       </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/Assets/Scripts/BootManager/Boot.cs">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="435">
+              <caret line="30" column="45" selection-start-line="30" selection-start-column="45" selection-end-line="30" selection-end-column="45" />
+              <folding>
+                <marker date="1565373206171" expanded="true" signature="7:95" ph="..." />
+                <marker date="1565373206171" expanded="true" signature="118:1777" ph="{...}" />
+                <marker date="1565373206171" expanded="true" signature="158:1775" ph="{...}" />
+                <marker date="1565373206171" expanded="true" signature="533:656" ph="/// Hier wird alles referenzen Instanziert. und den Boot als Singelton gemacht ... " />
+                <marker date="1565373206171" expanded="true" signature="677:1270" ph="{...}" />
+                <marker date="1565373206171" expanded="true" signature="726:1129" ph="{...}" />
+                <marker date="1565373206171" expanded="true" signature="1146:1211" ph="{...}" />
+                <marker date="1565373206171" expanded="true" signature="1291:1335" ph="{...}" />
+                <marker date="1565373206171" expanded="true" signature="1344:1447" ph="/// Hier wird alles Inizialisiert was man im Awake braucht ... " />
+                <marker date="1565373206171" expanded="true" signature="1477:1605" ph="{...}" />
+                <marker date="1565373206171" expanded="true" signature="1614:1718" ph="/// Hier wird alles Inizialisiert was man am Start braucht. ... " />
+                <marker date="1565373206171" expanded="true" signature="1749:1769" ph="{...}" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Assets/Scripts/SpawnManager/SpawnController.cs">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="150">
-              <caret line="10" column="48" selection-start-line="10" selection-start-column="48" selection-end-line="10" selection-end-column="48" />
+            <state relative-caret-position="45">
+              <caret line="7" column="17" selection-start-line="7" selection-start-column="17" selection-end-line="7" selection-end-column="17" />
               <folding>
-                <marker date="1565371579614" expanded="true" signature="6:86" ph="..." />
-                <marker date="1565371579614" expanded="true" signature="110:761" ph="{...}" />
-                <marker date="1565371579614" expanded="true" signature="145:759" ph="{...}" />
-                <marker date="1565371579614" expanded="true" signature="160:245" ph="/// TODO soll noch geschrieben werden!!! ... " />
-                <marker date="1565371579614" expanded="true" signature="284:304" ph="{...}" />
-                <marker date="1565371579614" expanded="true" signature="373:753" ph="{...}" />
-                <marker date="1565371579614" expanded="true" signature="399:590" ph="{...}" />
-                <marker date="1565371579614" expanded="true" signature="622:718" ph="{...}" />
+                <marker date="1565373126770" expanded="false" signature="6:86" ph="..." />
+                <marker date="1565373126770" expanded="true" signature="110:761" ph="{...}" />
+                <marker date="1565373126770" expanded="true" signature="145:759" ph="{...}" />
+                <marker date="1565373126770" expanded="true" signature="160:245" ph="/// TODO soll noch geschrieben werden!!! ... " />
+                <marker date="1565373126770" expanded="true" signature="284:304" ph="{...}" />
+                <marker date="1565373126770" expanded="true" signature="373:753" ph="{...}" />
+                <marker date="1565373126770" expanded="true" signature="399:590" ph="{...}" />
+                <marker date="1565373126770" expanded="true" signature="622:718" ph="{...}" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
     </leaf>
-  </component>
-  <component name="FindInProjectRecents">
-    <findStrings>
-      <find>12f</find>
-    </findStrings>
-    <replaceStrings>
-      <replace>13f</replace>
-    </replaceStrings>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -181,13 +101,13 @@
     <setting file="file://$PROJECT_DIR$/Assets/Scenes/tarentScene/LightingData.asset.meta" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/StateManager/StateController.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Resources/Prefabs/Humans.meta" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/Scripts/SpawnManager/SpawnController.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scenes/tarentScene/Lightmap-0_comp_light.exr.meta" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/BootManager/Boot.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scenes/tarentScene/ReflectionProbe-0.exr.meta" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/GameCloud/Container.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scenes/tarentScene/LightingData.asset" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Constants/Enums.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/SpawnManager/SpawnController.cs" root0="FORCE_HIGHLIGHTING" />
   </component>
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
@@ -197,19 +117,17 @@
         <option value="$PROJECT_DIR$/Assets/.gitignore" />
         <option value="$PROJECT_DIR$/Assets/Scripts/StateManager/StateController.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Constants/Enums.cs" />
-        <option value="$PROJECT_DIR$/.gitlab-ci.yml" />
-        <option value="$PROJECT_DIR$/Readme.md" />
-        <option value="$PROJECT_DIR$/Assets/Walk.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/GameCloud/Container.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/SpawnManager/SpawnController.cs" />
+        <option value="$PROJECT_DIR$/Readme.md" />
         <option value="$PROJECT_DIR$/Assets/Scripts/BootManager/Boot.cs" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="y" value="24" />
-    <option name="width" value="960" />
-    <option name="height" value="1032" />
+    <option name="x" value="240" />
+    <option name="y" value="153" />
+    <option name="width" value="1440" />
+    <option name="height" value="774" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectView">
@@ -224,6 +142,41 @@
             <path>
               <item name="" type="e068e287:UnityExplorerRootNode" />
               <item name="Assets" type="8711f2a6:AssetsRoot" />
+            </path>
+            <path>
+              <item name="" type="e068e287:UnityExplorerRootNode" />
+              <item name="Assets" type="8711f2a6:AssetsRoot" />
+              <item name="Scripts" type="1045f7f1:UnityExplorerNode" />
+            </path>
+            <path>
+              <item name="" type="e068e287:UnityExplorerRootNode" />
+              <item name="Assets" type="8711f2a6:AssetsRoot" />
+              <item name="Scripts" type="1045f7f1:UnityExplorerNode" />
+              <item name="BootManager" type="1045f7f1:UnityExplorerNode" />
+            </path>
+            <path>
+              <item name="" type="e068e287:UnityExplorerRootNode" />
+              <item name="Assets" type="8711f2a6:AssetsRoot" />
+              <item name="Scripts" type="1045f7f1:UnityExplorerNode" />
+              <item name="Constants" type="1045f7f1:UnityExplorerNode" />
+            </path>
+            <path>
+              <item name="" type="e068e287:UnityExplorerRootNode" />
+              <item name="Assets" type="8711f2a6:AssetsRoot" />
+              <item name="Scripts" type="1045f7f1:UnityExplorerNode" />
+              <item name="GameCloud" type="1045f7f1:UnityExplorerNode" />
+            </path>
+            <path>
+              <item name="" type="e068e287:UnityExplorerRootNode" />
+              <item name="Assets" type="8711f2a6:AssetsRoot" />
+              <item name="Scripts" type="1045f7f1:UnityExplorerNode" />
+              <item name="SpawnManager" type="1045f7f1:UnityExplorerNode" />
+            </path>
+            <path>
+              <item name="" type="e068e287:UnityExplorerRootNode" />
+              <item name="Assets" type="8711f2a6:AssetsRoot" />
+              <item name="Scripts" type="1045f7f1:UnityExplorerNode" />
+              <item name="StateManager" type="1045f7f1:UnityExplorerNode" />
             </path>
           </expand>
           <select />
@@ -297,12 +250,11 @@
       <workItem from="1565123974582" duration="856000" />
       <workItem from="1565192124681" duration="4688000" />
       <workItem from="1565260309203" duration="796000" />
-      <workItem from="1565273839274" duration="5237000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="30649000" />
+    <option name="totallyTimeSpent" value="17772000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -317,7 +269,7 @@
     <frame x="-1" y="24" width="1922" height="1033" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.14994664" />
+      <window_info content_ui="combo" id="Project" order="0" weight="0.6622807" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Image Layers" order="2" />
       <window_info id="Capture Tool" order="3" />
@@ -336,7 +288,7 @@
       <window_info anchor="bottom" id="Unity" order="11" />
       <window_info anchor="bottom" id="Database Changes" order="12" />
       <window_info anchor="bottom" id="Unit Tests" order="13" />
-      <window_info anchor="bottom" id="Terminal" order="14" visible="true" weight="0.2872928" />
+      <window_info active="true" anchor="bottom" id="Terminal" order="14" visible="true" weight="0.2872928" />
       <window_info anchor="bottom" id="Event Log" order="15" side_tool="true" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
@@ -409,10 +361,10 @@
     <entry file="file://$PROJECT_DIR$/Assets/Scripts/GameContainer/Container.cs" />
     <entry file="file://$PROJECT_DIR$/Assets/Scripts/SimpleCameraController.cs" />
     <entry file="file://$PROJECT_DIR$/Assets/.gitignore" />
-    <entry file="file://$PROJECT_DIR$/.gitlab-ci.yml">
+    <entry file="file://$PROJECT_DIR$/Assets/Scripts/GameCloud/Container.cs">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="90">
-          <caret line="6" column="15" lean-forward="true" selection-start-line="6" selection-start-column="15" selection-end-line="6" selection-end-column="15" />
+        <state relative-caret-position="255">
+          <caret line="24" selection-start-line="24" selection-end-line="24" />
         </state>
       </provider>
     </entry>
@@ -421,7 +373,6 @@
         <state>
           <caret column="18" selection-start-column="18" selection-end-column="18" />
           <folding>
-            <marker date="1565118651167" expanded="true" signature="19:828" ph="{...}" />
             <marker date="1565118651167" expanded="true" signature="48:177" ph="{...}" />
             <marker date="1565118651167" expanded="true" signature="207:328" ph="{...}" />
             <marker date="1565118651167" expanded="true" signature="352:481" ph="{...}" />
@@ -437,7 +388,6 @@
         <state relative-caret-position="30">
           <caret line="2" column="17" selection-start-line="2" selection-start-column="17" selection-end-line="2" selection-end-column="17" />
           <folding>
-            <marker date="1565118193284" expanded="true" signature="37:815" ph="{...}" />
             <marker date="1565118193284" expanded="true" signature="75:813" ph="{...}" />
             <marker date="1565118193284" expanded="true" signature="205:308" ph="{...}" />
             <marker date="1565118193284" expanded="true" signature="335:446" ph="{...}" />
@@ -452,72 +402,47 @@
       <provider editor-type-id="text-editor" />
       <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
         <state split_layout="SPLIT">
-          <first_editor relative-caret-position="489">
+          <first_editor relative-caret-position="497">
             <caret line="96" column="23" selection-start-line="96" selection-start-column="23" selection-end-line="96" selection-end-column="23" />
           </first_editor>
           <second_editor />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Assets/Scripts/GameCloud/Container.cs">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="255">
-          <caret line="21" selection-start-line="21" selection-end-line="21" />
-          <folding>
-            <marker date="1565370887616" expanded="false" signature="6:118" ph="..." />
-            <marker date="1565370887616" expanded="true" signature="139:1763" ph="{...}" />
-            <marker date="1565370887616" expanded="true" signature="170:1761" ph="{...}" />
-            <marker date="1565370887616" expanded="true" signature="499:801" ph="{...}" />
-            <marker date="1565370887616" expanded="true" signature="1071:1428" ph="{...}" />
-            <marker date="1565370887616" expanded="true" signature="1230:1386" ph="{...}" />
-            <marker date="1565370887616" expanded="true" signature="1289:1372" ph="{...}" />
-            <marker date="1565370887616" expanded="true" signature="1607:1755" ph="{...}" />
-            <marker date="1565370887616" expanded="true" signature="1661:1745" ph="{...}" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Assets/Walk.cs">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="285">
-          <caret line="19" column="29" lean-forward="true" selection-start-line="19" selection-start-column="29" selection-end-line="19" selection-end-column="29" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/Assets/Scripts/SpawnManager/SpawnController.cs">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="150">
-          <caret line="10" column="48" selection-start-line="10" selection-start-column="48" selection-end-line="10" selection-end-column="48" />
+        <state relative-caret-position="45">
+          <caret line="7" column="17" selection-start-line="7" selection-start-column="17" selection-end-line="7" selection-end-column="17" />
           <folding>
-            <marker date="1565371579614" expanded="true" signature="6:86" ph="..." />
-            <marker date="1565371579614" expanded="true" signature="110:761" ph="{...}" />
-            <marker date="1565371579614" expanded="true" signature="145:759" ph="{...}" />
-            <marker date="1565371579614" expanded="true" signature="160:245" ph="/// TODO soll noch geschrieben werden!!! ... " />
-            <marker date="1565371579614" expanded="true" signature="284:304" ph="{...}" />
-            <marker date="1565371579614" expanded="true" signature="373:753" ph="{...}" />
-            <marker date="1565371579614" expanded="true" signature="399:590" ph="{...}" />
-            <marker date="1565371579614" expanded="true" signature="622:718" ph="{...}" />
+            <marker date="1565373126770" expanded="false" signature="6:86" ph="..." />
+            <marker date="1565373126770" expanded="true" signature="110:761" ph="{...}" />
+            <marker date="1565373126770" expanded="true" signature="145:759" ph="{...}" />
+            <marker date="1565373126770" expanded="true" signature="160:245" ph="/// TODO soll noch geschrieben werden!!! ... " />
+            <marker date="1565373126770" expanded="true" signature="284:304" ph="{...}" />
+            <marker date="1565373126770" expanded="true" signature="373:753" ph="{...}" />
+            <marker date="1565373126770" expanded="true" signature="399:590" ph="{...}" />
+            <marker date="1565373126770" expanded="true" signature="622:718" ph="{...}" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/Assets/Scripts/BootManager/Boot.cs">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="218">
-          <caret line="19" column="86" selection-start-line="19" selection-start-column="86" selection-end-line="19" selection-end-column="86" />
+        <state relative-caret-position="435">
+          <caret line="30" column="45" selection-start-line="30" selection-start-column="45" selection-end-line="30" selection-end-column="45" />
           <folding>
-            <marker date="1565371858507" expanded="true" signature="6:92" ph="..." />
-            <marker date="1565371858507" expanded="true" signature="115:1774" ph="{...}" />
-            <marker date="1565371858507" expanded="true" signature="155:1772" ph="{...}" />
-            <marker date="1565371858507" expanded="true" signature="530:653" ph="/// Hier wird alles referenzen Instanziert. und den Boot als Singelton gemacht ... " />
-            <marker date="1565371858507" expanded="true" signature="674:1267" ph="{...}" />
-            <marker date="1565371858507" expanded="true" signature="723:1126" ph="{...}" />
-            <marker date="1565371858507" expanded="true" signature="1143:1208" ph="{...}" />
-            <marker date="1565371858507" expanded="true" signature="1288:1332" ph="{...}" />
-            <marker date="1565371858507" expanded="true" signature="1341:1444" ph="/// Hier wird alles Inizialisiert was man im Awake braucht ... " />
-            <marker date="1565371858507" expanded="true" signature="1474:1602" ph="{...}" />
-            <marker date="1565371858507" expanded="true" signature="1611:1715" ph="/// Hier wird alles Inizialisiert was man am Start braucht. ... " />
-            <marker date="1565371858507" expanded="true" signature="1746:1766" ph="{...}" />
+            <marker date="1565373206171" expanded="true" signature="7:95" ph="..." />
+            <marker date="1565373206171" expanded="true" signature="118:1777" ph="{...}" />
+            <marker date="1565373206171" expanded="true" signature="158:1775" ph="{...}" />
+            <marker date="1565373206171" expanded="true" signature="533:656" ph="/// Hier wird alles referenzen Instanziert. und den Boot als Singelton gemacht ... " />
+            <marker date="1565373206171" expanded="true" signature="677:1270" ph="{...}" />
+            <marker date="1565373206171" expanded="true" signature="726:1129" ph="{...}" />
+            <marker date="1565373206171" expanded="true" signature="1146:1211" ph="{...}" />
+            <marker date="1565373206171" expanded="true" signature="1291:1335" ph="{...}" />
+            <marker date="1565373206171" expanded="true" signature="1344:1447" ph="/// Hier wird alles Inizialisiert was man im Awake braucht ... " />
+            <marker date="1565373206171" expanded="true" signature="1477:1605" ph="{...}" />
+            <marker date="1565373206171" expanded="true" signature="1614:1718" ph="/// Hier wird alles Inizialisiert was man am Start braucht. ... " />
+            <marker date="1565373206171" expanded="true" signature="1749:1769" ph="{...}" />
           </folding>
         </state>
       </provider>

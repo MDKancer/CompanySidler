@@ -1,5 +1,6 @@
 ﻿using Constants;
 using GameCloud;
+using SpawnManager;
 using StateMachine;
 using UnityEngine;
 
@@ -13,7 +14,11 @@ namespace BootManager
         public static Container container;
         public static StateController<GameState> gameStateController;
         public static StateController<RuntimeState> runtimeStateController;
+        public static SpawnController spawnController;
 
+        /// <summary>
+        /// Hier wird alles referenzen Instanziert. und den Boot als Singelton gemacht
+        /// </summary>
         void Awake()
         {
             if (boot_Instance == null)
@@ -23,7 +28,7 @@ namespace BootManager
                 container = new Container();
                 gameStateController = new StateController<GameState>();
                 runtimeStateController = new StateController<RuntimeState>();
-                
+                spawnController = new SpawnController();
                 DontDestroyOnLoad(gameObject);
             }
             else
@@ -38,13 +43,21 @@ namespace BootManager
         {
             AllBegin();
         }
+        /// <summary>
+        /// Hier wird alles Inizialisiert was man im Awake braucht
+        /// </summary>
         public void Booting()
         {
           container.LoadAllResources();
+          
+          spawnController.InitialWaveSpawn();
+          
         }
+        /// <summary>
+        /// Hier wird alles Inizialisiert was man am Start braucht.
+        /// </summary>
         public void AllBegin()
         {
-            
         }
     }
 }

@@ -23,7 +23,7 @@ namespace GameCloud
 
         public void AddSpawnededGameObject(GameObject gameObject) => spawnedGameObjects.Add(gameObject);
 
-        public List<GameObject> SpawnedGameObjects => spawnedGameObjects;
+        public  IList<GameObject> SpawnedGameObjects =>  spawnedGameObjects.AsReadOnly();
 
         public List<GameObject> GetPrefabsByType(EntityType entityType)
         {

@@ -162,6 +162,9 @@
           <e p="GameCloud" t="Include">
             <e p="Container.cs" t="Include" />
           </e>
+          <e p="SpawnManager" t="Include">
+            <e p="SpawnController.cs" t="Include" />
+          </e>
           <e p="StateManager" t="Include">
             <e p="StateController.cs" t="Include" />
           </e>

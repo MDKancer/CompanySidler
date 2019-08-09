@@ -12,23 +12,23 @@
 ***
 ### Beschreibung
 
-    tarentSidler - Es ist Speil auf tarent GmbH Infrastruktur basiert und mit Sidler Stil/Thema kommbiniert.
-        Jeder tarent Abteilung ist pro Gebäude verteilt, um ein tarent Stadt darzustellen.
-        Naturlich die Abteilungen kommuniezieren mit einanderen,
-        hier ist das so dargestellt das die Mitarbeiter sich bewegen zwischen die Abteilungen um diese Visuele verbindung zu haben,
-        dass die Abteilungen nicht selbständig Arbeiten, sondern die sind abhängig von einanderen.
-        So wie bei allen anderen Unternehmen gibt es Mitarbeiter, Kunden, Normale menschen , Tiere, Kindern, sowohl als auch Häckereingriefen,
-        und diese Faktoren sind in das Spiel dargestellt, um den Blick / der Verbindung zu dem Realität nicht zu verlieren.
-        
-        Ziel dieses Spiel ist : 
-            den tarent Stadt zu verbessern und im eine armoniesche Arbeitsatmosphere zu bringen.
+> **`tarentSidler`** - Es ist Speil auf tarent GmbH Infrastruktur basiert und mit Sidler Stil/Thema kommbiniert.
+>Jeder tarent Abteilung ist pro Gebäude verteilt, um ein tarent Stadt darzustellen.
+>Naturlich die Abteilungen kommuniezieren mit einanderen,
+>hier ist das so dargestellt das die Mitarbeiter sich bewegen zwischen die Abteilungen um diese Visuele verbindung zu haben,
+>dass die Abteilungen nicht selbständig Arbeiten, sondern die sind abhängig von einanderen.
+>So wie bei allen anderen Unternehmen gibt es Mitarbeiter, Kunden, Normale menschen , Tiere, Kindern, sowohl als auch Häckereingriefen,
+>und diese Faktoren sind in das Spiel dargestellt, um den Blick / der Verbindung zu dem Realität nicht zu verlieren.
+
+>Ziel dieses Spiel ist : 
+>den tarent Stadt zu verbessern und im eine armoniesche Arbeitsatmosphere zu bringen.
 ___
 
 ### Planung
 
-Mit allen gebäuden etc 200 Mitbewohner haben Platz??
-Ressourcen = Geld(steuern und ressourcen), Kunde, Projekte
-Gebäude (Größe, Anzahl,Arbeitsplätze):
+Mit allen gebäuden etc. **200 Mitbewohner** haben Platz??
+<br>***Ressourcen*** = Geld(steuern und ressourcen), Kunde, Projekte
+<br>***Gebäude*** (Größe, Anzahl,Arbeitsplätze):
 
 * **tarent Town**(3x3, 1, 10) = Steuern
 * **Tom Town**(2x2,1,15) = Projekte
@@ -74,3 +74,24 @@ Gebäude (Größe, Anzahl,Arbeitsplätze):
     Die **PathFinder** Klasse bietet die Möglichkeit während des Laufens die Objekte zu einem bestiemten Ziel(Position) bewegen lassen, es benötigt ein **Navmesh** und **NavMeshAgent**. 
 *  ##### SceneManager :
     Diese Klasse macht den Spring / der Wechselung zwischen den Scenen einfacher, und bittet die möglichkeit zu läzt gewesene Scene zu wechseln. 
+*  ##### BuildingPackage : 
+    * ###### iBuilding: 
+        hat die funktionen/Attribute:
+        * Price - Struct
+        * HitPoints - int
+        * Time - Time
+        * Upgrade()
+    * ###### iAccounting:
+        * Work()
+        * WorkPlaces
+        * Compute()
+    * ##### Building : MonoBehaviour
+        * Coroutine() ?
+*  ##### EntityPackage : 
+    * ###### iEntity: 
+        hat die funktionen/Attribute:
+        * Do() ?
+    * ###### iDeveloper:
+        * Programming() ?
+    * ##### Entity : MonoBehaviour
+        * Coroutine() ?

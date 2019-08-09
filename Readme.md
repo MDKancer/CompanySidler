@@ -74,3 +74,24 @@ Gebäude (Größe, Anzahl,Arbeitsplätze):
     Die **PathFinder** Klasse bietet die Möglichkeit während des Laufens die Objekte zu einem bestiemten Ziel(Position) bewegen lassen, es benötigt ein **Navmesh** und **NavMeshAgent**. 
 *  ##### SceneManager :
     Diese Klasse macht den Spring / der Wechselung zwischen den Scenen einfacher, und bittet die möglichkeit zu läzt gewesene Scene zu wechseln. 
+*  ##### BuildingPackage : 
+    * ###### iBuilding: 
+        hat die funktionen/Attribute:
+        * Price - Struct
+        * HitPoints - int
+        * Time - Time
+        * Upgrade()
+    * ###### iAccounting:
+        * Work()
+        * WorkPlaces
+        * Compute()
+    * ##### Building : MonoBehaviour
+        * Coroutine() ?
+*  ##### EntityPackage : 
+    * ###### iEntity: 
+        hat die funktionen/Attribute:
+        * Do() ?
+    * ###### iDeveloper:
+        * Programming() ?
+    * ##### Entity : MonoBehaviour
+        * Coroutine() ?

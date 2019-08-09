@@ -69,6 +69,7 @@
     <Compile Include="Assets\Scripts\BootManager\Boot.cs" />
     <Compile Include="Assets\Scripts\Constants\Enums.cs" />
     <Compile Include="Assets\Scripts\GameCloud\Container.cs" />
+    <Compile Include="Assets\Scripts\SpawnManager\SpawnController.cs" />
     <Compile Include="Assets\Scripts\StateManager\StateController.cs" />
     <Reference Include="Unity.Timeline.Editor">
       <HintPath>/home/dlozan/workspace/Unity/tarentGame/Library/ScriptAssemblies/Unity.Timeline.Editor.dll</HintPath>

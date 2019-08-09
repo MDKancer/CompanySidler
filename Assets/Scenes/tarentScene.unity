@@ -14,10 +14,10 @@ OcclusionCullingSettings:
 RenderSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 9
-  m_Fog: 0
+  m_Fog: 1
   m_FogColor: {r: 0.65080994, g: 0.666729, b: 0.7075472, a: 1}
   m_FogMode: 3
-  m_FogDensity: 0.05
+  m_FogDensity: 0.005
   m_LinearFogStart: 0
   m_LinearFogEnd: 300
   m_AmbientSkyColor: {r: 0.212, g: 0.227, b: 0.259, a: 1}
@@ -27,7 +27,7 @@ RenderSettings:
   m_AmbientMode: 0
   m_SubtractiveShadowColor: {r: 0.13296545, g: 0.19145328, b: 0.33962262, a: 1}
   m_SkyboxMaterial: {fileID: 2100000, guid: 0ffaa0b7117ba8c47a9d05ae701d4b4d, type: 2}
-  m_HaloStrength: 0.5
+  m_HaloStrength: 0.3
   m_FlareStrength: 1
   m_FlareFadeSpeed: 3
   m_HaloTexture: {fileID: 0}
@@ -487,127 +487,72 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 45, y: 130, z: 90}
---- !u!1001 &2040187788385126745
+--- !u!1001 &8912816598256496795
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 2040187787509754072, guid: 2cc53fec42ad255499081e357ef796cd,
+    - target: {fileID: 8912816597974701940, guid: 633eb2425518432de82efbcef1a8b835,
         type: 3}
       propertyPath: m_Name
-      value: Terrain
+      value: Firma
       objectReference: {fileID: 0}
-    - target: {fileID: 2040187787509754077, guid: 2cc53fec42ad255499081e357ef796cd,
+    - target: {fileID: 8912816597974701928, guid: 633eb2425518432de82efbcef1a8b835,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: 65
       objectReference: {fileID: 0}
-    - target: {fileID: 2040187787509754077, guid: 2cc53fec42ad255499081e357ef796cd,
+    - target: {fileID: 8912816597974701928, guid: 633eb2425518432de82efbcef1a8b835,
         type: 3}
       propertyPath: m_LocalPosition.y
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 2040187787509754077, guid: 2cc53fec42ad255499081e357ef796cd,
+    - target: {fileID: 8912816597974701928, guid: 633eb2425518432de82efbcef1a8b835,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: 65
       objectReference: {fileID: 0}
-    - target: {fileID: 2040187787509754077, guid: 2cc53fec42ad255499081e357ef796cd,
+    - target: {fileID: 8912816597974701928, guid: 633eb2425518432de82efbcef1a8b835,
         type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
-    - target: {fileID: 2040187787509754077, guid: 2cc53fec42ad255499081e357ef796cd,
+    - target: {fileID: 8912816597974701928, guid: 633eb2425518432de82efbcef1a8b835,
         type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
-    - target: {fileID: 2040187787509754077, guid: 2cc53fec42ad255499081e357ef796cd,
+    - target: {fileID: 8912816597974701928, guid: 633eb2425518432de82efbcef1a8b835,
         type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
-    - target: {fileID: 2040187787509754077, guid: 2cc53fec42ad255499081e357ef796cd,
+    - target: {fileID: 8912816597974701928, guid: 633eb2425518432de82efbcef1a8b835,
         type: 3}
       propertyPath: m_LocalRotation.w
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 2040187787509754077, guid: 2cc53fec42ad255499081e357ef796cd,
+    - target: {fileID: 8912816597974701928, guid: 633eb2425518432de82efbcef1a8b835,
         type: 3}
       propertyPath: m_RootOrder
       value: 2
       objectReference: {fileID: 0}
-    - target: {fileID: 2040187787509754077, guid: 2cc53fec42ad255499081e357ef796cd,
+    - target: {fileID: 8912816597974701928, guid: 633eb2425518432de82efbcef1a8b835,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 2040187787509754077, guid: 2cc53fec42ad255499081e357ef796cd,
+    - target: {fileID: 8912816597974701928, guid: 633eb2425518432de82efbcef1a8b835,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 2040187787509754077, guid: 2cc53fec42ad255499081e357ef796cd,
+    - target: {fileID: 8912816597974701928, guid: 633eb2425518432de82efbcef1a8b835,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 2040187786515808940, guid: 2cc53fec42ad255499081e357ef796cd,
-        type: 3}
-      propertyPath: m_Name
-      value: Office
-      objectReference: {fileID: 0}
-    - target: {fileID: 2040187786712817020, guid: 2cc53fec42ad255499081e357ef796cd,
-        type: 3}
-      propertyPath: m_Name
-      value: Server
-      objectReference: {fileID: 0}
-    - target: {fileID: 2040187787501342026, guid: 2cc53fec42ad255499081e357ef796cd,
-        type: 3}
-      propertyPath: m_Name
-      value: Buchhaltung
-      objectReference: {fileID: 0}
-    - target: {fileID: 2040187787749605898, guid: 2cc53fec42ad255499081e357ef796cd,
-        type: 3}
-      propertyPath: m_Name
-      value: Azubis
-      objectReference: {fileID: 0}
-    - target: {fileID: 2040187787780277113, guid: 2cc53fec42ad255499081e357ef796cd,
-        type: 3}
-      propertyPath: m_Name
-      value: Dev_Ops
-      objectReference: {fileID: 0}
-    - target: {fileID: 2040187787988994309, guid: 2cc53fec42ad255499081e357ef796cd,
-        type: 3}
-      propertyPath: m_Name
-      value: TarentTown
-      objectReference: {fileID: 0}
-    - target: {fileID: 2040187788083185847, guid: 2cc53fec42ad255499081e357ef796cd,
-        type: 3}
-      propertyPath: m_Name
-      value: Marketing
-      objectReference: {fileID: 0}
-    - target: {fileID: 2040187788250353318, guid: 2cc53fec42ad255499081e357ef796cd,
-        type: 3}
-      propertyPath: m_Name
-      value: TomTown
-      objectReference: {fileID: 0}
-    - target: {fileID: 2040187788268661819, guid: 2cc53fec42ad255499081e357ef796cd,
-        type: 3}
-      propertyPath: m_Name
-      value: REWETown
-      objectReference: {fileID: 0}
-    - target: {fileID: 2040187788350179344, guid: 2cc53fec42ad255499081e357ef796cd,
-        type: 3}
-      propertyPath: m_Name
-      value: Admin
-      objectReference: {fileID: 0}
-    - target: {fileID: 2040187788404634081, guid: 2cc53fec42ad255499081e357ef796cd,
-        type: 3}
-      propertyPath: m_Name
-      value: Sozialraum
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 2cc53fec42ad255499081e357ef796cd, type: 3}
+  m_SourcePrefab: {fileID: 100100000, guid: 633eb2425518432de82efbcef1a8b835, type: 3}

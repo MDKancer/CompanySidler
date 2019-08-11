@@ -2,84 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="76fb7938-faf3-40ef-a536-80ac4747bde9" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.tarentGame/.idea/contentModel.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.tarentGame/.idea/contentModel.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.tarentGame/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.tarentGame/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assembly-CSharp.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/Assembly-CSharp.csproj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Resources/Prefabs/Buildings.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Resources/Prefabs/Firma.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/Prefabs/Firma.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Resources/Prefabs/Humans.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Resources/Prefabs/Humans/Worker.prefab" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Resources/Prefabs/Humans/Worker.prefab.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/tarentScene.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/tarentScene.unity" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/tarentScene.unity.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/tarentScene/LightingData.asset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/tarentScene/LightingData.asset.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/tarentScene/Lightmap-0_comp_light.exr" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/tarentScene/Lightmap-0_comp_light.exr.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/tarentScene/NavMesh.asset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/tarentScene/NavMesh.asset.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/tarentScene/ReflectionProbe-0.exr" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/tarentScene/ReflectionProbe-0.exr.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/BootManager/Boot.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/BootManager/Boot.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Constants/Enums.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Constants/Enums.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/GameCloud.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Container.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/GameCloud/Container.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Container/Container.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/GameCloud/Container.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Container/Container.cs.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/StateManager/StateController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/StateManager/StateManager.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/StateManager/StateController.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/StateManager/StateManager.cs.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Settings/LWRP_Presets/AudioCompressedInMemory.preset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Settings/LWRP_Presets/AudioCompressedInMemory.preset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Settings/LWRP_Presets/AudioStreaming.preset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Settings/LWRP_Presets/AudioStreaming.preset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Settings/LWRP_Presets/NormalTexture.preset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Settings/LWRP_Presets/NormalTexture.preset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Settings/LWRP_Presets/UtilityTexture.preset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Settings/LWRP_Presets/UtilityTexture.preset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Library/CurrentLayout.dwlt" beforeDir="false" afterPath="$PROJECT_DIR$/Library/CurrentLayout.dwlt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Library/EditorInstance.json" beforeDir="false" afterPath="$PROJECT_DIR$/Library/EditorInstance.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Library/InspectorExpandedItems.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Library/InspectorExpandedItems.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Library/PackageCache/com.unity.render-pipelines.lightweight@5.7.2/Runtime/Materials/Lit.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Library/PackageCache/com.unity.render-pipelines.lightweight@5.7.2/Runtime/Materials/Lit.mat" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Library/ProtocolInstance.json" beforeDir="false" afterPath="$PROJECT_DIR$/Library/ProtocolInstance.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Library/SceneVisibilityState.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Library/SceneVisibilityState.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Library/ScriptAssemblies/Assembly-CSharp.dll" beforeDir="false" afterPath="$PROJECT_DIR$/Library/ScriptAssemblies/Assembly-CSharp.dll" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Library/ScriptAssemblies/Assembly-CSharp.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/Library/ScriptAssemblies/Assembly-CSharp.pdb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Library/ScriptMapper" beforeDir="false" afterPath="$PROJECT_DIR$/Library/ScriptMapper" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Library/ShaderCache/EditorEncounteredVariants" beforeDir="false" afterPath="$PROJECT_DIR$/Library/ShaderCache/EditorEncounteredVariants" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Library/StateCache/Hierarchy/2ed20e-mainStage.json" beforeDir="false" afterPath="$PROJECT_DIR$/Library/StateCache/Hierarchy/2ed20e-mainStage.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Library/StateCache/SceneView/e3c9da-mainStage.json" beforeDir="false" afterPath="$PROJECT_DIR$/Library/StateCache/SceneView/e3c9da-mainStage.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Library/assetDatabase3" beforeDir="false" afterPath="$PROJECT_DIR$/Library/assetDatabase3" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Library/expandedItems" beforeDir="false" afterPath="$PROJECT_DIR$/Library/expandedItems" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Library/metadata/14/14a57cf3b9fa1c74b884aa7e0dcf1faa" beforeDir="false" afterPath="$PROJECT_DIR$/Library/metadata/14/14a57cf3b9fa1c74b884aa7e0dcf1faa" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Library/metadata/14/14a57cf3b9fa1c74b884aa7e0dcf1faa.info" beforeDir="false" afterPath="$PROJECT_DIR$/Library/metadata/14/14a57cf3b9fa1c74b884aa7e0dcf1faa.info" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Library/metadata/26/2612ceb2b1e6b634e8e716cbb0805729" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Library/metadata/26/2612ceb2b1e6b634e8e716cbb0805729.info" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Library/metadata/2d/2dd802e4d37c65149922028d3e973832" beforeDir="false" afterPath="$PROJECT_DIR$/Library/metadata/2d/2dd802e4d37c65149922028d3e973832" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Library/metadata/2d/2dd802e4d37c65149922028d3e973832.info" beforeDir="false" afterPath="$PROJECT_DIR$/Library/metadata/2d/2dd802e4d37c65149922028d3e973832.info" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Library/metadata/31/31321ba15b8f8eb4c954353edc038b1d.info" beforeDir="false" afterPath="$PROJECT_DIR$/Library/metadata/31/31321ba15b8f8eb4c954353edc038b1d.info" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Library/metadata/35/35a41f64a442af744a37d2f03123a150" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Library/metadata/35/35a41f64a442af744a37d2f03123a150.info" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Library/metadata/45/45f7b2e3c78185248b3adbb14429c2ab" beforeDir="false" afterPath="$PROJECT_DIR$/Library/metadata/45/45f7b2e3c78185248b3adbb14429c2ab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Library/metadata/45/45f7b2e3c78185248b3adbb14429c2ab.info" beforeDir="false" afterPath="$PROJECT_DIR$/Library/metadata/45/45f7b2e3c78185248b3adbb14429c2ab.info" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Library/metadata/46/463065d4f17d1d94d848aa127b94dd43" beforeDir="false" afterPath="$PROJECT_DIR$/Library/metadata/46/463065d4f17d1d94d848aa127b94dd43" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Library/metadata/66/66e7c554ae821304d939dbeb119f6ed4" beforeDir="false" afterPath="$PROJECT_DIR$/Library/metadata/66/66e7c554ae821304d939dbeb119f6ed4" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Library/metadata/66/66e7c554ae821304d939dbeb119f6ed4.info" beforeDir="false" afterPath="$PROJECT_DIR$/Library/metadata/66/66e7c554ae821304d939dbeb119f6ed4.info" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Library/metadata/74/746d96105fe656f44a10e8103d450126" beforeDir="false" afterPath="$PROJECT_DIR$/Library/metadata/74/746d96105fe656f44a10e8103d450126" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Library/metadata/86/86bcce7f5575b54408aa0f3a7d321039" beforeDir="false" afterPath="$PROJECT_DIR$/Library/metadata/86/86bcce7f5575b54408aa0f3a7d321039" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Library/metadata/86/86bcce7f5575b54408aa0f3a7d321039.info" beforeDir="false" afterPath="$PROJECT_DIR$/Library/metadata/86/86bcce7f5575b54408aa0f3a7d321039.info" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Library/metadata/87/874bfa228c9213f47892793a95f9fc4f" beforeDir="false" afterPath="$PROJECT_DIR$/Library/metadata/87/874bfa228c9213f47892793a95f9fc4f" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Library/metadata/87/874bfa228c9213f47892793a95f9fc4f.info" beforeDir="false" afterPath="$PROJECT_DIR$/Library/metadata/87/874bfa228c9213f47892793a95f9fc4f.info" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Library/metadata/d1/d1c3109bdb54ad54c8a2b2838528e640" beforeDir="false" afterPath="$PROJECT_DIR$/Library/metadata/d1/d1c3109bdb54ad54c8a2b2838528e640" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Library/metadata/d1/d1c3109bdb54ad54c8a2b2838528e640.info" beforeDir="false" afterPath="$PROJECT_DIR$/Library/metadata/d1/d1c3109bdb54ad54c8a2b2838528e640.info" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Library/metadata/da/da7ac24b815941b4daa4b7e19dfeaa3a" beforeDir="false" afterPath="$PROJECT_DIR$/Library/metadata/da/da7ac24b815941b4daa4b7e19dfeaa3a" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Library/metadata/e7/e7689051185d12f4298e1ebb2693a29f" beforeDir="false" afterPath="$PROJECT_DIR$/Library/metadata/e7/e7689051185d12f4298e1ebb2693a29f" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Library/metadata/e8/e8537455c6c08bd4e8bf0be3707da685" beforeDir="false" afterPath="$PROJECT_DIR$/Library/metadata/e8/e8537455c6c08bd4e8bf0be3707da685" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Library/metadata/ed/ed1ac3bb5c3fa9a4097e12a0d8737695" beforeDir="false" afterPath="$PROJECT_DIR$/Library/metadata/ed/ed1ac3bb5c3fa9a4097e12a0d8737695" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Library/metadata/ed/ed1ac3bb5c3fa9a4097e12a0d8737695.info" beforeDir="false" afterPath="$PROJECT_DIR$/Library/metadata/ed/ed1ac3bb5c3fa9a4097e12a0d8737695.info" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Library/shadercompiler-UnityShaderCompiler0.log" beforeDir="false" afterPath="$PROJECT_DIR$/Library/shadercompiler-UnityShaderCompiler0.log" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Library/shadercompiler-UnityShaderCompiler1.log" beforeDir="false" afterPath="$PROJECT_DIR$/Library/shadercompiler-UnityShaderCompiler1.log" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Library/shadercompiler-UnityShaderCompiler2.log" beforeDir="false" afterPath="$PROJECT_DIR$/Library/shadercompiler-UnityShaderCompiler2.log" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Library/shadercompiler-UnityShaderCompiler3.log" beforeDir="false" afterPath="$PROJECT_DIR$/Library/shadercompiler-UnityShaderCompiler3.log" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Library/shadercompiler-UnityShaderCompiler4.log" beforeDir="false" afterPath="$PROJECT_DIR$/Library/shadercompiler-UnityShaderCompiler4.log" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Library/shadercompiler-UnityShaderCompiler5.log" beforeDir="false" afterPath="$PROJECT_DIR$/Library/shadercompiler-UnityShaderCompiler5.log" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ProjectSettings/EditorBuildSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/EditorBuildSettings.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Readme.md" beforeDir="false" afterPath="$PROJECT_DIR$/Readme.md" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -89,10 +13,10 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Assets/Scripts/Credits/CreditsManager.cs">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="45">
+            <state relative-caret-position="60">
               <caret line="6" column="20" selection-start-line="6" selection-start-column="20" selection-end-line="6" selection-end-column="20" />
               <folding>
                 <marker date="1565546857932" expanded="false" signature="6:78" ph="..." />
@@ -105,6 +29,15 @@
                 <marker date="1565546857932" expanded="true" signature="1023:1471" ph="{...}" />
                 <marker date="1565546857932" expanded="true" signature="1098:1453" ph="{...}" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/.gitignore">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="540">
+              <caret line="36" selection-start-line="36" selection-end-line="36" />
             </state>
           </provider>
         </entry>
@@ -164,10 +97,12 @@
         <option value="$PROJECT_DIR$/Assets/Scripts/Credits/ProceduralCredits/CreateUI/CreateUI.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Credits/ProceduralCredits/CreateUI/SlidesCoroutines.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Credits/CreditsManager.cs" />
+        <option value="$PROJECT_DIR$/.gitignore" />
       </list>
     </option>
   </component>
-  <component name="ProjectFrameBounds" extendedState="6">
+  <component name="ProjectFrameBounds" extendedState="4">
+    <option name="x" value="960" />
     <option name="y" value="24" />
     <option name="width" value="960" />
     <option name="height" value="1032" />
@@ -304,12 +239,12 @@
       <workItem from="1565192124681" duration="4688000" />
       <workItem from="1565260309203" duration="796000" />
       <workItem from="1565463642278" duration="2562000" />
-      <workItem from="1565536057670" duration="8096000" />
+      <workItem from="1565536057670" duration="8806000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="30687000" />
+    <option name="totallyTimeSpent" value="31397000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -321,10 +256,10 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="-1" y="24" width="1922" height="1033" extended-state="6" />
+    <frame x="960" y="24" width="960" height="1032" extended-state="4" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.19637139" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.40350878" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Image Layers" order="2" />
       <window_info id="Capture Tool" order="3" />
@@ -343,8 +278,8 @@
       <window_info anchor="bottom" id="Unity" order="11" />
       <window_info anchor="bottom" id="Database Changes" order="12" />
       <window_info anchor="bottom" id="Unit Tests" order="13" />
-      <window_info anchor="bottom" id="Terminal" order="14" sideWeight="0.49839914" visible="true" weight="0.2872928" />
-      <window_info anchor="bottom" id="Event Log" order="15" sideWeight="0.50160086" side_tool="true" visible="true" weight="0.2872928" />
+      <window_info active="true" anchor="bottom" id="Terminal" order="14" sideWeight="0.49780703" visible="true" weight="0.28761062" />
+      <window_info anchor="bottom" id="Event Log" order="15" sideWeight="0.502193" side_tool="true" visible="true" weight="0.28761062" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
@@ -636,7 +571,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/Assets/Scripts/Credits/CreditsManager.cs">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="45">
+        <state relative-caret-position="60">
           <caret line="6" column="20" selection-start-line="6" selection-start-column="20" selection-end-line="6" selection-end-column="20" />
           <folding>
             <marker date="1565546857932" expanded="false" signature="6:78" ph="..." />
@@ -649,6 +584,13 @@
             <marker date="1565546857932" expanded="true" signature="1023:1471" ph="{...}" />
             <marker date="1565546857932" expanded="true" signature="1098:1453" ph="{...}" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/.gitignore">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="540">
+          <caret line="36" selection-start-line="36" selection-end-line="36" />
         </state>
       </provider>
     </entry>

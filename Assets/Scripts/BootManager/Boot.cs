@@ -1,5 +1,6 @@
 ﻿﻿using Constants;
 using GameCloud;
+ using SceneController;
  using SpawnManager;
  using StateMachine;
 using UnityEngine;
@@ -13,8 +14,9 @@ namespace BootManager
         public static MonoBehaviour monobehaviour;
         public static Container container;
         public static StateController<GameState> gameStateController;
-        public static StateController<RuntimeState> runtimeStateController;
+        public static StateController<RunTimeState> runtimeStateController;
         public static SpawnController spawnController;
+        public static SceneManager sceneManager;
 
         /// <summary>
         /// Hier wird alles referenzen Instanziert. und den Boot als Singelton gemacht
@@ -27,8 +29,10 @@ namespace BootManager
                 monobehaviour = this;
                 container = new Container();
                 gameStateController = new StateController<GameState>();
-                runtimeStateController = new StateController<RuntimeState>();
+                runtimeStateController = new StateController<RunTimeState>();
                 spawnController = new SpawnController();
+                sceneManager = new SceneManager();
+                
                 DontDestroyOnLoad(gameObject);
             }
             else
@@ -58,6 +62,7 @@ namespace BootManager
         /// </summary>
         public void AllBegin()
         {
+            
         }
     }
 }

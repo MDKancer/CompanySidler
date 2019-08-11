@@ -1,7 +1,0 @@
-## Default project features settings
-default_projects_features:
-  issues: true
-  merge_requests: true
-  wiki: true
-  snippets: false
-  builds: false

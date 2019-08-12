@@ -1,28 +1,24 @@
 ﻿using System.Collections;
-using System.Collections.Generic;
+using NaughtyAttributes;
 using UnityEngine;
 
 namespace Credits
 {
     public class CreditsManager : MonoBehaviour
     {
-
+        [Required]
         public SoWorkers soCredits;
+        [Required]
         public GameObject Parent;
         
-        private LabelCreator lC = new LabelCreator();
-        private RollingCredits rC = new RollingCredits();
+        private readonly LabelCreator labelCreator = new LabelCreator();
+        private readonly RollingCredits rollingCredits = new RollingCredits();
         private GameObject title;
-        private GameObject Label;
-        private float dt = 2f; //abstand der labels
-        private int index = 0;
-
 
         // Use this for initialization
         public void StartCredits()
         {
-
-           title = lC.CreateTitle(soCredits.ProjektName, Parent);
+           title = labelCreator.CreateTitle(soCredits.ProjektName, Parent);
 
             CreateLabel();
         }
@@ -34,20 +30,22 @@ namespace Credits
 
         private IEnumerator StartCredit()
         {
+            GameObject Label = null;
             float delayTime_ts = 0;
-            while (delayTime_ts < dt)
+            int index=0;            
+            
+            while (delayTime_ts < 2.0f) //2.0f Delay der labels
             {
                 delayTime_ts += Time.deltaTime;
-                if (delayTime_ts > (dt * 0.8f))
+                if (delayTime_ts > 1.6f)
                 {
-
                     if (index < soCredits.Worker.Count)
                     {
-                        Label = lC.CreateLabel(soCredits.Position[index], soCredits.Worker[index]);
+                        Label = labelCreator.CreateLabel(soCredits.Position[index], soCredits.Worker[index]);
 
                         Label.transform.SetParent(Parent.transform);
 
-                        StartCoroutine(rC.StartRolling(Label));
+                        StartCoroutine(rollingCredits.StartRolling(Label));
 
                         index++;
                         delayTime_ts = 0;
@@ -56,10 +54,10 @@ namespace Credits
 
                 yield return delayTime_ts;
             }
-
             yield return new WaitForSeconds(2f);
+            
             Destroy(title);
-            Label.transform.parent.gameObject.SetActive(false);
+            Label?.transform.parent.gameObject.SetActive(false);
         }
     }
 }

@@ -1,15 +1,11 @@
 ﻿using System.Collections;
-using System.Collections.Generic;
 using BootManager;
 using UnityEngine;
 
 namespace Credits
 {
-    public class RollingCredits
+    public sealed class RollingCredits
     {
-        private float lifeTime = 5f;
-
-
         public IEnumerator StartRolling(GameObject label)
         {
             GameObject lbl = label;
@@ -21,29 +17,22 @@ namespace Credits
             Vector3 v3_endPosition = new Vector3(0, 130f, 0);
             float ts = 0;
 
-
-
-            while (ts < lifeTime)
+            while (ts < 5.0f) // LifeTime
             {
-
                 ts += Time.deltaTime / 5;
                 
                 if (rT != null)
                 {
                     rT.localPosition = Vector3.Slerp(v3_startPosition, v3_endPosition, ts);
 
-
                     if (rT.localPosition == v3_endPosition)
                     {
                         Boot.monobehaviour.StopCoroutine(StartRolling(label));
                         Object.Destroy(label);
-                        //lbl.SetActive(false);
                     }
                 }
-
                 yield return ts;
             }
-
         }
     }
 }

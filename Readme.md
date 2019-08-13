@@ -74,6 +74,8 @@ Mit allen gebäuden etc. **200 Mitbewohner** haben Platz??
     Die **PathFinder** Klasse bietet die Möglichkeit während des Laufens die Objekte zu einem bestiemten Ziel(Position) bewegen lassen, es benötigt ein **Navmesh** und **NavMeshAgent**. 
 *  ##### SceneManager :
     Diese Klasse macht den Spring / der Wechselung zwischen den Scenen einfacher, und bittet die möglichkeit zu läzt gewesene Scene zu wechseln. 
+*  ##### UIDispatcher :
+    Diese Klasse es kümmert sich um die UI Funktionen / Evenimente.
 *  ##### BuildingPackage : 
     * ###### iBuilding: 
         hat die funktionen/Attribute:
@@ -95,3 +97,5 @@ Mit allen gebäuden etc. **200 Mitbewohner** haben Platz??
         * Programming() ?
     * ##### Entity : MonoBehaviour
         * Coroutine() ?
+*   ##### CreditPackage
+    

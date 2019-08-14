@@ -73,4 +73,12 @@
         DEVELOPER =2,
         ARTIST = 3
     }
+
+    public enum PathProgress
+    {
+        NONE = -1,
+        STOPPED = 0,
+        MOVE = 1,
+        FINISHED=2
+    }
 }

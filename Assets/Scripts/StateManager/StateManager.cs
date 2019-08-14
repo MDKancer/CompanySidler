@@ -1,4 +1,5 @@
 ﻿using System;
+using UnityEngine;
 
 namespace StateMachine
 {
@@ -6,7 +7,6 @@ namespace StateMachine
     {
         private T currentState;
         private T lastState;
-        private T temp;
         
         public T CurrentState
         {
@@ -21,6 +21,8 @@ namespace StateMachine
 
         public void SwitchToLastState()
         {
+            T temp;
+            
             try
             {
                 temp = lastState;
@@ -29,11 +31,9 @@ namespace StateMachine
             }
             catch (Exception e)
             {
-                Console.WriteLine(e);
+                Debug.Log(e);
                 throw;
             }
-            
         }
-        
     }
 }

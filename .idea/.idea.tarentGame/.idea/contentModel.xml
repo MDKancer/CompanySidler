@@ -156,6 +156,9 @@
           <e p="BootManager" t="Include">
             <e p="Boot.cs" t="Include" />
           </e>
+          <e p="CameraController" t="Include">
+            <e p="Controller.cs" t="Include" />
+          </e>
           <e p="Constants" t="Include">
             <e p="Enums.cs" t="Include" />
           </e>
@@ -173,6 +176,9 @@
                 <e p="RollingCredits.cs" t="Include" />
               </e>
             </e>
+          </e>
+          <e p="PathFinder" t="Include">
+            <e p="PathFinder.cs" t="Include" />
           </e>
           <e p="SceneManager" t="Include">
             <e p="SceneManager.cs" t="Include" />

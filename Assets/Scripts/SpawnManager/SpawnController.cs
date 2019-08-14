@@ -13,21 +13,29 @@ namespace SpawnManager
         public void InitialWaveSpawn()
         {
         }
-
-        public Boolean SpawnObject(GameObject go, Vector3 position)
+        
+        /// <summary>
+        /// Diese Funktion Spawned ein Object in ein bestimmten Position.
+        /// Nachdem wird es in Container gespeichert.
+        /// </summary>
+        /// <param name="prefab">
+        /// <param name="position"></param>
+        /// <returns>Wenn das Object Instantiert wurde und in den Container gepseichert wurde, bekommt man zurrück ein true.</returns>
+        public Boolean SpawnObject(GameObject prefab, Vector3 position)
         {
             try
             {
-                GameObject gameObject = Object.Instantiate(go, position, Quaternion.identity);
+                GameObject objectInstace = Object.Instantiate(prefab, position, Quaternion.identity);
 
-                Boot.container.AddSpawnededGameObject(gameObject);
+                Boot.container.AddSpawnededGameObject(objectInstace);
+
+                return true;
             }
             catch (Exception e)
             {
                 Console.WriteLine(e);
                 return false;
             }
-            return true;
         }
     }
 }

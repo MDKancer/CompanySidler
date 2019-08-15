@@ -179,6 +179,7 @@
           </e>
           <e p="PathFinder" t="Include">
             <e p="PathFinder.cs" t="Include" />
+            <e p="test.cs" t="Include" />
           </e>
           <e p="SceneManager" t="Include">
             <e p="SceneManager.cs" t="Include" />

@@ -67,12 +67,14 @@
   <ItemGroup>
     <Compile Include="Assets\ForeignCode\SimpleCameraController.cs" />
     <Compile Include="Assets\Scripts\BootManager\Boot.cs" />
+    <Compile Include="Assets\Scripts\CameraController\Controller.cs" />
     <Compile Include="Assets\Scripts\Constants\Enums.cs" />
     <Compile Include="Assets\Scripts\Container\Container.cs" />
     <Compile Include="Assets\Scripts\Credits\CreditsManager.cs" />
     <Compile Include="Assets\Scripts\Credits\ProceduralCredits\ListOfProjectsWorkers\SoWorkers.cs" />
     <Compile Include="Assets\Scripts\Credits\ProceduralCredits\UIComponentsGenerator\LabelCreator.cs" />
     <Compile Include="Assets\Scripts\Credits\ProceduralCredits\UIComponentsGenerator\RollingCredits.cs" />
+    <Compile Include="Assets\Scripts\PathFinder\PathFinder.cs" />
     <Compile Include="Assets\Scripts\SceneManager\SceneManager.cs" />
     <Compile Include="Assets\Scripts\SpawnManager\SpawnController.cs" />
     <Compile Include="Assets\Scripts\StateManager\StateManager.cs" />

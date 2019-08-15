@@ -12,7 +12,7 @@ namespace PathFinderManager
         /// </summary>
         /// <param name="me"></param>
         /// <param name="targetPosition"> <example>(gameObject.transform.position.y == targetPosition.y)</example></param>
-        public static void MoveTo(this GameObject me, Vector3 targetPosition)
+        public static void MoveTo(GameObject me, Vector3 targetPosition)
         {
             var agent = me.GetComponent<NavMeshAgent>();
             if (agent)
@@ -22,7 +22,7 @@ namespace PathFinderManager
             }
         }
 
-        public static PathProgress GetPathStatus(this GameObject me)
+        public static PathProgress MyPathStatus(GameObject me)
         {
             var agent = me.GetComponent<NavMeshAgent>();
             if (agent)

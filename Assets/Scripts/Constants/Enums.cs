@@ -30,11 +30,9 @@
 
     public enum BuildingState
     {
-        NONE = 0,
+        EMPTY = 0,
         WORK = 1,
-        UPGRADING = 2,
-        PAUSE = 3,
-        HACKED = 4
+        PAUSE = 2,
     }
 
     public enum EntityState
@@ -81,4 +79,6 @@
         MOVE = 1,
         FINISHED=2
     }
+
+
 }

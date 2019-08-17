@@ -1,6 +1,7 @@
 ﻿using System;
 using BootManager;
 using UnityEngine;
+using UnityEngine.AI;
 using Object = UnityEngine.Object;
 
 namespace SpawnManager
@@ -10,6 +11,7 @@ namespace SpawnManager
         /// <summary>
         /// TODO soll noch geschrieben werden!!!
         /// </summary>
+        private int id = 0;
         public void InitialWaveSpawn()
         {
         }
@@ -26,6 +28,16 @@ namespace SpawnManager
             try
             {
                 GameObject objectInstace = Object.Instantiate(prefab, position, Quaternion.identity);
+                objectInstace.name = "Worker" + id++;
+                if(objectInstace.GetComponent<NavMeshAgent>() == null)
+                {
+                    NavMeshAgent agent = objectInstace.AddComponent<NavMeshAgent>();
+                }
+
+                if (objectInstace.GetComponent<test>() == null)
+                {
+                    objectInstace.AddComponent<test>();
+                }
 
                 Boot.container.AddSpawnededGameObject(objectInstace);
 

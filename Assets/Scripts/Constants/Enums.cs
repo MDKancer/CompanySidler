@@ -80,5 +80,22 @@
         FINISHED=2
     }
 
+    public enum BuildingType
+    {
+        NONE = -1,
+        TARENT_TOWN = 0,
+        REWE = 1,
+        SERVER = 2,
+        TOM = 3,
+        OFFICE = 4,
+        ADMIN = 5,
+        ACCOUNTING = 6,
+        MARKETING = 7,
+        DEV_OPS = 8,
+        AZUBIS = 9,
+        SOCIAL_RAUM = 10
+        
+        //etc.
+    }
 
 }

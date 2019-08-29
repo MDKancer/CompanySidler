@@ -30,7 +30,7 @@ namespace BuildingPackage
         {
             stateController.CurrentState = BuildingState.WORK;
             StartCoroutine(UpdateManyGenerator());
-            Debug.Log("blabla");
+            //Debug.Log("blabla");
         }
         
         public float PurchasePrice
@@ -98,7 +98,7 @@ namespace BuildingPackage
                 while (true)
                 {
                     Money = Money + Compute();
-                    Debug.Log(Money);
+                   // Debug.Log(Money);
                     yield return new WaitForSeconds(1f);
                 }
             }

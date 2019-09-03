@@ -7,6 +7,9 @@ using PathFinderManager;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
+/// <summary>
+/// Es ist nur eine Testklasse.
+/// </summary>
 public class test : MonoBehaviour
 {
     List<BuildingType>  officePositions = new List<BuildingType>();
@@ -48,8 +51,8 @@ public class test : MonoBehaviour
         // Warum ich das mache?
         // um zu test ob ich kann für jeden Entity ein Büropositionziel geben, 
         // zum Bsp. :
-        // Jeder Admin             ->     geht zum Server , weil da is sein Büro
-        // Jeder Buchhalter        ->     geht zum Accountig Büro
+        // Jeder Admin             ->     soll zum Server gehen, weil da is sein Büro
+        // Jeder Buchhalter        ->     soll zum Accountig Büro
         // etc......
         
         

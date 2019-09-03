@@ -1,6 +1,7 @@
 ﻿﻿using System;
 using System.Collections.Generic;
  using System.Linq;
+ using BootManager;
  using BuildingPackage;
  using Constants;
  using Unity.Properties;
@@ -22,12 +23,12 @@ using Object = UnityEngine.Object;
            //TODO: hier wird alle Prefabs aus den Ordnern im Dictionary reingepackt.
            
            addPrefabs(Resources.LoadAll<GameObject>("Prefabs/Entitys/Building"), EntityType.BUILDING);
-           addPrefabs(Resources.LoadAll<GameObject>("Prefabs/Entitys/Workes"), EntityType.WORKER);
+           addPrefabs(Resources.LoadAll<GameObject>("Prefabs/Entitys/Workers"), EntityType.WORKER);
            addPrefabs(Resources.LoadAll<GameObject>("Prefabs/Entitys/Azubis"), EntityType.AZUBI);
            addPrefabs(Resources.LoadAll<GameObject>("Prefabs/Entitys/Clients"), EntityType.CLIENT);
 
-           GetAllInterfaces();
-           SetOfficePosition();
+            GetAllInterfaces();
+            SetOfficePosition();
         }
 
         public void AddSpawnededGameObject(GameObject gameObject) => spawnedGameObjects.Add(gameObject);
@@ -77,7 +78,7 @@ using Object = UnityEngine.Object;
         private void SetOfficePosition()
         {
             GameObject firma = GameObject.Find("Firma");
-            
+            if (firma == null) return;
             for (int i = 0; i < firma.transform.childCount; i++)
             {
                 officePositions.Add(firma.transform.GetChild(i).transform.position,GetBuildingType(firma.transform.GetChild(i).gameObject));

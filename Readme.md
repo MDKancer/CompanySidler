@@ -23,7 +23,12 @@
 >Ziel dieses Spiel ist : 
 >den tarent Stadt zu verbessern und im eine armoniesche Arbeitsatmosphere zu bringen.
 ___
+### Regeln
+* _Es darf nicht mehr Mitarbeiter von eine Branche als erlaubt ist._
+* _Es darf nicht ein Mitarbeiter annehmen wenn kein Projekts gibts._
+* _Es darf nicht mehr Mitarbeiter zu einem Projekt mitteilen als erlaubt._
 
+___
 ### Planung
 
 Mit allen gebäuden etc. **200 Mitbewohner** haben Platz??
@@ -75,6 +80,7 @@ Mit allen gebäuden etc. **200 Mitbewohner** haben Platz??
 *  ##### SceneManager :
     Diese Klasse macht den Spring / der Wechselung zwischen den Scenen einfacher, und bittet die möglichkeit zu läzt gewesene Scene zu wechseln. 
 *  ##### UIDispatcher :
+    Es ist ein Singelton.
     Diese Klasse es kümmert sich um die UI Funktionen / Evenimente.
 *  ##### BuildingPackage : 
     * ###### iBuilding: 

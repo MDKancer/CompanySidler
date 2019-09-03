@@ -1,18 +1,37 @@
-﻿using System;
-using BootManager;
+﻿using BootManager;
 using Constants;
+using Credits;
+using TMPro;
 using UnityEngine;
-
+/// <summary>
+/// UIDispatcher is a Singleton.
+/// </summary>
 public class UIDispatcher : MonoBehaviour
 {
+        public static UIDispatcher uiDispatcher;
         // Es ist nur temporär um zu wissen ob alles gut läuft.
         public  GameState currentGameState;
 
+        private CreditsManager creditsManager;
         private GameObject creditPanel;
+        private int workerCount = 0;
+        
+        
         private void Awake()
         {
+                if (uiDispatcher == null)
+                {
+                        uiDispatcher = this;
+                        creditsManager = GetComponent<CreditsManager>();
+                        DontDestroyOnLoad(gameObject);
+                }
+                else
+                {
+                        Destroy(gameObject);
+                }
+                
                 creditPanel = GameObject.Find("CreditsPanel");
-                creditPanel.SetActive(false);
+                creditPanel?.SetActive(false);
         }
 
         private void Update()
@@ -43,6 +62,25 @@ public class UIDispatcher : MonoBehaviour
                 Boot.gameStateController.CurrentState = GameState.EXIT;
                 //second
                 Application.Quit();
+        }
+
+        public void ApplyWorker()
+        {
+                Vector3  spawnPosition = new Vector3(4f,1f,2f);
+                Boot.spawnController.SpawnObject(Boot.container.GetPrefabsByType(EntityType.WORKER)[0], spawnPosition);
+                workerCount++;
+                TextMeshProUGUI workersCount = GameObject.Find("Panel_Mitarbeiter_Nr").GetComponent<TextMeshProUGUI>();
+                workersCount.SetText(workerCount.ToString());
+        }
+
+        public void ApplyProject()
+        {
+                
+        }
+
+        public void BuyBuilding()
+        {
+                
         }
         
         /// <summary>

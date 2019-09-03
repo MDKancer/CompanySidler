@@ -14,7 +14,8 @@
         NONE = -1,
         GAME_MENU = 0,
         PLAYING = 1,
-        PAUSE = 2
+        PAUSE = 2,
+        FOCUS_ON = 3
         //etc.
     }
 

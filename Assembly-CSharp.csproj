@@ -76,6 +76,7 @@
     <Compile Include="Assets\Scripts\Building\SozialRoom.cs" />
     <Compile Include="Assets\Scripts\Building\Struct\BuildingLevel.cs" />
     <Compile Include="Assets\Scripts\Building\Struct\Resources.cs" />
+    <Compile Include="Assets\Scripts\CameraController\CameraController.cs" />
     <Compile Include="Assets\Scripts\CameraController\Controller.cs" />
     <Compile Include="Assets\Scripts\Constants\Enums.cs" />
     <Compile Include="Assets\Scripts\Container\Container.cs" />

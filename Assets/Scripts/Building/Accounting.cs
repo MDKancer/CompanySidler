@@ -1,4 +1,3 @@
-using System;
 using System.Collections;
 using Constants;
 using StateMachine;
@@ -8,12 +7,13 @@ namespace BuildingPackage
 {
     public class Accounting : MonoBehaviour, iBuilding, iAccounting
     {
+        public int money;
+        
         private int hitPoints;
         private float time;
         private BuildingState buildingState;
         private StateController<BuildingState> stateController = new StateController<BuildingState>();
         private Resources resources;
-        public int Money;
 
         void Awake()
         {
@@ -21,7 +21,7 @@ namespace BuildingPackage
             {
                 purchasePrice = 0,
                 workplace = 1,
-                moneyPerSec = 5
+                moneyPerSec = -3
             };
             stateController.CurrentState = BuildingState.EMPTY;
         }
@@ -30,7 +30,6 @@ namespace BuildingPackage
         {
             stateController.CurrentState = BuildingState.WORK;
             StartCoroutine(UpdateManyGenerator());
-            //Debug.Log("blabla");
         }
         
         public float PurchasePrice
@@ -39,7 +38,7 @@ namespace BuildingPackage
             set { resources.purchasePrice = value; }
         }
 
-        public int workplace
+        public int Workplace
         {
             get { return resources.workplace; }
             set { resources.workplace = value; }
@@ -55,8 +54,7 @@ namespace BuildingPackage
 
         public int Compute()
         {
-            int generatedMoney = resources.workplace * resources.moneyPerSec;
-            return generatedMoney;
+            return resources.workplace * resources.moneyPerSec;
         }
 
         public void Upgrade()
@@ -66,7 +64,7 @@ namespace BuildingPackage
 
         public void GetDamage()
         {
-            throw new System.NotImplementedException();
+            
         }
 
         public void Work()
@@ -97,8 +95,8 @@ namespace BuildingPackage
             {
                 while (true)
                 {
-                    Money = Money + Compute();
-                   // Debug.Log(Money);
+                    money += Compute();
+                    UIDispatcher.currentBuget += Compute();
                     yield return new WaitForSeconds(1f);
                 }
             }

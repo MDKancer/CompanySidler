@@ -11,11 +11,11 @@
     }
     public enum RunTimeState 
     {
-        NONE = -1,
-        GAME_MENU = 0,
-        PLAYING = 1,
-        PAUSE = 2,
-        FOCUS_ON = 3
+        NONE = 0,
+        GAME_MENU = 1,
+        PLAYING = 2,
+        PAUSE = 3,
+        FOCUS_ON = 4
         //etc.
     }
 
@@ -57,12 +57,16 @@
 
     public enum Actions
     {
-        NONE = -1,
-        ROTATE_RIGHT = 0,
-        ROTATE_LEFT = 1,
-        FOCUS_ON = 2,
-        MENU = 3,
-        RETURN = 4
+        NONE = 0,
+        ROTATE_RIGHT = 1,
+        ROTATE_LEFT = 2,
+        MOVE_FORWARD = 3,
+        MOVE_BACK = 4,
+        MOVE_LEFT = 5,
+        MOVE_RIGHT = 6,
+        FOCUS_ON = 7,
+        MENU = 8,
+        RETURN = 9
     }
     public enum Worker_Position
     {

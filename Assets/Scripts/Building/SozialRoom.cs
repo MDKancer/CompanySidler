@@ -1,24 +1,43 @@
+using System.Collections;
 using Constants;
 using StateMachine;
 using UnityEngine;
 
 namespace BuildingPackage
 {
-    public class SozialRoom : MonoBehaviour , iSozialRoom, iBuilding
+    public class SozialRoom : MonoBehaviour, iBuilding, iSozialRoom
     {
+        public int money;
+        
         private int hitPoints;
         private float time;
         private BuildingState buildingState;
         private StateController<BuildingState> stateController = new StateController<BuildingState>();
         private Resources resources;
 
+        void Awake()
+        {
+            resources = new Resources
+            {
+                purchasePrice = 0,
+                workplace = 1,
+                moneyPerSec = -5
+            };
+            stateController.CurrentState = BuildingState.EMPTY;
+        }
+
+        void Start()
+        {
+            stateController.CurrentState = BuildingState.WORK;
+            StartCoroutine(UpdateManyGenerator());
+        }
         public float PurchasePrice
         {
             get { return resources.purchasePrice; }
             set { resources.purchasePrice = value; }
         }
 
-        public int workplace
+        public int Workplace
         {
             get { return resources.workplace; }
             set { resources.workplace = value; }
@@ -30,22 +49,10 @@ namespace BuildingPackage
             set { this.hitPoints = value; }
         }
 
-        void Awake()
-        {
-            stateController.CurrentState = BuildingState.EMPTY;
-        }
 
-        void Start()
+        public int Relax()
         {
-            stateController.CurrentState = BuildingState.WORK;
-        }
-
-        void Update()
-        {
-        }
-
-        public void Relax()
-        {
+            return  resources.workplace * resources.moneyPerSec;
         }
 
         public void Upgrade()
@@ -74,6 +81,18 @@ namespace BuildingPackage
             else
             {
                 stateController.SwitchToLastState();
+            }
+        }
+        private IEnumerator UpdateManyGenerator()
+        {
+            if (stateController.CurrentState == BuildingState.WORK)
+            {
+                while (true)
+                {
+                    money += Relax();
+                    UIDispatcher.currentBuget += Relax();
+                    yield return new WaitForSeconds(1f);
+                }
             }
         }
     }

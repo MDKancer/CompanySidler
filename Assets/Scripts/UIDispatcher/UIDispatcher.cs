@@ -11,7 +11,8 @@ public class UIDispatcher : MonoBehaviour
         public static UIDispatcher uiDispatcher;
         // Es ist nur temporär um zu wissen ob alles gut läuft.
         public  GameState currentGameState;
-
+        public static int currentBuget;
+        
         private CreditsManager creditsManager;
         private GameObject creditPanel;
         private int workerCount = 0;
@@ -37,6 +38,7 @@ public class UIDispatcher : MonoBehaviour
         private void Update()
         {
                 CheckCurrentState();
+                CurrentBuget();
         }
 
         public void PlayGame()
@@ -95,5 +97,14 @@ public class UIDispatcher : MonoBehaviour
                                 currentGameState = Boot.gameStateController.CurrentState;
                         }
                 }
+        }
+
+        private void CurrentBuget()
+        {
+               // if(Boot.gameStateController.CurrentState == GameState.GAME)
+                //{
+                        TextMeshProUGUI money = GameObject.Find("Panel_Geld_Nr")?.GetComponent<TextMeshProUGUI>();
+                        money?.SetText(currentBuget.ToString());
+                //}
         }
 }

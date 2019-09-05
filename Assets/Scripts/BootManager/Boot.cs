@@ -1,5 +1,7 @@
-﻿﻿using Constants;
+﻿﻿using System;
+ using Constants;
 using GameCloud;
+ using InputManager;
  using SceneController;
  using SpawnManager;
  using StateMachine;
@@ -17,6 +19,9 @@ namespace BootManager
         public static StateController<RunTimeState> runtimeStateController;
         public static SpawnController spawnController;
         public static SceneManager sceneManager;
+        
+        private  InputController inputController;
+        
 
         /// <summary>
         /// Hier wird alles referenzen Instanziert. und den Boot als Singelton gemacht
@@ -32,6 +37,7 @@ namespace BootManager
                 runtimeStateController = new StateController<RunTimeState>();
                 spawnController = new SpawnController();
                 sceneManager = new SceneManager();
+                inputController = new InputController();
                 
                 DontDestroyOnLoad(gameObject);
             }
@@ -47,11 +53,19 @@ namespace BootManager
         {
             AllBegin();
         }
+
+        private void Update()
+        {
+            inputController.Do();
+        }
+
         /// <summary>
         /// Hier wird alles Inizialisiert was man im Awake braucht
         /// </summary>
-        public void Booting()
+        private void Booting()
         {
+          runtimeStateController.CurrentState = RunTimeState.NONE;
+          
           container.LoadAllResources();
           
           spawnController.InitialWaveSpawn();
@@ -60,7 +74,15 @@ namespace BootManager
         /// <summary>
         /// Hier wird alles Inizialisiert was man am Start braucht.
         /// </summary>
-        public void AllBegin()
+        private void AllBegin()
+        {
+            if (gameStateController.CurrentState == GameState.GAME)
+            {
+                runtimeStateController.CurrentState = RunTimeState.PLAYING;
+            }
+        }
+
+        private void Run()
         {
             
         }

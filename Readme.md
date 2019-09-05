@@ -67,7 +67,7 @@ Mit allen gebäuden etc. **200 Mitbewohner** haben Platz??
     Es ist ein **Singelton**, die alle wichtige und HauptKlassen initialisiert und lässt du verfügugn für alle anderen Klassen.
 *  ##### SpawnManager :
     Diese Klasse gibt die Möglichkeit Objekte während des Laufens zu Instanzieren. 
-*  ##### CameraManager :
+*  ##### CameraMovement :
     Hauptfunktion dieser Klasse ist um die aktuelle Camera im Spiel zu kontrolieren. 
 *  ##### AudioManager :
     bittet die möglichkeit in einem bestimmten Zeit mit einem bestiemten Dauer eine bestimmte Music oder Audio effekt zum spielen. 

@@ -81,27 +81,28 @@ Mit allen gebäuden etc. **200 Mitbewohner** haben Platz??
     Diese Klasse macht den Spring / der Wechselung zwischen den Scenen einfacher, und bittet die möglichkeit zu läzt gewesene Scene zu wechseln. 
 *  ##### UIDispatcher :
     Es ist ein Singelton.
-    Diese Klasse es kümmert sich um die UI Funktionen / Evenimente.
+    Diese Klasse es kümmert sich um die UI Funktionen / Events.
 *  ##### BuildingPackage : 
-    * ###### iBuilding: 
-        hat die funktionen/Attribute:
-        * Price - Struct
-        * HitPoints - int
-        * Time - Time
-        * Upgrade()
-    * ###### iAccounting:
-        * Work()
-        * WorkPlaces
-        * Compute()
-    * ##### Building : MonoBehaviour
-        * Coroutine() ?
+    * Accounting
+    * Office
+    * SocialRoom
+    * TomTown
+    * ReweTown
+    * Server
+    * Azubis
+    * Administration
+    * TarentTown
+    * DevOps
+    * Marketing
 *  ##### EntityPackage : 
-    * ###### iEntity: 
-        hat die funktionen/Attribute:
-        * Do() ?
-    * ###### iDeveloper:
-        * Programming() ?
-    * ##### Entity : MonoBehaviour
-        * Coroutine() ?
+    * Admin
+    * Azubi
+    * Tester
+    * Analyst
+    * Designer
+    * Clients / Customers
+    * Developer
+    * DevOps
+    * TeamLeader
 *   ##### CreditPackage
     

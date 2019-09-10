@@ -5,7 +5,7 @@ using UnityEngine;
 
 namespace BuildingPackage
 {
-    public class SozialRoom : MonoBehaviour, iBuilding, iSozialRoom
+    public class AzubisTown : MonoBehaviour, iBuilding, iAzubis
     {
         public int money;
         
@@ -21,7 +21,7 @@ namespace BuildingPackage
             {
                 purchasePrice = 0,
                 workplace = 1,
-                moneyPerSec = -5
+                moneyPerSec = -4
             };
             stateController.CurrentState = BuildingState.EMPTY;
         }
@@ -31,6 +31,7 @@ namespace BuildingPackage
             stateController.CurrentState = BuildingState.WORK;
             StartCoroutine(UpdateManyGenerator());
         }
+        
         public float PurchasePrice
         {
             get { return resources.purchasePrice; }
@@ -49,20 +50,21 @@ namespace BuildingPackage
             set { this.hitPoints = value; }
         }
 
+        //coroutine -> alternative zu update
 
-        public int Relax()
+        public int ToLearn()
         {
-            return  resources.workplace * resources.moneyPerSec;
+            return resources.workplace * resources.moneyPerSec;
         }
 
         public void Upgrade()
         {
-            //es kann nicht geupgradet werden
+            //resources.workplace += 5;
         }
 
         public void GetDamage()
         {
-            //es kann keinen Schaden bekommen
+            
         }
 
         public void Work()
@@ -77,20 +79,24 @@ namespace BuildingPackage
             if (stateController.CurrentState == BuildingState.WORK)
             {
                 stateController.CurrentState = BuildingState.PAUSE;
+                StopCoroutine(UpdateManyGenerator());
             }
             else
             {
                 stateController.SwitchToLastState();
+                StartCoroutine( UpdateManyGenerator());
             }
         }
+
+
         private IEnumerator UpdateManyGenerator()
         {
             if (stateController.CurrentState == BuildingState.WORK)
             {
                 while (true)
                 {
-                    money += Relax();
-                    UIDispatcher.currentBuget += Relax();
+                    money += ToLearn();
+                    UIDispatcher.currentBuget += ToLearn();
                     yield return new WaitForSeconds(1f);
                 }
             }

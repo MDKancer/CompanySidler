@@ -5,7 +5,7 @@ using UnityEngine;
 
 namespace BuildingPackage
 {
-    public class TomTown : MonoBehaviour, iBuilding, iProjekt
+    public class SocialRoom : MonoBehaviour, iBuilding, iSocialRoom
     {
         public int money;
         
@@ -21,7 +21,7 @@ namespace BuildingPackage
             {
                 purchasePrice = 0,
                 workplace = 1,
-                moneyPerSec = 11
+                moneyPerSec = -5
             };
             stateController.CurrentState = BuildingState.EMPTY;
         }
@@ -50,9 +50,9 @@ namespace BuildingPackage
         }
 
 
-        public int Programming()
+        public int Relax()
         {
-            return resources.workplace * resources.moneyPerSec;
+            return  resources.workplace * resources.moneyPerSec;
         }
 
         public void Upgrade()
@@ -89,8 +89,8 @@ namespace BuildingPackage
             {
                 while (true)
                 {
-                    money += Programming();
-                    UIDispatcher.currentBuget += Programming();
+                    money += Relax();
+                    UIDispatcher.currentBuget += Relax();
                     yield return new WaitForSeconds(1f);
                 }
             }

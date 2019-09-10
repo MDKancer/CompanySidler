@@ -1,6 +1,6 @@
 namespace BuildingPackage
 {
-    public interface iProjekt
+    public interface iTom
     {
         int Programming();
     }

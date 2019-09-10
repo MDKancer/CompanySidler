@@ -1,4 +1,5 @@
 using BootManager;
+using BuildingPackage;
 using Constants;
 using UnityEngine;
 using PlayerView;
@@ -78,6 +79,17 @@ namespace InputManager
                     focusPoint = focusObjekt.transform.position;
                 }
             }
+            // \\\\\\\\\\\\\\\\\\\\\\\\\\\ Als Test ///////////////////////////////////// 
+            
+//            ray = camera.GetComponent<Camera>().ScreenPointToRay(Input.mousePosition);
+//            if (Physics.Raycast(ray, out raycastHit))
+//            {
+//                Component[] buildingComponent = raycastHit.collider.GetComponents(typeof(iBuilding));
+//                if(buildingComponent.Length > 0)
+//                {
+//                    Debug.Log(raycastHit.collider.name);
+//                }
+//            }
         }
         /// <summary>
         /// Gibt den gecklikten Gebäude zurrück.

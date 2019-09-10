@@ -16,8 +16,7 @@ public class UIDispatcher : MonoBehaviour
         private CreditsManager creditsManager;
         private GameObject creditPanel;
         private int workerCount = 0;
-        
-        
+
         private void Awake()
         {
                 if (uiDispatcher == null)
@@ -66,6 +65,18 @@ public class UIDispatcher : MonoBehaviour
                 Application.Quit();
         }
 
+        public void ShowWorkerList(Transform target)
+        {
+                target.gameObject.SetActive(!target.gameObject.active);
+                if(Boot.runtimeStateController.CurrentState != RunTimeState.GAME_MENU)
+                {
+                        Boot.runtimeStateController.CurrentState = RunTimeState.GAME_MENU;
+                }
+                else
+                {
+                        Boot.runtimeStateController.SwitchToLastState();
+                }
+        }
         public void ApplyWorker()
         {
                 Vector3  spawnPosition = new Vector3(4f,1f,2f);

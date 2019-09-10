@@ -106,9 +106,41 @@ using Object = UnityEngine.Object;
                 {
                     return BuildingType.ACCOUNTING;
                 }
-                else if (buildingComponent[0].GetType().GetInterfaces().Contains(typeof(iSozialRoom)))
+                else if (buildingComponent[0].GetType().GetInterfaces().Contains(typeof(iSocialRoom)))
                 {
                     return  BuildingType.SOCIAL_RAUM;
+                }
+                else if (buildingComponent[0].GetType().GetInterfaces().Contains(typeof(iAdministration)))
+                {
+                    return  BuildingType.ADMIN;
+                }
+                else if (buildingComponent[0].GetType().GetInterfaces().Contains(typeof(iDevOps)))
+                {
+                    return  BuildingType.DEV_OPS;
+                }
+                else if (buildingComponent[0].GetType().GetInterfaces().Contains(typeof(iMarketing)))
+                {
+                    return  BuildingType.MARKETING;
+                }
+                else if (buildingComponent[0].GetType().GetInterfaces().Contains(typeof(iRewe)))
+                {
+                    return  BuildingType.REWE;
+                }
+                else if (buildingComponent[0].GetType().GetInterfaces().Contains(typeof(iTom)))
+                {
+                    return  BuildingType.TOM;
+                }
+                else if (buildingComponent[0].GetType().GetInterfaces().Contains(typeof(iTarent)))
+                {
+                    return  BuildingType.TARENT_TOWN;
+                }
+                else if (buildingComponent[0].GetType().GetInterfaces().Contains(typeof(iServer)))
+                {
+                    return  BuildingType.SERVER;
+                }
+                else if (buildingComponent[0].GetType().GetInterfaces().Contains(typeof(iAzubis)))
+                {
+                    return  BuildingType.AZUBIS;
                 }
             }
             //TODO : Weiter Fälle implementieren.

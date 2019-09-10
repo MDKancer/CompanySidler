@@ -12,22 +12,21 @@ using Random = UnityEngine.Random;
 /// </summary>
 public class test : MonoBehaviour
 {
-    List<BuildingType>  officePositions = new List<BuildingType>();
-
+    public BuildingType roomDestination = BuildingType.NONE;
+    
+    private List<BuildingType>  officePositions = new List<BuildingType>();
+    
     private void Awake()
     {
-        officePositions.Add(BuildingType.OFFICE);
-        officePositions.Add(BuildingType.SOCIAL_RAUM);
-        officePositions.Add(BuildingType.ACCOUNTING);
-        officePositions.Add(BuildingType.NONE);
+        
         /// TODO: ich packe alle Werte aus dem BuildinType enum in einer Liste,
         /// die Foreachschleife wird funktionieren wenn di Funktion GetBuildingType vollständig ist.
         /// und alle Interfaces für Gebäude implemetiert sind.
 
-        //        foreach (BuildingType VARIABLE in Enum.GetValues(typeof(BuildingType)))
-        //        {
-        //            officePositions.Add(VARIABLE);            
-        //        }
+                foreach (BuildingType VARIABLE in Enum.GetValues(typeof(BuildingType)))
+                {
+                    officePositions.Add(VARIABLE);            
+                }
         
     }
 
@@ -42,8 +41,8 @@ public class test : MonoBehaviour
     {
         
         int randomPositionList = Random.Range(0, officePositions.Count);
-        BuildingType randomBuildingType =  officePositions[randomPositionList];
-        Vector3 positionOfRandomBuilding = Boot.container.GetPositionOffice(randomBuildingType);
+        roomDestination =  officePositions[randomPositionList];
+        Vector3 positionOfRandomBuilding = Boot.container.GetPositionOffice(roomDestination);
         Vector3 targetPosition = GenerateRandomPosition(positionOfRandomBuilding);
         
         //         /\     /\     /\     /\     /\     /\     /\     /\     /\
@@ -65,8 +64,8 @@ public class test : MonoBehaviour
                 yield return new WaitForSeconds(0.5f);
                 
                 randomPositionList = Random.Range(0, officePositions.Count);
-                randomBuildingType =  officePositions[randomPositionList];
-                positionOfRandomBuilding = Boot.container.GetPositionOffice(randomBuildingType);
+                roomDestination =  officePositions[randomPositionList];
+                positionOfRandomBuilding = Boot.container.GetPositionOffice(roomDestination);
                 targetPosition = GenerateRandomPosition(positionOfRandomBuilding);
 
                 PathFinder.MoveTo(gameObject,targetPosition);

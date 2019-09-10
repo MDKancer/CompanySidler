@@ -5,7 +5,7 @@ using UnityEngine;
 
 namespace BuildingPackage
 {
-    public class Rewe : MonoBehaviour, iBuilding, iProjekt
+    public class ReweTown : MonoBehaviour, iBuilding, iRewe
     {
         public int money;
         

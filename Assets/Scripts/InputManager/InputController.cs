@@ -1,3 +1,4 @@
+using System.Linq;
 using BootManager;
 using BuildingPackage;
 using Constants;
@@ -57,39 +58,33 @@ namespace InputManager
             if (Input.GetKeyDown(KeyCode.Mouse0))
             {
                 if (Boot.runtimeStateController.CurrentState != RunTimeState.FOCUS_ON &&
-                    Boot.runtimeStateController.CurrentState != RunTimeState.GAME_MENU)
+                    Boot.runtimeStateController.CurrentState != RunTimeState.BUILDING_INFO)
                 {
                     ray = camera.GetComponent<Camera>().ScreenPointToRay(Input.mousePosition);
                     
                     if (Physics.Raycast(ray,out raycastHit))
                     {
-                        focusPoint = raycastHit.point;
-                        //TODO: noch abfragen ob den getroffenen Obiekt eine Gebäude ist.
-                        focusedBuilding = raycastHit.collider.gameObject;
-                        cameraController.FocusOn(raycastHit.point);
+                        if(isBuilding(raycastHit.collider.gameObject))
+                        {
+                            focusPoint = raycastHit.point;
+                            focusedBuilding = raycastHit.collider.gameObject;
+                            cameraController.FocusOn(raycastHit.point);
+                        }
                     }
                 }
 
             }
             if (Input.GetKeyDown(KeyCode.Escape))
             {
-                if(Boot.runtimeStateController.CurrentState == RunTimeState.FOCUS_ON || Boot.runtimeStateController.CurrentState == RunTimeState.GAME_MENU)
+                if(Boot.runtimeStateController.CurrentState == RunTimeState.FOCUS_ON || 
+                   Boot.runtimeStateController.CurrentState == RunTimeState.BUILDING_INFO || 
+                   Boot.runtimeStateController.CurrentState == RunTimeState.GAME_MENU)
                 {
                     cameraController.ToEmptyPos();
                     focusPoint = focusObjekt.transform.position;
                 }
             }
-            // \\\\\\\\\\\\\\\\\\\\\\\\\\\ Als Test ///////////////////////////////////// 
-            
-//            ray = camera.GetComponent<Camera>().ScreenPointToRay(Input.mousePosition);
-//            if (Physics.Raycast(ray, out raycastHit))
-//            {
-//                Component[] buildingComponent = raycastHit.collider.GetComponents(typeof(iBuilding));
-//                if(buildingComponent.Length > 0)
-//                {
-//                    Debug.Log(raycastHit.collider.name);
-//                }
-//            }
+       
         }
         /// <summary>
         /// Gibt den gecklikten Gebäude zurrück.
@@ -98,6 +93,13 @@ namespace InputManager
         {
             get => focusedBuilding;
             private set => focusedBuilding = value;
+        }
+
+        private bool isBuilding(GameObject targetObjekt)
+        {
+            Component[] buildingComponent = targetObjekt.GetComponents(typeof(iBuilding));
+
+            return buildingComponent.Length > 0;
         }
     }
 }

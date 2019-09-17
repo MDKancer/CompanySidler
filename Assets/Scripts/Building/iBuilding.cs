@@ -1,3 +1,5 @@
+using System;
+
 namespace BuildingPackage
 {
 
@@ -8,5 +10,6 @@ namespace BuildingPackage
     void GetDamage();
     void Work();
     void SwitchState();
+    BuildingData BuildingData { get; set; }
   }
 }

@@ -5,7 +5,7 @@ using UnityEngine;
 
 namespace BuildingPackage
 {
-    public class MarketingTown : MonoBehaviour, iBuilding
+    public class MarketingTown : MonoBehaviour, iBuilding,iMarketing
     {
         public int money;
         
@@ -13,14 +13,15 @@ namespace BuildingPackage
         private float time;
         private BuildingState buildingState;
         private StateController<BuildingState> stateController = new StateController<BuildingState>();
-        private Resources resources;
+        private BuildingData buildingData;
 
         void Awake()
         {
-            resources = new Resources
+            buildingData = new BuildingData
             {
-                purchasePrice = 0,
-                workplace = 1,
+                name = name,
+                upgradePrice = 0,
+                workPlacesLimit = 1,
                 moneyPerSec = -3
             };
             stateController.CurrentState = BuildingState.EMPTY;
@@ -31,30 +32,11 @@ namespace BuildingPackage
             stateController.CurrentState = BuildingState.WORK;
             StartCoroutine(UpdateManyGenerator());
         }
-        
-        public float PurchasePrice
-        {
-            get { return resources.purchasePrice; }
-            set { resources.purchasePrice = value; }
-        }
-
-        public int Workplace
-        {
-            get { return resources.workplace; }
-            set { resources.workplace = value; }
-        }
-
-        public int HitPoints
-        {
-            get { return hitPoints; }
-            set { this.hitPoints = value; }
-        }
-
         //coroutine -> alternative zu update
 
         public int ToTrade()
         {
-            return resources.workplace * resources.moneyPerSec;
+            return buildingData.workPlacesLimit * buildingData.moneyPerSec;
         }
 
         public void Upgrade()
@@ -87,7 +69,7 @@ namespace BuildingPackage
                 StartCoroutine( UpdateManyGenerator());
             }
         }
-
+        public BuildingData BuildingData { get=> buildingData; set => buildingData = value; }
 
         private IEnumerator UpdateManyGenerator()
         {

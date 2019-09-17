@@ -1,6 +1,9 @@
 ﻿using BootManager;
+using BuildingPackage;
 using Constants;
 using Credits;
+using InputManager;
+using NaughtyAttributes;
 using TMPro;
 using UnityEngine;
 /// <summary>
@@ -12,7 +15,8 @@ public class UIDispatcher : MonoBehaviour
         // Es ist nur temporär um zu wissen ob alles gut läuft.
         public  GameState currentGameState;
         public static int currentBuget;
-        
+        [Required]
+        public GameObject playerView;
         private CreditsManager creditsManager;
         private GameObject creditPanel;
         private int workerCount = 0;
@@ -23,6 +27,8 @@ public class UIDispatcher : MonoBehaviour
                 {
                         uiDispatcher = this;
                         creditsManager = GetComponent<CreditsManager>();
+                        playerView = GameObject.Find("BuildingInfo");
+                        playerView.SetActive(false);
                         DontDestroyOnLoad(gameObject);
                 }
                 else
@@ -38,6 +44,7 @@ public class UIDispatcher : MonoBehaviour
         {
                 CheckCurrentState();
                 CurrentBuget();
+                ShowBuildingInfoWindow();
         }
 
         public void PlayGame()
@@ -95,7 +102,38 @@ public class UIDispatcher : MonoBehaviour
         {
                 
         }
-        
+
+        public void UpgradeBuilding()
+        {
+                if (Boot.runtimeStateController.CurrentState == RunTimeState.BUILDING_INFO ) // && Boot.gameStateController.CurrentState == GameState.GAME
+                {
+                        Building.Upgrade();
+                }
+        }
+
+        private void ShowBuildingInfoWindow()
+        {
+                if (Boot.runtimeStateController.CurrentState == RunTimeState.BUILDING_INFO) // && Boot.gameStateController.CurrentState == GameState.GAME
+                {
+                        playerView.SetActive(true);
+                        
+                        GameObject.Find("BuildingTitle").GetComponent<TextMeshProUGUI>().SetText(Building.BuildingData.name);
+                        GameObject.Find("WorkerCount").GetComponent<TextMeshProUGUI>().SetText(Building.BuildingData.workers.ToString());
+                        GameObject.Find("WorkerLimit").GetComponent<TextMeshProUGUI>().SetText("/ "+Building.BuildingData.workPlacesLimit.ToString());
+                        GameObject.Find("Price").GetComponent<TextMeshProUGUI>().SetText(Building.BuildingData.upgradePrice.ToString());
+                        GameObject.Find("Geld").GetComponent<TextMeshProUGUI>().SetText(Building.BuildingData.moneyPerSec.ToString());
+                }
+                else if(Boot.runtimeStateController.CurrentState != RunTimeState.BUILDING_INFO && Boot.runtimeStateController.CurrentState != RunTimeState.GAME_MENU)
+                {
+                        
+                        playerView.SetActive(false);
+                }
+        }
+
+        private iBuilding Building
+        {
+                get => InputController.FocusedBuilding?.GetComponent(typeof(iBuilding)) as iBuilding;
+        }
         /// <summary>
         /// Es ist nur temporär um zu wissen ob alles gut Läuft.
         /// </summary>

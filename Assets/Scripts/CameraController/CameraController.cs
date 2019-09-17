@@ -34,7 +34,7 @@ namespace PlayerView
             Boot.monobehaviour.StartCoroutine(MoveTo(originPosition));
             mainCamera.transform.rotation = originRotation;
 
-            Boot.runtimeStateController.CurrentState = RunTimeState.PLAYING;
+            Boot.runtimeStateController.SwitchToLastState();
         }
 
         public void Move(Vector3 direction)
@@ -66,7 +66,7 @@ namespace PlayerView
         {
             while (isArrivate == false) yield return null;
 
-            Boot.runtimeStateController.CurrentState = RunTimeState.GAME_MENU;
+            Boot.runtimeStateController.CurrentState = RunTimeState.BUILDING_INFO;
         }
     }
 }

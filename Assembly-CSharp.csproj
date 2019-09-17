@@ -86,8 +86,8 @@
     <Compile Include="Assets\Scripts\Building\Server\Server.cs" />
     <Compile Include="Assets\Scripts\Building\SocialRoom\iSocialRoom.cs" />
     <Compile Include="Assets\Scripts\Building\SocialRoom\SocialRoom.cs" />
+    <Compile Include="Assets\Scripts\Building\Struct\BuildingData.cs" />
     <Compile Include="Assets\Scripts\Building\Struct\BuildingLevel.cs" />
-    <Compile Include="Assets\Scripts\Building\Struct\Resources.cs" />
     <Compile Include="Assets\Scripts\Building\Tarent\iTarent.cs" />
     <Compile Include="Assets\Scripts\Building\Tarent\TarentTown.cs" />
     <Compile Include="Assets\Scripts\Building\Tom\iTom.cs" />

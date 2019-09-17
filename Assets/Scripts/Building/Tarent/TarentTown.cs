@@ -13,14 +13,15 @@ namespace BuildingPackage
         private float time;
         private BuildingState buildingState;
         private StateController<BuildingState> stateController = new StateController<BuildingState>();
-        private Resources resources;
+        private BuildingData buildingData;
 
         void Awake()
         {
-            resources = new Resources
+            buildingData = new BuildingData
             {
-                purchasePrice = 0,
-                workplace = 1,
+                name = name,
+                upgradePrice = 0,
+                workPlacesLimit = 1,
                 moneyPerSec = -8
             };
             stateController.CurrentState = BuildingState.EMPTY;
@@ -32,34 +33,18 @@ namespace BuildingPackage
             StartCoroutine(UpdateManyGenerator());
         }
         
-        public float PurchasePrice
-        {
-            get { return resources.purchasePrice; }
-            set { resources.purchasePrice = value; }
-        }
-
-        public int Workplace
-        {
-            get { return resources.workplace; }
-            set { resources.workplace = value; }
-        }
-
-        public int HitPoints
-        {
-            get { return hitPoints; }
-            set { this.hitPoints = value; }
-        }
-
         //coroutine -> alternative zu update
 
         public int ToHold()
         {
-            return resources.workplace * resources.moneyPerSec;
+            return buildingData.workPlacesLimit * buildingData.moneyPerSec;
         }
 
         public void Upgrade()
         {
-            //resources.workplace += 5;
+            buildingData.workPlacesLimit += 5;
+            buildingData.upgradePrice *= 3;
+            buildingData.moneyPerSec *= 3;
         }
 
         public void GetDamage()
@@ -87,6 +72,8 @@ namespace BuildingPackage
                 StartCoroutine( UpdateManyGenerator());
             }
         }
+
+        public BuildingData BuildingData { get=> buildingData; set => buildingData = value; }
 
 
         private IEnumerator UpdateManyGenerator()

@@ -15,7 +15,8 @@
         GAME_MENU = 1,
         PLAYING = 2,
         PAUSE = 3,
-        FOCUS_ON = 4
+        FOCUS_ON = 4,
+        BUILDING_INFO = 5
         //etc.
     }
 

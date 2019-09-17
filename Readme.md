@@ -6,14 +6,13 @@
 |Serena Bräuer |Developer|
 |Julius Marx|Artist|
 |Julian Koch|Developer|
-|Markus Andreas|Developer|
 |Tim Herkenrath|Artist|
 |Daniel Lozanu|Developer-Artist|
 ***
 ### Beschreibung
 
-> **`tarentSidler`** - Es ist Speil auf tarent GmbH Infrastruktur basiert und mit Sidler Stil/Thema kommbiniert.
->Jeder tarent Abteilung ist pro Gebäude verteilt, um ein tarent Stadt darzustellen.
+> **`tarentSidler`** - Es ist Spiel auf tarent GmbH Infrastruktur basiert und mit Sidler Stil/Thema kommbiniert.
+>Jeder tarent Abteilung ist pro Gebäude verteilt, um ein tarent Unternehmen darzustellen.
 >Naturlich die Abteilungen kommuniezieren mit einanderen,
 >hier ist das so dargestellt das die Mitarbeiter sich bewegen zwischen die Abteilungen um diese Visuele verbindung zu haben,
 >dass die Abteilungen nicht selbständig Arbeiten, sondern die sind abhängig von einanderen.
@@ -21,7 +20,7 @@
 >und diese Faktoren sind in das Spiel dargestellt, um den Blick / der Verbindung zu dem Realität nicht zu verlieren.
 
 >Ziel dieses Spiel ist : 
->den tarent Stadt zu verbessern und im eine armoniesche Arbeitsatmosphere zu bringen.
+>den tarent Firma zu verbessern und zu einer gute Arbeitsatmosphere zu bringen.
 ___
 ### Regeln
 * _Es darf nicht mehr Mitarbeiter von eine Branche als erlaubt ist._
@@ -105,4 +104,5 @@ Mit allen gebäuden etc. **200 Mitbewohner** haben Platz??
     * DevOps
     * TeamLeader
 *   ##### CreditPackage
+    * Es ist eine UI-darstellung / Präsentation , wer hat ein an Project mitgearbeiten.
     

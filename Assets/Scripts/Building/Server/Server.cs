@@ -9,7 +9,6 @@ namespace BuildingPackage
     {
         public int money;
         
-        private int hitPoints;
         private float time;
         private BuildingState buildingState;
         private StateController<BuildingState> stateController = new StateController<BuildingState>();
@@ -19,6 +18,7 @@ namespace BuildingPackage
         {
             buildingData = new BuildingData
             {
+                buildingType = BuildingType.SERVER,
                 name = name,
                 upgradePrice = 0,
                 workPlacesLimit = 1,
@@ -39,27 +39,25 @@ namespace BuildingPackage
 
         public int Hosten()
         {
-            return buildingData.workPlacesLimit * buildingData.moneyPerSec;
+            return buildingData.workers * buildingData.moneyPerSec;
         }
 
         public void Upgrade()
         {
-            //resources.workplace += 5;
+            buildingData.workPlacesLimit += 5;
         }
 
-        public void GetDamage()
+        public void DoDamage(int damagePercent = 0)
         {
-            
+            throw new System.NotImplementedException();
         }
 
         public void Work()
         {
-            if (stateController.CurrentState == BuildingState.WORK)
-            {
-            }
+            
         }
 
-        public void SwitchState()
+        public void SwitchWorkingState()
         {
             if (stateController.CurrentState == BuildingState.WORK)
             {
@@ -68,17 +66,40 @@ namespace BuildingPackage
             }
             else
             {
-                stateController.SwitchToLastState();
+                stateController.CurrentState = BuildingState.WORK;
                 StartCoroutine( UpdateManyGenerator());
             }
         }
-        public BuildingData BuildingData { get=> buildingData; set => buildingData = value; }
 
+        public void ApplyWorker(Life.Worker worker)
+        {
+            foreach (var VARIABLE in BuildingData.accesibleWorker)
+            {
+                if (VARIABLE.WorkerType == worker.HumanData.GetEntityType && VARIABLE.Worker == null)
+                {
+                    VARIABLE.Worker = worker;
+                    return;
+                }
+            }
+        }
+
+        public void QuitWorker(Life.Worker worker)
+        {
+            throw new System.NotImplementedException();
+        }
+
+        public bool BuildingRepair()
+        {
+            throw new System.NotImplementedException();
+        }
+
+        public BuildingData BuildingData { get=> buildingData; set => buildingData = value; }
+        public BuildingState buildingWorkingState { get=>stateController.CurrentState; }
         private IEnumerator UpdateManyGenerator()
         {
             if (stateController.CurrentState == BuildingState.WORK)
             {
-                while (true)
+                while (stateController.CurrentState == BuildingState.WORK)
                 {
                     money += Hosten();
                     UIDispatcher.currentBuget += Hosten();

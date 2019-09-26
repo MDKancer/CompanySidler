@@ -69,10 +69,11 @@
     <Compile Include="Assets\Scripts\BootManager\Boot.cs" />
     <Compile Include="Assets\Scripts\Building\Accounting\Accounting.cs" />
     <Compile Include="Assets\Scripts\Building\Accounting\iAccounting.cs" />
-    <Compile Include="Assets\Scripts\Building\Administration\Admin.cs" />
+    <Compile Include="Assets\Scripts\Building\Administration\Administration.cs" />
     <Compile Include="Assets\Scripts\Building\Administration\iAdministration.cs" />
     <Compile Include="Assets\Scripts\Building\Azubi\AzubisTown.cs" />
     <Compile Include="Assets\Scripts\Building\Azubi\iAzubis.cs" />
+    <Compile Include="Assets\Scripts\Building\BuildingWorker.cs" />
     <Compile Include="Assets\Scripts\Building\DevOps\DevOps.cs" />
     <Compile Include="Assets\Scripts\Building\DevOps\iDevOps.cs" />
     <Compile Include="Assets\Scripts\Building\iBuilding.cs" />
@@ -100,6 +101,11 @@
     <Compile Include="Assets\Scripts\Credits\ProceduralCredits\ListOfProjectsWorkers\SoWorkers.cs" />
     <Compile Include="Assets\Scripts\Credits\ProceduralCredits\UIComponentsGenerator\LabelCreator.cs" />
     <Compile Include="Assets\Scripts\Credits\ProceduralCredits\UIComponentsGenerator\RollingCredits.cs" />
+    <Compile Include="Assets\Scripts\Entity\Human.cs" />
+    <Compile Include="Assets\Scripts\Entity\HumanData.cs" />
+    <Compile Include="Assets\Scripts\Entity\IAdmin.cs" />
+    <Compile Include="Assets\Scripts\Entity\IHuman.cs" />
+    <Compile Include="Assets\Scripts\Entity\Worker.cs" />
     <Compile Include="Assets\Scripts\InputManager\InputController.cs" />
     <Compile Include="Assets\Scripts\PathFinder\PathFinder.cs" />
     <Compile Include="Assets\Scripts\SceneManager\SceneManager.cs" />

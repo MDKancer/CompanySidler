@@ -81,6 +81,8 @@ namespace InputManager
                    Boot.runtimeStateController.CurrentState == RunTimeState.GAME_MENU)
                 {
                     cameraController.ToEmptyPos();
+
+                    Boot.runtimeStateController.CurrentState = RunTimeState.PLAYING;
                     focusPoint = focusObjekt.transform.position;
                 }
             }

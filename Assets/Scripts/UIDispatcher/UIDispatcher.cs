@@ -1,7 +1,9 @@
-﻿using BootManager;
+﻿using System;
+using BootManager;
 using BuildingPackage;
 using Constants;
 using Credits;
+using Life;
 using InputManager;
 using NaughtyAttributes;
 using TMPro;
@@ -84,10 +86,14 @@ public class UIDispatcher : MonoBehaviour
                         Boot.runtimeStateController.SwitchToLastState();
                 }
         }
-        public void ApplyWorker()
+        public void ApplyWorker(String name)
         {
                 Vector3  spawnPosition = new Vector3(4f,1f,2f);
-                Boot.spawnController.SpawnObject(Boot.container.GetPrefabsByType(EntityType.WORKER)[0], spawnPosition);
+                //Boot.spawnController.SpawnObject(Boot.container.GetPrefabsByType(EntityType.DEVELOPER)[0], spawnPosition,EntityType.DEVELOPER);
+                HumanData humanData = new HumanData(GetValue(name));
+                humanData.GetHisOffice = Building.BuildingData.buildingType;
+                
+                Boot.spawnController.SpawnObject(humanData,spawnPosition);
                 workerCount++;
                 TextMeshProUGUI workersCount = GameObject.Find("Panel_Mitarbeiter_Nr").GetComponent<TextMeshProUGUI>();
                 workersCount.SetText(workerCount.ToString());
@@ -111,6 +117,20 @@ public class UIDispatcher : MonoBehaviour
                 }
         }
 
+        public void ChangeWorkingBuildingState(Transform button)
+        {
+                if (Boot.runtimeStateController.CurrentState == RunTimeState.BUILDING_INFO ) // && Boot.gameStateController.CurrentState == GameState.GAME
+                {
+                        Building.SwitchWorkingState();
+                        
+                        TextMeshProUGUI btnText = button.GetComponent<TextMeshProUGUI>();
+                        btnText.SetText(
+                                btnText.text.ToLower().Contains(BuildingState.PAUSE.ToString().ToLower()) ? 
+                                        BuildingState.WORK.ToString() : BuildingState.PAUSE.ToString()
+                                        );
+                } 
+        }
+
         private void ShowBuildingInfoWindow()
         {
                 if (Boot.runtimeStateController.CurrentState == RunTimeState.BUILDING_INFO) // && Boot.gameStateController.CurrentState == GameState.GAME
@@ -122,6 +142,10 @@ public class UIDispatcher : MonoBehaviour
                         GameObject.Find("WorkerLimit").GetComponent<TextMeshProUGUI>().SetText("/ "+Building.BuildingData.workPlacesLimit.ToString());
                         GameObject.Find("Price").GetComponent<TextMeshProUGUI>().SetText(Building.BuildingData.upgradePrice.ToString());
                         GameObject.Find("Geld").GetComponent<TextMeshProUGUI>().SetText(Building.BuildingData.moneyPerSec.ToString());
+                        
+                        float currentSize = (Building.BuildingData.currenHhitPoints * 100f /
+                                            Building.BuildingData.maxHitPoints) / 100f;
+                        GameObject.Find("HitPoints").transform.localScale = new Vector3( currentSize, 1f,1f);
                 }
                 else if(Boot.runtimeStateController.CurrentState != RunTimeState.BUILDING_INFO && Boot.runtimeStateController.CurrentState != RunTimeState.GAME_MENU)
                 {
@@ -155,5 +179,10 @@ public class UIDispatcher : MonoBehaviour
                         TextMeshProUGUI money = GameObject.Find("Panel_Geld_Nr")?.GetComponent<TextMeshProUGUI>();
                         money?.SetText(currentBuget.ToString());
                 //}
+        }
+
+        private EntityType GetValue(String value)
+        {
+                return (EntityType) Enum.Parse(typeof(EntityType), value.ToUpper());
         }
 }

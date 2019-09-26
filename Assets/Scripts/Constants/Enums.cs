@@ -37,13 +37,14 @@
         PAUSE = 2,
     }
 
-    public enum EntityState
+    public enum HumanState
     {
         NONE = -1,
         WORK = 0,
         WALK = 1,
         LEARN = 2,
-        PAUSE = 3
+        PAUSE = 3,
+        QUITED = 4
     }
 
     public enum EntityType
@@ -51,8 +52,17 @@
         NONE = -1,
         CLIENT = 0,
         BUILDING = 2,
-        WORKER = 3,
-        AZUBI = 4
+        DEVELOPER = 3,
+        AZUBI = 4,
+        DEVOPS = 5,
+        ACCOUNTER = 6,
+        TESTER = 7,
+        DESIGNER = 8,
+        ANALYST = 9,
+        TEAMLEADER = 10,
+        PERSONAL = 11,
+        ADMIN = 12,
+        PRODUKTOWNER = 13
         
     }
 

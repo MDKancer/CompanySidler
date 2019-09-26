@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using BootManager;
+using Constants;
 using UnityEngine;
 
 /// <summary>
@@ -22,7 +23,7 @@ public class WorkerGenerator : MonoBehaviour
         int workerID = 0;
         while (workerID <=100)
         {
-            Boot.spawnController.SpawnObject(prefab, spawnPosition);
+           //Boot.spawnController.SpawnObject(prefab, spawnPosition, EntityType.AZUBI);
             workerID++;
             yield return new WaitForSeconds(2f);
         }

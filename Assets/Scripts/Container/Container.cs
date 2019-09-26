@@ -23,7 +23,7 @@ using Object = UnityEngine.Object;
            //TODO: hier wird alle Prefabs aus den Ordnern im Dictionary reingepackt.
            
            addPrefabs(Resources.LoadAll<GameObject>("Prefabs/Entitys/Building"), EntityType.BUILDING);
-           addPrefabs(Resources.LoadAll<GameObject>("Prefabs/Entitys/Workers"), EntityType.WORKER);
+           addPrefabs(Resources.LoadAll<GameObject>("Prefabs/Entitys/Workers/Developers"), EntityType.DEVELOPER);
            addPrefabs(Resources.LoadAll<GameObject>("Prefabs/Entitys/Azubis"), EntityType.AZUBI);
            addPrefabs(Resources.LoadAll<GameObject>("Prefabs/Entitys/Clients"), EntityType.CLIENT);
 

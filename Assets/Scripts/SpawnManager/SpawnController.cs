@@ -1,5 +1,7 @@
 ﻿using System;
 using BootManager;
+using Constants;
+using Life;
 using UnityEngine;
 using UnityEngine.AI;
 using Object = UnityEngine.Object;
@@ -23,20 +25,22 @@ namespace SpawnManager
         /// <param name="prefab">
         /// <param name="position"></param>
         /// <returns>Wenn das Object Instantiert wurde und in den Container gepseichert wurde, bekommt man zurrück ein true.</returns>
-        public Boolean SpawnObject(GameObject prefab, Vector3 position)
+        public Boolean SpawnObject(HumanData humanData,Vector3 spawnPosition) //GameObject prefab, EntityType workerEntityType
         {
             try
             {
-                GameObject objectInstace = Object.Instantiate(prefab, position, Quaternion.identity);
-                objectInstace.name = "Worker" + id++;
+                GameObject objectInstace = Object.Instantiate(humanData.GetPrefab, spawnPosition, Quaternion.identity);
+                objectInstace.name = humanData.GetEntityType.ToString();
                 if(objectInstace.GetComponent<NavMeshAgent>() == null)
                 {
                     NavMeshAgent agent = objectInstace.AddComponent<NavMeshAgent>();
                 }
 
-                if (objectInstace.GetComponent<test>() == null)
+                if (objectInstace.GetComponent<Worker>() == null)
                 {
-                    objectInstace.AddComponent<test>();
+                   Worker worker = objectInstace.AddComponent<Worker>();
+                   worker.HumanData = humanData;
+                   worker.Work();
                 }
 
                 Boot.container.AddSpawnededGameObject(objectInstace);

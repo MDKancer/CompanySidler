@@ -10,7 +10,12 @@ namespace StateMachine
         
         public T CurrentState
         {
-            set { currentState = value; }
+            set
+            {
+               lastState = currentState != null ? currentState : lastState;
+                
+                currentState = value;
+            }
             get { return currentState; }
         }
         public T LastState

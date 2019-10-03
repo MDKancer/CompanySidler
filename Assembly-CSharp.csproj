@@ -73,6 +73,7 @@
     <Compile Include="Assets\Scripts\Building\Administration\iAdministration.cs" />
     <Compile Include="Assets\Scripts\Building\Azubi\AzubisTown.cs" />
     <Compile Include="Assets\Scripts\Building\Azubi\iAzubis.cs" />
+    <Compile Include="Assets\Scripts\Building\Building.cs" />
     <Compile Include="Assets\Scripts\Building\BuildingWorker.cs" />
     <Compile Include="Assets\Scripts\Building\DevOps\DevOps.cs" />
     <Compile Include="Assets\Scripts\Building\DevOps\iDevOps.cs" />
@@ -112,6 +113,7 @@
     <Compile Include="Assets\Scripts\SpawnManager\SpawnController.cs" />
     <Compile Include="Assets\Scripts\StateManager\StateManager.cs" />
     <Compile Include="Assets\Scripts\test.cs" />
+    <Compile Include="Assets\Scripts\UIDispatcher\UIBuildingContent\BuildingContent.cs" />
     <Compile Include="Assets\Scripts\UIDispatcher\UIDispatcher.cs" />
     <Compile Include="Assets\Scripts\WorkerGenerator.cs" />
     <None Include="Assets\TextMesh Pro\Resources\Shaders\TMP_SDF-Surface-Mobile.shader" />

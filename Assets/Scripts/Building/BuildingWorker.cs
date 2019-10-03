@@ -1,4 +1,4 @@
-namespace BuildingPackage.Worker
+namespace BuildingPackage.OfficeWorker
 {
     public class BuildingWorker<T,V>
     {

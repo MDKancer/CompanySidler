@@ -66,6 +66,7 @@ namespace InputManager
                     {
                         if(isBuilding(raycastHit.collider.gameObject))
                         {
+                            
                             focusPoint = raycastHit.point;
                             focusedBuilding = raycastHit.collider.gameObject;
                             cameraController.FocusOn(raycastHit.point);
@@ -99,7 +100,7 @@ namespace InputManager
 
         private bool isBuilding(GameObject targetObjekt)
         {
-            Component[] buildingComponent = targetObjekt.GetComponents(typeof(iBuilding));
+            Component[] buildingComponent = targetObjekt.GetComponents(typeof(Building));
 
             return buildingComponent.Length > 0;
         }

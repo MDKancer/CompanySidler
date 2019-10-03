@@ -155,7 +155,7 @@ using Object = UnityEngine.Object;
         private void GetAllInterfaces()
         {
             List<Type[]> unornedTypes = AppDomain.CurrentDomain.GetAssemblies().SelectMany(x => x.GetTypes())
-                .Where(x => typeof(iBuilding).IsAssignableFrom(x) && !x.IsInterface && !x.IsAbstract)
+                .Where(x => typeof(Building).IsAssignableFrom(x) && !x.IsInterface && !x.IsAbstract)
                 .Select(x => x.GetInterfaces()).ToList();
             
             for (int i = 0; i < unornedTypes.Count; i++)
@@ -163,7 +163,7 @@ using Object = UnityEngine.Object;
                 for (int j = 0; j < unornedTypes[i].Length; j++)
                 {
                     Type interfaceType = unornedTypes[i][j];
-                    if(!sortedTypes.Contains(interfaceType) && interfaceType != typeof(iBuilding) )
+                    if(!sortedTypes.Contains(interfaceType) && interfaceType != typeof(Building) )
                     {
                         sortedTypes.Add(interfaceType);
                     }

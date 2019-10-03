@@ -1,29 +1,24 @@
 using System.Collections;
 using System.Collections.Generic;
-using BuildingPackage.Worker;
+using BuildingPackage.OfficeWorker;
 using Constants;
 using JetBrains.Annotations;
 using Life;
 using StateMachine;
+using UIPackage;
 using UnityEngine;
 
 namespace BuildingPackage
 {
-    public class TarentTown : MonoBehaviour,iBuilding, iTarent
+    public class TarentTown : Building, iTarent
     {
-        public int money;
-        
-        private float time;
-        private BuildingState buildingState;
-        private StateController<BuildingState> stateController = new StateController<BuildingState>();
-        private BuildingData buildingData;
-
         void Awake()
         {
             buildingData = new BuildingData
             {
                 buildingType = BuildingType.TARENT_TOWN,
                 name = name,
+                workers = 0,
                 maxHitPoints = 2000,
                 currenHhitPoints = 2000,
                 upgradePrice = 0,
@@ -40,16 +35,16 @@ namespace BuildingPackage
                     new BuildingWorker<Human, EntityType>(EntityType.DESIGNER),
                     new BuildingWorker<Human, EntityType>(EntityType.DEVELOPER),
                     new BuildingWorker<Human, EntityType>(EntityType.AZUBI)
-                    //TODO : Die Liste Erweitern
+                    //TODO : Die Liste Erweitern / Ändern
                 }
             };
             
+            Debug.Log(buildingData.name);
             stateController.CurrentState = BuildingState.EMPTY;
         }
 
         void Start()
         {
-            
             stateController.CurrentState = BuildingState.WORK;
             StartCoroutine(UpdateManyGenerator());
         }
@@ -60,24 +55,7 @@ namespace BuildingPackage
         {
             return buildingData.workers * buildingData.moneyPerSec;
         }
-
-        public void Upgrade()
-        {
-            buildingData.workPlacesLimit += 5;
-            buildingData.upgradePrice *= 3;
-            buildingData.moneyPerSec *= 3;
-        }
-
-        public void DoDamage(int damagePercent = 0)
-        {
-            throw new System.NotImplementedException();
-        }
-        public void Work()
-        {
-            
-        }
-
-        public void SwitchWorkingState()
+        public new void SwitchWorkingState()
         {
             if (stateController.CurrentState == BuildingState.WORK)
             {
@@ -90,45 +68,6 @@ namespace BuildingPackage
                 StartCoroutine( UpdateManyGenerator());
             }
         }
-
-        /// <summary>
-        /// geändert und erweitert
-        /// </summary>
-        /// <param name="worker"></param>
-        public void ApplyWorker(Life.Worker worker)
-        {
-            foreach (var VARIABLE in BuildingData.accesibleWorker)
-            {
-                if (VARIABLE.WorkerType == worker.HumanData.GetEntityType && VARIABLE.Worker == null)
-                {
-                    VARIABLE.Worker = worker;
-                    return;
-                }
-            }
-        }
-
-        public void QuitWorker([NotNull] Life.Worker worker)
-        {
-            // TODO: das wird nach dem EntityPackage geändert.
-            foreach (var VARIABLE in BuildingData.accesibleWorker)
-            {
-                if (VARIABLE.WorkerType == EntityType.TEAMLEADER && VARIABLE.Worker != null)
-                {
-                    VARIABLE.Worker = null;
-                    return;
-                }
-            }
-        }
-
-        public bool BuildingRepair()
-        {
-            throw new System.NotImplementedException();
-        }
-
-        public BuildingData BuildingData { get=> buildingData; set => buildingData = value; }
-        public BuildingState buildingWorkingState { get=>stateController.CurrentState; }
-
-
         private IEnumerator UpdateManyGenerator()
         {
             if (stateController.CurrentState == BuildingState.WORK)

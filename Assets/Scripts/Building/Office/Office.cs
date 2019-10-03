@@ -1,28 +1,39 @@
 using System.Collections;
+using System.Collections.Generic;
+using BuildingPackage.OfficeWorker;
 using Constants;
-using StateMachine;
+using Life;
+using UIPackage;
 using UnityEngine;
 
 namespace BuildingPackage
 {
-    public class Office : MonoBehaviour , iBuilding, iOffice
+    public class Office : Building, iOffice
     {
-        public int money;
-        
-        private float time;
-        private BuildingState buildingState;
-        private StateController<BuildingState> stateController = new StateController<BuildingState>();
-        private BuildingData buildingData;
-
         void Awake()
         {
             buildingData = new BuildingData
             {
                 buildingType = BuildingType.OFFICE,
                 name = name,
+                workers = 0,
+                maxHitPoints = 2000,
+                currenHhitPoints = 2000,
                 upgradePrice = 0,
                 workPlacesLimit = 1,
-                moneyPerSec = -2
+                moneyPerSec = -2,
+                accesibleWorker = new List<BuildingWorker<Human, EntityType>>
+                {
+                    new BuildingWorker<Human, EntityType>(EntityType.TEAMLEADER),
+                    new BuildingWorker<Human, EntityType>(EntityType.TESTER),
+                    new BuildingWorker<Human, EntityType>(EntityType.ANALYST),
+                    new BuildingWorker<Human, EntityType>(EntityType.DEVELOPER),
+                    new BuildingWorker<Human, EntityType>(EntityType.DEVELOPER),
+                    new BuildingWorker<Human, EntityType>(EntityType.DESIGNER),
+                    new BuildingWorker<Human, EntityType>(EntityType.DEVELOPER),
+                    new BuildingWorker<Human, EntityType>(EntityType.AZUBI)
+                    //TODO : Die Liste Erweitern / Ändern
+                }
             };
             stateController.CurrentState = BuildingState.EMPTY;
         }
@@ -32,27 +43,9 @@ namespace BuildingPackage
             stateController.CurrentState = BuildingState.WORK;
             StartCoroutine(UpdateManyGenerator());
         }
-    
-
-
         public int Managment()
         {
             return buildingData.workers * buildingData.moneyPerSec;
-        }
-
-        public void Upgrade()
-        {
-            throw new System.NotImplementedException();
-        }
-
-        public void DoDamage(int damagePercent = 0)
-        {
-            throw new System.NotImplementedException();
-        }
-
-        public void Work()
-        {
-            
         }
 
         public void SwitchWorkingState()
@@ -68,31 +61,6 @@ namespace BuildingPackage
                 StartCoroutine( UpdateManyGenerator());
             }
         }
-
-        public void ApplyWorker(Life.Worker worker)
-        {
-            foreach (var VARIABLE in BuildingData.accesibleWorker)
-            {
-                if (VARIABLE.WorkerType == worker.HumanData.GetEntityType && VARIABLE.Worker == null)
-                {
-                    VARIABLE.Worker = worker;
-                    return;
-                }
-            }
-        }
-
-        public void QuitWorker(Life.Worker worker)
-        {
-            throw new System.NotImplementedException();
-        }
-
-        public bool BuildingRepair()
-        {
-            throw new System.NotImplementedException();
-        }
-
-        public BuildingData BuildingData { get=> buildingData; set => buildingData = value; }
-        public BuildingState buildingWorkingState { get=>stateController.CurrentState; }
         private IEnumerator UpdateManyGenerator()
         {
             if (stateController.CurrentState == BuildingState.WORK)

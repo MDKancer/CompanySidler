@@ -1,5 +1,5 @@
 using System.Collections.Generic;
-using BuildingPackage.Worker;
+using BuildingPackage.OfficeWorker;
 using Constants;
 using Life;
 

@@ -22,12 +22,11 @@ namespace BuildingPackage
 
         public void DoDamage(int damagePercent = 0)
         {
-            buildingData.currenHhitPoints -= damagePercent;
+            buildingData.currentHitPoints -= damagePercent;
         }
 
         public void Work()
         {
-            throw new System.NotImplementedException();
         }
 
         public void SwitchWorkingState()
@@ -37,7 +36,7 @@ namespace BuildingPackage
 
         public void ApplyWorker(Worker worker)
         {
-            foreach (var VARIABLE in BuildingData.accesibleWorker)
+            foreach (var VARIABLE in BuildingData.AccessibleWorker)
             {
                 if (VARIABLE.WorkerType == worker.HumanData.GetEntityType && VARIABLE.Worker == null)
                 {
@@ -50,8 +49,7 @@ namespace BuildingPackage
 
         public void QuitWorker(Worker worker)
         {
-            // TODO: das wird nach dem EntityPackage geändert.
-            foreach (var VARIABLE in BuildingData.accesibleWorker)
+            foreach (var VARIABLE in BuildingData.AccessibleWorker)
             {
                 if (VARIABLE.WorkerType == EntityType.TEAMLEADER && VARIABLE.Worker != null)
                 {
@@ -64,10 +62,12 @@ namespace BuildingPackage
 
         public bool BuildingRepair()
         {
-            throw new System.NotImplementedException();
+            return false;
         }
 
-        public BuildingData BuildingData { get => buildingData; }
-        public BuildingState buildingWorkingState { get=> stateController.CurrentState; }
+        
+
+        public BuildingData BuildingData => buildingData;
+        public BuildingState buildingWorkingState => stateController.CurrentState;
     }
 }

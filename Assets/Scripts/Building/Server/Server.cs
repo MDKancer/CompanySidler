@@ -18,12 +18,12 @@ namespace BuildingPackage
                 name = name,
                 workers = 0,
                 maxHitPoints = 2000,
-                currenHhitPoints = 2000,
+                currentHitPoints = 2000,
                 upgradePrice = 0,
                 workPlacesLimit = 1,
                 moneyPerSec = 5,
                 
-                accesibleWorker = new List<BuildingWorker<Human, EntityType>>
+                AccessibleWorker = new List<BuildingWorker<Human, EntityType>>
                 {
                     new BuildingWorker<Human, EntityType>(EntityType.TEAMLEADER),
                     new BuildingWorker<Human, EntityType>(EntityType.TESTER),
@@ -74,7 +74,7 @@ namespace BuildingPackage
                 while (stateController.CurrentState == BuildingState.WORK)
                 {
                     money += Hosten();
-                    UIDispatcher.currentBuget += Hosten();
+                    UIDispatcher.currentBudget += Hosten();
                     yield return new WaitForSeconds(1f);
                 }
             }

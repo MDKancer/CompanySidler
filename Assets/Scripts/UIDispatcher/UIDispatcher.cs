@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using BootManager;
 using BuildingPackage;
 using Constants;
@@ -10,6 +11,7 @@ using NaughtyAttributes;
 using TMPro;
 using UIPackage.UIBuildingContent;
 using UnityEngine;
+using UnityEngine.UI;
 
 namespace UIPackage
 {
@@ -19,13 +21,12 @@ namespace UIPackage
         public class UIDispatcher : MonoBehaviour
         {
                 public static UIDispatcher uiDispatcher;
-                // Es ist nur temporär um zu wissen ob alles gut läuft.
                 public  GameState currentGameState;
-                public static int currentBuget;
+                public static int currentBudget;
                 [Required]
-                public GameObject playerView;
+                public GameObject buildingInfo;
                 
-                private List<GameObject> buildContentBtns = new List<GameObject>();
+                private Dictionary<Button,TextMeshProUGUI> buildContentBtn = new Dictionary<Button, TextMeshProUGUI>();
                 private CreditsManager creditsManager;
                 private GameObject creditPanel;
                 private int workerCount = 0;
@@ -38,8 +39,8 @@ namespace UIPackage
                         {
                                 uiDispatcher = this;
                                 creditsManager = GetComponent<CreditsManager>();
-                                playerView = GameObject.Find("BuildingInfo");
-                                playerView.SetActive(false);
+                                buildingInfo = GameObject.Find("BuildingInfo");
+                                buildingInfo.SetActive(false);
                                 DontDestroyOnLoad(gameObject);
                         }
                         else
@@ -54,7 +55,7 @@ namespace UIPackage
                 private void Update()
                 {
                         CheckCurrentState();
-                        CurrentBuget();
+                        CurrentBudget();
                         ShowBuildingInfoWindow();
                 }
 
@@ -83,25 +84,16 @@ namespace UIPackage
                         Application.Quit();
                 }
 
-                public void ShowWorkerList(Transform target)
-                {
-                        target.gameObject.SetActive(!target.gameObject.active);
-                        if(Boot.runtimeStateController.CurrentState != RunTimeState.GAME_MENU)
-                        {
-                                Boot.runtimeStateController.CurrentState = RunTimeState.GAME_MENU;
-                        }
-                        else
-                        {
-                                Boot.runtimeStateController.SwitchToLastState();
-                        }
-                }
+            
                 public void ApplyWorker(String name)
                 {
-                        Vector3  spawnPosition = new Vector3(4f,1f,2f);
-                        //Boot.spawnController.SpawnObject(Boot.container.GetPrefabsByType(EntityType.DEVELOPER)[0], spawnPosition,EntityType.DEVELOPER);
-                        HumanData humanData = new HumanData(GetValue(name));
-                        humanData.GetHisOffice = Building.BuildingData.buildingType;
-                        
+                        var  spawnPosition = new Vector3(4f,1f,2f);
+
+                        var humanData = new HumanData(GetValue(name))
+                        {
+                                GetHisOffice = Building.BuildingData.buildingType
+                        };
+
                         Boot.spawnController.SpawnObject(humanData,spawnPosition);
                         workerCount++;
                         TextMeshProUGUI workersCount = GameObject.Find("Panel_Mitarbeiter_Nr").GetComponent<TextMeshProUGUI>();
@@ -122,7 +114,12 @@ namespace UIPackage
                 {
                         if (Boot.runtimeStateController.CurrentState == RunTimeState.BUILDING_INFO ) // && Boot.gameStateController.CurrentState == GameState.GAME
                         {
-                                Building.Upgrade();
+                                if(currentBudget >= Building.BuildingData.upgradePrice)
+                                {
+                                        Building.Upgrade();
+                                        // content refresh
+                                        RemoveBuildingContent();
+                                }
                         }
                 }
 
@@ -144,16 +141,16 @@ namespace UIPackage
                 {
                         if (Boot.runtimeStateController.CurrentState == RunTimeState.BUILDING_INFO) // && Boot.gameStateController.CurrentState == GameState.GAME
                         {
-                                playerView.SetActive(true);
+                                buildingInfo.SetActive(true);
                                 
                                 GameObject.Find("BuildingTitle").GetComponent<TextMeshProUGUI>().SetText(Building.BuildingData.name);
                                 GameObject.Find("WorkerCount").GetComponent<TextMeshProUGUI>().SetText(Building.BuildingData.workers.ToString());
-                                GameObject.Find("WorkerLimit").GetComponent<TextMeshProUGUI>().SetText("/ "+Building.BuildingData.workPlacesLimit.ToString());
+                                GameObject.Find("WorkerLimit").GetComponent<TextMeshProUGUI>().SetText("/ "+Building.BuildingData.workPlacesLimit);
                                 GameObject.Find("Price").GetComponent<TextMeshProUGUI>().SetText(Building.BuildingData.upgradePrice.ToString());
                                 GameObject.Find("Geld").GetComponent<TextMeshProUGUI>().SetText(Building.BuildingData.moneyPerSec.ToString());
                                 
                                 
-                                float currentSize = (Building.BuildingData.currenHhitPoints * 100f /
+                                float currentSize = (Building.BuildingData.currentHitPoints * 100f /
                                                     Building.BuildingData.maxHitPoints) / 100f;
                                 GameObject.Find("HitPoints").transform.localScale = new Vector3( currentSize, 1f,1f);
                                 if (!haveContentBtn)
@@ -163,24 +160,12 @@ namespace UIPackage
                         }
                         else if(Boot.runtimeStateController.CurrentState != RunTimeState.BUILDING_INFO && Boot.runtimeStateController.CurrentState != RunTimeState.GAME_MENU)
                         {
-                                
-                                playerView.SetActive(false);
-                                haveContentBtn = false;
-                                // TODO Generated Buttons need to destroy after the Buildinginfo windows is closed, mb all of the btns in one List to save                       
-                                foreach (var btns in buildContentBtns)
-                                {
-                                        // Staat foreach ein Standart forloop
-                                        // und überprüfen ob der i < als die Größe der List ist
-                                        buildContentBtns.Remove(btns);
-                                        Destroy(btns);
-                                }
+                                RemoveBuildingContent();
+                                buildingInfo.SetActive(false);
                         }
                 }
+                private Building Building => (Building) InputController.FocusedBuilding?.GetComponent(typeof(Building));
 
-                private Building Building
-                {
-                        get => (Building) InputController.FocusedBuilding?.GetComponent(typeof(Building));
-                }
                 /// <summary>
                 /// Es ist nur temporär um zu wissen ob alles gut Läuft.
                 /// </summary>
@@ -197,26 +182,34 @@ namespace UIPackage
 
                 private void GenerateBuildingContent()
                 {
-                        GameObject buildingContentobj = GameObject.Find("BuildingContent");
+                        GameObject buildingContentObj = GameObject.Find("BuildingContent");
 
-                        buildingContent = new BuildingContent(Building, buildingContentobj);
-                        buildingContent.CreateBuildingContent(ref buildContentBtns);
-                        //TODO Referenz  zu BUILDING Content und die Elemente generieren lassen.
+                        buildingContent = new BuildingContent(Building, buildingContentObj);
+                        buildingContent.CreateBuildingContent(ref buildContentBtn);
+
                         haveContentBtn = true;
                 }
-
-                private void CurrentBuget()
+                private void RemoveBuildingContent()
+                {
+                        for (int index = 0; index < buildContentBtn.Count; index++) {
+                                var item = buildContentBtn.ElementAt(index);
+                                var itemKey = item.Key;
+                                var itemValue = item.Value;
+                                buildContentBtn.Remove(itemKey);
+                                Destroy(itemValue.gameObject);
+                                Destroy(itemKey.gameObject);
+                        }
+                        haveContentBtn = false;
+                }
+                private void CurrentBudget()
                 {
                        // if(Boot.gameStateController.CurrentState == GameState.GAME)
                         //{
                                 TextMeshProUGUI money = GameObject.Find("Panel_Geld_Nr")?.GetComponent<TextMeshProUGUI>();
-                                money?.SetText(currentBuget.ToString());
+                                money?.SetText(currentBudget.ToString());
                         //}
                 }
 
-                private EntityType GetValue(String value)
-                {
-                        return (EntityType) Enum.Parse(typeof(EntityType), value.ToUpper());
-                }
+                private EntityType GetValue(String value) => (EntityType) Enum.Parse(typeof(EntityType), value.ToUpper());
         }
 }

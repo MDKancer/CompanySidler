@@ -1,9 +1,12 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
+using BootManager;
 using BuildingPackage.OfficeWorker;
 using Constants;
 using JetBrains.Annotations;
-using Life;
+using Human;
+using ProjectPackage;
 using StateMachine;
 using UIPackage;
 using UnityEngine;
@@ -25,35 +28,37 @@ namespace BuildingPackage
                 workPlacesLimit = 1,
                 moneyPerSec = -8,
                 
-                AccessibleWorker = new List<BuildingWorker<Human, EntityType>>
+                AccessibleWorker = new List<BuildingWorkers<Worker, EntityType>>
                 {
-                    new BuildingWorker<Human, EntityType>(EntityType.TEAMLEADER),
-                    new BuildingWorker<Human, EntityType>(EntityType.TESTER),
-                    new BuildingWorker<Human, EntityType>(EntityType.ANALYST),
-                    new BuildingWorker<Human, EntityType>(EntityType.DEVELOPER),
-                    new BuildingWorker<Human, EntityType>(EntityType.DEVELOPER),
-                    new BuildingWorker<Human, EntityType>(EntityType.DESIGNER),
-                    new BuildingWorker<Human, EntityType>(EntityType.DEVELOPER),
-                    new BuildingWorker<Human, EntityType>(EntityType.AZUBI)
+                    new BuildingWorkers<Worker, EntityType>(EntityType.PERSONAL),
+                    new BuildingWorkers<Worker, EntityType>(EntityType.ANALYST),
+                    new BuildingWorkers<Worker, EntityType>(EntityType.PERSONAL),
+                    new BuildingWorkers<Worker, EntityType>(EntityType.ANALYST),
+                    new BuildingWorkers<Worker, EntityType>(EntityType.PERSONAL),
+                    new BuildingWorkers<Worker, EntityType>(EntityType.PERSONAL),
+                    new BuildingWorkers<Worker, EntityType>(EntityType.DESIGNER),
+                    new BuildingWorkers<Worker, EntityType>(EntityType.PERSONAL)
                     //TODO : Die Liste Erweitern / Ändern
                 }
             };
             
-            Debug.Log(buildingData.name);
             stateController.CurrentState = BuildingState.EMPTY;
         }
-
+        
         void Start()
         {
             stateController.CurrentState = BuildingState.WORK;
             StartCoroutine(UpdateManyGenerator());
+            StartCoroutine(DistributeProjects());
         }
-        
-        //coroutine -> alternative zu update
 
+        public void TakeProject(Project newProject,ClientType clientType)
+        {
+            company.AddNewProject(newProject, clientType);
+        }
         public int ToHold()
         {
-            return buildingData.workers * buildingData.moneyPerSec;
+            return BuildingData.wastage; 
         }
         public new void SwitchWorkingState()
         {
@@ -74,10 +79,34 @@ namespace BuildingPackage
             {
                 while (stateController.CurrentState == BuildingState.WORK)
                 {
-                    money += ToHold();
-                    UIDispatcher.currentBudget += ToHold();
+                    budget += ToHold();
                     yield return new WaitForSeconds(1f);
                 }
+            }
+        }
+
+        private IEnumerator DistributeProjects()
+        {
+            var clientValues = Enum.GetValues(typeof(ClientType));
+            var buidingValues = Enum.GetValues(typeof(BuildingType));
+            
+            var buildings = Boot.container.Firmas;
+            
+            while (true)
+            {
+                foreach (var clientValue in clientValues)
+                {
+                    foreach (var buidingValue in buidingValues)
+                    {
+                        if (clientValue.ToString().Contains(buidingValue.ToString()))
+                        {
+                            Building building = buildings[0].GetOffice((BuildingType) buidingValue);
+                            building.possibleProjects = company.GetProjectsByType((ClientType) clientValue);
+                        }
+                    }
+                }
+                
+                yield return new WaitForSeconds(1.0f);
             }
         }
     }

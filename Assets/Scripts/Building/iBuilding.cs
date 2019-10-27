@@ -1,6 +1,6 @@
 using Constants;
 using JetBrains.Annotations;
-using Life;
+using Human;
 
 namespace BuildingPackage
 {

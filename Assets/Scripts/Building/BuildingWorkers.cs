@@ -1,16 +1,16 @@
 namespace BuildingPackage.OfficeWorker
 {
-    public class BuildingWorker<T,V>
+    public class BuildingWorkers<T,V>
     {
         private T worker;
         private V workerType;
         
-        public BuildingWorker(V WorkerType)
+        public BuildingWorkers(V WorkerType)
         {
             this.workerType = WorkerType;
         }
 
-        public BuildingWorker()
+        public BuildingWorkers()
         {
             
         }

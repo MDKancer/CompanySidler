@@ -5,7 +5,7 @@ using BootManager;
 using BuildingPackage;
 using Constants;
 using Credits;
-using Life;
+using Human;
 using InputManager;
 using NaughtyAttributes;
 using TMPro;
@@ -88,13 +88,9 @@ namespace UIPackage
                 public void ApplyWorker(String name)
                 {
                         var  spawnPosition = new Vector3(4f,1f,2f);
+                        var humanData = new WorkerData(GetValue(name),Building.BuildingData.buildingType);
 
-                        var humanData = new HumanData(GetValue(name))
-                        {
-                                GetHisOffice = Building.BuildingData.buildingType
-                        };
-
-                        Boot.spawnController.SpawnObject(humanData,spawnPosition);
+                        Boot.spawnController.SpawnWorker(humanData,spawnPosition);
                         workerCount++;
                         TextMeshProUGUI workersCount = GameObject.Find("Panel_Mitarbeiter_Nr").GetComponent<TextMeshProUGUI>();
                         workersCount.SetText(workerCount.ToString());
@@ -102,7 +98,10 @@ namespace UIPackage
 
                 public void ApplyProject()
                 {
-                        
+                        if (Boot.runtimeStateController.CurrentState == RunTimeState.BUILDING_INFO ) // && Boot.gameStateController.CurrentState == GameState.GAME
+                        {
+                              //Building.ApplyProject();
+                        }
                 }
 
                 public void BuyBuilding()
@@ -206,7 +205,7 @@ namespace UIPackage
                        // if(Boot.gameStateController.CurrentState == GameState.GAME)
                         //{
                                 TextMeshProUGUI money = GameObject.Find("Panel_Geld_Nr")?.GetComponent<TextMeshProUGUI>();
-                                money?.SetText(currentBudget.ToString());
+                                money?.SetText(Boot.container.Firmas[0].CurrentBudget.ToString());
                         //}
                 }
 

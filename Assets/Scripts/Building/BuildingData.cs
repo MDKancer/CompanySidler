@@ -1,7 +1,9 @@
+using System;
 using System.Collections.Generic;
 using BuildingPackage.OfficeWorker;
 using Constants;
-using Life;
+using Human;
+using UnityEngine;
 
 namespace BuildingPackage
 {
@@ -15,7 +17,10 @@ namespace BuildingPackage
         public int moneyPerSec;
         public int maxHitPoints;
         public int currentHitPoints;
-        private List<BuildingWorker<Human,EntityType>> accessibleWorker;
+        public int wastage;
+        
+        private List<BuildingWorkers<Worker,EntityType>> accessibleWorker;
+        
         /// <summary>
         /// Get the actual number of employed Workers .....
         /// </summary>
@@ -41,11 +46,11 @@ namespace BuildingPackage
             return (employedPlaces, countEmployedPlaces);
         }
 
-        public List<BuildingWorker<Human, EntityType>> AccessibleWorker
+        public List<BuildingWorkers<Worker, EntityType>> AccessibleWorker
         {
             get
             {
-                var temp = new List<BuildingWorker<Human, EntityType>>();
+                var temp = new List<BuildingWorkers<Worker, EntityType>>();
 
                 for (int i = 0; i < workPlacesLimit; i++)
                 {
@@ -55,6 +60,24 @@ namespace BuildingPackage
                 return temp;
             }
             set => accessibleWorker = value;
+        }
+
+        public void ChangeWastage()
+        {
+            if(AccessibleWorker.Count > 0)
+            {
+                foreach (var worker in AccessibleWorker)
+                {
+                    if(worker.Worker != null)
+                    {
+                        wastage -= worker.Worker.WorkerData.hourlyWage;
+                    }
+                }
+            }
+            else
+            {
+                wastage = 0;
+            }
         }
         
     }

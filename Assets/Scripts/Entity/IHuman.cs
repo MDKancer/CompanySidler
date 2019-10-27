@@ -2,7 +2,7 @@ using System.Collections;
 using Constants;
 using StateMachine;
 
-namespace Life
+namespace Human
 {
     public interface IHuman
     {

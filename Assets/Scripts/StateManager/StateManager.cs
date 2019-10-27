@@ -16,21 +16,19 @@ namespace StateMachine
                 
                 currentState = value;
             }
-            get { return currentState; }
+            get => currentState;
         }
         public T LastState
         {
-            private set { currentState = value; }
-            get { return currentState; }
+            private set => currentState = value;
+            get => currentState;
         }
 
         public void SwitchToLastState()
         {
-            T temp;
-            
             try
             {
-                temp = lastState;
+                var temp = lastState;
                 LastState = currentState;
                 currentState = temp;
             }

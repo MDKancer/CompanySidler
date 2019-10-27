@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using BuildingPackage.OfficeWorker;
 using Constants;
-using Life;
+using Human;
 using UIPackage;
 using UnityEngine;
 
@@ -23,16 +23,16 @@ namespace BuildingPackage
                 workPlacesLimit = 1,
                 moneyPerSec = 5,
                 
-                AccessibleWorker = new List<BuildingWorker<Human, EntityType>>
+                AccessibleWorker = new List<BuildingWorkers<Worker, EntityType>>
                 {
-                    new BuildingWorker<Human, EntityType>(EntityType.TEAMLEADER),
-                    new BuildingWorker<Human, EntityType>(EntityType.TESTER),
-                    new BuildingWorker<Human, EntityType>(EntityType.ANALYST),
-                    new BuildingWorker<Human, EntityType>(EntityType.DEVELOPER),
-                    new BuildingWorker<Human, EntityType>(EntityType.DEVELOPER),
-                    new BuildingWorker<Human, EntityType>(EntityType.DESIGNER),
-                    new BuildingWorker<Human, EntityType>(EntityType.DEVELOPER),
-                    new BuildingWorker<Human, EntityType>(EntityType.AZUBI)
+                    new BuildingWorkers<Worker, EntityType>(EntityType.DEVOPS),
+                    new BuildingWorkers<Worker, EntityType>(EntityType.TESTER),
+                    new BuildingWorkers<Worker, EntityType>(EntityType.ADMIN),
+                    new BuildingWorkers<Worker, EntityType>(EntityType.ADMIN),
+                    new BuildingWorkers<Worker, EntityType>(EntityType.DEVOPS),
+                    new BuildingWorkers<Worker, EntityType>(EntityType.DEVOPS),
+                    new BuildingWorkers<Worker, EntityType>(EntityType.ADMIN),
+                    new BuildingWorkers<Worker, EntityType>(EntityType.AZUBI)
                     //TODO : Die Liste Erweitern / Ändern
                 }
             };
@@ -51,7 +51,7 @@ namespace BuildingPackage
 
         public int Hosten()
         {
-            return buildingData.workers * buildingData.moneyPerSec;
+            return BuildingData.wastage; 
         }
 
         public void SwitchWorkingState()
@@ -73,8 +73,7 @@ namespace BuildingPackage
             {
                 while (stateController.CurrentState == BuildingState.WORK)
                 {
-                    money += Hosten();
-                    UIDispatcher.currentBudget += Hosten();
+                    budget += Hosten();
                     yield return new WaitForSeconds(1f);
                 }
             }

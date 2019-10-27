@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using BuildingPackage.OfficeWorker;
 using Constants;
-using Life;
+using Human;
 using StateMachine;
 using UIPackage;
 using UnityEngine;
@@ -24,18 +24,8 @@ namespace BuildingPackage
                 workPlacesLimit = 1,
                 moneyPerSec = -5,
                 
-                AccessibleWorker = new List<BuildingWorker<Human, EntityType>>
-                {
-                    new BuildingWorker<Human, EntityType>(EntityType.TEAMLEADER),
-                    new BuildingWorker<Human, EntityType>(EntityType.TESTER),
-                    new BuildingWorker<Human, EntityType>(EntityType.ANALYST),
-                    new BuildingWorker<Human, EntityType>(EntityType.DEVELOPER),
-                    new BuildingWorker<Human, EntityType>(EntityType.DEVELOPER),
-                    new BuildingWorker<Human, EntityType>(EntityType.DESIGNER),
-                    new BuildingWorker<Human, EntityType>(EntityType.DEVELOPER),
-                    new BuildingWorker<Human, EntityType>(EntityType.AZUBI)
-                    //TODO : Die Liste Erweitern / Ändern
-                }
+                // Keine Liste mit Mitarbeiter
+                
             };
             stateController.CurrentState = BuildingState.EMPTY;
         }
@@ -45,9 +35,9 @@ namespace BuildingPackage
             stateController.CurrentState = BuildingState.WORK;
             StartCoroutine(UpdateManyGenerator());
         }
-        public int Relax()
+        public int Communication()
         {
-            return  buildingData.workers * buildingData.moneyPerSec;
+            return BuildingData.wastage; 
         }
         public void SwitchWorkingState()
         {
@@ -68,8 +58,7 @@ namespace BuildingPackage
             {
                 while (stateController.CurrentState == BuildingState.WORK)
                 {
-                    money += Relax();
-                    UIDispatcher.currentBudget += Relax();
+                    budget += Communication();
                     yield return new WaitForSeconds(1f);
                 }
             }

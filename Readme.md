@@ -1,13 +1,12 @@
 # tarentSidler
 ### azubis 2018-2019 Team
 ##### Mitglieder
-|Name| Role |
-|:----|:-----:|
-|Serena Bräuer |Developer|
-|Julius Marx|Artist|
-|Julian Koch|Developer|
-|Tim Herkenrath|Artist|
-|Daniel Lozanu|Developer-Artist|
+|Name| Role | Progress |
+|:----|:-----:|:-----:|
+|Serena Bräuer|Developer|Idee|
+|Julian Koch|Developer|10%|
+|Tim Herkenrath|Artist|-|
+|Daniel Lozanu|Developer-Artist|-|
 ***
 ### Beschreibung
 
@@ -25,6 +24,8 @@ ___
 ### Regeln
 * _Es darf nicht mehr Mitarbeiter von eine Branche als erlaubt ist._
 * _Es darf nicht ein Mitarbeiter annehmen wenn kein Projekts gibts._
+* _Es darf aber die Mitarbeiter arbeiter ohne Projekt.
+<br>(Zwischen 2 Projekte , anfange und ende wird eine Minimale Pause,<br> da können die Mitarbeiter arbeiten ohne Projekt).
 * _Es darf nicht mehr Mitarbeiter zu einem Projekt mitteilen als erlaubt._
 
 ___
@@ -34,25 +35,25 @@ Mit allen gebäuden etc. **200 Mitbewohner** haben Platz??
 <br>***Ressourcen*** = Geld(steuern und ressourcen), Kunde, Projekte
 <br>***Gebäude*** (Größe, Anzahl,Arbeitsplätze):
 
-* **tarent Town**(3x3, 1, 10) = Steuern
-* **Tom Town**(2x2,1,15) = Projekte
-* **Office**(2x3,1,10) = Kunde
-* **Rewe Town**(2x2,1, 10) = Projekte
-* **Azubis**(2x2,1, 20) = neue Mitarbeiter
-* **Büro**(1x1,10, 5 passen in ein Gebäude 5 für jedes Upgrade(4 Möglich)) = Mitbewohner
-* **SozialRoom ?**(2x3,1,30)=Loyalität und glückliche arbeiter die die Produktivität erhöhen
-* **Park**(3x3,1)=Zufriedenheit und steigert die Produktivität
-* **Marketing**(2x3/3x3 kommt aufs Design an ,1,10) = zufluss an ressourcen(minimal) und tausch von Ressourcen, geld zufluss durch verkauf von ressourcen
-* **Buchhaltung**(2x2,1,10) = kredite leihen wenn Geld knapp wird ( mit möglichkeit das wöchentlich zinsen abgezogen werden oder du den gesamten Betrag zurückzahlen
-* **Dev-Ops**(2x2, 1, 20 inkl platz für 5 gefangene)= sie laufen durch die Stadt und kommen zu Verbrechen
-* **Admins**(2x3,1, 10) = ups ein haus brennt, die patrouillierenden Feuerwehrmänner helfen - (“Esel mit 2 Eimer und  ein Mitarbeiter”)
-* **Anwalt ? ** (2x2,1,5) =  Anwalt entscheidet über gefängnis
-* **Server**(3x3,1, 6) = upgradebar (2 mitarbeiter pro Ressource)
-* **Straßen** (1x1)
+* **tarent Town**(3x3,) = Controlling
+* **Tom Town**(2x2) = Projekte
+* **Office**(2x3) = Kunde
+* **Rewe Town**(2x2) = Projekte
+* **Azubis**(2x2) = neue Mitarbeiter
+* **Büro**(1x1) = Mitbewohner
+* **SozialRoom**(2x3) = Loyalität und glückliche arbeiter die die Produktivität erhöhen, die Arbeiter können hier eine Pause machen.
+* **Park ?**(3x3)=Zufriedenheit und steigert die Produktivität
+* **Marketing**(2x3/3x3 kommt aufs Design an) = zufluss an ressourcen(minimal)Produkte Designen, Vorstellen, Verkaufen.
+* **Buchhaltung**(2x2) = geld zufluss durch verkauf von ressourcen.
+* **Dev-Ops**(2x2)= sie reparieren / hosten / produzieren neue Produkte, und im Fall wenn die Sicherheit eines Gebäude runter ist, versucht die hoch zu bringen. 
+* **Admins**(2x3) = Produkte hosten / Produziere / , Servers hosten, unter kontrolle haben etc.
+* **Telekom** (2x2) = Projekte  
+* **Server**(3x3) = server zum mieten bieten.
+* **Floors** (1x1)
 ***
   Feldgröße 13x13 grids / 189 Felder
 
-  bisher benötigte Mitarbeiter = 156 also 200 Mitbewohner
+  bisher benötigte Mitarbeiter = 156 also 200 Mitarbeiter
 
 
 ### Klassen-Liste
@@ -82,6 +83,13 @@ Mit allen gebäuden etc. **200 Mitbewohner** haben Platz??
     Es ist ein Singelton.
     Diese Klasse es kümmert sich um die UI Funktionen / Events.
 *  ##### BuildingPackage : 
+    > ein Gebäude kann **viele** oder **keine Mitarbeitern** behalten, aber kann **viele Gäste / Besucher** haben.
+    es kann **nur ein Kunde / Customer / Client** haben. 
+    <br>
+    **1 Customer = 1 Project**
+    <br>
+    ein Gebäude muss allem seinern Mitarbeitern Lohn geben / bezahlen.
+    
     * Accounting
     * Office
     * SocialRoom
@@ -93,16 +101,41 @@ Mit allen gebäuden etc. **200 Mitbewohner** haben Platz??
     * TarentTown
     * DevOps
     * Marketing
+    <br>
+    <br>**Besondere Einheit**
+    * Hacker
 *  ##### EntityPackage : 
+    > Ein Mitarbeiter kann nur zu einem Gebäude gehören, und kann andere Gebäude besuchen.
+     Ein Mitarbeiter verdient geld vom Gebäude, egal ob ein Projekt gibt's.
+     Ein Mitarbeiter soll die Aufgabe des Projekt erlediegen, und übernimmt eine andere Aufgabe (wenn gibt's) wenn er seiner aufgabe erledigt hat.
+     
     * Admin
+    * Accounter
     * Azubi
     * Tester
     * Analyst
     * Designer
-    * Clients / Customers
     * Developer
     * DevOps
     * TeamLeader
+    * ProductOwner
+    * Personal
+  #### Client / Customer (Kunde)
+  >Die Kunden kommen zu Hauptgebäude mit ihren Projekten. und die Hauptgebäude verteilt diese Projekten an anderen gebäude.
+  * Jede Gebäude kriegt 3 mögliche aber verschidene Projekten.
+  * Wenn das Projekt nicht erledigt ist, der Kunde verliert seine Interressen an unsere Firma.
+  * Ein Kunde kann nur ein Projekt anbieten.
+  * Der Kunde kann ein anderen Projekt anbieten , wenn sein aktuellen Projekt erledigt ist. 
 *   ##### CreditPackage
     * Es ist eine UI-darstellung / Präsentation , wer hat ein an Project mitgearbeiten.
-    
+*  ##### ProjectPackage
+    * Jedes Gebäude darf nur ein Project haben, um Geld zu verdienen. 
+    * Wenn ein Gebäude kein Projekt hat aber Mitarbeitern hat, dann die Abteilung / das Gebäude verliert Geld pro Mitarbeiter.
+    * Jedes Projekt Hat ein **verschidenes Budget**, und auch **verschidene Aufgaben** zu erledigen.
+    * Vom Budge werden die Mitarbeiter ihren Lohn bekommen.
+    * Jedes Project hat eine **verschiedene Dauerzeit**.
+    * Wenn **die Aufgaben nicht erledigt** sind und das **Budget** schon **geleert** ist,
+     <br> die **Firma** kriegt eine **Strafe (10% vom Budget)**, und die Firma verliert den Kunde.
+    * Jeder Aufgabe benötigt eine bestiemte Zeit zum erledigen.
+    * Jede Aufgabe hat ein Progress-Zustand.
+    * Jede Aufgabe hat ein Aufgabenträger.

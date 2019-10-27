@@ -9,10 +9,10 @@ namespace PlayerView
 {
     public class CameraController
     {
-        private GameObject mainCamera;
+        private readonly GameObject mainCamera;
         private Vector3 originPosition;
         private Quaternion originRotation;
-        private bool isArrivate = false;
+        private bool isArrive;
 
         public CameraController()
         {
@@ -20,7 +20,7 @@ namespace PlayerView
         }
         public void FocusOn(Vector3 endPosition)
         {
-            isArrivate = false;
+            isArrive = false;
             Boot.runtimeStateController.CurrentState = RunTimeState.FOCUS_ON;
 
             originPosition = mainCamera.transform.position;
@@ -59,12 +59,12 @@ namespace PlayerView
                 yield return null;
             }
 
-            isArrivate = true;
+            isArrive = true;
         }
 
         private IEnumerator ChangeState()
         {
-            while (isArrivate == false) yield return null;
+            while (isArrive == false) yield return null;
 
             Boot.runtimeStateController.CurrentState = RunTimeState.BUILDING_INFO;
         }

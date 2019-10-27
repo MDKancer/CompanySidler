@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using BuildingPackage.OfficeWorker;
 using Constants;
-using Life;
+using Human;
 using StateMachine;
 using UIPackage;
 using UnityEngine;
@@ -13,6 +13,7 @@ namespace BuildingPackage
     {
         void Awake()
         {
+            this.budget = 0;
             buildingData = new BuildingData
             {
                 buildingType = BuildingType.ACCOUNTING,
@@ -24,16 +25,16 @@ namespace BuildingPackage
                 workPlacesLimit = 1,
                 moneyPerSec = -3,
                 
-                AccessibleWorker = new List<BuildingWorker<Human, EntityType>>
+                AccessibleWorker = new List<BuildingWorkers<Worker, EntityType>>
                 {
-                    new BuildingWorker<Human, EntityType>(EntityType.TEAMLEADER),
-                    new BuildingWorker<Human, EntityType>(EntityType.TESTER),
-                    new BuildingWorker<Human, EntityType>(EntityType.ANALYST),
-                    new BuildingWorker<Human, EntityType>(EntityType.DEVELOPER),
-                    new BuildingWorker<Human, EntityType>(EntityType.DEVELOPER),
-                    new BuildingWorker<Human, EntityType>(EntityType.DESIGNER),
-                    new BuildingWorker<Human, EntityType>(EntityType.DEVELOPER),
-                    new BuildingWorker<Human, EntityType>(EntityType.AZUBI)
+                    new BuildingWorkers<Worker, EntityType>(EntityType.ACCOUNTER),
+                    new BuildingWorkers<Worker, EntityType>(EntityType.ACCOUNTER),
+                    new BuildingWorkers<Worker, EntityType>(EntityType.ANALYST),
+                    new BuildingWorkers<Worker, EntityType>(EntityType.TEAM_LEADER),
+                    new BuildingWorkers<Worker, EntityType>(EntityType.ACCOUNTER),
+                    new BuildingWorkers<Worker, EntityType>(EntityType.ACCOUNTER),
+                    new BuildingWorkers<Worker, EntityType>(EntityType.DEVELOPER),
+                    new BuildingWorkers<Worker, EntityType>(EntityType.AZUBI)
                     //TODO : Die Liste Erweitern / Ändern
                 }
                 
@@ -49,9 +50,9 @@ namespace BuildingPackage
 
         public int Compute()
         {
-            return buildingData.workers * buildingData.moneyPerSec;
+            return BuildingData.wastage; 
         }
-        public void SwitchWorkingState()
+        public new void SwitchWorkingState()
         {
             if (stateController.CurrentState == BuildingState.WORK)
             {
@@ -70,8 +71,7 @@ namespace BuildingPackage
             {
                 while (stateController.CurrentState == BuildingState.WORK)
                 {
-                    money += Compute();
-                    UIDispatcher.currentBudget += Compute();
+                    budget += Compute();
                     yield return new WaitForSeconds(1f);
                 }
             }

@@ -1,7 +1,7 @@
 namespace BuildingPackage
 {
-    public interface iSocialRoom : iBuilding
+    public interface iSocialRoom
     {
-        int Relax();
+        int Communication();
     }
 }

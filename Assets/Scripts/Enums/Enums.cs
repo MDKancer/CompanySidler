@@ -44,7 +44,9 @@
         WALK = 1,
         LEARN = 2,
         PAUSE = 3,
-        QUITED = 4
+        TALK = 4,
+        COMMUNICATION = 5,
+        QUITED = 6
     }
 
     public enum EntityType
@@ -59,10 +61,36 @@
         TESTER = 7,
         DESIGNER = 8,
         ANALYST = 9,
-        TEAMLEADER = 10,
+        TEAM_LEADER = 10,
         PERSONAL = 11,
         ADMIN = 12,
-        PRODUKTOWNER = 13
+        PRODUCT_OWNER = 13,
+        HACKER = 14
+        
+    }
+
+    public enum ClientType
+    {
+        OTHER = 0,
+        TELEKOM = 1,
+        REWE = 2,
+        TOM = 3,
+        BOSH = 4,
+        UNITY_MEDIA = 5,
+        DE_POST = 6
+    }
+
+    public enum TaskType
+    {
+        ANALYZES_SPECIFICATION_BOOK = 0,
+        WRITE_DOCUMENTATION = 1,
+        CREATE_DB = 2,
+        CONNECT_TO_DB = 3,
+        CONNECT_TO_SERVER = 4,
+        CREATE_UI = 5,
+        CREATE_BACKEND = 6,
+        TEST = 7
+        
         
     }
 
@@ -109,7 +137,8 @@
         MARKETING = 7,
         DEV_OPS = 8,
         AZUBIS = 9,
-        SOCIAL_RAUM = 10
+        SOCIAL_RAUM = 10,
+        TELEKOM = 11
         
         //etc.
     }

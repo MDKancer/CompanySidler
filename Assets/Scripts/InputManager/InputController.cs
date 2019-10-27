@@ -11,18 +11,18 @@ namespace InputManager
     {
         public float speed = 0.3f;
 
-        private GameObject focusObjekt;
-        private CameraController cameraController;
-        private GameObject camera;
+        private readonly GameObject focusObject;
+        private readonly CameraController cameraController;
+        private readonly GameObject camera;
         private Ray ray;
-        private RaycastHit raycastHit;
+        private RaycastHit rayCastHit;
         private float distance;
         private Vector3 focusPoint;
         private static GameObject focusedBuilding;
         public  InputController()
         {
-            focusObjekt = GameObject.Find("Firma");
-            focusPoint = focusObjekt.transform.position;
+            focusObject = GameObject.Find("Firma");
+            focusPoint = focusObject.transform.position;
             camera = Camera.main?.gameObject;
             cameraController = new CameraController();
         }
@@ -30,7 +30,7 @@ namespace InputManager
         public void Do()
         {
             Vector3 middleDirection = (camera.transform.up + camera.transform.forward) / 2;
-            distance = Vector3.Distance(camera.transform.position, focusObjekt.transform.position);
+            distance = Vector3.Distance(camera.transform.position, focusObject.transform.position);
             if (Input.GetKey(KeyCode.W))
             {
                 cameraController.Move( middleDirection * speed);
@@ -62,14 +62,14 @@ namespace InputManager
                 {
                     ray = camera.GetComponent<Camera>().ScreenPointToRay(Input.mousePosition);
                     
-                    if (Physics.Raycast(ray,out raycastHit))
+                    if (Physics.Raycast(ray,out rayCastHit))
                     {
-                        if(isBuilding(raycastHit.collider.gameObject))
+                        if(isBuilding(rayCastHit.collider.gameObject))
                         {
                             
-                            focusPoint = raycastHit.point;
-                            focusedBuilding = raycastHit.collider.gameObject;
-                            cameraController.FocusOn(raycastHit.point);
+                            focusPoint = rayCastHit.point;
+                            focusedBuilding = rayCastHit.collider.gameObject;
+                            cameraController.FocusOn(rayCastHit.point);
                         }
                     }
                 }
@@ -84,7 +84,7 @@ namespace InputManager
                     cameraController.ToEmptyPos();
 
                     Boot.runtimeStateController.CurrentState = RunTimeState.PLAYING;
-                    focusPoint = focusObjekt.transform.position;
+                    focusPoint = focusObject.transform.position;
                 }
             }
        
@@ -98,9 +98,9 @@ namespace InputManager
             private set => focusedBuilding = value;
         }
 
-        private bool isBuilding(GameObject targetObjekt)
+        private bool isBuilding(GameObject targetObject)
         {
-            Component[] buildingComponent = targetObjekt.GetComponents(typeof(Building));
+            Component[] buildingComponent = targetObject.GetComponents(typeof(Building));
 
             return buildingComponent.Length > 0;
         }

@@ -1,5 +1,5 @@
 ﻿
-using Constants;
+using Enums;
 using UnityEngine.SceneManagement;
 
 namespace SceneController

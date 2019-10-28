@@ -1,6 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
-using Constants;
+using Enums;
 using Human;
 using ProjectPackage;
 using StateMachine;
@@ -17,7 +17,6 @@ namespace BuildingPackage
         protected Company company;
 
         public List<Project> possibleProjects = new List<Project>(3);
-//        protected BuildingState buildingState;
         protected StateController<BuildingState> stateController = new StateController<BuildingState>();
         protected BuildingData buildingData;
 
@@ -34,34 +33,31 @@ namespace BuildingPackage
             buildingData.currentHitPoints -= damagePercent;
         }
 
-        public void Work()
-        {
-        }
 
         public void SwitchWorkingState()
         {
           
         }
 
-        public void ApplyWorker(Worker worker)
+        public void ApplyWorker(Employee employee)
         {
             foreach (var VARIABLE in BuildingData.AccessibleWorker)
             {
-                if (VARIABLE.WorkerType == worker.WorkerData.GetEntityType && VARIABLE.Worker == null)
+                if (VARIABLE.WorkerType == employee.EmployeeData.GetEntityType && VARIABLE.Worker == null)
                 {
-                    VARIABLE.Worker = worker;
+                    VARIABLE.Worker = employee;
                     buildingData.workers++;
                     buildingData.ChangeWastage();
-                    if(project != null && VARIABLE.Worker.WorkerData.Project == null)
+                    if(project != null && VARIABLE.Worker.EmployeeData.Project == null)
                     {
-                        VARIABLE.Worker.WorkerData.Project = project;
+                        VARIABLE.Worker.EmployeeData.Project = project;
                     }
                     return;
                 }
             }
         }
 
-        public void QuitWorker(Worker worker)
+        public void QuitWorker(Employee employee)
         {
             foreach (var VARIABLE in BuildingData.AccessibleWorker)
             {
@@ -83,12 +79,11 @@ namespace BuildingPackage
                 
                 foreach (var worker in BuildingData.AccessibleWorker)
                 {
-                    if( worker.Worker!= null && worker.Worker.WorkerData.Project == null)
+                    if( worker.Worker!= null && worker.Worker.EmployeeData.Project == null)
                     {
-                        worker.Worker.WorkerData.Project = newProject;
+                        worker.Worker.EmployeeData.Project = newProject;
                     }
                 }
-
                 StartCoroutine(CheckIfProjectIsDone());
             }
         }

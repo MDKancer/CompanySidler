@@ -108,11 +108,11 @@
     <Compile Include="Assets\Scripts\Entity\Customer\Customer.cs" />
     <Compile Include="Assets\Scripts\Entity\Customer\CustomerGenerator.cs" />
     <Compile Include="Assets\Scripts\Entity\Customer\iCustomer.cs" />
+    <Compile Include="Assets\Scripts\Entity\Employee\Employee.cs" />
+    <Compile Include="Assets\Scripts\Entity\Employee\EmployeeData.cs" />
+    <Compile Include="Assets\Scripts\Entity\Employee\IWorker.cs" />
     <Compile Include="Assets\Scripts\Entity\Human.cs" />
     <Compile Include="Assets\Scripts\Entity\IHuman.cs" />
-    <Compile Include="Assets\Scripts\Entity\Worker\IWorker.cs" />
-    <Compile Include="Assets\Scripts\Entity\Worker\Worker.cs" />
-    <Compile Include="Assets\Scripts\Entity\Worker\WorkerData.cs" />
     <Compile Include="Assets\Scripts\Enums\Enums.cs" />
     <Compile Include="Assets\Scripts\InputManager\InputController.cs" />
     <Compile Include="Assets\Scripts\PathFinder\PathFinder.cs" />
@@ -122,6 +122,7 @@
     <Compile Include="Assets\Scripts\SpawnManager\SpawnController.cs" />
     <Compile Include="Assets\Scripts\StateManager\StateManager.cs" />
     <Compile Include="Assets\Scripts\UIDispatcher\UIBuildingContent\BuildingContent.cs" />
+    <Compile Include="Assets\Scripts\UIDispatcher\UIBuildingContent\UiElements.cs" />
     <Compile Include="Assets\Scripts\UIDispatcher\UIDispatcher.cs" />
     <None Include="Assets\TextMesh Pro\Resources\Shaders\TMP_SDF-Surface-Mobile.shader" />
     <None Include="Assets\TextMesh Pro\Resources\LineBreaking Leading Characters.txt" />

@@ -1,4 +1,4 @@
-﻿namespace Constants
+﻿namespace Enums
 {
     public enum GameState 
     {

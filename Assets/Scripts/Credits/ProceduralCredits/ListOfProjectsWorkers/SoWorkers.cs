@@ -1,5 +1,5 @@
 ﻿using System.Collections.Generic;
-using Constants;
+using Enums;
 using UnityEngine;
 
 [CreateAssetMenu(menuName = "Credits")]

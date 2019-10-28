@@ -1,7 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using BuildingPackage.OfficeWorker;
-using Constants;
+using Enums;
 using Human;
 using StateMachine;
 using UIPackage;

@@ -1,7 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using BuildingPackage.OfficeWorker;
-using Constants;
+using Enums;
 using Human;
 using StateMachine;
 using UIPackage;
@@ -25,16 +25,16 @@ namespace BuildingPackage
                 workPlacesLimit = 1,
                 moneyPerSec = -3,
                 
-                AccessibleWorker = new List<BuildingWorkers<Worker, EntityType>>
+                AccessibleWorker = new List<BuildingWorkers<Employee, EntityType>>
                 {
-                    new BuildingWorkers<Worker, EntityType>(EntityType.ACCOUNTER),
-                    new BuildingWorkers<Worker, EntityType>(EntityType.ACCOUNTER),
-                    new BuildingWorkers<Worker, EntityType>(EntityType.ANALYST),
-                    new BuildingWorkers<Worker, EntityType>(EntityType.TEAM_LEADER),
-                    new BuildingWorkers<Worker, EntityType>(EntityType.ACCOUNTER),
-                    new BuildingWorkers<Worker, EntityType>(EntityType.ACCOUNTER),
-                    new BuildingWorkers<Worker, EntityType>(EntityType.DEVELOPER),
-                    new BuildingWorkers<Worker, EntityType>(EntityType.AZUBI)
+                    new BuildingWorkers<Employee, EntityType>(EntityType.ACCOUNTER),
+                    new BuildingWorkers<Employee, EntityType>(EntityType.ACCOUNTER),
+                    new BuildingWorkers<Employee, EntityType>(EntityType.ANALYST),
+                    new BuildingWorkers<Employee, EntityType>(EntityType.TEAM_LEADER),
+                    new BuildingWorkers<Employee, EntityType>(EntityType.ACCOUNTER),
+                    new BuildingWorkers<Employee, EntityType>(EntityType.ACCOUNTER),
+                    new BuildingWorkers<Employee, EntityType>(EntityType.DEVELOPER),
+                    new BuildingWorkers<Employee, EntityType>(EntityType.AZUBI)
                     //TODO : Die Liste Erweitern / Ändern
                 }
                 

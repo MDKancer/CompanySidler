@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using BootManager;
 using BuildingPackage.OfficeWorker;
-using Constants;
+using Enums;
 using JetBrains.Annotations;
 using Human;
 using ProjectPackage;
@@ -28,16 +28,16 @@ namespace BuildingPackage
                 workPlacesLimit = 1,
                 moneyPerSec = -8,
                 
-                AccessibleWorker = new List<BuildingWorkers<Worker, EntityType>>
+                AccessibleWorker = new List<BuildingWorkers<Employee, EntityType>>
                 {
-                    new BuildingWorkers<Worker, EntityType>(EntityType.PERSONAL),
-                    new BuildingWorkers<Worker, EntityType>(EntityType.ANALYST),
-                    new BuildingWorkers<Worker, EntityType>(EntityType.PERSONAL),
-                    new BuildingWorkers<Worker, EntityType>(EntityType.ANALYST),
-                    new BuildingWorkers<Worker, EntityType>(EntityType.PERSONAL),
-                    new BuildingWorkers<Worker, EntityType>(EntityType.PERSONAL),
-                    new BuildingWorkers<Worker, EntityType>(EntityType.DESIGNER),
-                    new BuildingWorkers<Worker, EntityType>(EntityType.PERSONAL)
+                    new BuildingWorkers<Employee, EntityType>(EntityType.PERSONAL),
+                    new BuildingWorkers<Employee, EntityType>(EntityType.ANALYST),
+                    new BuildingWorkers<Employee, EntityType>(EntityType.PERSONAL),
+                    new BuildingWorkers<Employee, EntityType>(EntityType.ANALYST),
+                    new BuildingWorkers<Employee, EntityType>(EntityType.PERSONAL),
+                    new BuildingWorkers<Employee, EntityType>(EntityType.PERSONAL),
+                    new BuildingWorkers<Employee, EntityType>(EntityType.DESIGNER),
+                    new BuildingWorkers<Employee, EntityType>(EntityType.PERSONAL)
                     //TODO : Die Liste Erweitern / Ändern
                 }
             };

@@ -1,5 +1,5 @@
 using System.Collections;
-using Constants;
+using Enums;
 using StateMachine;
 
 namespace Human

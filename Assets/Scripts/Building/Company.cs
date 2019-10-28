@@ -1,7 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using Constants;
+using Enums;
 using ProjectPackage;
 using UnityEngine;
 
@@ -28,7 +28,7 @@ namespace BuildingPackage
             GetAllInterfaces();
             offices = new Dictionary<Building, BuildingType>();
             this.companyProjects = new Dictionary<Project,ClientType>(projectLimit);
-            SetFirmaData();
+            SetCompanyData();
         }
         public Building GetOffice(BuildingType buildingType)
         {
@@ -89,7 +89,7 @@ namespace BuildingPackage
             return returnList;
         }
         
-        private void SetFirmaData()
+        private void SetCompanyData()
         {
             
             if (gameObject == null) return;
@@ -100,7 +100,9 @@ namespace BuildingPackage
                 if(office!=null)
                 {
                     office.Company = this;
+                    //nur am Anfang als test.
                     office.budget = 3300;
+                    
                     offices.Add(office,GetBuildingType(office.gameObject));
                 }
             }
@@ -118,7 +120,7 @@ namespace BuildingPackage
         {
             var buildingComponent = targetObjekt.GetComponents(typeof(iBuilding));
             var types = buildingComponent[0].GetType().GetInterfaces();
-            if(buildingComponent.Length >0)
+            if(buildingComponent.Length > 0)
             {
                 if (types.Contains(typeof(iOffice)))
                 {
@@ -176,7 +178,7 @@ namespace BuildingPackage
 
         /// <summary>
         /// Es ist eine Funktion was funktioniert auf Assembly ebene.
-        /// die sammelt alle Interfaces von alle Klasse die habe den Interface iBuilding implementiert.
+        /// die sammelt alle Interfaces von alle Klasse die von Hauptklasse Building erben.
         /// </summary>
         private void GetAllInterfaces()
         {

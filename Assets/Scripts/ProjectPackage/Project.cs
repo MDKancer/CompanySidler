@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using BootManager;
-using Constants;
+using Enums;
 using ProjectPackage.ProjectTasks;
 using UnityEngine;
 
@@ -77,7 +77,7 @@ namespace ProjectPackage
             {
                 foreach (var taskTaker in task.TaskTakers)
                 {
-                    taskTaker.Worker.WorkerData.Project = null;
+                    taskTaker.Worker.EmployeeData.Project = null;
                 }
             }
         }

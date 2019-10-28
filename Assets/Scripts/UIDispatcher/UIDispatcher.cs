@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using BootManager;
 using BuildingPackage;
-using Constants;
+using Enums;
 using Credits;
 using Human;
 using InputManager;
@@ -88,7 +88,7 @@ namespace UIPackage
                 public void ApplyWorker(String name)
                 {
                         var  spawnPosition = new Vector3(4f,1f,2f);
-                        var humanData = new WorkerData(GetValue(name),Building.BuildingData.buildingType);
+                        var humanData = new EmployeeData(GetValue(name),Building.BuildingData.buildingType);
 
                         Boot.spawnController.SpawnWorker(humanData,spawnPosition);
                         workerCount++;

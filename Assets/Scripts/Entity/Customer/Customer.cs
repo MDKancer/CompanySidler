@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using BootManager;
 using BuildingPackage;
-using Constants;
+using Enums;
 using PathFinderManager;
 using ProjectPackage;
 using UnityEngine;
@@ -37,9 +37,9 @@ namespace Human.Customer
 
         private IEnumerator ProjectTender()
         {
-            List<Company> firmas = Boot.container.Firmas;
+            List<Company> companies = Boot.container.Firmas;
             Vector3 initialPosition = gameObject.transform.position;
-            TarentTown tarentTown = (TarentTown) firmas[0].GetOffice(destination);
+            TarentTown tarentTown = (TarentTown) companies[0].GetOffice(destination);
             Vector3 tarentPosition = tarentTown.gameObject.transform.position;
             Vector3 targetPosition = GenerateRandomPosition(tarentPosition);
             

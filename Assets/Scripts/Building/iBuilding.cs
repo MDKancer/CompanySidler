@@ -1,4 +1,4 @@
-using Constants;
+using Enums;
 using JetBrains.Annotations;
 using Human;
 
@@ -9,10 +9,9 @@ namespace BuildingPackage
   {
     void Upgrade();
     void DoDamage(int damagePercent = 0);
-    void Work();
     void SwitchWorkingState();
-    void ApplyWorker([NotNull] Worker worker);
-    void QuitWorker([NotNull] Worker worker);
+    void ApplyWorker([NotNull] Employee employee);
+    void QuitWorker([NotNull] Employee employee);
     bool BuildingRepair();
     BuildingData BuildingData { get;}
     BuildingState buildingWorkingState { get; }

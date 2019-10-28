@@ -1,7 +1,7 @@
 using System;
 using System.Collections.Generic;
 using BuildingPackage.OfficeWorker;
-using Constants;
+using Enums;
 using Human;
 using UnityEngine;
 
@@ -19,7 +19,7 @@ namespace BuildingPackage
         public int currentHitPoints;
         public int wastage;
         
-        private List<BuildingWorkers<Worker,EntityType>> accessibleWorker;
+        private List<BuildingWorkers<Employee,EntityType>> accessibleWorker;
         
         /// <summary>
         /// Get the actual number of employed Workers .....
@@ -46,11 +46,11 @@ namespace BuildingPackage
             return (employedPlaces, countEmployedPlaces);
         }
 
-        public List<BuildingWorkers<Worker, EntityType>> AccessibleWorker
+        public List<BuildingWorkers<Employee, EntityType>> AccessibleWorker
         {
             get
             {
-                var temp = new List<BuildingWorkers<Worker, EntityType>>();
+                var temp = new List<BuildingWorkers<Employee, EntityType>>();
 
                 for (int i = 0; i < workPlacesLimit; i++)
                 {
@@ -70,7 +70,7 @@ namespace BuildingPackage
                 {
                     if(worker.Worker != null)
                     {
-                        wastage -= worker.Worker.WorkerData.hourlyWage;
+                        wastage -= worker.Worker.EmployeeData.hourlyWage;
                     }
                 }
             }

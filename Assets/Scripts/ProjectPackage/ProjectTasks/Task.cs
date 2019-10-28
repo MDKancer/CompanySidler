@@ -1,7 +1,7 @@
 using System;
 using System.Collections.Generic;
 using BuildingPackage.OfficeWorker;
-using Constants;
+using Enums;
 using Human;
 using UnityEngine;
 using Random = UnityEngine.Random;
@@ -14,7 +14,7 @@ namespace ProjectPackage.ProjectTasks
         public TaskType taskType;
         private bool isDone = false;
         private float timeDuration;
-        private List<BuildingWorkers<Worker, EntityType>> taskTakers;
+        private List<BuildingWorkers<Employee, EntityType>> taskTakers;
         private (float percentDoneProgress, float howMuchNeed) progressBar = (0,100.0f);
 
         public Task()
@@ -31,7 +31,7 @@ namespace ProjectPackage.ProjectTasks
             }
             taskType = (TaskType) taskTypeValues.GetValue(taskIndex);
             timeDuration = Random.Range(5f, 20f);
-            taskTakers = new List<BuildingWorkers<Worker, EntityType>>();
+            taskTakers = new List<BuildingWorkers<Employee, EntityType>>();
         }
 
         public TaskType TaskType => taskType;
@@ -47,15 +47,15 @@ namespace ProjectPackage.ProjectTasks
             private  set => timeDuration = value;
         }
 
-        public List<BuildingWorkers<Worker, EntityType>> TaskTakers => taskTakers;
+        public List<BuildingWorkers<Employee, EntityType>> TaskTakers => taskTakers;
 
-        public void ApplyTaskTaker(Worker Worker)
+        public void ApplyTaskTaker(Employee employee)
         {
             if(progressBar.percentDoneProgress < progressBar.howMuchNeed)
             {
-                var bw = new BuildingWorkers<Worker, EntityType>(Worker.WorkerData.GetEntityType)
+                var bw = new BuildingWorkers<Employee, EntityType>(employee.EmployeeData.GetEntityType)
                 {
-                    Worker = Worker
+                    Worker = employee
                 };
                 taskTakers.Add(bw);
                 timeDuration /= taskTakers.Count;

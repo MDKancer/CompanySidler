@@ -8,6 +8,7 @@ using InputManager;
 using JetBrains.Annotations;
 using PathFinderManager;
 using ProjectPackage.ProjectTasks;
+using TMPro;
 using UnityEngine;
 
 namespace Human
@@ -15,9 +16,7 @@ namespace Human
     public class Employee : Human, IWorker
     {
         private EmployeeData employeeData = null;
-        
-        
-        
+                
         public EmployeeData EmployeeData
         {
             get => employeeData;
@@ -27,6 +26,7 @@ namespace Human
         {
             Building.ApplyWorker(this);
             StartCoroutine(DO());
+            StartCoroutine(ShowMyCanvas());
         }
         
         protected float TimeToDo()
@@ -84,7 +84,7 @@ namespace Human
         {
             int index = 0;
             List<HumanState> myKeys = EmployeeData.GetEntityWorkingCycle.Keys.ToList();
-            List<Company> firmas = Boot.container.Firmas;
+            List<Company> firmas = Boot.container.Companies;
             Vector3 initialPosition = gameObject.transform.position;
             Vector3 officePosition =firmas[0].GetOffice(EmployeeData.GetHisOffice).gameObject.transform.position;
             Vector3 targetPosition = GenerateRandomPosition(officePosition);
@@ -110,7 +110,7 @@ namespace Human
                             var smoothDeltaTime = Time.smoothDeltaTime;
                             var part = taskProgressBar.howMuchNeed / (taskDuration / smoothDeltaTime);
                             
-                            while (time <= taskDuration)
+                            while (time <= taskDuration && SelfState.CurrentState != HumanState.QUITED)
                             {
                                 time += smoothDeltaTime;
                                 
@@ -125,22 +125,51 @@ namespace Human
                     {
                         yield return new WaitForSeconds(taskDuration);
                     }
-                    index = index >= myKeys.Count ? 0 : index;
                     
-                    destination = EmployeeData.GetEntityWorkingCycle[myKeys[index]];
-                    officePosition = firmas[0].GetOffice(destination).gameObject.transform.position;
-                    
-                    SelfState.CurrentState = myKeys[index];
-                    
-                    targetPosition = GenerateRandomPosition(officePosition);
-            
-                    PathFinder.MoveTo(gameObject,targetPosition);
-                    index++;
+                    if(SelfState.CurrentState != HumanState.QUITED)
+                    {
+                        index = index >= myKeys.Count ? 0 : index;
+                        
+                        destination = EmployeeData.GetEntityWorkingCycle[myKeys[index]];
+                        officePosition = firmas[0].GetOffice(destination).gameObject.transform.position;
+                        
+                        SelfState.CurrentState = myKeys[index];
+                        
+                        targetPosition = GenerateRandomPosition(officePosition);
+                
+                        PathFinder.MoveTo(gameObject,targetPosition);
+                        index++;
+                    }
                 }
                 yield return null;
             }
-            PathFinder.MoveTo(gameObject,initialPosition);
-            yield return null;
+
+            destination = BuildingType.NONE;
+            targetPosition = initialPosition;
+            PathFinder.MoveTo(gameObject,targetPosition);
+
+            while (SelfState.CurrentState == HumanState.QUITED)
+            {
+                if (transform.position.x == targetPosition.x && transform.position.z == targetPosition.z)
+                {
+                    Destroy(gameObject);
+                }
+                yield return null;
+            }
+        }
+
+        private IEnumerator ShowMyCanvas()
+        {
+            TextMeshProUGUI canvas = uiElements.GetCanvas(this.employeeData.GetEntityType.ToString());
+            var main = Camera.main;
+            RectTransform rectTransform = canvas.GetComponent<RectTransform>();
+            while (gameObject != null)
+            {
+                rectTransform.position =
+                    gameObject.transform.position + (gameObject.transform.up * 3f);
+                rectTransform.rotation = Quaternion.LookRotation(main.transform.forward);
+                yield return null;
+            }
         }
         private iBuilding Building => InputController.FocusedBuilding?.GetComponent(typeof(iBuilding)) as iBuilding;
     }

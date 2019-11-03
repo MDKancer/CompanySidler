@@ -61,8 +61,9 @@ namespace BuildingPackage
         {
             foreach (var VARIABLE in BuildingData.AccessibleWorker)
             {
-                if (VARIABLE.WorkerType == EntityType.TEAM_LEADER && VARIABLE.Worker != null)
+                if (VARIABLE.WorkerType == employee.EmployeeData.GetEntityType && VARIABLE.Worker != null)
                 {
+                    VARIABLE.Worker.SelfState.CurrentState = HumanState.QUITED;
                     VARIABLE.Worker = null;
                     buildingData.workers--;
                     return;
@@ -93,7 +94,10 @@ namespace BuildingPackage
             return false;
         }
 
-        
+        /// <summary>
+        /// Das Project wird automatisch gelöscht/zerstört, wenn das ganzes Projekt "Done" ist.
+        /// </summary>
+        public Project Project => project;
 
         public BuildingData BuildingData => buildingData;
         public BuildingState buildingWorkingState => stateController.CurrentState;

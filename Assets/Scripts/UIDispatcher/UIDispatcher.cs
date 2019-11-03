@@ -190,13 +190,21 @@ namespace UIPackage
                 }
                 private void RemoveBuildingContent()
                 {
-                        for (int index = 0; index < buildContentBtn.Count; index++) {
+                        for (int index = 0; index < buildContentBtn.Count; index++) 
+                        {
                                 var item = buildContentBtn.ElementAt(index);
-                                var itemKey = item.Key;
-                                var itemValue = item.Value;
-                                buildContentBtn.Remove(itemKey);
-                                Destroy(itemValue.gameObject);
-                                Destroy(itemKey.gameObject);
+                                
+                                if(item.Key != null)
+                                {
+                                        var itemKey = item.Key;
+                                        var itemValue = item.Value;
+                                        var keyGameObject = itemKey.gameObject;
+                                        var valueGameObject = itemValue.gameObject;
+                                        
+                                        Destroy(valueGameObject);
+                                        buildContentBtn.Remove(itemKey);
+                                        Destroy(keyGameObject);
+                                }
                         }
                         haveContentBtn = false;
                 }
@@ -205,7 +213,7 @@ namespace UIPackage
                        // if(Boot.gameStateController.CurrentState == GameState.GAME)
                         //{
                                 TextMeshProUGUI money = GameObject.Find("Panel_Geld_Nr")?.GetComponent<TextMeshProUGUI>();
-                                money?.SetText(Boot.container.Firmas[0].CurrentBudget.ToString());
+                                money?.SetText(Boot.container.Companies[0].CurrentBudget.ToString());
                         //}
                 }
 

@@ -14,6 +14,7 @@ using Resources = UnityEngine.Resources;
         private Dictionary<GameObject,EntityType> prefabsObjects = new Dictionary<GameObject, EntityType>();
         private List<GameObject> spawnedGameObjects = new List<GameObject>();
         private Dictionary<KeyCode, Actions> InputListenners = new Dictionary<KeyCode, Actions>();
+        private List<Material> materials = new List<Material>();
         public void LoadAllResources()
         {
            //TODO: hier wird alle Prefabs aus den Ordnern im Dictionary reingepackt.
@@ -21,12 +22,14 @@ using Resources = UnityEngine.Resources;
            addPrefabs(Resources.LoadAll<GameObject>("Prefabs/Entitys/Building"), EntityType.BUILDING);
            addPrefabs(Resources.LoadAll<GameObject>("Prefabs/Entitys/Workers/Developers"), EntityType.DEVELOPER);
            addPrefabs(Resources.LoadAll<GameObject>("Prefabs/Entitys/Azubis"), EntityType.AZUBI);
-           addPrefabs(Resources.LoadAll<GameObject>("Prefabs/Entitys/Clients"), EntityType.CLIENT);
+           addPrefabs(Resources.LoadAll<GameObject>("Prefabs/Entitys/Clients"), EntityType.CUSTOMER);
+           materials.AddRange(Resources.LoadAll<Material>("Materials"));
+           
 
             SetFirmaData();
         }
 
-        public List<Company> Firmas
+        public List<Company> Companies
         {
             get => companies;
             private set => companies = value;

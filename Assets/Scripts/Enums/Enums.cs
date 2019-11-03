@@ -52,7 +52,7 @@
     public enum EntityType
     {
         NONE = -1,
-        CLIENT = 0,
+        CUSTOMER = 0,
         BUILDING = 2,
         DEVELOPER = 3,
         AZUBI = 4,
@@ -69,7 +69,7 @@
         
     }
 
-    public enum ClientType
+    public enum CustomerType
     {
         OTHER = 0,
         TELEKOM = 1,

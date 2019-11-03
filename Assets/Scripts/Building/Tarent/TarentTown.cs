@@ -52,9 +52,9 @@ namespace BuildingPackage
             StartCoroutine(DistributeProjects());
         }
 
-        public void TakeProject(Project newProject,ClientType clientType)
+        public void TakeProject(ref Project newProject,CustomerType customerType)
         {
-            company.AddNewProject(newProject, clientType);
+            company.AddNewProject(newProject, customerType);
         }
         public int ToHold()
         {
@@ -87,10 +87,10 @@ namespace BuildingPackage
 
         private IEnumerator DistributeProjects()
         {
-            var clientValues = Enum.GetValues(typeof(ClientType));
+            var clientValues = Enum.GetValues(typeof(CustomerType));
             var buidingValues = Enum.GetValues(typeof(BuildingType));
             
-            var buildings = Boot.container.Firmas;
+            var buildings = Boot.container.Companies;
             
             while (true)
             {
@@ -101,7 +101,7 @@ namespace BuildingPackage
                         if (clientValue.ToString().Contains(buidingValue.ToString()))
                         {
                             Building building = buildings[0].GetOffice((BuildingType) buidingValue);
-                            building.possibleProjects = company.GetProjectsByType((ClientType) clientValue);
+                            building.possibleProjects = company.GetProjectsByType((CustomerType) clientValue);
                         }
                     }
                 }

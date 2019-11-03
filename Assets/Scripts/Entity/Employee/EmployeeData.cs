@@ -44,7 +44,7 @@ namespace Human
 
         private void SetPrefabField()
         {
-            if (entityType != EntityType.NONE && entityType != EntityType.CLIENT)
+            if (entityType != EntityType.NONE && entityType != EntityType.CUSTOMER)
             {
                prefab = Boot.container.GetPrefabsByType(EntityType.DEVELOPER)[0];
             }
@@ -52,7 +52,7 @@ namespace Human
 
         private void SetEntityWorkCycleField()
         {
-            if (entityType != EntityType.NONE && entityType != EntityType.CLIENT)
+            if (entityType != EntityType.NONE && entityType != EntityType.CUSTOMER)
             {
                     entityWorkCycle.Add(HumanState.WORK,hisOffice);
                     entityWorkCycle.Add(HumanState.TALK,BuildingType.SOCIAL_RAUM);

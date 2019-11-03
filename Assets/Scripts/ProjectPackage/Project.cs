@@ -10,7 +10,8 @@ namespace ProjectPackage
 {
     public class Project
     {
-        public ClientType clientType;
+        public CustomerType customerType;
+        public float percentprocessBar = 0f;
         private int budget;
         private float timeDuration;
         private int punishment;
@@ -27,7 +28,7 @@ namespace ProjectPackage
 
             var totalHourlyWage = 10 * workersCount;
             
-            budget = workersCount * totalHourlyWage * (int)timeDuration;
+            budget = workersCount * totalHourlyWage * (int) timeDuration;
             punishment  = budget * wastagePercent / 100;
             
             Boot.monobehaviour.StartCoroutine(CheckIfIsDone());
@@ -55,13 +56,18 @@ namespace ProjectPackage
         private IEnumerator CheckIfIsDone()
         {
             bool[] tasksStatus = new bool[tasks.Count];
+            float sumAllProcess = 0f;
             while (!isDone)
             {
                 for (int i = 0; i < tasks.Count; i++)
                 {
                     tasksStatus[i] = tasks[i].IsDone;
+
+                    sumAllProcess += tasks[i].ProgressBar.percentDoneProgress;
                 }
 
+                percentprocessBar = sumAllProcess / tasks.Count;
+                sumAllProcess = 0f;
                 if (!tasksStatus.Contains(false))
                 {
                     isDone = true;
@@ -70,6 +76,7 @@ namespace ProjectPackage
                 yield return null;
             }
         }
+        
 
         private void RemoveProject()
         {

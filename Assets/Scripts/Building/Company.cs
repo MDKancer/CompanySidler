@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using Entity.Customer.Data;
 using Enums;
 using ProjectPackage;
 using UnityEngine;
@@ -18,8 +19,9 @@ namespace BuildingPackage
         private GameObject gameObject = null;
         private int currentBudget;
         private Dictionary<Building,BuildingType> offices = null;
-        private Dictionary<Project,ClientType> companyProjects;
+        private Dictionary<Project,CustomerType> companyProjects;
         private int projectCount;
+        private readonly List<CustomerData> customers;
         public Company( GameObject company)
         {
             this.gameObject = company;
@@ -27,7 +29,8 @@ namespace BuildingPackage
             this.currentBudget = 0;
             GetAllInterfaces();
             offices = new Dictionary<Building, BuildingType>();
-            this.companyProjects = new Dictionary<Project,ClientType>(projectLimit);
+            customers = new List<CustomerData>();
+            this.companyProjects = new Dictionary<Project,CustomerType>();
             SetCompanyData();
         }
         public Building GetOffice(BuildingType buildingType)
@@ -55,15 +58,24 @@ namespace BuildingPackage
             } 
             protected set => currentBudget = value;
         }
-        
-        public void AddNewProject(Project project, ClientType clientType)
+
+        public List<CustomerData> Customers => customers;
+
+        public void AddNewProject(Project project, CustomerType customerType)
         {
-            if(needProject)
+            if(needProject && projectCount < projectLimit)
             {
-                companyProjects.Add(project,clientType);
-                projectCount++;
+                try
+                {
+                    companyProjects.Add(project,customerType);
+                    projectCount++;
+                }
+                catch
+                {
+                    Debug.Log("Container for Projects ist full");
+                    needProject = false;
+                }
             }
-            if (companyProjects.Count >= projectLimit) needProject = false;
         }
 
         public void RemoveProject(Project project)
@@ -72,15 +84,16 @@ namespace BuildingPackage
             {
                 companyProjects.Remove(project);
                 projectCount--;
+                needProject = true;
             }
         }
 
-        public List<Project> GetProjectsByType(ClientType clientType)
+        public List<Project> GetProjectsByType(CustomerType customerType)
         {
             List<Project> returnList = new List<Project>();
             foreach (var item in companyProjects)
             {
-                if (item.Value == clientType)
+                if (item.Value == customerType)
                 {
                     returnList.Add(item.Key);
                 }
@@ -100,7 +113,7 @@ namespace BuildingPackage
                 if(office!=null)
                 {
                     office.Company = this;
-                    //nur am Anfang als test.
+                    //nur am Anfang als test. als StartCapital
                     office.budget = 3300;
                     
                     offices.Add(office,GetBuildingType(office.gameObject));

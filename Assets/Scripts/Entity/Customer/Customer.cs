@@ -1,50 +1,39 @@
 using System;
 using System.Collections;
-using System.Collections.Generic;
-using BootManager;
-using BuildingPackage;
+using Entity.Customer.Data;
 using Enums;
 using PathFinderManager;
-using ProjectPackage;
+using TMPro;
 using UnityEngine;
-using Random = UnityEngine.Random;
 
 namespace Human.Customer
 {
     public class Customer : Human, iCustomer
     {
-        public GameObject prefab;
-        private Project project;
-        private ClientType clientType;
-        
+        public CustomerData customerData;
+        private TextMeshProUGUI namePoster;
         private void Awake()
         {
-            prefab = Boot.container.GetPrefabsByType(EntityType.CLIENT)[0];
-            this.destination = BuildingType.TARENT_TOWN;
-            var randomTaskCount = Random.Range(1, 8);
-            this.project = new Project(randomTaskCount);
-            var rndIndex = Random.Range(0,Enum.GetValues(typeof(ClientType)).Length);
-            clientType = (ClientType) Enum.GetValues(typeof(ClientType)).GetValue(rndIndex);
-            project.clientType = clientType;
+
         }
-
-
         private void Start()
         {
-            gameObject.name = clientType.ToString();
+            gameObject.name = customerData.customerType.ToString();
             StartCoroutine(ProjectTender());
+            StartCoroutine(ShowMyNamePoster());
         }
 
         private IEnumerator ProjectTender()
         {
-            List<Company> companies = Boot.container.Firmas;
-            Vector3 initialPosition = gameObject.transform.position;
-            TarentTown tarentTown = (TarentTown) companies[0].GetOffice(destination);
-            Vector3 tarentPosition = tarentTown.gameObject.transform.position;
+
+            Vector3 tarentPosition = customerData.TarentTownPosition();
             Vector3 targetPosition = GenerateRandomPosition(tarentPosition);
             
             PathFinder.MoveTo(gameObject,targetPosition);
             SelfState.CurrentState = HumanState.WORK;
+            //-------------------------Move to Target------------------------
+            // || || || || || || || || || || || || || || || || || || || || ||
+            // \/ \/ \/ \/ \/ \/ \/ \/ \/ \/ \/ \/ \/ \/ \/ \/ \/ \/ \/ \/ \/
             while (transform.position.x != targetPosition.x && transform.position.z != targetPosition.z )
             {
                 // irgendwas
@@ -52,17 +41,42 @@ namespace Human.Customer
             }
             
             // TODO : ist noch unter die Frage, wie soll ich das am besten machen?
+            //-------------------------Communication-------------------------
+            // || || || || || || || || || || || || || || || || || || || || ||
+            // \/ \/ \/ \/ \/ \/ \/ \/ \/ \/ \/ \/ \/ \/ \/ \/ \/ \/ \/ \/ \/
             SelfState.CurrentState = HumanState.COMMUNICATION;
-            tarentTown.TakeProject(project, clientType);
+            
+            customerData.SellProject();
 
             SelfState.CurrentState = HumanState.QUITED;
-            PathFinder.MoveTo(gameObject,initialPosition);
-            while (transform.position.x != initialPosition.x && transform.position.z != initialPosition.z )
+            PathFinder.MoveTo(gameObject,customerData.initialPosition);
+            //-------------------------Return Back---------------------------
+            // || || || || || || || || || || || || || || || || || || || || ||
+            // \/ \/ \/ \/ \/ \/ \/ \/ \/ \/ \/ \/ \/ \/ \/ \/ \/ \/ \/ \/ \/
+            while (transform.position.x != customerData.initialPosition.x && transform.position.z != customerData.initialPosition.z )
             {
                 // irgendwas
                 yield return null;
             }
             Destroy(gameObject);
+        }
+        private IEnumerator ShowMyNamePoster()
+        {
+            namePoster = uiElements.GetCanvas(this.customerData.customerType.ToString());
+            var main = Camera.main;
+            RectTransform rectTransform = namePoster.GetComponent<RectTransform>();
+            while (gameObject != null)
+            {
+                rectTransform.position =
+                    gameObject.transform.position + (gameObject.transform.up * 3f);
+                rectTransform.rotation = Quaternion.LookRotation(main.transform.forward);
+                yield return null;
+            }
+        }
+
+        private void OnDestroy()
+        {
+            Destroy(namePoster);
         }
     }
 }

@@ -1,6 +1,6 @@
 ﻿using System;
 using BootManager;
-using Enums;
+using Entity.Customer.Data;
 using Human;
 using Human.Customer;
 using UnityEngine;
@@ -52,13 +52,11 @@ namespace SpawnManager
             }
         }
 
-        public Boolean SpawnCustomer(Vector3 spawnPosition)
+        public Boolean SpawnCustomer(ref CustomerData customerData,Vector3 spawnPosition)
         {
             try
             {
-                GameObject prefab = Boot.container.GetPrefabsByType(EntityType.CLIENT)[0];
-                
-                GameObject instantiate = Object.Instantiate(prefab, spawnPosition, Quaternion.identity);
+                GameObject instantiate = Object.Instantiate(customerData.prefab, spawnPosition, Quaternion.identity);
 
                 if(instantiate.GetComponent<NavMeshAgent>() == null)
                 {
@@ -67,7 +65,8 @@ namespace SpawnManager
 
                 if (instantiate.GetComponent<Employee>() == null)
                 {
-                    instantiate.AddComponent<Customer>();
+                   Customer customer =  instantiate.AddComponent<Customer>();
+                   customer.customerData = customerData;
                 }
 
                 Boot.container.AddSpawnedGameObject(instantiate);

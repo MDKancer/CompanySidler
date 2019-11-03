@@ -16,9 +16,45 @@ namespace UIPackage.UIBuildingContent
         LEFT = 7,
         RIGHT = 8
     }
-    internal class UiElements
+
+    internal enum Column
     {
-        internal Button CreateButton(RectTransform parent, string name, int index,AnchorType anchorType)
+        FIRST = 0,
+        SECOND = 1,
+        THIRD = 2,
+        FOURTH = 3,
+        
+    }
+    public class UiElements
+    {
+
+
+        public TextMeshProUGUI GetCanvas(string text)
+        {
+            Canvas canvas = GameObject.Find("GlobalCanvas").GetComponent<Canvas>();
+            
+            var emptyObject = new GameObject();
+            var countLabel = emptyObject.AddComponent<TextMeshProUGUI>();
+            emptyObject.GetComponent<RectTransform>().SetParent(canvas.GetComponent<RectTransform>());
+            countLabel.fontSize = 12f;
+            countLabel.color = Color.white;
+            countLabel.alignment = TextAlignmentOptions.Midline;
+            var rectTransform = countLabel.rectTransform;
+
+            var anchor = GetAnchor(AnchorType.CENTER);
+            rectTransform.anchorMin = anchor.anchorMin;
+            rectTransform.anchorMax = anchor.anchorMax;
+            rectTransform.pivot = anchor.pivot;
+            rectTransform.sizeDelta = new Vector2(100f, 30f);
+            rectTransform.anchoredPosition = new Vector2(0, 0);
+
+            rectTransform.localScale = Vector3.one/10f;
+            countLabel.SetText(text);
+            
+            return countLabel;
+        }
+
+        internal Button CreateButton(RectTransform parent, string name, int index, AnchorType anchorType, Column column, params Material[] material)
         {
             // __________________Button____________________
             // || || || || || || || || || || || || || || ||
@@ -31,6 +67,7 @@ namespace UIPackage.UIBuildingContent
             
             
             var rectTransform = btn.GetComponent<RectTransform>();
+            
             rectTransform.SetParent(parent.GetComponent<RectTransform>());
 
             var anchor = GetAnchor(anchorType);
@@ -38,9 +75,14 @@ namespace UIPackage.UIBuildingContent
             rectTransform.anchorMax = anchor.anchorMax;
             rectTransform.pivot = anchor.pivot;
             rectTransform.sizeDelta = new Vector2(100f, 30f);
-
+            
+            if(material.Length > 0)
+            {
+                var imageComponent = btn.gameObject.GetComponent<Image>();
+                imageComponent.material = material[0];
+            }
             index *= -1;
-            var x = anchor.anchorMin.x < 0.5f ? 50f : -50f;
+            var x = anchor.anchorMin.x < 0.5f ? GetPosition(rectTransform.sizeDelta, column) : -GetPosition(rectTransform.sizeDelta, column);;
             emptyObject.GetComponent<RectTransform>().anchoredPosition = new Vector2(x, 35f * index);
             GenerateBtnLabel(rectTransform, name);
             return btn;
@@ -90,13 +132,12 @@ namespace UIPackage.UIBuildingContent
             rectTransform.pivot = anchor.pivot;
             rectTransform.sizeDelta = new Vector2(100f, 30f);
             index *= -1;
-            rectTransform.anchoredPosition = new Vector2(rectTransform.sizeDelta.x + 50f, 35f * index);
+            rectTransform.anchoredPosition = new Vector2(GetPosition(rectTransform.sizeDelta, Column.SECOND), 35f * index);
 
             countLabel.SetText(countOfEmployedWorker.employedPlaces + " / "+countOfEmployedWorker.countEmployedPlaces);
 
             return countLabel;
         }
-        
         private (Vector2 anchorMin, Vector2 anchorMax, Vector2 pivot) GetAnchor(AnchorType anchorType)
         {
             switch (anchorType)
@@ -122,6 +163,45 @@ namespace UIPackage.UIBuildingContent
                 default:
                     return (new Vector2(0.5f, 0.5f), new Vector2(0.5f, 0.5f), new Vector2(0.5f, 0.5f));
             }
+        }
+
+        private float GetPosition(Vector2 size ,Column column)
+        {
+            switch (column)
+            {
+                case Column.FIRST:
+                    return 10f;
+                case Column.SECOND:
+                    return size.x + 10f;
+                case Column.THIRD:
+                    return size.x * 2 + 10f;
+                case Column.FOURTH:
+                    return size.x * 3 + 10f*2;
+                default:
+                    return 0f;
+            }
+        }
+        private void SetCanvas()
+        {
+            // __________________World-Space-Canvas______________
+            // || || || || || || || || || || || || || || || || ||
+            // \/ \/ \/ \/ \/ \/ \/ \/ \/ \/ \/ \/ \/ \/ \/ \/ \/
+            GameObject canvasObject = new GameObject();
+            Canvas canvas = canvasObject.AddComponent<Canvas>();
+            CanvasScaler canvasScaler = canvasObject.AddComponent<CanvasScaler>();
+            GraphicRaycaster graphicRaycaster = canvasObject.AddComponent<GraphicRaycaster>();
+
+            canvas.renderMode = RenderMode.WorldSpace;
+            canvas.targetDisplay = 1;
+            canvas.worldCamera = Camera.main;
+            canvas.GetComponent<RectTransform>().sizeDelta = Vector2.one;
+
+            canvasScaler.uiScaleMode = CanvasScaler.ScaleMode.ConstantPixelSize;
+            canvasScaler.scaleFactor = 1;
+            canvasScaler.referencePixelsPerUnit = 100;
+
+            graphicRaycaster.ignoreReversedGraphics = true;
+            graphicRaycaster.blockingObjects = GraphicRaycaster.BlockingObjects.None;
         }
         
     }

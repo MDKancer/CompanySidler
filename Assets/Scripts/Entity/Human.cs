@@ -1,5 +1,6 @@
 using Enums;
 using StateMachine;
+using UIPackage.UIBuildingContent;
 using UnityEngine;
 
 namespace Human
@@ -8,7 +9,7 @@ namespace Human
     {
         
         public BuildingType destination = BuildingType.NONE;
-        
+        protected UiElements uiElements = new UiElements();
         
         private StateController<HumanState> selfState = new StateController<HumanState>();
 
@@ -25,5 +26,6 @@ namespace Human
                 Random.Range(position.z-9, position.z+9)    // z
             );
         }
+        
     }
 }

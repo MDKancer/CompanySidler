@@ -1,5 +1,4 @@
 using System.Collections;
-using System.Collections.Generic;
 using BootManager;
 using BuildingPackage;
 using Enums;
@@ -8,6 +7,8 @@ using ProjectPackage;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
+using Image = UnityEngine.UIElements.Image;
+
 namespace UIPackage.UIBuildingContent
 {
     public class BuildingContent
@@ -15,26 +16,31 @@ namespace UIPackage.UIBuildingContent
         private readonly UiElements uiElements;        
         private readonly Building building;
         private readonly GameObject buildingContent;
-        private Dictionary<Button, TextMeshProUGUI> buildingContentBtn;
-        private Material projectButtonMaterial ;
+        private readonly Material projectButtonMaterial ;
+        private UIData uiData;
         public BuildingContent(Building building, GameObject buildingContent)
         {
             this.building = building;
             this.buildingContent = buildingContent;
             uiElements = new UiElements();
-            projectButtonMaterial = Resources.Load<Material>("Materials/progressBar");
+            uiData = new UIData();
+            
+            foreach (var material in Boot.container.Materials)
+            {
+                if (material.name == "progressBar")
+                {
+                    projectButtonMaterial = material;
+                }
+            }
         }
         
-        public void CreateBuildingContent(ref Dictionary<Button,TextMeshProUGUI> buildContentElements)
+        public void CreateBuildingContent(ref UIData uiData)
         {
-            buildingContentBtn = buildContentElements;
-
+            this.uiData = uiData;
             SetEmployeesButton();
 
-            var materialInstance = GetCopyOfMaterial(projectButtonMaterial);
+            SetProjectsButton();
             
-            SetProjectsButton(materialInstance);
-            Boot.monobehaviour.StartCoroutine(ShowProgressbarProcess(materialInstance));
         }
 
         private void SetEmployeesButton()
@@ -44,7 +50,7 @@ namespace UIPackage.UIBuildingContent
             {
                 if (VARIABLE != null)
                 {
-                    if (!ContainsIn(buildingContentBtn.Keys,VARIABLE.WorkerType))
+                    if (!uiData.Contains(VARIABLE.WorkerType.ToString()))
                     {
                         var btn = uiElements.CreateButton(
                             buildingContent.GetComponent<RectTransform>(),
@@ -71,10 +77,13 @@ namespace UIPackage.UIBuildingContent
                                 AnchorType.TOP_LEFT,
                                 Column.THIRD);
                             SetEventListener(quitBtn, VARIABLE.Worker, VARIABLE.WorkerType);
-                            buildingContentBtn.Add(quitBtn, quitBtn.transform.GetChild(0).GetComponent<TextMeshProUGUI>());
+                            //--------------
+                            uiData.AddEmployeesQuitButton(quitBtn, quitBtn.gameObject.transform.GetChild(0).GetComponent<TextMeshProUGUI>());
+                            
                         }
-                        
-                        buildingContentBtn.Add(btn,countLabel);
+                        //----------
+                        uiData.AddEmployeesApplyButton(btn,btn.gameObject.transform.GetChild(0).GetComponent<TextMeshProUGUI>());
+                        uiData.AddEmployeesCountButton(btn,countLabel);
                                                 
                         index++;
                     }
@@ -82,7 +91,7 @@ namespace UIPackage.UIBuildingContent
             }
         }
         
-        private void SetProjectsButton(Material material)
+        private void SetProjectsButton()
         {
             var index = 1;
             foreach (var project in building.possibleProjects)
@@ -91,8 +100,9 @@ namespace UIPackage.UIBuildingContent
                 {
                     var btnName = project.customerType.ToString() + "(" + index + ")";
                     
-                    if (!ContainsIn(buildingContentBtn.Keys, btnName))
+                    if (!uiData.Contains(btnName))
                     {
+                        var materialInstance = GetCopyOfMaterial(projectButtonMaterial);
                         var btn = uiElements.CreateButton
                         (
                             buildingContent.GetComponent<RectTransform>(),
@@ -100,10 +110,12 @@ namespace UIPackage.UIBuildingContent
                             index,
                             AnchorType.TOP_LEFT,
                             Column.FOURTH,
-                            material
+                            materialInstance
                         );
-                        SetEventListener(btn,project);
-                        buildingContentBtn.Add(btn, btn.transform.GetChild(0).GetComponent<TextMeshProUGUI>());
+                        SetEventListener(btn,project,materialInstance);
+                        
+                        //----------
+                        uiData.AddProjectApplyButton(btn, btn.gameObject.transform.GetChild(0).GetComponent<TextMeshProUGUI>());
                         index++;
                     }
                 }
@@ -118,7 +130,7 @@ namespace UIPackage.UIBuildingContent
                 if(employedPlaces < countEmployedPlaces)
                 {
                     UIDispatcher.uiDispatcher.ApplyWorker(workerType.ToString());
-                    UpdateEmployeeWorkers(buildingContentBtn[btn], workerType);
+                    UpdateEmployeeWorkers(uiData.GetEmployeesCountLabel(workerType.ToString()),  workerType);
                 }
             });
         }
@@ -130,45 +142,23 @@ namespace UIPackage.UIBuildingContent
                 if(employedPlaces > 0)
                 {
                     building.QuitWorker(employee);
-                    UpdateEmployeeWorkers(buildingContentBtn[btn], workerType);
+                    UpdateEmployeeWorkers(uiData.GetEmployeesCountLabel(workerType.ToString()), workerType);
                 }
             });
         }
         
-        private void SetEventListener(Button btn, Project project)
+        private void SetEventListener(Button btn, Project project,Material material)
         {
-            btn.onClick.AddListener(() =>
+            if(building.BuildingData.workers > 0)
             {
-
-                building.ApplyProject(project);
-                Boot.monobehaviour.StartCoroutine(ButtonLifeTime(btn, project));
-            });
-        }
-        
-        private bool ContainsIn(Dictionary<Button, TextMeshProUGUI>.KeyCollection buttons, EntityType workerType)
-        {
-            foreach (var btns in buttons)
-            {
-                if (btns != null && btns.name == workerType.ToString())
+                Boot.monobehaviour.StartCoroutine(ShowProgressbarProcess(material));
+                btn.onClick.AddListener(() =>
                 {
-                    return true;
-                }
+                    building.ApplyProject(project);
+                    Boot.monobehaviour.StartCoroutine(ButtonLifeTime(btn, project));
+                });
             }
-            return false;
         }
-        
-        private bool ContainsIn(Dictionary<Button, TextMeshProUGUI>.KeyCollection buttons, string btnName)
-        {
-            foreach (var btns in buttons)
-            {
-                if (btns != null && btns.name == btnName)
-                {
-                    return true;
-                }
-            }
-            return false;
-        }
-
         private Material GetCopyOfMaterial(Material original)
         {
             Material materialCopy = new Material(original.shader);
@@ -200,6 +190,8 @@ namespace UIPackage.UIBuildingContent
         {
             while (building.Project != null)
             {
+                btn.gameObject.transform.GetChild(0).GetComponent<TextMeshProUGUI>().SetText(building.Project.percentprocessBar.ToString());
+                btn.interactable = false;
                 yield return null;
             }
             building.possibleProjects.Remove(project);
@@ -208,6 +200,11 @@ namespace UIPackage.UIBuildingContent
             var gameObject = btn.gameObject;
             Object.Destroy(btn);
             Object.Destroy(gameObject);
+        }
+
+        private void SetInteractable(bool interactable)
+        {
+            
         }
         
     }

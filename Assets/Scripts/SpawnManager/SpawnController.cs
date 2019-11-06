@@ -61,6 +61,8 @@ namespace SpawnManager
                 if(instantiate.GetComponent<NavMeshAgent>() == null)
                 {
                     NavMeshAgent agent = instantiate.AddComponent<NavMeshAgent>();
+                    agent.obstacleAvoidanceType = ObstacleAvoidanceType.HighQualityObstacleAvoidance;
+//                    agent.radius = 1f;
                 }
 
                 if (instantiate.GetComponent<Employee>() == null)

@@ -63,7 +63,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Assets\ForeignCode\SimpleCameraController.cs" />
+    <Compile Include="Assets\Foreign\SimpleCameraController.cs" />
     <Compile Include="Assets\Scripts\BootManager\Boot.cs" />
     <Compile Include="Assets\Scripts\Building\Accounting\Accounting.cs" />
     <Compile Include="Assets\Scripts\Building\Accounting\iAccounting.cs" />
@@ -122,6 +122,7 @@
     <Compile Include="Assets\Scripts\SpawnManager\SpawnController.cs" />
     <Compile Include="Assets\Scripts\StateManager\StateManager.cs" />
     <Compile Include="Assets\Scripts\UIDispatcher\UIBuildingContent\BuildingContent.cs" />
+    <Compile Include="Assets\Scripts\UIDispatcher\UIBuildingContent\UIData.cs" />
     <Compile Include="Assets\Scripts\UIDispatcher\UIBuildingContent\UiElements.cs" />
     <Compile Include="Assets\Scripts\UIDispatcher\UIDispatcher.cs" />
     <Compile Include="Assets\Scripts\UISignals.cs" />

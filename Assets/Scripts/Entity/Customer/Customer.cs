@@ -36,6 +36,7 @@ namespace Human.Customer
             // \/ \/ \/ \/ \/ \/ \/ \/ \/ \/ \/ \/ \/ \/ \/ \/ \/ \/ \/ \/ \/
             while (transform.position.x != targetPosition.x && transform.position.z != targetPosition.z )
             {
+//                Debug.Log("Name "+this.customerData.customerType+" "+transform.position + " Target " + tarentPosition);
                 // irgendwas
                 yield return null;
             }

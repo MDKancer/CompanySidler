@@ -25,8 +25,8 @@ namespace UIPackage
                 public static int currentBudget;
                 [Required]
                 public GameObject buildingInfo;
-                
-                private Dictionary<Button,TextMeshProUGUI> buildContentBtn = new Dictionary<Button, TextMeshProUGUI>();
+
+                private UIData uiData = new UIData();
                 private CreditsManager creditsManager;
                 private GameObject creditPanel;
                 private int workerCount = 0;
@@ -184,28 +184,31 @@ namespace UIPackage
                         GameObject buildingContentObj = GameObject.Find("BuildingContent");
 
                         buildingContent = new BuildingContent(Building, buildingContentObj);
-                        buildingContent.CreateBuildingContent(ref buildContentBtn);
+                        buildingContent.CreateBuildingContent(ref uiData);
 
                         haveContentBtn = true;
                 }
                 private void RemoveBuildingContent()
                 {
-                        for (int index = 0; index < buildContentBtn.Count; index++) 
-                        {
-                                var item = buildContentBtn.ElementAt(index);
-                                
-                                if(item.Key != null)
-                                {
-                                        var itemKey = item.Key;
-                                        var itemValue = item.Value;
-                                        var keyGameObject = itemKey.gameObject;
-                                        var valueGameObject = itemValue.gameObject;
-                                        
-                                        Destroy(valueGameObject);
-                                        buildContentBtn.Remove(itemKey);
-                                        Destroy(keyGameObject);
-                                }
-                        }
+                        uiData.RemoveAll();
+//                        for (int index = 0; index < uiData..Count; index++) 
+//                        {
+//                                var item = buildContentBtn.ElementAt(index);
+//                                
+//                                if(item.Key != null)
+//                                {
+//                                        var itemKey = item.Key;
+//                                        var itemValue = item.Value;
+//                                        var keyGameObject = itemKey.gameObject;
+//                                        var valueGameObject = itemValue.gameObject;
+//                                        var material = keyGameObject.GetComponent<Image>().material;
+//                                        
+//                                        Destroy(material);
+//                                        Destroy(valueGameObject);
+//                                        buildContentBtn.Remove(itemKey);
+//                                        Destroy(keyGameObject);
+//                                }
+//                        }
                         haveContentBtn = false;
                 }
                 private void CurrentBudget()

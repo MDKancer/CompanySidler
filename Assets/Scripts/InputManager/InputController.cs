@@ -4,27 +4,35 @@ using BuildingPackage;
 using Enums;
 using UnityEngine;
 using PlayerView;
+using TMPro;
+using UIPackage.UIBuildingContent;
 
 namespace InputManager
 {
     public class InputController 
     {
-        public float speed = 0.3f;
+        public float speed = 1f;
 
         private readonly GameObject focusObject;
         private readonly CameraController cameraController;
         private readonly GameObject camera;
+        private Camera main;
         private Ray ray;
         private RaycastHit rayCastHit;
         private float distance;
         private Vector3 focusPoint;
         private static GameObject focusedBuilding;
+        private UiElements uiElements = new UiElements();
+        private TextMeshProUGUI buildingLabel;
         public  InputController()
         {
-            focusObject = GameObject.Find("Firma");
+            focusObject = GameObject.Find("Company");
             focusPoint = focusObject.transform.position;
             camera = Camera.main?.gameObject;
             cameraController = new CameraController();
+            buildingLabel = uiElements.GetCanvas("");
+            buildingLabel.gameObject.SetActive(false);
+            main = Camera.main;
         }
 
         public void Do()
@@ -87,7 +95,8 @@ namespace InputManager
                     focusPoint = focusObject.transform.position;
                 }
             }
-       
+
+            ShowNameOffice();
         }
         /// <summary>
         /// Gibt den gecklikten Gebäude zurrück.
@@ -103,6 +112,31 @@ namespace InputManager
             Component[] buildingComponent = targetObject.GetComponents(typeof(Building));
 
             return buildingComponent.Length > 0;
+        }
+
+        private void ShowNameOffice()
+        {
+            ray = camera.GetComponent<Camera>().ScreenPointToRay(Input.mousePosition);
+              
+            if (Physics.Raycast(ray,out rayCastHit))
+            {
+                if(isBuilding(rayCastHit.collider.gameObject))
+                {
+                    buildingLabel.gameObject.SetActive(true);        
+                    focusedBuilding = rayCastHit.collider.gameObject; 
+                    buildingLabel.SetText(focusObject.name.ToString());
+                    
+                    
+                    RectTransform rectTransform = buildingLabel.GetComponent<RectTransform>();
+                    rectTransform.position =
+                        focusedBuilding.transform.position + (focusedBuilding.transform.up * 30f);
+                    rectTransform.rotation = Quaternion.LookRotation(main.transform.forward);
+                }
+                else
+                {
+                    buildingLabel.gameObject.SetActive(false);     
+                }
+            }
         }
     }
 }

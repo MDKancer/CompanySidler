@@ -123,11 +123,13 @@ namespace Human
                     }
                     else
                     {
+                        // hier macht er seine Aufgabe.
                         yield return new WaitForSeconds(taskDuration);
                     }
                     
                     if(SelfState.CurrentState != HumanState.QUITED)
                     {
+                        // hier stellt er sein neue Ziel
                         index = index >= myKeys.Count ? 0 : index;
                         
                         destination = EmployeeData.GetEntityWorkingCycle[myKeys[index]];
@@ -140,6 +142,14 @@ namespace Human
                         PathFinder.MoveTo(gameObject,targetPosition);
                         index++;
                     }
+                }
+                
+                
+                // hier passiert alles wärend des Laufens
+                if (PathFinder.MyPathStatus(gameObject) == PathProgress.NONE)
+                {
+                    
+                    targetPosition = GenerateRandomPosition(officePosition);
                 }
                 yield return null;
             }

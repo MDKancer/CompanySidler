@@ -29,6 +29,8 @@ using Resources = UnityEngine.Resources;
             SetFirmaData();
         }
 
+        public List<Material> Materials => materials;
+
         public List<Company> Companies
         {
             get => companies;
@@ -64,7 +66,7 @@ using Resources = UnityEngine.Resources;
                 }
             }
         }
-        private void SetFirmaData(string companyName = "Firma") => companies.Add(new Company(GameObject.Find(companyName)));
+        private void SetFirmaData(string companyName = "Company") => companies.Add(new Company(GameObject.Find(companyName)));
 
        
 

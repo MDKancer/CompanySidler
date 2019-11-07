@@ -123,13 +123,13 @@ namespace InputManager
                 if(isBuilding(rayCastHit.collider.gameObject))
                 {
                     buildingLabel.gameObject.SetActive(true);        
-                    focusedBuilding = rayCastHit.collider.gameObject; 
-                    buildingLabel.SetText(focusObject.name.ToString());
+                    var targetBuilding = (Building)rayCastHit.collider.GetComponent(typeof(Building));
+                    buildingLabel.SetText(targetBuilding.BuildingData.name);
                     
                     
                     RectTransform rectTransform = buildingLabel.GetComponent<RectTransform>();
                     rectTransform.position =
-                        focusedBuilding.transform.position + (focusedBuilding.transform.up * 30f);
+                        targetBuilding.transform.position + (targetBuilding.transform.up * 30f);
                     rectTransform.rotation = Quaternion.LookRotation(main.transform.forward);
                 }
                 else

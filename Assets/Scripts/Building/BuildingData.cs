@@ -46,13 +46,13 @@ namespace BuildingPackage
             return (employedPlaces, countEmployedPlaces);
         }
 
-        public IList<BuildingWorkers<Employee, EntityType>> AccessibleWorker
+        public List<BuildingWorkers<Employee, EntityType>> AccessibleWorker
         {
             get
             {
-                return accessibleWorker.AsReadOnly();
+                return accessibleWorker.GetRange(0,workPlacesLimit);
             }
-            set => accessibleWorker = (List<BuildingWorkers<Employee, EntityType>>) value;
+            set => accessibleWorker = value;
         }
 
         public void ChangeWastage()

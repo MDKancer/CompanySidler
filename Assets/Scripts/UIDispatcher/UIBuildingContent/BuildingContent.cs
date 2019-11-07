@@ -151,11 +151,12 @@ namespace UIPackage.UIBuildingContent
         {
             if(building.BuildingData.workers > 0)
             {
-                Boot.monobehaviour.StartCoroutine(ShowProgressbarProcess(material));
-                btn.onClick.AddListener(() =>
+                Boot.monobehaviour.StartCoroutine(routine: ShowProgressbarProcess(material: material));
+                Boot.monobehaviour.StartCoroutine(routine: UpdateTextLabelButton(btn: btn, project: project));
+                btn.onClick.AddListener(call: () =>
                 {
-                    building.ApplyProject(project);
-                    Boot.monobehaviour.StartCoroutine(ButtonLifeTime(btn, project));
+                    building.ApplyProject(newProject: project);
+                    Boot.monobehaviour.StartCoroutine(routine: ButtonLifeTime(btn: btn, project: project));
                 });
             }
         }
@@ -186,14 +187,31 @@ namespace UIPackage.UIBuildingContent
             }
         }
 
-        private IEnumerator ButtonLifeTime(Button btn, Project project)
+        private IEnumerator UpdateTextLabelButton(Button btn, Project project)
         {
-            while (building.Project != null)
+            while (building.Project != null &&  btn != null)
             {
-                btn.gameObject.transform.GetChild(0).GetComponent<TextMeshProUGUI>().SetText(building.Project.percentprocessBar.ToString());
-                btn.interactable = false;
+                if (project.percentprocessBar > 0)
+                {
+                    uiData.GetProjectApplyButtonLabel(btn.name)?.SetText(project.percentprocessBar.ToString());
+                }
                 yield return null;
             }
+        }
+
+        private IEnumerator ButtonLifeTime(Button btn, Project project)
+        {
+            SetInteractable(false);
+            while (building.Project != null)
+            {
+                if(btn != null)
+                {
+                    //TODO : if Project was Started than Button should be not interactable !!!!
+                    btn.interactable = false;
+                }
+                yield return null;
+            }
+
             building.possibleProjects.Remove(project);
             Boot.container.Companies[0].RemoveProject(project);
 
@@ -204,7 +222,10 @@ namespace UIPackage.UIBuildingContent
 
         private void SetInteractable(bool interactable)
         {
-            
+            foreach (var btn in uiData.ProjectApplyButtons)
+            {
+                btn.interactable = interactable;
+            }
         }
         
     }

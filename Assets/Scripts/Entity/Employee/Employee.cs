@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,13 +11,14 @@ using PathFinderManager;
 using ProjectPackage.ProjectTasks;
 using TMPro;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 namespace Human
 {
     public class Employee : Human, IWorker
     {
         private EmployeeData employeeData = null;
-                
+        private TextMeshProUGUI namePoster;
         public EmployeeData EmployeeData
         {
             get => employeeData;
@@ -170,9 +172,9 @@ namespace Human
 
         private IEnumerator ShowMyCanvas()
         {
-            TextMeshProUGUI canvas = uiElements.GetCanvas(this.employeeData.GetEntityType.ToString());
+            namePoster = uiElements.GetCanvas(this.employeeData.GetEntityType.ToString());
             var main = Camera.main;
-            RectTransform rectTransform = canvas.GetComponent<RectTransform>();
+            RectTransform rectTransform = namePoster.GetComponent<RectTransform>();
             while (gameObject != null)
             {
                 rectTransform.position =
@@ -182,5 +184,10 @@ namespace Human
             }
         }
         private iBuilding Building => InputController.FocusedBuilding?.GetComponent(typeof(iBuilding)) as iBuilding;
+
+        private void OnDestroy()
+        {
+            Destroy(namePoster);
+        }
     }
 }

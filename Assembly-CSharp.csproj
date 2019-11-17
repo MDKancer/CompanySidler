@@ -115,6 +115,7 @@
     <Compile Include="Assets\Scripts\Entity\IHuman.cs" />
     <Compile Include="Assets\Scripts\Enums\Enums.cs" />
     <Compile Include="Assets\Scripts\InputManager\InputController.cs" />
+    <Compile Include="Assets\Scripts\ParticleManager\ParticleManager.cs" />
     <Compile Include="Assets\Scripts\PathFinder\PathFinder.cs" />
     <Compile Include="Assets\Scripts\ProjectPackage\Project.cs" />
     <Compile Include="Assets\Scripts\ProjectPackage\ProjectTasks\Task.cs" />
@@ -126,6 +127,7 @@
     <Compile Include="Assets\Scripts\UIDispatcher\UIBuildingContent\UiElements.cs" />
     <Compile Include="Assets\Scripts\UIDispatcher\UIDispatcher.cs" />
     <Compile Include="Assets\Scripts\UISignals.cs" />
+    <Compile Include="Assets\Tests\ConvertToPrefab.cs" />
     <None Include="Assets\TextMesh Pro\Resources\Shaders\TMP_SDF-Surface-Mobile.shader" />
     <None Include="Assets\TextMesh Pro\Resources\LineBreaking Leading Characters.txt" />
     <None Include="Assets\TextMesh Pro\Resources\Shaders\TMPro_Properties.cginc" />

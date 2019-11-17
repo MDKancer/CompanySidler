@@ -104,7 +104,7 @@ namespace UIPackage.UIBuildingContent
                 //foreach (var item in dictionaries)
                 {
                     var item = dictionaries.ElementAt(index);
-                    if (item.Key != null)
+                    if (!item.Key.Equals(null))
                     {
                         var btn = item.Key;
                         var label = item.Value;
@@ -152,7 +152,7 @@ namespace UIPackage.UIBuildingContent
             return null;
         }
         [CanBeNull]
-        public Button GetEmployeesQuityButton(string btnName)
+        public Button GetEmployeesQuitButton(string btnName)
         {
             foreach (var btn in employeesQuit)
             {
@@ -193,7 +193,7 @@ namespace UIPackage.UIBuildingContent
         {
             foreach (var btn in projectsApply)
             {
-                if (btn.Key != null && btn.Key.name == btnName)
+                if (!btn.Key.Equals(null)  && btn.Key.name == btnName)
                 {
                     return btn.Value;
                 }

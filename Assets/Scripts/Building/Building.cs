@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using BootManager;
 using Enums;
 using Human;
 using ProjectPackage;
@@ -15,7 +16,6 @@ namespace BuildingPackage
         protected float buildTime;
 
         protected Company company;
-
         public List<Project> possibleProjects = new List<Project>(3);
         protected StateController<BuildingState> stateController = new StateController<BuildingState>();
         protected BuildingData buildingData;
@@ -86,6 +86,8 @@ namespace BuildingPackage
                     }
                 }
                 StartCoroutine(CheckIfProjectIsDone());
+                var particleSystem = Boot.spawnController.SpawnEffect(buildingData.buildingType, ParticleType.PROJECT);
+                Destroy(particleSystem.gameObject, 2f);
             }
         }
 
@@ -111,6 +113,8 @@ namespace BuildingPackage
         private IEnumerator CheckIfProjectIsDone()
         {
             while (!project.IsDone) yield return null;
+            var particleSystem =  Boot.spawnController.SpawnEffect(buildingData.buildingType, ParticleType.PROJECT);
+            Destroy(particleSystem.gameObject, 2f);
             project = null;
         }
     }

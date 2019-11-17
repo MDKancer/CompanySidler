@@ -128,8 +128,9 @@ namespace InputManager
                     
                     
                     RectTransform rectTransform = buildingLabel.GetComponent<RectTransform>();
+                    var transform = targetBuilding.transform;
                     rectTransform.position =
-                        targetBuilding.transform.position + (targetBuilding.transform.up * 30f);
+                        transform.position + (transform.up * 30f);
                     rectTransform.rotation = Quaternion.LookRotation(main.transform.forward);
                 }
                 else

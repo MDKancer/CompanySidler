@@ -143,4 +143,10 @@
         //etc.
     }
 
+    public enum ParticleType
+    {
+        CASH = 0,
+        PROJECT = 1
+    }
+
 }

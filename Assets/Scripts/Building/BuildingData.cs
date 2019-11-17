@@ -48,10 +48,7 @@ namespace BuildingPackage
 
         public List<BuildingWorkers<Employee, EntityType>> AccessibleWorker
         {
-            get
-            {
-                return accessibleWorker.GetRange(0,workPlacesLimit);
-            }
+            get => accessibleWorker.GetRange(0,workPlacesLimit);
             set => accessibleWorker = value;
         }
 

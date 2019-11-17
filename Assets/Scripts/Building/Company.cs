@@ -12,7 +12,7 @@ namespace BuildingPackage
     {
         public string name = null;
         public bool needProject = true;
-        
+        public int numberOfCustomers = 0;
         internal List<Type> sortedTypes = new List<Type>();
         
         private const int projectLimit = 12;
@@ -22,15 +22,19 @@ namespace BuildingPackage
         private Dictionary<Project,CustomerType> companyProjects;
         private int projectCount;
         private readonly List<CustomerData> customers;
-        public Company( GameObject company)
+        
+        public Company(GameObject company)
         {
             this.gameObject = company;
             this.name = gameObject.name;
             this.currentBudget = 0;
+            
             GetAllInterfaces();
+            
             offices = new Dictionary<Building, BuildingType>();
             customers = new List<CustomerData>();
             this.companyProjects = new Dictionary<Project,CustomerType>();
+            
             SetCompanyData();
         }
         public Building GetOffice(BuildingType buildingType)
@@ -60,6 +64,7 @@ namespace BuildingPackage
         }
 
         public List<CustomerData> Customers => customers;
+        public List<Building> GetAllOffices => offices.Keys.ToList();
 
         public void AddNewProject(Project project, CustomerType customerType)
         {
@@ -67,14 +72,26 @@ namespace BuildingPackage
             {
                 try
                 {
-                    companyProjects.Add(project,customerType);
-                    projectCount++;
+                    if (!companyProjects.ContainsValue(customerType))
+                    {
+                        numberOfCustomers++;
+                    }
+                    
+                    if(!companyProjects.ContainsKey(project))
+                    {
+                        companyProjects.Add(project,customerType);
+                        projectCount++;
+                    }
+
                 }
-                catch
+                catch(Exception e)
                 {
-                    Debug.Log("Container for Projects ist full");
-                    needProject = false;
+                    Console.WriteLine(e);
                 }
+            }
+            else if(projectCount >= projectLimit)
+            {
+                    needProject = false;
             }
         }
 
@@ -82,15 +99,22 @@ namespace BuildingPackage
         {
             if(companyProjects.ContainsKey(project))
             {
+                var customer = companyProjects[project];
                 companyProjects.Remove(project);
                 projectCount--;
                 needProject = true;
+
+                if (!companyProjects.ContainsValue(customer))
+                {
+                    numberOfCustomers--;
+                }
             }
         }
 
         public List<Project> GetProjectsByType(CustomerType customerType)
         {
             List<Project> returnList = new List<Project>();
+
             foreach (var item in companyProjects)
             {
                 if (item.Value == customerType)
@@ -104,7 +128,6 @@ namespace BuildingPackage
         
         private void SetCompanyData()
         {
-            
             if (gameObject == null) return;
             
             for (int i = 0; i < gameObject.transform.childCount; i++)
@@ -211,5 +234,7 @@ namespace BuildingPackage
                 }
             }
         }
+
+       
     }
 }

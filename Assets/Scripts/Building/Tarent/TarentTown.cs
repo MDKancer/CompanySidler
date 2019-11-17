@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using BootManager;
 using BuildingPackage.OfficeWorker;
 using Enums;
@@ -10,13 +11,44 @@ using ProjectPackage;
 using StateMachine;
 using UIPackage;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 namespace BuildingPackage
 {
     public class TarentTown : Building, iTarent
     {
+        private List<Dictionary<BuildingType, CustomerType>> customerCompatibleBuilding;
         void Awake()
         {
+            customerCompatibleBuilding = new List<Dictionary<BuildingType, CustomerType>>
+            {
+                new Dictionary<BuildingType, CustomerType>
+                {
+                    {BuildingType.DEV_OPS , CustomerType.BOSH},
+                },
+                new Dictionary<BuildingType, CustomerType>
+                {
+                    {BuildingType.DEV_OPS,CustomerType.UNITY_MEDIA},
+                    {BuildingType.ADMIN,CustomerType.UNITY_MEDIA},
+                    {BuildingType.SERVER,CustomerType.UNITY_MEDIA},
+                },
+                new Dictionary<BuildingType, CustomerType>
+                {
+                    {BuildingType.DEV_OPS,CustomerType.DE_POST},
+                    {BuildingType.ADMIN,CustomerType.DE_POST},
+                    {BuildingType.SERVER,CustomerType.DE_POST},
+                },
+                new Dictionary<BuildingType, CustomerType>
+                {
+                    {BuildingType.OFFICE,CustomerType.OTHER},
+                    {BuildingType.ADMIN,CustomerType.OTHER},
+                    {BuildingType.SERVER,CustomerType.OTHER},
+                    {BuildingType.AZUBIS,CustomerType.OTHER},
+                    {BuildingType.ACCOUNTING,CustomerType.OTHER},
+                    {BuildingType.MARKETING,CustomerType.OTHER},
+                }
+            };
+            
             buildingData = new BuildingData
             {
                 buildingType = BuildingType.TARENT_TOWN,
@@ -55,6 +87,8 @@ namespace BuildingPackage
         public void TakeProject(ref Project newProject,CustomerType customerType)
         {
             company.AddNewProject(newProject, customerType);
+            var particleSystem = Boot.spawnController.SpawnEffect(buildingData.buildingType, ParticleType.PROJECT);
+            Destroy(particleSystem.gameObject, 2f);
         }
         public int ToHold()
         {
@@ -87,27 +121,49 @@ namespace BuildingPackage
 
         private IEnumerator DistributeProjects()
         {
-            var clientValues = Enum.GetValues(typeof(CustomerType));
-            var buidingValues = Enum.GetValues(typeof(BuildingType));
-            
-            var buildings = Boot.container.Companies;
+            var customerValues = Enum.GetValues(typeof(CustomerType));
+            var buildingValues = Enum.GetValues(typeof(BuildingType));
             
             while (true)
             {
-                foreach (var clientValue in clientValues)
+                foreach (var customerValue in customerValues)
                 {
-                    foreach (var buidingValue in buidingValues)
+                    foreach (var buildingValue in buildingValues)
                     {
-                        if (clientValue.ToString().Contains(buidingValue.ToString()))
-                        {
-                            Building building = buildings[0].GetOffice((BuildingType) buidingValue);
-                            building.possibleProjects = company.GetProjectsByType((CustomerType) clientValue);
-                        }
+                        DistributeRecommendedProject( (CustomerType) customerValue, (BuildingType)buildingValue);
                     }
                 }
                 
                 yield return new WaitForSeconds(1.0f);
             }
+        }
+
+        private void DistributeRecommendedProject(CustomerType customerType,BuildingType buildingType)
+        {
+            // diese Abfrage muss geändert sein.
+            
+            if (isFor(customerType,buildingType))
+            {
+                Building building = Company.GetOffice(buildingType);
+                building.possibleProjects = company.GetProjectsByType(customerType);
+            }
+        }
+
+
+
+        private bool isFor(CustomerType customerType, BuildingType buildingType)
+        {
+            string customerTypeLowerCase = customerType.ToString().ToLower();
+            string buildingTypeLowerCase = buildingType.ToString().ToLower();
+            
+            return 
+                customerTypeLowerCase.Contains(buildingTypeLowerCase) 
+                   || 
+                customerCompatibleBuilding.Any
+                    (
+                        compatibleList => compatibleList.ContainsValue(customerType) 
+                                        && compatibleList.ContainsKey(buildingType)
+                    );
         }
     }
 }

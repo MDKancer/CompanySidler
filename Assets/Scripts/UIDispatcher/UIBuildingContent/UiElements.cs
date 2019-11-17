@@ -31,7 +31,7 @@ namespace UIPackage.UIBuildingContent
 
         public TextMeshProUGUI GetCanvas(string text)
         {
-            Canvas canvas = GameObject.Find("GlobalCanvas").GetComponent<Canvas>();
+            Canvas canvas = GameObject.Find("PlayerView").GetComponent<Canvas>();
             
             var emptyObject = new GameObject();
             var countLabel = emptyObject.AddComponent<TextMeshProUGUI>();

@@ -1,6 +1,7 @@
 ﻿using System;
 using BootManager;
 using Entity.Customer.Data;
+using Enums;
 using Human;
 using Human.Customer;
 using UnityEngine;
@@ -79,6 +80,34 @@ namespace SpawnManager
                 Debug.LogError(e);
                 return false;
             }
+        }
+
+        public ParticleSystem SpawnEffect(BuildingType buildingType,ParticleType particleType)
+        {
+            var particleSystemObj = Boot.container.ParticleSystems[0];
+            var company = Boot.container.Companies[0];
+
+            var targetPosition =
+                company.GetOffice(buildingType).transform.position + Vector3.up * 30;
+            
+            var particleSystem = GameObject.Instantiate(particleSystemObj, targetPosition, Quaternion.identity).GetComponent<ParticleSystem>();
+
+            var particleSystemRenderer = particleSystem.GetComponent<ParticleSystemRenderer>();
+            
+            switch (particleType)
+            {
+                case ParticleType.CASH:
+                    particleSystemRenderer.material = Boot.container.ParticleMaterials[0];
+                    break;
+                case ParticleType.PROJECT:
+                    particleSystemRenderer.material = Boot.container.ParticleMaterials[1];
+                    break;
+                default:
+                    break;
+            }
+            particleSystem.Play();
+
+            return particleSystem;
         }
     }
 }

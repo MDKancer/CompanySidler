@@ -7,8 +7,6 @@ using ProjectPackage;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
-using Image = UnityEngine.UIElements.Image;
-
 namespace UIPackage.UIBuildingContent
 {
     public class BuildingContent
@@ -16,12 +14,15 @@ namespace UIPackage.UIBuildingContent
         private readonly UiElements uiElements;        
         private readonly Building building;
         private readonly GameObject buildingContent;
+        private readonly RectTransform buildingContentRectTransform;
         private readonly Material projectButtonMaterial ;
         private UIData uiData;
         public BuildingContent(Building building, GameObject buildingContent)
         {
             this.building = building;
             this.buildingContent = buildingContent;
+            buildingContentRectTransform = buildingContent.GetComponent<RectTransform>();
+            
             uiElements = new UiElements();
             uiData = new UIData();
             
@@ -53,7 +54,7 @@ namespace UIPackage.UIBuildingContent
                     if (!uiData.Contains(VARIABLE.WorkerType.ToString()))
                     {
                         var btn = uiElements.CreateButton(
-                            buildingContent.GetComponent<RectTransform>(),
+                            buildingContentRectTransform,
                             VARIABLE.WorkerType.ToString(),
                             index,
                             AnchorType.TOP_LEFT,
@@ -63,7 +64,7 @@ namespace UIPackage.UIBuildingContent
                         
                         var (employedPlaces, countEmployedPlaces) = building.BuildingData.GetCountOfEmployedWorkers(VARIABLE.WorkerType);
                         var countLabel = uiElements.GenerateCountOfEmployedWorker(
-                            buildingContent.GetComponent<RectTransform>(),
+                            buildingContentRectTransform,
                             index,
                             (employedPlaces,countEmployedPlaces),
                             AnchorType.TOP_LEFT);
@@ -71,7 +72,7 @@ namespace UIPackage.UIBuildingContent
                         if(employedPlaces > 0)
                         {
                             var quitBtn = uiElements.CreateButton(
-                                buildingContent.GetComponent<RectTransform>(),
+                                buildingContentRectTransform,
                                 "Quit",
                                 index,
                                 AnchorType.TOP_LEFT,
@@ -105,7 +106,7 @@ namespace UIPackage.UIBuildingContent
                         var materialInstance = GetCopyOfMaterial(projectButtonMaterial);
                         var btn = uiElements.CreateButton
                         (
-                            buildingContent.GetComponent<RectTransform>(),
+                            buildingContentRectTransform,
                             btnName,
                             index,
                             AnchorType.TOP_LEFT,
@@ -189,7 +190,7 @@ namespace UIPackage.UIBuildingContent
 
         private IEnumerator UpdateTextLabelButton(Button btn, Project project)
         {
-            while (building.Project != null &&  btn != null)
+            while (building.Project != null &&  !btn.Equals(null))
             {
                 if (project.percentprocessBar > 0)
                 {
@@ -201,26 +202,28 @@ namespace UIPackage.UIBuildingContent
 
         private IEnumerator ButtonLifeTime(Button btn, Project project)
         {
-            SetInteractable(false);
+            SetAllProjectButtonsInteractable(false);
             while (building.Project != null)
             {
-                if(btn != null)
+                if(!btn.Equals(null))
                 {
                     //TODO : if Project was Started than Button should be not interactable !!!!
                     btn.interactable = false;
                 }
                 yield return null;
             }
+            if (!btn.Equals(null))
+            {
+                building.possibleProjects.Remove(project);
+                Boot.container.Companies[0].RemoveProject(project);
 
-            building.possibleProjects.Remove(project);
-            Boot.container.Companies[0].RemoveProject(project);
-
-            var gameObject = btn.gameObject;
-            Object.Destroy(btn);
-            Object.Destroy(gameObject);
+                var gameObject = btn.gameObject;
+                Object.Destroy(btn);
+                Object.Destroy(gameObject);
+            }
         }
 
-        private void SetInteractable(bool interactable)
+        private void SetAllProjectButtonsInteractable(bool interactable)
         {
             foreach (var btn in uiData.ProjectApplyButtons)
             {

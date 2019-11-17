@@ -21,9 +21,9 @@ namespace Human
         protected Vector3 GenerateRandomPosition(Vector3 position)
         {
             return new Vector3(
-                Random.Range(position.x-9, position.x+9),      // x
+                Random.Range(position.x-5, position.x+5),      // x
                 position.y,                                    // y
-                Random.Range(position.z-9, position.z+9)    // z
+                Random.Range(position.z-5, position.z+5)    // z
             );
         }
         

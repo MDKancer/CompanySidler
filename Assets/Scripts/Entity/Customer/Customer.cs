@@ -12,9 +12,10 @@ namespace Human.Customer
     {
         public CustomerData customerData;
         private TextMeshProUGUI namePoster;
+        private Camera main;
         private void Awake()
         {
-
+            main = Camera.main;
         }
         private void Start()
         {
@@ -38,6 +39,11 @@ namespace Human.Customer
             {
 //                Debug.Log("Name "+this.customerData.customerType+" "+transform.position + " Target " + tarentPosition);
                 // irgendwas
+                // hier passiert alles wärend des laufens den Kunden.
+                if (PathFinder.MyPathStatus(gameObject) == PathProgress.NONE)
+                {
+                    targetPosition = GenerateRandomPosition(targetPosition);
+                }
                 yield return null;
             }
             
@@ -59,14 +65,15 @@ namespace Human.Customer
                 // irgendwas
                 yield return null;
             }
+
             Destroy(gameObject);
         }
         private IEnumerator ShowMyNamePoster()
         {
             namePoster = uiElements.GetCanvas(this.customerData.customerType.ToString());
-            var main = Camera.main;
+            
             RectTransform rectTransform = namePoster.GetComponent<RectTransform>();
-            while (gameObject != null)
+            while (!gameObject.Equals(null))
             {
                 rectTransform.position =
                     gameObject.transform.position + (gameObject.transform.up * 3f);
@@ -77,6 +84,7 @@ namespace Human.Customer
 
         private void OnDestroy()
         {
+            SelfState.CurrentState = HumanState.NONE;
             Destroy(namePoster);
         }
     }

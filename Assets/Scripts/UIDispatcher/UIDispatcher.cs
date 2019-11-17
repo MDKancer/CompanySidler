@@ -1,6 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
+using System.Globalization;
 using BootManager;
 using BuildingPackage;
 using Enums;
@@ -11,7 +10,6 @@ using NaughtyAttributes;
 using TMPro;
 using UIPackage.UIBuildingContent;
 using UnityEngine;
-using UnityEngine.UI;
 
 namespace UIPackage
 {
@@ -22,9 +20,11 @@ namespace UIPackage
         {
                 public static UIDispatcher uiDispatcher;
                 public  GameState currentGameState;
-                public static int currentBudget;
+                //public static int currentBudget;
                 [Required]
                 public GameObject buildingInfo;
+
+                private GameObject buildingContentObj;
 
                 private UIData uiData = new UIData();
                 private CreditsManager creditsManager;
@@ -33,13 +33,35 @@ namespace UIPackage
                 private bool haveContentBtn = false;
                 private BuildingContent buildingContent;
 
+                private TextMeshProUGUI budget_Label;
+                private TextMeshProUGUI numberOfCustomers_Label;
+                private TextMeshProUGUI workersCount_Label;
+                private TextMeshProUGUI buildingTitle_Label;
+                private TextMeshProUGUI employeeCount_Label;
+                private TextMeshProUGUI employeeLimit_Label;
+                private TextMeshProUGUI price_Label;
+                private TextMeshProUGUI currentBudget_Label;
+                private GameObject curentHitPoints;
+
                 private void Awake()
                 {
                         if (uiDispatcher == null)
                         {
                                 uiDispatcher = this;
                                 creditsManager = GetComponent<CreditsManager>();
+                                buildingContentObj = GameObject.Find("BuildingContent");
                                 buildingInfo = GameObject.Find("BuildingInfo");
+                                budget_Label = GameObject.Find("Panel_Geld_Nr")?.GetComponent<TextMeshProUGUI>();
+                                numberOfCustomers_Label = GameObject.Find("Panel_Kunde_Nr")?.GetComponent<TextMeshProUGUI>();
+                                workersCount_Label = GameObject.Find("Panel_Mitarbeiter_Nr").GetComponent<TextMeshProUGUI>();
+                                
+                                buildingTitle_Label = GameObject.Find("BuildingTitle").GetComponent<TextMeshProUGUI>();
+                                employeeCount_Label = GameObject.Find("WorkerCount").GetComponent<TextMeshProUGUI>();
+                                employeeLimit_Label = GameObject.Find("WorkerLimit").GetComponent<TextMeshProUGUI>();
+                                price_Label = GameObject.Find("Price").GetComponent<TextMeshProUGUI>();
+                                currentBudget_Label = GameObject.Find("Geld").GetComponent<TextMeshProUGUI>();
+                                curentHitPoints = GameObject.Find("HitPoints");
+                                
                                 buildingInfo.SetActive(false);
                                 DontDestroyOnLoad(gameObject);
                         }
@@ -58,6 +80,7 @@ namespace UIPackage
                         CurrentBudget();
                         ShowBuildingInfoWindow();
                 }
+
 
                 public void PlayGame()
                 {
@@ -92,8 +115,7 @@ namespace UIPackage
 
                         Boot.spawnController.SpawnWorker(humanData,spawnPosition);
                         workerCount++;
-                        TextMeshProUGUI workersCount = GameObject.Find("Panel_Mitarbeiter_Nr").GetComponent<TextMeshProUGUI>();
-                        workersCount.SetText(workerCount.ToString());
+                        workersCount_Label.SetText(workerCount.ToString());
                 }
 
                 public void ApplyProject()
@@ -113,7 +135,7 @@ namespace UIPackage
                 {
                         if (Boot.runtimeStateController.CurrentState == RunTimeState.BUILDING_INFO ) // && Boot.gameStateController.CurrentState == GameState.GAME
                         {
-                                if(currentBudget >= Building.BuildingData.upgradePrice)
+                                if(Building.Company.CurrentBudget >= Building.BuildingData.upgradePrice)
                                 {
                                         Building.Upgrade();
                                         // content refresh
@@ -141,17 +163,12 @@ namespace UIPackage
                         if (Boot.runtimeStateController.CurrentState == RunTimeState.BUILDING_INFO) // && Boot.gameStateController.CurrentState == GameState.GAME
                         {
                                 buildingInfo.SetActive(true);
-                                
-                                GameObject.Find("BuildingTitle").GetComponent<TextMeshProUGUI>().SetText(Building.BuildingData.name);
-                                GameObject.Find("WorkerCount").GetComponent<TextMeshProUGUI>().SetText(Building.BuildingData.workers.ToString());
-                                GameObject.Find("WorkerLimit").GetComponent<TextMeshProUGUI>().SetText("/ "+Building.BuildingData.workPlacesLimit);
-                                GameObject.Find("Price").GetComponent<TextMeshProUGUI>().SetText(Building.BuildingData.upgradePrice.ToString());
-                                GameObject.Find("Geld").GetComponent<TextMeshProUGUI>().SetText(Building.BuildingData.moneyPerSec.ToString());
-                                
+                                SetBuildingDataInContent();
+                               
                                 
                                 float currentSize = (Building.BuildingData.currentHitPoints * 100f /
                                                     Building.BuildingData.maxHitPoints) / 100f;
-                                GameObject.Find("HitPoints").transform.localScale = new Vector3( currentSize, 1f,1f);
+                                curentHitPoints.transform.localScale = new Vector3( currentSize, 1f,1f);
                                 if (!haveContentBtn)
                                 {
                                         GenerateBuildingContent();
@@ -181,8 +198,6 @@ namespace UIPackage
 
                 private void GenerateBuildingContent()
                 {
-                        GameObject buildingContentObj = GameObject.Find("BuildingContent");
-
                         buildingContent = new BuildingContent(Building, buildingContentObj);
                         buildingContent.CreateBuildingContent(ref uiData);
 
@@ -191,35 +206,35 @@ namespace UIPackage
                 private void RemoveBuildingContent()
                 {
                         uiData.RemoveAll();
-//                        for (int index = 0; index < uiData..Count; index++) 
-//                        {
-//                                var item = buildContentBtn.ElementAt(index);
-//                                
-//                                if(item.Key != null)
-//                                {
-//                                        var itemKey = item.Key;
-//                                        var itemValue = item.Value;
-//                                        var keyGameObject = itemKey.gameObject;
-//                                        var valueGameObject = itemValue.gameObject;
-//                                        var material = keyGameObject.GetComponent<Image>().material;
-//                                        
-//                                        Destroy(material);
-//                                        Destroy(valueGameObject);
-//                                        buildContentBtn.Remove(itemKey);
-//                                        Destroy(keyGameObject);
-//                                }
-//                        }
+
                         haveContentBtn = false;
                 }
                 private void CurrentBudget()
                 {
                        // if(Boot.gameStateController.CurrentState == GameState.GAME)
                         //{
-                                TextMeshProUGUI money = GameObject.Find("Panel_Geld_Nr")?.GetComponent<TextMeshProUGUI>();
-                                money?.SetText(Boot.container.Companies[0].CurrentBudget.ToString());
+                                
+                                budget_Label?.SetText(Boot.container.Companies[0].CurrentBudget.ToString());
                         //}
                 }
 
                 private EntityType GetValue(String value) => (EntityType) Enum.Parse(typeof(EntityType), value.ToUpper());
+                
+
+                private void SetBuildingDataInContent()
+                {
+                        
+                        buildingTitle_Label.SetText(Building.BuildingData.name);
+                        
+                        employeeCount_Label.SetText(Building.BuildingData.workers.ToString());
+                        
+                        employeeLimit_Label.SetText("/ "+Building.BuildingData.workPlacesLimit);
+                        
+                        price_Label.SetText(Building.BuildingData.upgradePrice.ToString(CultureInfo.CurrentCulture));
+                        
+                        currentBudget_Label.SetText(Building.BuildingData.moneyPerSec.ToString());
+                        
+                        numberOfCustomers_Label?.SetText(Boot.container.Companies[0].numberOfCustomers.ToString());
+                }
         }
 }

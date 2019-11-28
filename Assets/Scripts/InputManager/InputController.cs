@@ -1,4 +1,3 @@
-using System.Linq;
 using BootManager;
 using BuildingPackage;
 using Enums;
@@ -9,37 +8,53 @@ using UIPackage.UIBuildingContent;
 
 namespace InputManager
 {
-    public class InputController 
+    public class InputController : MonoBehaviour
     {
         public float speed = 1f;
 
-        private readonly GameObject focusObject;
-        private readonly CameraController cameraController;
-        private readonly GameObject camera;
-        private Camera main;
+        private GameObject focusObject;
+        private CameraController cameraController;
         private Ray ray;
         private RaycastHit rayCastHit;
-        private float distance;
+        private Vector3 middleDirection = Vector3.zero;
+        //private float distance;
         private Vector3 focusPoint;
         private static GameObject focusedBuilding;
         private UiElements uiElements = new UiElements();
         private TextMeshProUGUI buildingLabel;
-        public  InputController()
+        public  void Awake()
         {
-            focusObject = GameObject.Find("Company");
-            focusPoint = focusObject.transform.position;
-            camera = Camera.main?.gameObject;
-            cameraController = new CameraController();
-            buildingLabel = uiElements.GetCanvas("");
-            buildingLabel.gameObject.SetActive(false);
-            main = Camera.main;
+            // wenn mann von Main Menu anfangen moechte.... dann auskommentieren.
+            //if (Boot.gameStateController.CurrentState == GameState.GAME)
+            //{
+               StartCameraController();
+            //}
         }
 
-        public void Do()
+        public void StartCameraController()
         {
-            Vector3 middleDirection = (camera.transform.up + camera.transform.forward) / 2;
-            distance = Vector3.Distance(camera.transform.position, focusObject.transform.position);
-            if (Input.GetKey(KeyCode.W))
+            cameraController = new CameraController();
+            focusObject = GameObject.Find("Company")?.gameObject;
+            focusPoint = focusObject.transform.position;
+            buildingLabel = uiElements.GetCanvas("");
+            buildingLabel.gameObject.SetActive(false);
+        }
+
+        public void Update()
+        {
+            if(Boot.gameStateController.CurrentState == GameState.GAME)
+            {
+                CameraEvents();
+            }
+        }
+
+        private void CameraEvents()
+        {
+            var transform = cameraController.mainCamera.transform;
+            middleDirection = (transform.up + transform.forward) / 2; 
+            //distance = Vector3.Distance(cameraController.mainCameraGameObject.transform.position, focusObject.transform.position);
+
+                if (Input.GetKey(KeyCode.W))
             {
                 cameraController.Move( middleDirection * speed);
             }
@@ -49,11 +64,11 @@ namespace InputManager
             }
             if (Input.GetKey(KeyCode.A))
             {
-                cameraController.Move( -(camera.transform.right * speed));
+                cameraController.Move( -(cameraController.mainCamera.transform.right * speed));
             }
             if (Input.GetKey(KeyCode.D))
             {
-                cameraController.Move( camera.transform.right * speed);
+                cameraController.Move( cameraController.mainCamera.transform.right * speed);
             }
             if (Input.GetKey(KeyCode.E))
             {
@@ -68,7 +83,7 @@ namespace InputManager
                 if (Boot.runtimeStateController.CurrentState != RunTimeState.FOCUS_ON &&
                     Boot.runtimeStateController.CurrentState != RunTimeState.BUILDING_INFO)
                 {
-                    ray = camera.GetComponent<Camera>().ScreenPointToRay(Input.mousePosition);
+                    ray = cameraController.mainCamera.ScreenPointToRay(Input.mousePosition);
                     
                     if (Physics.Raycast(ray,out rayCastHit))
                     {
@@ -95,9 +110,9 @@ namespace InputManager
                     focusPoint = focusObject.transform.position;
                 }
             }
-
             ShowNameOffice();
         }
+        
         /// <summary>
         /// Gibt den gecklikten Gebäude zurrück.
         /// </summary>
@@ -116,7 +131,7 @@ namespace InputManager
 
         private void ShowNameOffice()
         {
-            ray = camera.GetComponent<Camera>().ScreenPointToRay(Input.mousePosition);
+            ray = cameraController.mainCamera.ScreenPointToRay(Input.mousePosition);
               
             if (Physics.Raycast(ray,out rayCastHit))
             {
@@ -131,7 +146,7 @@ namespace InputManager
                     var transform = targetBuilding.transform;
                     rectTransform.position =
                         transform.position + (transform.up * 30f);
-                    rectTransform.rotation = Quaternion.LookRotation(main.transform.forward);
+                    rectTransform.rotation = Quaternion.LookRotation(cameraController.mainCamera.transform.forward);
                 }
                 else
                 {

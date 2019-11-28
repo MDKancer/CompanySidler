@@ -15,6 +15,18 @@ namespace SpawnManager
         private int index = 0;
         public void InitialWaveSpawn()
         {
+            foreach (var officePrefab in Boot.boot_Instance.companyData.officesForBegin.offices)
+            {
+               Vector3 spawnPosition = Boot.container.Companies[0].GetOffice(officePrefab).transform.position;
+               var allPrefabsOffice = Boot.container.GetPrefabsByType(EntityType.OFFICES);
+               foreach (var prefabOffice in allPrefabsOffice)
+               {
+                   if (prefabOffice.name.ToLower().Contains(officePrefab.ToString().ToLower()))
+                   {
+                       Object.Instantiate(prefabOffice,spawnPosition,Quaternion.identity,Boot.container.Companies[0].getCompanyGameObject().transform);
+                   }
+               }
+            }
         }
         
         /// <summary>

@@ -1,9 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
+using BootManager;
 using BuildingPackage;
 using Enums;
+using UnityEditor;
 using UnityEngine;
+using Object = UnityEngine.Object;
 using Resources = UnityEngine.Resources;
 
  namespace GameCloud
@@ -21,16 +23,28 @@ using Resources = UnityEngine.Resources;
         {
            //TODO: hier wird alle Prefabs aus den Ordnern im Dictionary reingepackt.
            
-           addPrefabs(Resources.LoadAll<GameObject>("Prefabs/Entitys/Building"), EntityType.BUILDING);
-           addPrefabs(Resources.LoadAll<GameObject>("Prefabs/Entitys/Workers/Developers"), EntityType.DEVELOPER);
-           addPrefabs(Resources.LoadAll<GameObject>("Prefabs/Entitys/Azubis"), EntityType.AZUBI);
-           addPrefabs(Resources.LoadAll<GameObject>("Prefabs/Entitys/Clients"), EntityType.CUSTOMER);
-           materials.AddRange(Resources.LoadAll<Material>("Materials"));
-           particleMaterials.AddRange(Resources.LoadAll<Material>("Materials/Particle"));
-           particleSystems.AddRange(Resources.LoadAll<GameObject>("Prefabs/ParticleSystems"));
-           
+           // wenn mann von Main Menu anfangen moechte.... dann auskommentieren.
+          // if (Boot.gameStateController.CurrentState == GameState.INTRO)
+           //{
+               addPrefabs(Resources.LoadAll<GameObject>("Prefabs/Buildings"), EntityType.BUILDING);
+               addPrefabs(Resources.LoadAll<GameObject>("Prefabs/Offices"), EntityType.OFFICES);
+               addPrefabs(Resources.LoadAll<GameObject>("Prefabs/Fortniture"), EntityType.FORNITURE);
+               addPrefabs(Resources.LoadAll<GameObject>("Prefabs/Environment"), EntityType.ENVIRONMENT);
+               addPrefabs(Resources.LoadAll<GameObject>("Prefabs/Entitys/Workers/Developers"), EntityType.DEVELOPER);
+               addPrefabs(Resources.LoadAll<GameObject>("Prefabs/Entitys/Azubis"), EntityType.AZUBI);
+               addPrefabs(Resources.LoadAll<GameObject>("Prefabs/Entitys/Clients"), EntityType.CUSTOMER);
+               materials.AddRange(Resources.LoadAll<Material>("Materials"));
+               particleMaterials.AddRange(Resources.LoadAll<Material>("Materials/Particle"));
+               particleSystems.AddRange(Resources.LoadAll<GameObject>("Prefabs/ParticleSystems"));
+           //}
+        }
 
-            SetFirmaData();
+        public void SetDatas()
+        {
+            if(Boot.gameStateController.CurrentState == GameState.GAME)
+            {
+                SetCompanyData();
+            }
         }
 
         public List<Material> Materials => materials;
@@ -73,11 +87,14 @@ using Resources = UnityEngine.Resources;
                 }
             }
         }
-        private void SetFirmaData(string companyName = "Company") => companies.Add(new Company(GameObject.Find(companyName)));
-
-       
-
-        
-        
+        private void SetCompanyData()
+        {
+            CompanyData companyData = Boot.boot_Instance.companyData;
+            string companyName = companyData.nameCompany;
+            
+            GameObject company = GameObject.Find("Company");
+            company.name = companyName;
+            companies.Add(new Company(company));
+        }
     }
 }

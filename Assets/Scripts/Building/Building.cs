@@ -12,14 +12,15 @@ namespace BuildingPackage
     public class Building : MonoBehaviour,iBuilding
     {
         public int budget;
-        private Project project = null;
-        protected float buildTime;
-
-        protected Company company;
         public List<Project> possibleProjects = new List<Project>(3);
+        public bool isBuying = false;
+        
+        protected float buildTime;
+        protected Company company;
         protected StateController<BuildingState> stateController = new StateController<BuildingState>();
         protected BuildingData buildingData;
 
+        private Project project = null;
 
         public void Upgrade()
         {

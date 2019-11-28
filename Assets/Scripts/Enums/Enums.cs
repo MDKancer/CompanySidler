@@ -6,8 +6,9 @@
         INTRO = 0,
         LOADING = 1,
         MAIN_MENU = 2,
-        GAME = 3,
-        EXIT = 4
+        PREGAME = 3,
+        GAME = 4,
+        EXIT = 5
     }
     public enum RunTimeState 
     {
@@ -26,8 +27,9 @@
         INTRO = 0,
         LOADING = 1,
         MAIN_MENU = 2,
-        GAME = 3,
-        EXIT = 4
+        PREGAME = 3,
+        GAME = 4,
+        EXIT = 5
     }
 
     public enum BuildingState
@@ -65,7 +67,10 @@
         PERSONAL = 11,
         ADMIN = 12,
         PRODUCT_OWNER = 13,
-        HACKER = 14
+        HACKER = 14,
+        OFFICES = 15,
+        FORNITURE=16,
+        ENVIRONMENT = 17
         
     }
 

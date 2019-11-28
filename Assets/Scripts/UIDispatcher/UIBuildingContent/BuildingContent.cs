@@ -130,7 +130,7 @@ namespace UIPackage.UIBuildingContent
                 var (employedPlaces, countEmployedPlaces) = building.BuildingData.GetCountOfEmployedWorkers(workerType);
                 if(employedPlaces < countEmployedPlaces)
                 {
-                    UIDispatcher.uiDispatcher.ApplyWorker(workerType.ToString());
+                    PlayerViewController.playerViewController.ApplyWorker(workerType.ToString());
                     UpdateEmployeeWorkers(uiData.GetEmployeesCountLabel(workerType.ToString()),  workerType);
                 }
             });

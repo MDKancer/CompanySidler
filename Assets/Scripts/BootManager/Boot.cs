@@ -1,10 +1,8 @@
-﻿﻿using System;
- using Enums;
+﻿using Enums;
 using GameCloud;
- using InputManager;
- using SceneController;
- using SpawnManager;
- using StateMachine;
+using SceneController;
+using SpawnManager;
+using StateMachine;
 using UnityEngine;
 
 namespace BootManager
@@ -19,9 +17,8 @@ namespace BootManager
         public static StateController<RunTimeState> runtimeStateController;
         public static SpawnController spawnController;
         public static SceneManager sceneManager;
-        
-        private  InputController inputController;
-        
+        public CompanyData companyData;
+        public GameState gameState;
 
         /// <summary>
         /// Hier wird alles referenzen Instanziert. und den Boot als Singelton gemacht
@@ -37,7 +34,13 @@ namespace BootManager
                 runtimeStateController = new StateController<RunTimeState>();
                 spawnController = new SpawnController();
                 sceneManager = new SceneManager();
-                inputController = new InputController();
+                
+                gameStateController.CurrentState = gameState;
+                runtimeStateController.CurrentState = RunTimeState.NONE;
+                // wenn mann von Main Menu anfangen moechte.... dann kommentieren.
+
+                container.LoadAllResources();
+                
                 
                 DontDestroyOnLoad(gameObject);
             }
@@ -46,17 +49,8 @@ namespace BootManager
                 Destroy(gameObject);
             }
             
-            Booting();
-            
-        }
-        void Start()
-        {
+                
             AllBegin();
-        }
-
-        private void Update()
-        {
-            inputController.Do();
         }
 
         /// <summary>
@@ -64,12 +58,7 @@ namespace BootManager
         /// </summary>
         private void Booting()
         {
-          runtimeStateController.CurrentState = RunTimeState.NONE;
-          
-          container.LoadAllResources();
-          
-          spawnController.InitialWaveSpawn();
-          
+            container.SetDatas();
         }
         /// <summary>
         /// Hier wird alles Inizialisiert was man am Start braucht.
@@ -79,12 +68,10 @@ namespace BootManager
             if (gameStateController.CurrentState == GameState.GAME)
             {
                 runtimeStateController.CurrentState = RunTimeState.PLAYING;
+                Booting();
+                // Es ist noch unter die Frage.......
+                spawnController.InitialWaveSpawn();
             }
-        }
-
-        private void Run()
-        {
-            
         }
     }
 }

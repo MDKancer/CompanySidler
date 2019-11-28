@@ -18,11 +18,11 @@ namespace Human.Customer.Generator
         private void Awake()
         {
             company = Boot.container.Companies[0];
-            CreateCustomers();
         }
 
         private void Start()
         {
+            CreateCustomers();
             StartCoroutine(CreateNewCostumer());
         }
 

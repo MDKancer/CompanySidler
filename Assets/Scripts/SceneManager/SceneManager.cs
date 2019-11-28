@@ -12,7 +12,7 @@ namespace SceneController
         public void GoTo(Scenes scenes)
         {
             CurrentScene = scenes;
-            UnityEngine.SceneManagement.SceneManager.LoadScene(scenes.ToString(),LoadSceneMode.Single);
+            UnityEngine.SceneManagement.SceneManager.LoadSceneAsync(scenes.ToString(),LoadSceneMode.Single);
         }
 
         public Scenes CurrentScene

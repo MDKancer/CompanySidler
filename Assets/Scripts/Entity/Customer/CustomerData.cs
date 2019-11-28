@@ -32,6 +32,7 @@ namespace Entity.Customer.Data
             this.container = Boot.container;
             this.company = container.Companies[0];
             tarentTown = (TarentTown) company.GetOffice(BuildingType.TARENT_TOWN);
+            
             this.prefab = container.GetPrefabsByType(EntityType.CUSTOMER)[0];
             
         }

@@ -9,22 +9,24 @@ namespace PlayerView
 {
     public class CameraController
     {
-        private readonly GameObject mainCamera;
+        public readonly GameObject mainCameraGameObject;
+        public readonly Camera mainCamera;
         private Vector3 originPosition;
         private Quaternion originRotation;
         private bool isArrive;
 
         public CameraController()
         {
-            mainCamera = Camera.main?.gameObject;
+            mainCameraGameObject = Camera.main.gameObject;
+            mainCamera = Camera.main;
         }
         public void FocusOn(Vector3 endPosition)
         {
             isArrive = false;
             Boot.runtimeStateController.CurrentState = RunTimeState.FOCUS_ON;
 
-            originPosition = mainCamera.transform.position;
-            originRotation = mainCamera.transform.rotation;
+            originPosition = mainCameraGameObject.transform.position;
+            originRotation = mainCameraGameObject.transform.rotation;
 
             Boot.monobehaviour.StartCoroutine(MoveTo(endPosition));
             Boot.monobehaviour.StartCoroutine(ChangeState());
@@ -32,30 +34,30 @@ namespace PlayerView
         public void ToEmptyPos()
         {
             Boot.monobehaviour.StartCoroutine(MoveTo(originPosition));
-            mainCamera.transform.rotation = originRotation;
+            mainCameraGameObject.transform.rotation = originRotation;
 
             Boot.runtimeStateController.SwitchToLastState();
         }
 
         public void Move(Vector3 direction)
         {
-            mainCamera.transform.position += direction;
+            mainCameraGameObject.transform.position += direction;
         }
 
         public void Rotate(Vector3 direction, Vector3 focusPoint,float speed)
         {
-            mainCamera.transform.RotateAround(focusPoint,direction,speed);
+            mainCameraGameObject.transform.RotateAround(focusPoint,direction,speed);
         }
         private IEnumerator MoveTo(Vector3 endPosition)
         {
             float stepSpeed = 0f;
             var cameraDistance = Vector3.Distance(originPosition, endPosition) * 0.5f;
-            endPosition = endPosition + (-mainCamera.transform.forward*cameraDistance);
+            endPosition = endPosition + (-mainCameraGameObject.transform.forward*cameraDistance);
             
-            while (mainCamera.transform.position != endPosition)
+            while (mainCameraGameObject.transform.position != endPosition)
             {
                 stepSpeed += Time.deltaTime;
-                mainCamera.transform.position = Vector3.Lerp(mainCamera.transform.position, endPosition , stepSpeed);   
+                mainCameraGameObject.transform.position = Vector3.Lerp(mainCameraGameObject.transform.position, endPosition , stepSpeed);   
                 yield return null;
             }
 

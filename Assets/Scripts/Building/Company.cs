@@ -37,6 +37,8 @@ namespace BuildingPackage
             
             SetCompanyData();
         }
+
+        public GameObject getCompanyGameObject() => gameObject;
         public Building GetOffice(BuildingType buildingType)
         {
             foreach (KeyValuePair<Building,BuildingType> office in offices)

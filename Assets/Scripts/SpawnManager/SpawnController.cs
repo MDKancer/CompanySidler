@@ -1,5 +1,8 @@
 ﻿using System;
+using System.Collections;
+using System.Threading.Tasks;
 using BootManager;
+using BuildingPackage;
 using Entity.Customer.Data;
 using Enums;
 using Human;
@@ -17,16 +20,14 @@ namespace SpawnManager
         {
             foreach (var officePrefab in Boot.boot_Instance.companyData.officesForBegin.offices)
             {
-               Vector3 spawnPosition = Boot.container.Companies[0].GetOffice(officePrefab).transform.position;
-               var allPrefabsOffice = Boot.container.GetPrefabsByType(EntityType.OFFICES);
-               foreach (var prefabOffice in allPrefabsOffice)
-               {
-                   if (prefabOffice.name.ToLower().Contains(officePrefab.ToString().ToLower()))
-                   {
-                       Object.Instantiate(prefabOffice,spawnPosition,Quaternion.identity,Boot.container.Companies[0].getCompanyGameObject().transform);
-                   }
-               }
+                var building = Boot.container.Companies[0].GetOffice(officePrefab);
+                Boot.monobehaviour.StartCoroutine(WaitUntilBuildIsCreated(building));
             }
+        }
+        public void SpawnOffice( GameObject office, Vector3 targetPosition)
+        {
+            GameObject instance = Object.Instantiate(office,targetPosition,Quaternion.identity,Boot.container.Companies[0].getCompanyGameObject().transform);
+            Boot.container.AddSpawnedGameObject(instance);
         }
         
         /// <summary>
@@ -120,6 +121,16 @@ namespace SpawnManager
             particleSystem.Play();
 
             return particleSystem;
+        }
+
+
+        private IEnumerator WaitUntilBuildIsCreated(Building building)
+        {
+            while (building.BuildingData.prefab == null)
+            {
+                yield return null;
+            }
+            building.IsBuying = true;
         }
     }
 }

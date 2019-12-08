@@ -52,6 +52,7 @@ namespace BuildingPackage
             buildingData = new BuildingData
             {
                 buildingType = BuildingType.TARENT_TOWN,
+                prefab =  this.officePrefab,
                 name = name,
                 workers = 0,
                 maxHitPoints = 2000,
@@ -94,7 +95,7 @@ namespace BuildingPackage
         {
             return BuildingData.wastage; 
         }
-        public new void SwitchWorkingState()
+        public override void SwitchWorkingState()
         {
             if (stateController.CurrentState == BuildingState.WORK)
             {
@@ -105,6 +106,15 @@ namespace BuildingPackage
             {
                 stateController.CurrentState = BuildingState.WORK;
                 StartCoroutine( UpdateManyGenerator());
+            }
+        }
+        public override bool IsBuying
+        {
+            get => isBuying;
+            set
+            {
+                Buy(buildingData.prefab, this.transform.position);
+                isBuying = value;
             }
         }
         private IEnumerator UpdateManyGenerator()

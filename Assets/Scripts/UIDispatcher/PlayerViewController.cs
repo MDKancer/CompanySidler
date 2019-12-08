@@ -8,6 +8,7 @@ using InputManager;
 using TMPro;
 using UIPackage.UIBuildingContent;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PlayerViewController : MonoBehaviour
 {
@@ -15,7 +16,9 @@ public class PlayerViewController : MonoBehaviour
     public GameObject buildingInfo;
     private UIData uiData = new UIData();
     private GameObject buildingContentObj;
-    
+
+    private Button upgradeBtn;
+    private Button buyBtn;
     private TextMeshProUGUI budget_Label;
     private TextMeshProUGUI numberOfCustomers_Label;
     private TextMeshProUGUI workersCount_Label;
@@ -40,14 +43,18 @@ public class PlayerViewController : MonoBehaviour
             budget_Label = GameObject.Find("Panel_Geld_Nr")?.GetComponent<TextMeshProUGUI>();
             numberOfCustomers_Label = GameObject.Find("Panel_Kunde_Nr")?.GetComponent<TextMeshProUGUI>();
             workersCount_Label = GameObject.Find("Panel_Mitarbeiter_Nr")?.GetComponent<TextMeshProUGUI>();
-                                        
+            
             buildingTitle_Label = GameObject.Find("BuildingTitle")?.GetComponent<TextMeshProUGUI>();
             employeeCount_Label = GameObject.Find("WorkerCount")?.GetComponent<TextMeshProUGUI>();
             employeeLimit_Label = GameObject.Find("WorkerLimit")?.GetComponent<TextMeshProUGUI>();
             price_Label = GameObject.Find("Price")?.GetComponent<TextMeshProUGUI>();
             currentBudget_Label = GameObject.Find("Geld")?.GetComponent<TextMeshProUGUI>();
             curentHitPoints = GameObject.Find("HitPoints");
-                                        
+
+            upgradeBtn = GameObject.Find("BuildingUpgrade").GetComponent<Button>();
+            upgradeBtn.gameObject.SetActive(false);
+            buyBtn = GameObject.Find("BuildingBuying").GetComponent<Button>();
+            
             buildingInfo.SetActive(false);
         //}
     }
@@ -78,7 +85,13 @@ public class PlayerViewController : MonoBehaviour
 
     public void BuyBuilding()
     {
-                        
+        if (Boot.runtimeStateController.CurrentState == RunTimeState.BUILDING_INFO) // && Boot.gameStateController.CurrentState == GameState.GAME
+        {
+            if (Building.Company.CurrentBudget >= Building.BuildingData.buyingPrice)
+            {
+                Building.IsBuying = true;
+            }
+        }
     }
 
     public void UpgradeBuilding()
@@ -113,7 +126,16 @@ public class PlayerViewController : MonoBehaviour
                     {
                             buildingInfo.SetActive(true);
                             SetBuildingDataInContent();
-                           
+                            if (Building.IsBuying)
+                            {
+                                upgradeBtn.gameObject.SetActive(true);
+                                buyBtn.gameObject.SetActive(false);
+                            }
+                            else
+                            {
+                                upgradeBtn.gameObject.SetActive(false);
+                                buyBtn.gameObject.SetActive(true);
+                            }
                             
                             float currentSize = (Building.BuildingData.currentHitPoints * 100f /
                                                 Building.BuildingData.maxHitPoints) / 100f;

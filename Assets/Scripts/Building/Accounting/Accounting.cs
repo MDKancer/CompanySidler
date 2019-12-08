@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using BootManager;
 using BuildingPackage.OfficeWorker;
 using Enums;
 using Human;
@@ -18,6 +19,7 @@ namespace BuildingPackage
             {
                 buildingType = BuildingType.ACCOUNTING,
                 name = name,
+                prefab =  this.officePrefab,
                 workers = 0,
                 maxHitPoints = 2000,
                 currentHitPoints = 2000,
@@ -63,6 +65,16 @@ namespace BuildingPackage
             {
                 stateController.CurrentState = BuildingState.WORK;
                 StartCoroutine( UpdateManyGenerator());
+            }
+        }
+        
+        public override bool IsBuying
+        {
+            get => isBuying;
+            set
+            {
+                Buy(buildingData.prefab, this.transform.position);
+                isBuying = value;
             }
         }
         private IEnumerator UpdateManyGenerator()

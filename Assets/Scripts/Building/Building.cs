@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using BootManager;
 using Enums;
 using Human;
+using NaughtyAttributes;
 using ProjectPackage;
 using StateMachine;
 using UnityEngine;
@@ -13,13 +14,15 @@ namespace BuildingPackage
     {
         public int budget;
         public List<Project> possibleProjects = new List<Project>(3);
-        public bool isBuying = false;
+        [SerializeField,Required]
+        protected  GameObject officePrefab;
         
         protected float buildTime;
         protected Company company;
         protected StateController<BuildingState> stateController = new StateController<BuildingState>();
         protected BuildingData buildingData;
-
+        protected bool isBuying = false;
+        
         private Project project = null;
 
         public void Upgrade()
@@ -29,13 +32,21 @@ namespace BuildingPackage
             buildingData.moneyPerSec *= 2;
         }
 
+        protected void Buy(GameObject prefab, Vector3 position)
+        {
+            if (!isBuying)
+            {
+                Boot.spawnController.SpawnOffice(prefab, position);
+            }
+        }
+
         public void DoDamage(int damagePercent = 0)
         {
             buildingData.currentHitPoints -= damagePercent;
         }
 
 
-        public void SwitchWorkingState()
+        public virtual void SwitchWorkingState()
         {
           
         }
@@ -101,6 +112,8 @@ namespace BuildingPackage
         /// Das Project wird automatisch gelöscht/zerstört, wenn das ganzes Projekt "Done" ist.
         /// </summary>
         public Project Project => project;
+
+        public virtual bool IsBuying { set;get;}
 
         public BuildingData BuildingData => buildingData;
         public BuildingState buildingWorkingState => stateController.CurrentState;

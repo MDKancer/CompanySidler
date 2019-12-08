@@ -1,4 +1,3 @@
-using System;
 using System.Collections.Generic;
 using BuildingPackage.OfficeWorker;
 using Enums;
@@ -11,6 +10,8 @@ namespace BuildingPackage
     {
         public string name;
         public BuildingType buildingType;
+        public GameObject prefab;
+        public int buyingPrice;
         public float upgradePrice;
         public int workPlacesLimit;
         public int workers;

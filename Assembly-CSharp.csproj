@@ -122,8 +122,8 @@
     <Compile Include="Assets\Scripts\ProjectPackage\ProjectTasks\Task.cs" />
     <Compile Include="Assets\Scripts\SceneManager\SceneManager.cs" />
     <Compile Include="Assets\Scripts\ScreenShotMaker\Photokamera.cs" />
+    <Compile Include="Assets\Scripts\So_Template\BasicsOffice.cs" />
     <Compile Include="Assets\Scripts\So_Template\CompanyData.cs" />
-    <Compile Include="Assets\Scripts\So_Template\OfficesForBegin.cs" />
     <Compile Include="Assets\Scripts\So_Template\UIEvents.cs" />
     <Compile Include="Assets\Scripts\SpawnManager\SpawnController.cs" />
     <Compile Include="Assets\Scripts\StateManager\StateManager.cs" />
@@ -132,6 +132,8 @@
     <Compile Include="Assets\Scripts\UIDispatcher\UIBuildingContent\UIData.cs" />
     <Compile Include="Assets\Scripts\UIDispatcher\UIBuildingContent\UiElements.cs" />
     <Compile Include="Assets\Tests\ConvertToPrefab.cs" />
+    <Compile Include="Assets\Tests\ConvertToVertexColor.cs" />
+    <None Include="Assets\Tests\VertexInputSimple.shader" />
     <None Include="Assets\TextMesh Pro\Resources\Shaders\TMP_SDF-Surface-Mobile.shader" />
     <None Include="Assets\TextMesh Pro\Resources\LineBreaking Leading Characters.txt" />
     <None Include="Assets\TextMesh Pro\Resources\Shaders\TMPro_Properties.cginc" />

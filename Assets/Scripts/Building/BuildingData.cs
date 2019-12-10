@@ -11,33 +11,40 @@ namespace BuildingPackage
         public string name;
         public BuildingType buildingType;
         public GameObject prefab;
-        public int buyingPrice;
+        /// <summary>
+        /// der Preis des Gebäude zum kaufen.
+        /// </summary>
+        public int price;
         public float upgradePrice;
         public int workPlacesLimit;
         public int workers;
         public int moneyPerSec;
         public int maxHitPoints;
         public int currentHitPoints;
+        
+        /// <summary>
+        /// wie viel braucht ein Office derren Mitarbeitern zu bezahlen.
+        /// </summary>
         public int wastage;
         
-        private List<BuildingWorkers<Employee,EntityType>> accessibleWorker;
+        private List<BuildingWorkers<Employee,EntityType>> availableWorker;
         
         /// <summary>
         /// Get the actual number of employed Workers .....
         /// </summary>
         /// <param name="workerType"></param>
-        /// <returns> int[0] -> is the number of the Workers from Type <param name="workerType"></param>
-        /// int[1] -> is the maximal places for this workers.</returns>
-        public (int employedPlaces, int countEmployedPlaces) GetCountOfEmployedWorkers(EntityType workerType)
+        /// <returns> int employedPlaces -> is the number of the Workers from Type <param name="workerType"></param>
+        /// int countEmployedPlaces -> is the maximal places for this workers.</returns>
+        public (int employedPlaces, int countEmployedPlaces) GetCountOfEmployed(EntityType workerType)
         {
             var countEmployedPlaces = 0;
             var employedPlaces = 0;
-            for (int i = 0; i < AccessibleWorker.Count; i++)
+            for (int i = 0; i < AvailableWorker.Count; i++)
             {
-                if (AccessibleWorker[i].WorkerType == workerType)
+                if (AvailableWorker[i].WorkerType == workerType)
                 {
                     countEmployedPlaces++;
-                    if (AccessibleWorker[i].Worker != null)
+                    if (AvailableWorker[i].Worker != null)
                     {
                         employedPlaces++;
                     }
@@ -47,17 +54,20 @@ namespace BuildingPackage
             return (employedPlaces, countEmployedPlaces);
         }
 
-        public List<BuildingWorkers<Employee, EntityType>> AccessibleWorker
+        public List<BuildingWorkers<Employee, EntityType>> AvailableWorker
         {
-            get => accessibleWorker.GetRange(0,workPlacesLimit);
-            set => accessibleWorker = value;
+            get => availableWorker.GetRange(0,workPlacesLimit);
+            set => availableWorker = value;
         }
 
+        /// <summary>
+        /// der Verbraucht des Gebäude steigert/ niedrigt abhängig von Anzahl des Mitarbeitern.
+        /// </summary>
         public void ChangeWastage()
         {
-            if(AccessibleWorker.Count > 0)
+            if(AvailableWorker.Count > 0)
             {
-                foreach (var worker in AccessibleWorker)
+                foreach (var worker in AvailableWorker)
                 {
                     if(worker.Worker != null)
                     {

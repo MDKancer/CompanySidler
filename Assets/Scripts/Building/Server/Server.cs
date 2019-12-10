@@ -25,7 +25,7 @@ namespace BuildingPackage
                 workPlacesLimit = 1,
                 moneyPerSec = 5,
                 
-                AccessibleWorker = new List<BuildingWorkers<Employee, EntityType>>
+                AvailableWorker = new List<BuildingWorkers<Employee, EntityType>>
                 {
                     new BuildingWorkers<Employee, EntityType>(EntityType.DEVOPS),
                     new BuildingWorkers<Employee, EntityType>(EntityType.TESTER),

@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: CompanyData_SO
   m_EditorClassIdentifier: 
   nameCompany: tarent
-  haveInitialBudget: 0
+  haveInitialBudget: 1
   hasLoan: 0
   loan_Amount: 0
-  officesForBegin: {fileID: 11400000, guid: 9dc893064471fed4d975734c98268e96, type: 2}
+  basicOffices: {fileID: 11400000, guid: 9dc893064471fed4d975734c98268e96, type: 2}

@@ -4,13 +4,13 @@ namespace CameraManager
 {
     public class Controller : MonoBehaviour
     {
-        private Rigidbody rigidbody;
+        private Rigidbody rigidBody;
 
         private Camera mainCamera;
         // Start is called before the first frame update
         void Start()
         {
-            rigidbody = GetComponent<Rigidbody>();
+            rigidBody = GetComponent<Rigidbody>();
             mainCamera = Camera.main;
         }
 
@@ -19,36 +19,36 @@ namespace CameraManager
         {
             Movement();
             Rotation();
-            Debug.DrawRay(rigidbody.position, transform.forward*5f, Color.red);
+            Debug.DrawRay(rigidBody.position, transform.forward*5f, Color.red);
         }
 
         void Movement()
         {
             if (Input.GetKey(KeyCode.W))
             {
-                rigidbody.velocity += transform.forward * 0.3f;
+                rigidBody.velocity += transform.forward * 0.3f;
             }
             if (Input.GetKey(KeyCode.S))
             {
-                rigidbody.velocity -= transform.forward * 0.3f;
+                rigidBody.velocity -= transform.forward * 0.3f;
             }
             if (Input.GetKey(KeyCode.A))
             {
-                rigidbody.velocity -= transform.right * 0.3f;
+                rigidBody.velocity -= transform.right * 0.3f;
             }
             if (Input.GetKey(KeyCode.D))
             {
-                rigidbody.velocity += transform.right * 0.3f;
+                rigidBody.velocity += transform.right * 0.3f;
             }
             if (Input.GetKeyDown(KeyCode.Space))
             {
-                rigidbody.velocity = transform.up * 3f;
+                rigidBody.velocity = transform.up * 3f;
             }
         }
 
         void Rotation()
         {
-            rigidbody.rotation *= Quaternion.Euler(Vector3.up * Input.GetAxis("Mouse X"));
+            rigidBody.rotation *= Quaternion.Euler(Vector3.up * Input.GetAxis("Mouse X"));
             mainCamera.transform.rotation *= Quaternion.Euler(Vector3.left * Input.GetAxis("Mouse Y"));
         }
     }

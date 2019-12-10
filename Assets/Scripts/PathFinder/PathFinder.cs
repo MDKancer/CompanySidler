@@ -1,4 +1,4 @@
-﻿using Constants;
+﻿using Enums;
 using UnityEngine;
 using UnityEngine.AI;
 
@@ -27,17 +27,21 @@ namespace PathFinderManager
             var agent = me.GetComponent<NavMeshAgent>();
             if (agent)
             {
-                if (agent.remainingDistance == 0)
+                if (agent.remainingDistance == 0f)
                 {
                     return PathProgress.FINISHED;
                 }
-                else if (agent.remainingDistance > 0)
+                else if (agent.remainingDistance > 0f)
                 {
                     return PathProgress.MOVE;
                 }
                 else if(agent.isStopped)
                 {
                     return PathProgress.STOPPED;
+                }
+                else if(agent.isStopped && agent.remainingDistance > 0f)
+                {
+                    return PathProgress.NONE;
                 }
             }
 

@@ -1,38 +1,65 @@
-﻿﻿using System;
+﻿using System;
 using System.Collections.Generic;
- using System.Linq;
- using BuildingPackage;
- using Constants;
- using Unity.Properties;
- using UnityEngine;
-using Object = UnityEngine.Object;
- using Resources = UnityEngine.Resources;
+using BootManager;
+using BuildingPackage;
+using Enums;
+using UnityEngine;
+using Resources = UnityEngine.Resources;
 
  namespace GameCloud
 {
     public class Container  {
 
+        private List<Company> companies = new List<Company>();
         private Dictionary<GameObject,EntityType> prefabsObjects = new Dictionary<GameObject, EntityType>();
         private List<GameObject> spawnedGameObjects = new List<GameObject>();
         private Dictionary<KeyCode, Actions> InputListenners = new Dictionary<KeyCode, Actions>();
-        private Dictionary<Vector3,BuildingType>  officePositions = new Dictionary<Vector3,BuildingType>();
-        internal List<Type> sortedTypes = new List<Type>();
+        private List<Material> materials = new List<Material>();
+        private List<Material> particleMaterials = new List<Material>();
+        private List<GameObject> particleSystems = new List<GameObject>();
         public void LoadAllResources()
         {
            //TODO: hier wird alle Prefabs aus den Ordnern im Dictionary reingepackt.
            
-           addPrefabs(Resources.LoadAll<GameObject>("Prefabs/Entitys/Building"), EntityType.BUILDING);
-           addPrefabs(Resources.LoadAll<GameObject>("Prefabs/Entitys/Workes"), EntityType.WORKER);
-           addPrefabs(Resources.LoadAll<GameObject>("Prefabs/Entitys/Azubis"), EntityType.AZUBI);
-           addPrefabs(Resources.LoadAll<GameObject>("Prefabs/Entitys/Clients"), EntityType.CLIENT);
-
-           GetAllInterfaces();
-           SetOfficePosition();
+           // wenn mann von Main Menu anfangen moechte.... dann auskommentieren.
+          // if (Boot.gameStateController.CurrentState == GameState.INTRO)
+           //{
+               addPrefabs(Resources.LoadAll<GameObject>("Prefabs/Buildings"), EntityType.BUILDING);
+               addPrefabs(Resources.LoadAll<GameObject>("Prefabs/Offices"), EntityType.OFFICES);
+               addPrefabs(Resources.LoadAll<GameObject>("Prefabs/Fortniture"), EntityType.FORNITURE);
+               addPrefabs(Resources.LoadAll<GameObject>("Prefabs/Environment"), EntityType.ENVIRONMENT);
+               addPrefabs(Resources.LoadAll<GameObject>("Prefabs/Entitys/Workers/Developers"), EntityType.DEVELOPER);
+               addPrefabs(Resources.LoadAll<GameObject>("Prefabs/Entitys/Azubis"), EntityType.AZUBI);
+               addPrefabs(Resources.LoadAll<GameObject>("Prefabs/Entitys/Clients"), EntityType.CUSTOMER);
+               materials.AddRange(Resources.LoadAll<Material>("Materials"));
+               particleMaterials.AddRange(Resources.LoadAll<Material>("Materials/Particle"));
+               particleSystems.AddRange(Resources.LoadAll<GameObject>("Prefabs/ParticleSystems"));
+           //}
         }
 
-        public void AddSpawnededGameObject(GameObject gameObject) => spawnedGameObjects.Add(gameObject);
+        public void SetDatas()
+        {
+            if(Boot.gameStateController.CurrentState == GameState.GAME)
+            {
+                SetCompanyData();
+            }
+        }
 
+        public List<Material> Materials => materials;
+        public List<Material> ParticleMaterials => particleMaterials;
+
+        public List<GameObject> ParticleSystems => particleSystems;
+
+        public List<Company> Companies
+        {
+            get => companies;
+            private set => companies = value;
+        }
+
+        public void AddSpawnedGameObject(GameObject gameObject) => spawnedGameObjects.Add(gameObject);
+    
         public  IList<GameObject> SpawnedGameObjects =>  spawnedGameObjects.AsReadOnly();
+        public Boolean isSpawned(GameObject gameObject) => spawnedGameObjects.Contains(gameObject);
 
         public List<GameObject> GetPrefabsByType(EntityType entityType)
         {
@@ -47,21 +74,6 @@ using Object = UnityEngine.Object;
             }
             return gameObjects;
         }
-        public Vector3 GetPositionOffice(BuildingType buildingType)
-        {
-            
-            foreach (KeyValuePair<Vector3,BuildingType> item in officePositions)
-            {
-                if(item.Value == buildingType)
-                {
-                    return item.Key;
-                }
-            }
-            return Vector3.zero;
-        }
-
-        public Boolean isSpawned(GameObject gameObject) => spawnedGameObjects.Contains(gameObject);
-
 
         private void addPrefabs(GameObject[] prefabs,EntityType entityType)
         {
@@ -73,70 +85,14 @@ using Object = UnityEngine.Object;
                 }
             }
         }
-
-        private void SetOfficePosition()
+        private void SetCompanyData()
         {
-            GameObject firma = GameObject.Find("Firma");
+            CompanyData companyData = Boot.boot_Instance.companyData;
+            string companyName = companyData.nameCompany;
             
-            for (int i = 0; i < firma.transform.childCount; i++)
-            {
-                officePositions.Add(firma.transform.GetChild(i).transform.position,GetBuildingType(firma.transform.GetChild(i).gameObject));
-            }
+            GameObject company = GameObject.Find("Company");
+            company.name = companyName;
+            companies.Add(new Company(company));
         }
-
-        /// <summary>
-        /// Diese Funktion überrüft auf Assembler ebene,
-        /// ob <param name="targetObjekt"></param> hat eine Commponente <para />
-        /// was einer von Interfaces ( iOffice oder iAccouting etc...)   implementiert.<para />
-        /// TODO : Weiter Fälle implementieren.!!!! 
-        /// </summary>
-        /// <param name="targetObjekt"></param>
-        /// <returns></returns>
-        private BuildingType GetBuildingType(GameObject targetObjekt)
-        {
-            Component[] buildingComponent = targetObjekt.GetComponents(typeof(iBuilding));
-            if(buildingComponent.Length >0)
-            {
-                if (buildingComponent[0].GetType().GetInterfaces().Contains(typeof(iOffice)))
-                {
-                    return BuildingType.OFFICE;
-                }
-                else if(buildingComponent[0].GetType().GetInterfaces().Contains(typeof(iAccounting)))
-                {
-                    return BuildingType.ACCOUNTING;
-                }
-                else if (buildingComponent[0].GetType().GetInterfaces().Contains(typeof(iSozialRoom)))
-                {
-                    return  BuildingType.SOCIAL_RAUM;
-                }
-            }
-            //TODO : Weiter Fälle implementieren.
-            
-            return BuildingType.NONE;
-        }
-
-        /// <summary>
-        /// Es ist eine Funktion was funktioniert auf Assembly ebene.
-        /// die sammelt alle Interfaces von alle Klasse die habe den Interface iBuilding implementiert.
-        /// </summary>
-        private void GetAllInterfaces()
-        {
-            List<Type[]> unornedTypes = AppDomain.CurrentDomain.GetAssemblies().SelectMany(x => x.GetTypes())
-                .Where(x => typeof(iBuilding).IsAssignableFrom(x) && !x.IsInterface && !x.IsAbstract)
-                .Select(x => x.GetInterfaces()).ToList();
-            
-            for (int i = 0; i < unornedTypes.Count; i++)
-            {
-                for (int j = 0; j < unornedTypes[i].Length; j++)
-                {
-                    Type interfaceType = unornedTypes[i][j];
-                    if(!sortedTypes.Contains(interfaceType) && interfaceType != typeof(iBuilding) )
-                    {
-                        sortedTypes.Add(interfaceType);
-                    }
-                }
-            }
-        }
-        
     }
 }

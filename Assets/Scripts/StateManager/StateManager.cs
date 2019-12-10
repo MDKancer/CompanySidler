@@ -10,22 +10,25 @@ namespace StateMachine
         
         public T CurrentState
         {
-            set { currentState = value; }
-            get { return currentState; }
+            set
+            {
+               lastState = currentState != null ? currentState : lastState;
+                
+                currentState = value;
+            }
+            get => currentState;
         }
         public T LastState
         {
-            private set { currentState = value; }
-            get { return currentState; }
+            private set => currentState = value;
+            get => currentState;
         }
 
         public void SwitchToLastState()
         {
-            T temp;
-            
             try
             {
-                temp = lastState;
+                var temp = lastState;
                 LastState = currentState;
                 currentState = temp;
             }

@@ -1,0 +1,19 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 125d26248a23a8849b4d4588579f53e8, type: 3}
+  m_Name: CompanyData_SO
+  m_EditorClassIdentifier: 
+  nameCompany: tarent
+  haveInitialBudget: 1
+  hasLoan: 0
+  loan_Amount: 0
+  basicOffices: {fileID: 11400000, guid: 9dc893064471fed4d975734c98268e96, type: 2}

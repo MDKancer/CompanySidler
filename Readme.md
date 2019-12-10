@@ -5,8 +5,7 @@
 |:----|:-----:|:-----:|
 |Serena Bräuer|Developer|Idee|
 |Julian Koch|Developer|10%|
-|Tim Herkenrath|Artist|-|
-|Daniel Lozanu|Developer-Artist|-|
+|Daniel Lozanu|Developer-Artist|Idee, WIP|
 ***
 ### Beschreibung
 
@@ -24,37 +23,31 @@ ___
 ### Regeln
 * _Es darf nicht mehr Mitarbeiter von eine Branche als erlaubt ist._
 * _Es darf nicht ein Mitarbeiter annehmen wenn kein Projekts gibts._
-* _Es darf aber die Mitarbeiter arbeiter ohne Projekt.
+* _Es darf aber die Mitarbeiter arbeiter ohne Projekt._
 <br>(Zwischen 2 Projekte , anfange und ende wird eine Minimale Pause,<br> da können die Mitarbeiter arbeiten ohne Projekt).
 * _Es darf nicht mehr Mitarbeiter zu einem Projekt mitteilen als erlaubt._
 
 ___
 ### Planung
 
-Mit allen gebäuden etc. **200 Mitbewohner** haben Platz??
 <br>***Ressourcen*** = Geld(steuern und ressourcen), Kunde, Projekte
 <br>***Gebäude*** (Größe, Anzahl,Arbeitsplätze):
 
-* **tarent Town**(3x3,) = Controlling
-* **Tom Town**(2x2) = Projekte
-* **Office**(2x3) = Kunde
-* **Rewe Town**(2x2) = Projekte
-* **Azubis**(2x2) = neue Mitarbeiter
-* **Büro**(1x1) = Mitbewohner
-* **SozialRoom**(2x3) = Loyalität und glückliche arbeiter die die Produktivität erhöhen, die Arbeiter können hier eine Pause machen.
-* **Park ?**(3x3)=Zufriedenheit und steigert die Produktivität
-* **Marketing**(2x3/3x3 kommt aufs Design an) = zufluss an ressourcen(minimal)Produkte Designen, Vorstellen, Verkaufen.
-* **Buchhaltung**(2x2) = geld zufluss durch verkauf von ressourcen.
-* **Dev-Ops**(2x2)= sie reparieren / hosten / produzieren neue Produkte, und im Fall wenn die Sicherheit eines Gebäude runter ist, versucht die hoch zu bringen. 
-* **Admins**(2x3) = Produkte hosten / Produziere / , Servers hosten, unter kontrolle haben etc.
-* **Telekom** (2x2) = Projekte  
-* **Server**(3x3) = server zum mieten bieten.
-* **Floors** (1x1)
+* **tarent Town** = Controlling
+* **Tom Town** = Projekte
+* **Office** = Kunde
+* **Rewe Town** = Projekte
+* **Azubis** = neue Mitarbeiter
+* **SozialRoom** = Loyalität und glückliche arbeiter die die Produktivität erhöhen, die Arbeiter können hier eine Pause machen.
+* **Park ?**=Zufriedenheit und steigert die Produktivität
+* **Marketing** = zufluss an ressourcen(minimal)Produkte Designen, Vorstellen, Verkaufen.
+* **Buchhaltung** = geld zufluss durch verkauf von ressourcen.
+* **Dev-Ops**= sie reparieren / hosten / produzieren neue Produkte, und im Fall wenn die Sicherheit eines Gebäude runter ist, versucht die hoch zu bringen. 
+* **Admins** = Produkte hosten / Produziere / , Servers hosten, unter kontrolle haben etc.
+* **Telekom**  = Projekte  
+* **Server** = server zum mieten bieten.
+* **Floors**
 ***
-  Feldgröße 13x13 grids / 189 Felder
-
-  bisher benötigte Mitarbeiter = 156 also 200 Mitarbeiter
-
 
 ### Klassen-Liste
 
@@ -79,9 +72,9 @@ Mit allen gebäuden etc. **200 Mitbewohner** haben Platz??
     Die **PathFinder** Klasse bietet die Möglichkeit während des Laufens die Objekte zu einem bestiemten Ziel(Position) bewegen lassen, es benötigt ein **Navmesh** und **NavMeshAgent**. 
 *  ##### SceneManager :
     Diese Klasse macht den Spring / der Wechselung zwischen den Scenen einfacher, und bittet die möglichkeit zu läzt gewesene Scene zu wechseln. 
-*  ##### UIDispatcher :
+*  ##### PlayerViewController :
     Es ist ein Singelton.
-    Diese Klasse es kümmert sich um die UI Funktionen / Events.
+    Diese Klasse es kümmert sich um die UI Funktionen / Events, und generiert neue UI Elemente.
 *  ##### BuildingPackage : 
     > ein Gebäude kann **viele** oder **keine Mitarbeitern** behalten, aber kann **viele Gäste / Besucher** haben.
     es kann **nur ein Kunde / Customer / Client** haben. 

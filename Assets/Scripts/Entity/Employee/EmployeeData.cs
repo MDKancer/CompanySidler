@@ -8,12 +8,16 @@ namespace Human
 {
     public class EmployeeData
     {
-        private GameObject prefab = null;
+        /// <summary>
+        /// Wie viel kriegt ein Mitarbeiter pro "Stunde".
+        /// </summary>
         public int hourlyWage = 10;
+        
         private EntityType entityType = EntityType.NONE;
         private BuildingType hisOffice = BuildingType.NONE;
         private Project project;
         private Dictionary<HumanState,BuildingType> entityWorkCycle = new Dictionary<HumanState, BuildingType>();
+        private GameObject prefab = null;
 
         public EmployeeData(EntityType entityType, BuildingType hisOffice)
         {

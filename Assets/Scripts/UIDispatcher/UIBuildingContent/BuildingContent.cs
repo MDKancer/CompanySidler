@@ -3,6 +3,7 @@ using BootManager;
 using BuildingPackage;
 using Enums;
 using Human;
+using PlayerView;
 using ProjectPackage;
 using TMPro;
 using UnityEngine;
@@ -47,7 +48,7 @@ namespace UIPackage.UIBuildingContent
         private void SetEmployeesButton()
         {
             var index = 1;
-            foreach (var VARIABLE in building.BuildingData.AccessibleWorker)
+            foreach (var VARIABLE in building.BuildingData.AvailableWorker)
             {
                 if (VARIABLE != null)
                 {
@@ -62,7 +63,7 @@ namespace UIPackage.UIBuildingContent
 
                         SetEventListener(btn, VARIABLE.WorkerType);
                         
-                        var (employedPlaces, countEmployedPlaces) = building.BuildingData.GetCountOfEmployedWorkers(VARIABLE.WorkerType);
+                        var (employedPlaces, countEmployedPlaces) = building.BuildingData.GetCountOfEmployed(VARIABLE.WorkerType);
                         var countLabel = uiElements.GenerateCountOfEmployedWorker(
                             buildingContentRectTransform,
                             index,
@@ -127,7 +128,7 @@ namespace UIPackage.UIBuildingContent
         {
             btn.onClick.AddListener(() =>
             {
-                var (employedPlaces, countEmployedPlaces) = building.BuildingData.GetCountOfEmployedWorkers(workerType);
+                var (employedPlaces, countEmployedPlaces) = building.BuildingData.GetCountOfEmployed(workerType);
                 if(employedPlaces < countEmployedPlaces)
                 {
                     PlayerViewController.playerViewController.ApplyWorker(workerType.ToString());
@@ -139,7 +140,7 @@ namespace UIPackage.UIBuildingContent
         {
             btn.onClick.AddListener(() =>
             {
-                var (employedPlaces, countEmployedPlaces) = building.BuildingData.GetCountOfEmployedWorkers(workerType);
+                var (employedPlaces, countEmployedPlaces) = building.BuildingData.GetCountOfEmployed(workerType);
                 if(employedPlaces > 0)
                 {
                     building.QuitWorker(employee);
@@ -170,7 +171,7 @@ namespace UIPackage.UIBuildingContent
         }
         private void UpdateEmployeeWorkers(TextMeshProUGUI employeeWorkersLabel, EntityType entityType)
         {
-            var (employedPlaces, countEmployedPlaces) = building.BuildingData.GetCountOfEmployedWorkers(entityType);
+            var (employedPlaces, countEmployedPlaces) = building.BuildingData.GetCountOfEmployed(entityType);
             employeeWorkersLabel.SetText(employedPlaces + " / " + countEmployedPlaces);
         }
 

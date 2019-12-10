@@ -7,6 +7,9 @@ using UnityEngine.UI;
 
 namespace UIPackage.UIBuildingContent
 {
+    /// <summary>
+    ///  Die Datenbindung der Benutzeroberfläche bindet generische Elemente der Benutzeroberfläche an den PlayerViewController.
+    /// </summary>
     public class UIData
     {
         private readonly List<Dictionary<Button, TextMeshProUGUI>> allUIElements;
@@ -42,9 +45,25 @@ namespace UIPackage.UIBuildingContent
 //            }
 //        };
 
+        /// <summary>
+        /// Liste aller Buttons <remarks>"neuer Mitarbeiter angagieren"</remarks>
+        /// <remarks>Es ist Readonly!</remarks>
+        /// </summary>
         public IList<Button> EmployeesApplyButtons => employeesApply.Keys.ToList().AsReadOnly();
+        /// <summary>
+        /// Liste aller Labels for Buttons <remarks>"Mitarbeiteranzahl"</remarks>
+        /// <remarks>Es ist Readonly!</remarks>
+        /// </summary>
         public IList<TextMeshProUGUI> EmployeesCountLabels => employeesCount.Values.ToList().AsReadOnly();
+        /// <summary>
+        /// Liste aller Buttons <remarks>"Mitarbeiter kündigen"</remarks>
+        /// <remarks>Es ist Readonly!</remarks>
+        /// </summary>
         public IList<Button> EmployeesQuitButtons => employeesQuit.Keys.ToList().AsReadOnly();
+        /// <summary>
+        /// Liste aller Buttons <remarks>"Projekt annehmen"</remarks>
+        /// <remarks>Es ist Readonly!</remarks>
+        /// </summary>
         public IList<Button> ProjectApplyButtons => projectsApply.Keys.ToList().AsReadOnly();
 
         public void AddEmployeesApplyButton(Button btn, TextMeshProUGUI label)
@@ -127,6 +146,11 @@ namespace UIPackage.UIBuildingContent
             }
             return null;
         }
+        /// <summary>
+        /// Rückgabe einer TextComponente den zu Button gehört. 
+        /// </summary>
+        /// <param name="btnName"></param>
+        /// <returns></returns>
         [CanBeNull]
         public TextMeshProUGUI GetEmployeesApplyButtonLabel(string btnName)
         {
@@ -139,6 +163,11 @@ namespace UIPackage.UIBuildingContent
             }
             return null;
         }
+        /// <summary>
+        /// Rückgabe einer Button dem zu einer AnzahlMitarbeiter Label gehört. 
+        /// </summary>
+        /// <param name="btnName"></param>
+        /// <returns></returns>
         [CanBeNull]
         public TextMeshProUGUI GetEmployeesCountLabel(string btnName)
         {

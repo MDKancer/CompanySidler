@@ -21,6 +21,8 @@ namespace BuildingPackage
         protected Company company;
         protected StateController<BuildingState> stateController = new StateController<BuildingState>();
         protected BuildingData buildingData;
+        
+        [ShowNonSerializedField]
         protected bool isBuying = false;
         
         private Project project = null;
@@ -32,6 +34,9 @@ namespace BuildingPackage
             buildingData.moneyPerSec *= 2;
         }
 
+        /// <summary>
+        /// Beim einkaufs des Büro werden die Objecte gespawnt. 
+        /// </summary>
         protected void Buy(GameObject prefab, Vector3 position)
         {
             if (!isBuying)
@@ -44,22 +49,25 @@ namespace BuildingPackage
         {
             buildingData.currentHitPoints -= damagePercent;
         }
-
-
+        /// <summary>
+        /// den Zustand des Gebüude ändernt.
+        /// </summary>
         public virtual void SwitchWorkingState()
         {
           
         }
-
         public void ApplyWorker(Employee employee)
         {
-            foreach (var VARIABLE in BuildingData.AccessibleWorker)
+            foreach (var VARIABLE in BuildingData.AvailableWorker)
             {
                 if (VARIABLE.WorkerType == employee.EmployeeData.GetEntityType && VARIABLE.Worker == null)
                 {
                     VARIABLE.Worker = employee;
                     buildingData.workers++;
+                    
+                    //Abhängig von Anzahl des Mitarbeiter wird der Verbrauch reduziert.
                     buildingData.ChangeWastage();
+                    
                     if(project != null && VARIABLE.Worker.EmployeeData.Project == null)
                     {
                         VARIABLE.Worker.EmployeeData.Project = project;
@@ -71,13 +79,15 @@ namespace BuildingPackage
 
         public void QuitWorker(Employee employee)
         {
-            foreach (var VARIABLE in BuildingData.AccessibleWorker)
+            foreach (var VARIABLE in BuildingData.AvailableWorker)
             {
                 if (VARIABLE.WorkerType == employee.EmployeeData.GetEntityType && VARIABLE.Worker != null)
                 {
                     VARIABLE.Worker.SelfState.CurrentState = HumanState.QUITED;
                     VARIABLE.Worker = null;
                     buildingData.workers--;
+                    //Abhängig von Anzahl des Mitarbeiter wird der Verbrauch befördert.
+                    buildingData.ChangeWastage();
                     return;
                 }
             }
@@ -90,7 +100,7 @@ namespace BuildingPackage
                 this.project = newProject;
                 budget = newProject.Budget;
                 
-                foreach (var worker in BuildingData.AccessibleWorker)
+                foreach (var worker in BuildingData.AvailableWorker)
                 {
                     if( worker.Worker!= null && worker.Worker.EmployeeData.Project == null)
                     {

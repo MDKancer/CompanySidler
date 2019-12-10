@@ -16,15 +16,15 @@ namespace SpawnManager
     public class SpawnController
     {
         private int index = 0;
-        public void InitialWaveSpawn()
+        public void InitialSpawnWave()
         {
-            foreach (var officePrefab in Boot.boot_Instance.companyData.officesForBegin.offices)
+            foreach (var officePrefab in Boot.boot_Instance.companyData.basicOffices.offices)
             {
                 var building = Boot.container.Companies[0].GetOffice(officePrefab);
-                Boot.monobehaviour.StartCoroutine(WaitUntilBuildIsCreated(building));
+                Boot.monobehaviour.StartCoroutine(SpawnAfterInstancing(building));
             }
         }
-        public void SpawnOffice( GameObject office, Vector3 targetPosition)
+        public void SpawnOffice(GameObject office, Vector3 targetPosition)
         {
             GameObject instance = Object.Instantiate(office,targetPosition,Quaternion.identity,Boot.container.Companies[0].getCompanyGameObject().transform);
             Boot.container.AddSpawnedGameObject(instance);
@@ -124,7 +124,7 @@ namespace SpawnManager
         }
 
 
-        private IEnumerator WaitUntilBuildIsCreated(Building building)
+        private IEnumerator SpawnAfterInstancing(Building building)
         {
             while (building.BuildingData.prefab == null)
             {

@@ -16,9 +16,12 @@ namespace BuildingPackage
         internal List<Type> sortedTypes = new List<Type>();
         
         private const int projectLimit = 12;
-        private GameObject gameObject = null;
+        private readonly GameObject gameObject = null;
         private int currentBudget;
         private Dictionary<Building,BuildingType> offices = null;
+        /// <summary>
+        /// All projects what the company have.
+        /// </summary>
         private Dictionary<Project,CustomerType> companyProjects;
         private int projectCount;
         private readonly List<CustomerData> customers;
@@ -67,6 +70,7 @@ namespace BuildingPackage
 
         public List<CustomerData> Customers => customers;
         public List<Building> GetAllOffices => offices.Keys.ToList();
+        public IList<Project> GetAllProjects => companyProjects.Keys.ToList().AsReadOnly();
 
         public void AddNewProject(Project project, CustomerType customerType)
         {

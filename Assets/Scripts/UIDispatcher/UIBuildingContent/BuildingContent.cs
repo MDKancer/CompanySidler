@@ -10,17 +10,20 @@ using UnityEngine;
 using UnityEngine.UI;
 namespace UIPackage.UIBuildingContent
 {
+    /// <summary>
+    /// Ein einfacher Content Generator, hier werden alle UI Elemente und Funktionen was ein Büro braucht.
+    /// Sehr Complex und nicht schön.
+    /// </summary>
     public class BuildingContent
     {
         private readonly UiElements uiElements;        
-        private readonly Building building;
         private readonly GameObject buildingContent;
         private readonly RectTransform buildingContentRectTransform;
-        private readonly Material projectButtonMaterial ;
+        private readonly Material projectButtonMaterial;
+        private Building building;
         private UIData uiData;
-        public BuildingContent(Building building, GameObject buildingContent)
+        public BuildingContent( GameObject buildingContent)
         {
-            this.building = building;
             this.buildingContent = buildingContent;
             buildingContentRectTransform = buildingContent.GetComponent<RectTransform>();
             
@@ -36,9 +39,10 @@ namespace UIPackage.UIBuildingContent
             }
         }
         
-        public void CreateBuildingContent(ref UIData uiData)
+        public void CreateBuildingContent(ref UIData uiData, Building building)
         {
             this.uiData = uiData;
+            this.building = building;
             SetEmployeesButton();
 
             SetProjectsButton();
@@ -96,29 +100,72 @@ namespace UIPackage.UIBuildingContent
         private void SetProjectsButton()
         {
             var index = 1;
-            foreach (var project in building.possibleProjects)
+            if(building.GetType() != typeof(TarentTown))
             {
-                if (project != null)
+                foreach (var project in building.possibleProjects)
                 {
-                    var btnName = project.customerType.ToString() + "(" + index + ")";
-                    
-                    if (!uiData.Contains(btnName))
+                    if (project != null)
                     {
-                        var materialInstance = GetCopyOfMaterial(projectButtonMaterial);
-                        var btn = uiElements.CreateButton
-                        (
-                            buildingContentRectTransform,
-                            btnName,
-                            index,
-                            AnchorType.TOP_LEFT,
-                            Column.FOURTH,
-                            materialInstance
-                        );
-                        SetEventListener(btn,project,materialInstance);
+                        var btnName = project.customerType.ToString() + "(" + index + ")";
                         
-                        //----------
-                        uiData.AddProjectApplyButton(btn, btn.gameObject.transform.GetChild(0).GetComponent<TextMeshProUGUI>());
-                        index++;
+                        if (!uiData.Contains(btnName))
+                        {
+                            var materialInstance = GetCopyOfMaterial(projectButtonMaterial);
+                            var btn = uiElements.CreateButton
+                            (
+                                buildingContentRectTransform,
+                                btnName,
+                                index,
+                                AnchorType.TOP_LEFT,
+                                Column.FOURTH,
+                                materialInstance
+                            );
+                            SetEventListener(btn,project,materialInstance);
+                            
+                            //----------
+                            uiData.AddProjectApplyButton(btn, btn.gameObject.transform.GetChild(0).GetComponent<TextMeshProUGUI>());
+                            index++;
+                        }
+                    }
+                }
+            }
+            else
+            {
+                var allProjects = building.Company.GetAllProjects;
+                for (int i = 0; i < allProjects.Count; i++)
+                {
+                    if (allProjects[i] != null)
+                    {
+                        var btnName = allProjects[i].customerType.ToString() + "(" + index + ")";
+                        Column column;
+
+                        if (i < 6)
+                        {
+                            column =  Column.FOURTH;
+                        }
+                        else
+                        {
+                            column = Column.FIVETH;
+                            if(index > 5) index = 1;
+                        }
+                        
+                        if (!uiData.Contains(btnName))
+                        {
+                            var materialInstance = GetCopyOfMaterial(projectButtonMaterial);
+                            var btn = uiElements.CreateButton
+                            (
+                                buildingContentRectTransform,
+                                btnName,
+                                index,
+                                AnchorType.TOP_LEFT,
+                                column,
+                                materialInstance
+                            );
+                            btn.interactable = false;
+                            //----------
+                            uiData.AddProjectApplyButton(btn, btn.gameObject.transform.GetChild(0).GetComponent<TextMeshProUGUI>());
+                            index++;
+                        }
                     }
                 }
             }

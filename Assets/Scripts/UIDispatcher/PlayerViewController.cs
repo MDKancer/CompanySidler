@@ -20,6 +20,9 @@ namespace PlayerView
     public class PlayerViewController : MonoBehaviour
     {
         public static PlayerViewController playerViewController;
+        /// <summary>
+        /// Das UI Fenster wo alle Informationen über Das Gebäude sich befinden.
+        /// </summary>
         [Required]
         public GameObject buildingInfo;
         [ReadOnly]
@@ -39,7 +42,7 @@ namespace PlayerView
         private TextMeshProUGUI price_Label;
         private TextMeshProUGUI currentBudget_Label;
         /// <summary>
-        /// Akktuelles  Lebenspunkte.
+        /// Akktuelles  Gebäude-Lebenspunkte.
         /// </summary>
         private GameObject currentHP;
         //----------------------------------------------------
@@ -99,6 +102,7 @@ namespace PlayerView
             {
                 if (Building.Company.CurrentBudget >= Building.BuildingData.price)
                 {
+                    var currentBudget = Boot.container.Companies[0].CurrentBudget;
                     Building.IsBuying = true;
                 }
             }
@@ -135,7 +139,10 @@ namespace PlayerView
                 if (Boot.runtimeStateController.CurrentState == RunTimeState.BUILDING_INFO && Boot.gameStateController.CurrentState == GameState.GAME)
                 {
                         buildingInfo.SetActive(true);
-                        SetBuildingDataInContent();
+                        if(Building != null)
+                        {
+                            SetBuildingDataInContent();
+                        }
                         if (Building.IsBuying)
                         {
                             upgradeBtn.gameObject.SetActive(true);
@@ -150,17 +157,24 @@ namespace PlayerView
                         float currentSize = (Building.BuildingData.currentHitPoints * 100f /
                                             Building.BuildingData.maxHitPoints) / 100f;
                         currentHP.transform.localScale = new Vector3( currentSize, 1f,1f);
-                        if (!haveContentBtn)
+                        if(Building != null && Building.IsBuying)
                         {
-                                GenerateBuildingContent();
+                            if (!haveContentBtn)
+                            {
+                                    GenerateBuildingContent();
+                            }
                         }
                 }
                 else if(Boot.runtimeStateController.CurrentState != RunTimeState.BUILDING_INFO
                         && Boot.runtimeStateController.CurrentState != RunTimeState.GAME_MENU
                         && Boot.gameStateController.CurrentState == GameState.GAME)
                 {
+                    if(Building != null && Building.IsBuying)
+                    {
                         RemoveBuildingContent();
-                        buildingInfo?.SetActive(false);
+                    }
+                    
+                    buildingInfo?.SetActive(false);
                 }
         }
         private void RemoveBuildingContent()
@@ -214,8 +228,8 @@ namespace PlayerView
 
         private void GenerateBuildingContent()
         {
-            buildingContent = new BuildingContent(Building, buildingContentObj);
-            buildingContent.CreateBuildingContent(ref uiData);
+                buildingContent = new BuildingContent(buildingContentObj);
+                buildingContent.CreateBuildingContent(ref uiData, Building);
 
             haveContentBtn = true;
         }

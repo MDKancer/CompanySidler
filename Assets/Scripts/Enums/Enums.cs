@@ -143,7 +143,8 @@
         DEV_OPS = 8,
         AZUBIS = 9,
         SOCIAL_RAUM = 10,
-        TELEKOM = 11
+        TELEKOM = 11,
+        BANK = 12
         
         //etc.
     }

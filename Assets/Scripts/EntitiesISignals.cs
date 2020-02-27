@@ -2,9 +2,9 @@ using BootManager;
 using UnityEngine;
 using UnityEngine.AI;
 
-namespace UISignals
+namespace Signals
 {
-    public class UISignals : MonoBehaviour
+    public class EntitiesISignals : MonoBehaviour
     {
         [Range(0f,30f)]
         public float entitiesSpeed = 3.5f;
@@ -17,7 +17,7 @@ namespace UISignals
             {
                 foreach (var entity in container.SpawnedGameObjects)
                 {
-                    if(entity != null)
+                    if(entity != null && entity.GetComponent<NavMeshAgent>())
                     {
                         entity.GetComponent<NavMeshAgent>().speed = entitiesSpeed;
                     }

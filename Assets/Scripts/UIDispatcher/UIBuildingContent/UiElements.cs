@@ -23,6 +23,7 @@ namespace UIPackage.UIBuildingContent
         SECOND = 1,
         THIRD = 2,
         FOURTH = 3,
+        FIVETH = 4
         
     }
     public class UiElements
@@ -177,6 +178,8 @@ namespace UIPackage.UIBuildingContent
                     return size.x * 2 + 10f;
                 case Column.FOURTH:
                     return size.x * 3 + 10f*2;
+                case Column.FIVETH:
+                    return size.x * 4 + 10f*3;
                 default:
                     return 0f;
             }

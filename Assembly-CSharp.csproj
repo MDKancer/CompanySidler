@@ -71,6 +71,9 @@
     <Compile Include="Assets\Scripts\Building\Administration\iAdministration.cs" />
     <Compile Include="Assets\Scripts\Building\Azubi\AzubisTown.cs" />
     <Compile Include="Assets\Scripts\Building\Azubi\iAzubis.cs" />
+    <Compile Include="Assets\Scripts\Building\Bank\Bank.cs" />
+    <Compile Include="Assets\Scripts\Building\Bank\iBank.cs" />
+    <Compile Include="Assets\Scripts\Building\Bank\LoanData.cs" />
     <Compile Include="Assets\Scripts\Building\Building.cs" />
     <Compile Include="Assets\Scripts\Building\BuildingData.cs" />
     <Compile Include="Assets\Scripts\Building\BuildingWorkers.cs" />
@@ -116,6 +119,8 @@
     <Compile Include="Assets\Scripts\Entity\IHuman.cs" />
     <Compile Include="Assets\Scripts\Enums\Enums.cs" />
     <Compile Include="Assets\Scripts\InputManager\InputController.cs" />
+    <Compile Include="Assets\Scripts\JSon_Manager\FakeData.cs" />
+    <Compile Include="Assets\Scripts\JSon_Manager\JSon_Manager.cs" />
     <Compile Include="Assets\Scripts\ParticleManager\ParticleManager.cs" />
     <Compile Include="Assets\Scripts\PathFinder\PathFinder.cs" />
     <Compile Include="Assets\Scripts\ProjectPackage\Project.cs" />

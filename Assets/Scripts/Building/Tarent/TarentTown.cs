@@ -20,6 +20,7 @@ namespace BuildingPackage
         private List<Dictionary<BuildingType, CustomerType>> customerCompatibleBuilding;
         void Awake()
         {
+            #region
             customerCompatibleBuilding = new List<Dictionary<BuildingType, CustomerType>>
             {
                 new Dictionary<BuildingType, CustomerType>
@@ -48,7 +49,7 @@ namespace BuildingPackage
                     {BuildingType.MARKETING,CustomerType.OTHER},
                 }
             };
-            
+            #endregion
             buildingData = new BuildingData
             {
                 buildingType = BuildingType.TARENT_TOWN,

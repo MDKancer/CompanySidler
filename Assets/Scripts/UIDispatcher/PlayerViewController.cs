@@ -3,13 +3,17 @@ using System.Globalization;
 using BootManager;
 using BuildingPackage;
 using Enums;
+using GameCloud;
 using Human;
 using InputManager;
 using NaughtyAttributes;
+using SpawnManager;
+using StateMachine;
 using TMPro;
 using UIPackage.UIBuildingContent;
 using UnityEngine;
 using UnityEngine.UI;
+using Zenject;
 
 namespace PlayerView
 {
@@ -27,7 +31,9 @@ namespace PlayerView
         public GameObject buildingInfo;
         [ReadOnly]
         public  GameState currentGameState;
+        
 
+        
         //------------------Static UI Elements----------------
         private GameObject buildingContentObj;
 
@@ -53,10 +59,19 @@ namespace PlayerView
         //----------------------------------------------------
         private int workerCount = 0;
         private bool haveContentBtn = false;
+
+        [Inject]
+        private StateController<GameState> gameStateController;
+        [Inject]
+        private StateController<RunTimeState> runtimeStateController;
+        [Inject]
+        private SpawnController spawnController;
+        [Inject]
+        private Container container;
         public void Awake()
         {
             playerViewController = this;
-            if(Boot.gameStateController.CurrentState == GameState.GAME)
+            if(gameStateController.CurrentState == GameState.GAME)
             {
                 
                 buildingInfo = GameObject.Find("BuildingInfo")?.gameObject;
@@ -87,22 +102,22 @@ namespace PlayerView
             ShowBuildingInfoWindow();
         }
         
-        public void ApplyWorker(String name)
+        public void ApplyEmployee(String employeeType)
         {
             var  spawnPosition = new Vector3(4f,1f,2f);
-            var humanData = new EmployeeData(GetValue(name),Building.BuildingData.buildingType);
+            var humanData = new EmployeeData(GetValue(employeeType),Building.BuildingData.buildingType);
 
-            Boot.spawnController.SpawnWorker(humanData,spawnPosition);
+            spawnController.SpawnWorker(Building, humanData,spawnPosition);
             workerCount++;
             workersCount_Label.SetText(workerCount.ToString());
         }
         public void BuyBuilding()
         {
-            if (Boot.runtimeStateController.CurrentState == RunTimeState.BUILDING_INFO) // && Boot.gameStateController.CurrentState == GameState.GAME
+            if (runtimeStateController.CurrentState == RunTimeState.BUILDING_INFO) // && Boot.gameStateController.CurrentState == GameState.GAME
             {
                 if (Building.Company.CurrentBudget >= Building.BuildingData.price)
                 {
-                    var currentBudget = Boot.container.Companies[0].CurrentBudget;
+                    var currentBudget = container.Companies[0].CurrentBudget;
                     Building.IsBuying = true;
                 }
             }
@@ -110,7 +125,7 @@ namespace PlayerView
 
         public void UpgradeBuilding()
         {
-            if (Boot.runtimeStateController.CurrentState == RunTimeState.BUILDING_INFO ) // && Boot.gameStateController.CurrentState == GameState.GAME
+            if (runtimeStateController.CurrentState == RunTimeState.BUILDING_INFO ) // && Boot.gameStateController.CurrentState == GameState.GAME
             {
                 if(Building.Company.CurrentBudget >= Building.BuildingData.upgradePrice)
                 {
@@ -122,7 +137,9 @@ namespace PlayerView
         }
         public void ChangeBuildingState(Transform button)
         {
-                if (Boot.runtimeStateController.CurrentState == RunTimeState.BUILDING_INFO && Boot.gameStateController.CurrentState == GameState.GAME)
+                if (runtimeStateController.CurrentState == RunTimeState.BUILDING_INFO 
+                    && 
+                    gameStateController.CurrentState == GameState.GAME)
                 {
                         Building.SwitchWorkingState();
                         
@@ -134,9 +151,18 @@ namespace PlayerView
                 } 
         }
 
+        public void FocusedBuilding(Building focusedBuilding)
+        {
+            Building = focusedBuilding;
+        }
         private void ShowBuildingInfoWindow()
         {
-                if (Boot.runtimeStateController.CurrentState == RunTimeState.BUILDING_INFO && Boot.gameStateController.CurrentState == GameState.GAME)
+            
+            
+            //________________________________________________________________________________________________________________________________________
+                if (runtimeStateController.CurrentState == RunTimeState.BUILDING_INFO 
+                    && 
+                    gameStateController.CurrentState == GameState.GAME)
                 {
                         buildingInfo.SetActive(true);
                         if(Building != null)
@@ -156,6 +182,7 @@ namespace PlayerView
                         
                         float currentSize = (Building.BuildingData.currentHitPoints * 100f /
                                             Building.BuildingData.maxHitPoints) / 100f;
+                        
                         currentHP.transform.localScale = new Vector3( currentSize, 1f,1f);
                         if(Building != null && Building.IsBuying)
                         {
@@ -165,9 +192,9 @@ namespace PlayerView
                             }
                         }
                 }
-                else if(Boot.runtimeStateController.CurrentState != RunTimeState.BUILDING_INFO
-                        && Boot.runtimeStateController.CurrentState != RunTimeState.GAME_MENU
-                        && Boot.gameStateController.CurrentState == GameState.GAME)
+                else if(runtimeStateController.CurrentState != RunTimeState.BUILDING_INFO
+                        && runtimeStateController.CurrentState != RunTimeState.GAME_MENU
+                        && gameStateController.CurrentState == GameState.GAME)
                 {
                     if(Building != null && Building.IsBuying)
                     {
@@ -185,10 +212,10 @@ namespace PlayerView
         }
         private void CurrentBudget()
         {
-            if(Boot.gameStateController.CurrentState == GameState.GAME)
+            if(gameStateController.CurrentState == GameState.GAME)
             {
                             
-                budget_Label?.SetText(Boot.container.Companies[0].CurrentBudget.ToString());
+                budget_Label?.SetText(container.Companies[0].CurrentBudget.ToString());
             }
         }
 
@@ -208,20 +235,20 @@ namespace PlayerView
                     
             currentBudget_Label.SetText(Building.BuildingData.moneyPerSec.ToString());
                     
-            numberOfCustomers_Label?.SetText(Boot.container.Companies[0].numberOfCustomers.ToString());
+            numberOfCustomers_Label?.SetText(container.Companies[0].numberOfCustomers.ToString());
         }
-        private Building Building => (Building) InputController.FocusedBuilding?.GetComponent(typeof(Building));
+        private Building Building { get; set; }
 
         /// <summary>
         /// Es ist nur temporär um zu wissen ob alles gut Läuft.
         /// </summary>
         private void CheckCurrentState()
         {
-            if(Boot.gameStateController != null)
+            if(gameStateController != null)
             {
-                if (currentGameState != Boot.gameStateController.CurrentState)
+                if (currentGameState != gameStateController.CurrentState)
                 {
-                    currentGameState = Boot.gameStateController.CurrentState;
+                    currentGameState = gameStateController.CurrentState;
                 }
             }
         }

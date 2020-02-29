@@ -5,7 +5,10 @@ using BootManager;
 using BuildingPackage;
 using Entity.Customer.Data;
 using Enums;
+using GameCloud;
+using SpawnManager;
 using UnityEngine;
+using Zenject;
 using Random = UnityEngine.Random;
 
 namespace Human.Customer.Generator
@@ -14,14 +17,17 @@ namespace Human.Customer.Generator
     {
         private readonly Vector3 spawnPosition = new Vector3(4f, 1f, 2f);
         private Company company;
-
+        [Inject] private Container container;
+        [Inject] private SpawnController spawnController;
         private void Awake()
         {
-            company = Boot.container.Companies[0];
+            
         }
 
         private void Start()
         {
+            company = container.Companies[0];
+            
             CreateCustomers();
             StartCoroutine(CreateNewCostumer());
         }
@@ -31,11 +37,11 @@ namespace Human.Customer.Generator
         {
             while (true)
             {
-                if (Boot.container.Companies[0].needProject)
+                if (container.Companies[0].needProject)
                 {
                     CustomerData customerData = company.Customers[Random.Range(0, company.Customers.Count - 1)];
                     customerData.GenerateNewProject();
-                    Boot.spawnController.SpawnCustomer(ref customerData,spawnPosition);
+                    spawnController.SpawnCustomer(ref customerData,spawnPosition);
 
                 }
                 yield return new WaitForSeconds(Random.Range(10f,15f));
@@ -49,7 +55,7 @@ namespace Human.Customer.Generator
             
             for (int i = 0; i < countCustomers; i++)
             {
-                CustomerData customer = new CustomerData((CustomerType) customersValues.GetValue(i),spawnPosition);
+                CustomerData customer = new CustomerData((CustomerType) customersValues.GetValue(i),spawnPosition,container);
                 company.Customers.Add(customer);
             }
         }

@@ -1,6 +1,7 @@
-using BootManager;
+using GameCloud;
 using UnityEngine;
 using UnityEngine.AI;
+using Zenject;
 
 namespace Signals
 {
@@ -9,10 +10,11 @@ namespace Signals
         [Range(0f,30f)]
         public float entitiesSpeed = 3.5f;
 
+        [Inject]
+        private Container container;
 
         public void Update()
         {
-            var container = Boot.container;
             if(container.SpawnedGameObjects.Count > 0)
             {
                 foreach (var entity in container.SpawnedGameObjects)

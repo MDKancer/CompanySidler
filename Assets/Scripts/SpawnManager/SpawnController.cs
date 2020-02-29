@@ -5,10 +5,12 @@ using BootManager;
 using BuildingPackage;
 using Entity.Customer.Data;
 using Enums;
+using GameCloud;
 using Human;
 using Human.Customer;
 using UnityEngine;
 using UnityEngine.AI;
+using Zenject;
 using Object = UnityEngine.Object;
 
 namespace SpawnManager
@@ -16,18 +18,23 @@ namespace SpawnManager
     public class SpawnController
     {
         private int index = 0;
+        [Inject]private Container container;
         public void InitialSpawnWave()
         {
             foreach (var officePrefab in Boot.boot_Instance.companyData.basicOffices.offices)
             {
-                var building = Boot.container.Companies[0].GetOffice(officePrefab);
-                Boot.monobehaviour.StartCoroutine(SpawnAfterInstancing(building));
+                var building = container.Companies[0].GetOffice(officePrefab);
+                Boot.boot_Instance.monoBehaviour.StartCoroutine(SpawnAfterInstancing(building));
             }
         }
         public void SpawnOffice(GameObject office, Vector3 targetPosition)
         {
-            GameObject instance = Object.Instantiate(office,targetPosition,Quaternion.identity,Boot.container.Companies[0].getCompanyGameObject().transform);
-            Boot.container.AddSpawnedGameObject(instance);
+            GameObject instance = Object.Instantiate(
+                office,
+                targetPosition,Quaternion.identity,
+                container.Companies[0].getCompanyGameObject().transform);
+            
+            container.AddSpawnedGameObject(instance);
         }
         
         /// <summary>
@@ -37,7 +44,7 @@ namespace SpawnManager
         /// <param name="employeeData"></param>
         /// <param name="spawnPosition"></param>
         /// <returns>Wenn das Object Instantiert wurde und in den Container gepseichert wurde, bekommt man zurrück ein true.</returns>
-        public Boolean SpawnWorker(EmployeeData employeeData,Vector3 spawnPosition) //GameObject prefab, EntityType workerEntityType
+        public Boolean SpawnWorker(Building workerOffice,EmployeeData employeeData,Vector3 spawnPosition) //GameObject prefab, EntityType workerEntityType
         {
             try
             {
@@ -51,11 +58,13 @@ namespace SpawnManager
                 if (objectInstace.GetComponent<Employee>() == null)
                 {
                    Employee employee = objectInstace.AddComponent<Employee>();
+                   
                    employee.EmployeeData = employeeData;
+                   employee.AttachEvent(workerOffice);
                    employee.Work();
                 }
 
-                Boot.container.AddSpawnedGameObject(objectInstace);
+                container.AddSpawnedGameObject(objectInstace);
 
                 return true;
             }
@@ -85,7 +94,7 @@ namespace SpawnManager
                    customer.customerData = customerData;
                 }
 
-                Boot.container.AddSpawnedGameObject(instantiate);
+                container.AddSpawnedGameObject(instantiate);
                 return true;
             }
             catch (Exception e)
@@ -97,8 +106,8 @@ namespace SpawnManager
 
         public ParticleSystem SpawnEffect(BuildingType buildingType,ParticleType particleType)
         {
-            var particleSystemObj = Boot.container.ParticleSystems[0];
-            var company = Boot.container.Companies[0];
+            var particleSystemObj = container.ParticleSystems[0];
+            var company = container.Companies[0];
 
             var targetPosition =
                 company.GetOffice(buildingType).transform.position + Vector3.up * 30;
@@ -110,10 +119,10 @@ namespace SpawnManager
             switch (particleType)
             {
                 case ParticleType.CASH:
-                    particleSystemRenderer.material = Boot.container.ParticleMaterials[0];
+                    particleSystemRenderer.material = container.ParticleMaterials[0];
                     break;
                 case ParticleType.PROJECT:
-                    particleSystemRenderer.material = Boot.container.ParticleMaterials[1];
+                    particleSystemRenderer.material = container.ParticleMaterials[1];
                     break;
                 default:
                     break;

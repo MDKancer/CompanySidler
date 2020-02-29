@@ -1,10 +1,13 @@
+using System;
 using BootManager;
 using BuildingPackage;
 using Enums;
 using UnityEngine;
 using PlayerView;
+using StateMachine;
 using TMPro;
 using UIPackage.UIBuildingContent;
+using Zenject;
 
 namespace InputManager
 {
@@ -12,6 +15,9 @@ namespace InputManager
     {
         public float speed = 1f;
 
+        public delegate void FocusedBuild(Building focusesBuilding);
+        public FocusedBuild showBuildingDataEvent;
+        
         private GameObject focusObject;
         private CameraController cameraController;
         private Ray ray;
@@ -22,6 +28,11 @@ namespace InputManager
         private static GameObject focusedBuilding;
         private UiElements uiElements = new UiElements();
         private TextMeshProUGUI buildingLabel;
+
+        [Inject]
+        private StateController<GameState> gameStateController;
+        [Inject]
+        private StateController<RunTimeState> runtimeStateController;
         public  void Awake()
         {
             // wenn mann von Main Menu anfangen moechte.... dann auskommentieren.
@@ -29,6 +40,11 @@ namespace InputManager
             //{
                StartCameraController();
             //}
+        }
+
+        public void Start()
+        {
+            showBuildingDataEvent += PlayerViewController.playerViewController.FocusedBuilding;
         }
 
         public void StartCameraController()
@@ -42,7 +58,7 @@ namespace InputManager
 
         public void Update()
         {
-            if(Boot.gameStateController.CurrentState == GameState.GAME)
+            if(gameStateController.CurrentState == GameState.GAME)
             {
                 CameraEvents();
             }
@@ -54,7 +70,7 @@ namespace InputManager
             middleDirection = (transform.up + transform.forward) / 2; 
             //distance = Vector3.Distance(cameraController.mainCameraGameObject.transform.position, focusObject.transform.position);
 
-                if (Input.GetKey(KeyCode.W))
+            if (Input.GetKey(KeyCode.W))
             {
                 cameraController.Move( middleDirection * speed);
             }
@@ -80,8 +96,8 @@ namespace InputManager
             }
             if (Input.GetKeyDown(KeyCode.Mouse0))
             {
-                if (Boot.runtimeStateController.CurrentState != RunTimeState.FOCUS_ON &&
-                    Boot.runtimeStateController.CurrentState != RunTimeState.BUILDING_INFO)
+                if (runtimeStateController.CurrentState != RunTimeState.FOCUS_ON &&
+                    runtimeStateController.CurrentState != RunTimeState.BUILDING_INFO)
                 {
                     ray = cameraController.mainCamera.ScreenPointToRay(Input.mousePosition);
                     
@@ -92,6 +108,11 @@ namespace InputManager
                             
                             focusPoint = rayCastHit.point;
                             focusedBuilding = rayCastHit.collider.gameObject;
+                            
+                            var buildingType = (Building)focusedBuilding?.GetComponent(typeof(Building));
+                            
+                            showBuildingDataEvent(buildingType);
+                            
                             cameraController.FocusOn(rayCastHit.point);
                         }
                     }
@@ -100,13 +121,13 @@ namespace InputManager
             }
             if (Input.GetKeyDown(KeyCode.Escape))
             {
-                if(Boot.runtimeStateController.CurrentState == RunTimeState.FOCUS_ON || 
-                   Boot.runtimeStateController.CurrentState == RunTimeState.BUILDING_INFO || 
-                   Boot.runtimeStateController.CurrentState == RunTimeState.GAME_MENU)
+                if(runtimeStateController.CurrentState == RunTimeState.FOCUS_ON || 
+                   runtimeStateController.CurrentState == RunTimeState.BUILDING_INFO || 
+                   runtimeStateController.CurrentState == RunTimeState.GAME_MENU)
                 {
                     cameraController.ToEmptyPos();
 
-                    Boot.runtimeStateController.CurrentState = RunTimeState.PLAYING;
+                    runtimeStateController.CurrentState = RunTimeState.PLAYING;
                     focusPoint = focusObject.transform.position;
                 }
             }
@@ -116,11 +137,11 @@ namespace InputManager
         /// <summary>
         /// Gibt den gecklikten Gebäude zurrück.
         /// </summary>
-        public static GameObject FocusedBuilding
-        {
-            get => focusedBuilding;
-            private set => focusedBuilding = value;
-        }
+//        public static GameObject FocusedBuilding
+//        {
+//            get => focusedBuilding;
+//            private set => focusedBuilding = value;
+//        }
 
         private bool isBuilding(GameObject targetObject)
         {

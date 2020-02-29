@@ -1,9 +1,12 @@
-﻿using Enums;
+﻿using System;
+using Enums;
 using GameCloud;
 using SceneController;
+using Signals.Zenject_Test;
 using SpawnManager;
 using StateMachine;
 using UnityEngine;
+using Zenject;
 
 namespace BootManager
 {
@@ -11,12 +14,21 @@ namespace BootManager
     {
         public static Boot boot_Instance { get; private set; }
 
-        public static MonoBehaviour monobehaviour;
-        public static Container container;
-        public static StateController<GameState> gameStateController;
-        public static StateController<RunTimeState> runtimeStateController;
-        public static SpawnController spawnController;
-        public static SceneManager sceneManager;
+        //public ReferenceService referenceService;
+        [Inject] public SignalBus signalBus;
+        [Inject]
+        public Container container;
+        [Inject]
+        public StateController<GameState> gameStateController;
+        [Inject]
+        public StateController<RunTimeState> runtimeStateController;
+        [Inject]
+        public SpawnController spawnController;
+        [Inject]
+        public SceneManager sceneManager;
+
+        public MonoBehaviour monoBehaviour;
+        
         public CompanyData companyData;
         public GameState gameState;
 
@@ -24,6 +36,7 @@ namespace BootManager
         /// Hier wird alle Hauptklassen intizialisiert.
         /// Awake wird in jede Scene erst ausgeführt. 
         /// </summary>
+        //void Awake(Container container, StateController<GameState> gameStateController,StateController<RunTimeState> runtimeStateController,SpawnController spawnController,SceneManager sceneManager)
         void Awake()
         {
             
@@ -34,12 +47,7 @@ namespace BootManager
                 //das ganzes Spiel instanzieren sollen.
                 //___________________________________________________
                 boot_Instance = this;
-                monobehaviour = this;
-                container = new Container();
-                gameStateController = new StateController<GameState>();
-                runtimeStateController = new StateController<RunTimeState>();
-                spawnController = new SpawnController();
-                sceneManager = new SceneManager();
+                monoBehaviour = this;
                 
                 //____________________________________________________
                 // 
@@ -60,6 +68,14 @@ namespace BootManager
             
                 
             GameStarted();
+        }
+
+        private void Start()
+        {
+            signalBus.Fire(new CustomerSignals
+            {
+                name = "bulit"
+            });
         }
 
         /// <summary>

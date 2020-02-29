@@ -2,12 +2,15 @@ using System.Collections;
 using BootManager;
 using BuildingPackage;
 using Enums;
+using GameCloud;
 using Human;
 using PlayerView;
 using ProjectPackage;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
+using Zenject;
+
 namespace UIPackage.UIBuildingContent
 {
     /// <summary>
@@ -22,6 +25,9 @@ namespace UIPackage.UIBuildingContent
         private readonly Material projectButtonMaterial;
         private Building building;
         private UIData uiData;
+
+        [Inject]
+        private Container container;
         public BuildingContent( GameObject buildingContent)
         {
             this.buildingContent = buildingContent;
@@ -30,7 +36,7 @@ namespace UIPackage.UIBuildingContent
             uiElements = new UiElements();
             uiData = new UIData();
             
-            foreach (var material in Boot.container.Materials)
+            foreach (var material in container.Materials)
             {
                 if (material.name == "progressBar")
                 {
@@ -178,7 +184,7 @@ namespace UIPackage.UIBuildingContent
                 var (employedPlaces, countEmployedPlaces) = building.BuildingData.GetCountOfEmployed(workerType);
                 if(employedPlaces < countEmployedPlaces)
                 {
-                    PlayerViewController.playerViewController.ApplyWorker(workerType.ToString());
+                    PlayerViewController.playerViewController.ApplyEmployee(workerType.ToString());
                     UpdateEmployeeWorkers(uiData.GetEmployeesCountLabel(workerType.ToString()),  workerType);
                 }
             });
@@ -200,12 +206,12 @@ namespace UIPackage.UIBuildingContent
         {
             if(building.BuildingData.workers > 0)
             {
-                Boot.monobehaviour.StartCoroutine(routine: ShowProgressbarProcess(material: material));
-                Boot.monobehaviour.StartCoroutine(routine: UpdateTextLabelButton(btn: btn, project: project));
+                Boot.boot_Instance.monoBehaviour.StartCoroutine(routine: ShowProgressbarProcess(material: material));
+                Boot.boot_Instance.monoBehaviour.StartCoroutine(routine: UpdateTextLabelButton(btn: btn, project: project));
                 btn.onClick.AddListener(call: () =>
                 {
                     building.ApplyProject(newProject: project);
-                    Boot.monobehaviour.StartCoroutine(routine: ButtonLifeTime(btn: btn, project: project));
+                    Boot.boot_Instance.monoBehaviour.StartCoroutine(routine: ButtonLifeTime(btn: btn, project: project));
                 });
             }
         }
@@ -263,7 +269,7 @@ namespace UIPackage.UIBuildingContent
             if (!btn.Equals(null))
             {
                 building.possibleProjects.Remove(project);
-                Boot.container.Companies[0].RemoveProject(project);
+                container.Companies[0].RemoveProject(project);
 
                 var gameObject = btn.gameObject;
                 Object.Destroy(btn);

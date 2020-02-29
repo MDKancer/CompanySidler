@@ -1,3 +1,4 @@
+using System;
 using Enums;
 using JetBrains.Annotations;
 using Human;
@@ -7,6 +8,7 @@ namespace BuildingPackage
 
   public interface iBuilding
   {
+    
     void Upgrade();
     //void Buy();
     void DoDamage(int damagePercent = 0);

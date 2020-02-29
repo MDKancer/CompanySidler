@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 125d26248a23a8849b4d4588579f53e8, type: 3}
   m_Name: CompanyData_SO
   m_EditorClassIdentifier: 
-  nameCompany: tarent
+  nameCompany: Company
   haveInitialBudget: 1
   hasLoan: 0
   loan_Amount: 0

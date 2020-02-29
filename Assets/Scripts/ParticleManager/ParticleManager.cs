@@ -1,8 +1,10 @@
 ﻿using BootManager;
 using BuildingPackage;
 using Enums;
+using GameCloud;
 using NaughtyAttributes;
 using UnityEngine;
+using Zenject;
 
 
 public class ParticleManager : MonoBehaviour
@@ -15,12 +17,12 @@ public class ParticleManager : MonoBehaviour
     public ParticleSystem particleSystem;
 
     private ParticleSystemRenderer particleSystemRenderer;
-    
+    [Inject] private Container container;
     private Company company;
     // Start is called before the first frame update
     void Awake()
     {
-        company = Boot.container.Companies[0];
+        company = container.Companies[0];
         particleSystem = transform.GetChild(0).GetComponent<ParticleSystem>();
         particleSystemRenderer = particleSystem.GetComponent<ParticleSystemRenderer>();
     }

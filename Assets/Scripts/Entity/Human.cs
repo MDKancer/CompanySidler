@@ -1,7 +1,10 @@
+using System;
+using BuildingPackage;
 using Enums;
 using StateMachine;
 using UIPackage.UIBuildingContent;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 namespace Human
 {
@@ -12,6 +15,15 @@ namespace Human
         protected UiElements uiElements = new UiElements();
         
         private StateController<HumanState> selfState = new StateController<HumanState>();
+
+        public delegate void AttachAnBuilding(Building myOffice);
+
+        public AttachAnBuilding AttachEvent;
+
+        public void Awake()
+        {
+            
+        }
 
         public StateController<HumanState> SelfState { 
             get=>selfState;

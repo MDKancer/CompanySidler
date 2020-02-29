@@ -1,7 +1,9 @@
 ﻿using System.Collections;
 using BootManager;
 using Enums;
+using StateMachine;
 using UnityEngine;
+using Zenject;
 using Quaternion = UnityEngine.Quaternion;
 using Vector3 = UnityEngine.Vector3;
 
@@ -15,6 +17,9 @@ namespace PlayerView
         private Quaternion originRotation;
         private bool isArrive;
 
+        [Inject]
+        private StateController<RunTimeState> runtimeStateController;
+
         public CameraController()
         {
             mainCameraGameObject = Camera.main.gameObject;
@@ -23,20 +28,20 @@ namespace PlayerView
         public void FocusOn(Vector3 endPosition)
         {
             isArrive = false;
-            Boot.runtimeStateController.CurrentState = RunTimeState.FOCUS_ON;
+            runtimeStateController.CurrentState = RunTimeState.FOCUS_ON;
 
             originPosition = mainCameraGameObject.transform.position;
             originRotation = mainCameraGameObject.transform.rotation;
 
-            Boot.monobehaviour.StartCoroutine(MoveTo(endPosition));
-            Boot.monobehaviour.StartCoroutine(ChangeState());
+            Boot.boot_Instance.monoBehaviour.StartCoroutine(MoveTo(endPosition));
+            Boot.boot_Instance.monoBehaviour.StartCoroutine(ChangeState());
         }
         public void ToEmptyPos()
         {
-            Boot.monobehaviour.StartCoroutine(MoveTo(originPosition));
+            Boot.boot_Instance.monoBehaviour.StartCoroutine(MoveTo(originPosition));
             mainCameraGameObject.transform.rotation = originRotation;
 
-            Boot.runtimeStateController.SwitchToLastState();
+            Boot.boot_Instance.runtimeStateController.SwitchToLastState();
         }
 
         public void Move(Vector3 direction)
@@ -68,7 +73,7 @@ namespace PlayerView
         {
             while (isArrive == false) yield return null;
 
-            Boot.runtimeStateController.CurrentState = RunTimeState.BUILDING_INFO;
+            runtimeStateController.CurrentState = RunTimeState.BUILDING_INFO;
         }
     }
 }

@@ -1,28 +1,34 @@
 ﻿using BootManager;
 using Enums;
+using SceneController;
+using StateMachine;
 using UnityEngine;
+using Zenject;
 
-[CreateAssetMenu (fileName = "UIEvents", menuName = "ScriptableObjects/UIEvents", order = 2)]
-public class UIEvents : ScriptableObject
+//[CreateAssetMenu (fileName = "UIEvents", menuName = "ScriptableObjects/UIEvents", order = 2)]
+public class UIEvents : MonoBehaviour
 {
-
+    [Inject]
+    public StateController<GameState> gameStateController;
+    [Inject]
+    public SceneManager sceneManager;
     public void PlayGame()
     {
-        Boot.gameStateController.CurrentState = GameState.GAME;
-        Boot.sceneManager.GoTo(Scenes.GAME);  
+        gameStateController.CurrentState = GameState.GAME;
+        sceneManager.GoTo(Scenes.GAME);  
     }
     public void StartGame()
     {
         //first
-        Boot.gameStateController.CurrentState = GameState.PREGAME;
+        gameStateController.CurrentState = GameState.PREGAME;
         //second
-        Boot.sceneManager.GoTo(Scenes.PREGAME);
+        sceneManager.GoTo(Scenes.PREGAME);
     }
     
     public void Exit()
     {
         //first
-        Boot.gameStateController.CurrentState = GameState.EXIT;
+        gameStateController.CurrentState = GameState.EXIT;
         //second
         Application.Quit();
     }

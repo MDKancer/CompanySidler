@@ -31,7 +31,7 @@ namespace ProjectPackage
             budget = workersCount * totalHourlyWage * (int) timeDuration;
             punishment  = budget * wastagePercent / 100;
             
-            Boot.monobehaviour.StartCoroutine(CheckIfIsDone());
+            Boot.boot_Instance.monoBehaviour.StartCoroutine(CheckIfIsDone());
         }
 
         public int Budget => budget;

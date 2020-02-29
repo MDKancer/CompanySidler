@@ -8,9 +8,12 @@ using Enums;
 using JetBrains.Annotations;
 using Human;
 using ProjectPackage;
+using Signals.Zenject_Test;
+using SpawnManager;
 using StateMachine;
 using UIPackage;
 using UnityEngine;
+using Zenject;
 using Random = UnityEngine.Random;
 
 namespace BuildingPackage
@@ -18,6 +21,10 @@ namespace BuildingPackage
     public class TarentTown : Building, iTarent
     {
         private List<Dictionary<BuildingType, CustomerType>> customerCompatibleBuilding;
+        [Inject]
+        private SpawnController spawnController;
+
+        
         void Awake()
         {
             #region
@@ -78,7 +85,17 @@ namespace BuildingPackage
             
             stateController.CurrentState = BuildingState.EMPTY;
         }
-        
+
+        [Inject]
+        public void Init(SignalBus signalBus)
+        {
+            signalBus.Subscribe<CustomerSignals>(GetSignal);
+        }
+
+        private void GetSignal(CustomerSignals customerSignals)
+        {
+            Debug.Log(customerSignals.name);
+        }
         void Start()
         {
             stateController.CurrentState = BuildingState.WORK;
@@ -89,7 +106,7 @@ namespace BuildingPackage
         public void TakeProject(ref Project newProject,CustomerType customerType)
         {
             company.AddNewProject(newProject, customerType);
-            var particleSystem = Boot.spawnController.SpawnEffect(buildingData.buildingType, ParticleType.PROJECT);
+            var particleSystem = spawnController.SpawnEffect(buildingData.buildingType, ParticleType.PROJECT);
             Destroy(particleSystem.gameObject, 2f);
         }
         public int ToHold()

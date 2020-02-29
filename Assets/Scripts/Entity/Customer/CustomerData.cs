@@ -5,6 +5,7 @@ using Enums;
 using GameCloud;
 using ProjectPackage;
 using UnityEngine;
+using Zenject;
 using Random = UnityEngine.Random;
 
 namespace Entity.Customer.Data
@@ -17,19 +18,18 @@ namespace Entity.Customer.Data
         public readonly CustomerType customerType;
         public readonly Vector3 initialPosition;
         private Vector3 targetPosition;
-        
-        private readonly Container container;
+
         private readonly TarentTown tarentTown;
         private CustomerLevelData customerLevelData;
-        
-        public CustomerData(CustomerType customerType,Vector3 spawnPosition)
+
+        //TODO: es muss ohne Container Fuktionieren!!!
+        public CustomerData(CustomerType customerType,Vector3 spawnPosition,Container container)
         {
             customerLevelData = new CustomerLevelData();
             
             this.initialPosition = spawnPosition;
             this.customerType = customerType;
-            
-            this.container = Boot.container;
+
             this.company = container.Companies[0];
             tarentTown = (TarentTown) company.GetOffice(BuildingType.TARENT_TOWN);
             

@@ -5,20 +5,35 @@ using System.Linq;
 using BootManager;
 using BuildingPackage;
 using Enums;
+using GameCloud;
 using InputManager;
 using JetBrains.Annotations;
 using PathFinderManager;
 using ProjectPackage.ProjectTasks;
 using TMPro;
 using UnityEngine;
+using Zenject;
 using Random = UnityEngine.Random;
 
 namespace Human
 {
     public class Employee : Human, IWorker
     {
+
         private EmployeeData employeeData = null;
         private TextMeshProUGUI namePoster;
+        [Inject]
+        private Container container;
+
+        public void OnEnable()
+        {
+            AttachEvent += SetOffice;
+        }
+
+        private void SetOffice(Building myOffice)
+        {
+            myOffice.applyWorkerEvent(this);
+        }
         public EmployeeData EmployeeData
         {
             get => employeeData;
@@ -26,7 +41,6 @@ namespace Human
         }
         public void Work()
         {
-            Building.ApplyWorker(this);
             StartCoroutine(DO());
             StartCoroutine(ShowMyCanvas());
         }
@@ -86,7 +100,7 @@ namespace Human
         {
             int index = 0;
             List<HumanState> myKeys = EmployeeData.GetEntityWorkingCycle.Keys.ToList();
-            List<Company> firmas = Boot.container.Companies;
+            List<Company> firmas = container.Companies;
             Vector3 initialPosition = gameObject.transform.position;
             Vector3 officePosition =firmas[0].GetOffice(EmployeeData.GetHisOffice).gameObject.transform.position;
             Vector3 targetPosition = GenerateRandomPosition(officePosition);
@@ -183,7 +197,7 @@ namespace Human
                 yield return null;
             }
         }
-        private iBuilding Building => InputController.FocusedBuilding?.GetComponent(typeof(iBuilding)) as iBuilding;
+        //private iBuilding Building => InputController.FocusedBuilding?.GetComponent(typeof(iBuilding)) as iBuilding;
 
         private void OnDestroy()
         {

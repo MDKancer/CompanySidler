@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using BootManager;
@@ -5,8 +6,10 @@ using Enums;
 using Human;
 using NaughtyAttributes;
 using ProjectPackage;
+using SpawnManager;
 using StateMachine;
 using UnityEngine;
+using Zenject;
 
 namespace BuildingPackage
 {
@@ -25,7 +28,16 @@ namespace BuildingPackage
         [ShowNonSerializedField]
         protected bool isBuying = false;
         
+        public delegate void ApplyWorkerEvent(Employee employee);
+
+        public ApplyWorkerEvent applyWorkerEvent;
         private Project project = null;
+        [Inject]
+        private SpawnController spawnController;
+        public void OnEnable()
+        {
+            applyWorkerEvent += ApplyWorker;
+        }
 
         public void Upgrade()
         {
@@ -41,7 +53,7 @@ namespace BuildingPackage
         {
             if (!isBuying)
             {
-                Boot.spawnController.SpawnOffice(prefab, position);
+                spawnController.SpawnOffice(prefab, position);
             }
         }
 
@@ -108,7 +120,7 @@ namespace BuildingPackage
                     }
                 }
                 StartCoroutine(CheckIfProjectIsDone());
-                var particleSystem = Boot.spawnController.SpawnEffect(buildingData.buildingType, ParticleType.PROJECT);
+                var particleSystem = spawnController.SpawnEffect(buildingData.buildingType, ParticleType.PROJECT);
                 Destroy(particleSystem.gameObject, 2f);
             }
         }
@@ -137,7 +149,7 @@ namespace BuildingPackage
         private IEnumerator CheckIfProjectIsDone()
         {
             while (!project.IsDone) yield return null;
-            var particleSystem =  Boot.spawnController.SpawnEffect(buildingData.buildingType, ParticleType.PROJECT);
+            var particleSystem =  spawnController.SpawnEffect(buildingData.buildingType, ParticleType.PROJECT);
             Destroy(particleSystem.gameObject, 2f);
             project = null;
         }

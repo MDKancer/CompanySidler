@@ -3,7 +3,9 @@ using System.Collections.Generic;
 using BootManager;
 using BuildingPackage;
 using Enums;
+using StateMachine;
 using UnityEngine;
+using Zenject;
 using Resources = UnityEngine.Resources;
 
  namespace GameCloud
@@ -17,6 +19,8 @@ using Resources = UnityEngine.Resources;
         private List<Material> materials = new List<Material>();
         private List<Material> particleMaterials = new List<Material>();
         private List<GameObject> particleSystems = new List<GameObject>();
+        [Inject]
+        private StateController<GameState> gameStateController;
         public void LoadAllResources()
         {
            //TODO: hier wird alle Prefabs aus den Ordnern im Dictionary reingepackt.
@@ -39,7 +43,7 @@ using Resources = UnityEngine.Resources;
 
         public void SetDatas()
         {
-            if(Boot.gameStateController.CurrentState == GameState.GAME)
+            if(gameStateController.CurrentState == GameState.GAME)
             {
                 SetCompanyData();
             }

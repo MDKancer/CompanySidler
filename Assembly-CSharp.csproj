@@ -65,6 +65,7 @@
   <ItemGroup>
     <Compile Include="Assets\Foreign\SimpleCameraController.cs" />
     <Compile Include="Assets\Scripts\BootManager\Boot.cs" />
+    <Compile Include="Assets\Scripts\BootManager\ReferenceService.cs" />
     <Compile Include="Assets\Scripts\Building\Accounting\Accounting.cs" />
     <Compile Include="Assets\Scripts\Building\Accounting\iAccounting.cs" />
     <Compile Include="Assets\Scripts\Building\Administration\Administration.cs" />
@@ -136,6 +137,10 @@
     <Compile Include="Assets\Scripts\UIDispatcher\UIBuildingContent\BuildingContent.cs" />
     <Compile Include="Assets\Scripts\UIDispatcher\UIBuildingContent\UIData.cs" />
     <Compile Include="Assets\Scripts\UIDispatcher\UIBuildingContent\UiElements.cs" />
+    <Compile Include="Assets\Scripts\Zenject_Test\CustomerSignals.cs" />
+    <Compile Include="Assets\Scripts\Zenject_Test\GameInstaller.cs" />
+    <Compile Include="Assets\Scripts\Zenject_Test\SharedContextInstaller.cs" />
+    <Compile Include="Assets\Scripts\Zenject_Test\SignalModule.cs" />
     <Compile Include="Assets\Tests\ConvertToPrefab.cs" />
     <Compile Include="Assets\Tests\ConvertToVertexColor.cs" />
     <None Include="Assets\Tests\VertexInputSimple.shader" />
@@ -471,6 +476,21 @@
     </Reference>
     <Reference Include="UnityEngine.XRModule">
       <HintPath>/home/dlozan/Unity/Hub/Editor/2019.2.10f1/Editor/Data/Managed/UnityEngine/UnityEngine.XRModule.dll</HintPath>
+    </Reference>
+    <Reference Include="Zenject.ReflectionBaking.Mono.Cecil.Pdb">
+      <HintPath>/home/dlozan/workspace/Unity/sidleridle/Assets/Plugins/Zenject/OptionalExtras/ReflectionBaking/Lib/Zenject.ReflectionBaking.Mono.Cecil.Pdb.dll</HintPath>
+    </Reference>
+    <Reference Include="Zenject.ReflectionBaking.Mono.Cecil.Mdb">
+      <HintPath>/home/dlozan/workspace/Unity/sidleridle/Assets/Plugins/Zenject/OptionalExtras/ReflectionBaking/Lib/Zenject.ReflectionBaking.Mono.Cecil.Mdb.dll</HintPath>
+    </Reference>
+    <Reference Include="Zenject.ReflectionBaking.Mono.Cecil">
+      <HintPath>/home/dlozan/workspace/Unity/sidleridle/Assets/Plugins/Zenject/OptionalExtras/ReflectionBaking/Lib/Zenject.ReflectionBaking.Mono.Cecil.dll</HintPath>
+    </Reference>
+    <Reference Include="Zenject.ReflectionBaking.Mono.Cecil.Rocks">
+      <HintPath>/home/dlozan/workspace/Unity/sidleridle/Assets/Plugins/Zenject/OptionalExtras/ReflectionBaking/Lib/Zenject.ReflectionBaking.Mono.Cecil.Rocks.dll</HintPath>
+    </Reference>
+    <Reference Include="Zenject-usage">
+      <HintPath>/home/dlozan/workspace/Unity/sidleridle/Assets/Plugins/Zenject/Source/Usage/Zenject-usage.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Analytics.StandardEvents">
       <HintPath>/home/dlozan/workspace/Unity/sidleridle/Library/PackageCache/com.unity.analytics@3.3.2/Unity.Analytics.StandardEvents.dll</HintPath>
@@ -852,6 +872,22 @@
     <ProjectReference Include="Assembly-CSharp-firstpass.csproj">
       <Project>{23D60FEB-FAC4-EB1F-EDF0-FA2BE9B05F95}</Project>
       <Name>Assembly-CSharp-firstpass</Name>
+    </ProjectReference>
+    <ProjectReference Include="Zenject-Editor.csproj">
+      <Project>{275B81CC-2E2D-47AA-0A6F-3870ACE65DE0}</Project>
+      <Name>Zenject-Editor</Name>
+    </ProjectReference>
+    <ProjectReference Include="Zenject-ReflectionBaking-Editor.csproj">
+      <Project>{E23CDA77-93E5-AFF0-8893-8D16EC12745C}</Project>
+      <Name>Zenject-ReflectionBaking-Editor</Name>
+    </ProjectReference>
+    <ProjectReference Include="Zenject-PoolMonitor-Editor.csproj">
+      <Project>{653A8C02-BD1B-2BDA-B013-8A00A9C8AF15}</Project>
+      <Name>Zenject-PoolMonitor-Editor</Name>
+    </ProjectReference>
+    <ProjectReference Include="Zenject.csproj">
+      <Project>{EA471376-A031-324C-549D-A6B4FE5E63D2}</Project>
+      <Name>Zenject</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

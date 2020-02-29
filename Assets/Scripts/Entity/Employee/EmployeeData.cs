@@ -1,8 +1,10 @@
 using System.Collections.Generic;
 using BootManager;
 using Enums;
+using GameCloud;
 using ProjectPackage;
 using UnityEngine;
+using Zenject;
 
 namespace Human
 {
@@ -18,6 +20,8 @@ namespace Human
         private Project project;
         private Dictionary<HumanState,BuildingType> entityWorkCycle = new Dictionary<HumanState, BuildingType>();
         private GameObject prefab = null;
+        [Inject]
+        private Container container;
 
         public EmployeeData(EntityType entityType, BuildingType hisOffice)
         {
@@ -50,7 +54,7 @@ namespace Human
         {
             if (entityType != EntityType.NONE && entityType != EntityType.CUSTOMER)
             {
-               prefab = Boot.container.GetPrefabsByType(EntityType.DEVELOPER)[0];
+               prefab = container.GetPrefabsByType(EntityType.DEVELOPER)[0];
             }
         }
 

@@ -21,10 +21,10 @@ namespace SpawnManager
         [Inject]private Container container;
         public void InitialSpawnWave()
         {
-            foreach (var officePrefab in Boot.boot_Instance.companyData.basicOffices.offices)
+            foreach (var officePrefab in BootController.BootControllerInstance.companyData.basicOffices.offices)
             {
                 var building = container.Companies[0].GetOffice(officePrefab);
-                Boot.boot_Instance.monoBehaviour.StartCoroutine(SpawnAfterInstancing(building));
+                BootController.BootControllerInstance.monoBehaviour.StartCoroutine(SpawnAfterInstancing(building));
             }
         }
         public void SpawnOffice(GameObject office, Vector3 targetPosition)

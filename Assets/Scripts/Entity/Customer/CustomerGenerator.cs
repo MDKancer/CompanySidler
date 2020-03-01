@@ -9,6 +9,7 @@ using GameCloud;
 using SpawnManager;
 using UnityEngine;
 using Zenject;
+using Zenject_Signals;
 using Random = UnityEngine.Random;
 
 namespace Human.Customer.Generator
@@ -17,21 +18,44 @@ namespace Human.Customer.Generator
     {
         private readonly Vector3 spawnPosition = new Vector3(4f, 1f, 2f);
         private Company company;
-        [Inject] private Container container;
-        [Inject] private SpawnController spawnController;
-        private void Awake()
-        {
-            
-        }
+        
+        private SignalBus signalBus;
+        private Container container;
+        private SpawnController spawnController;
 
-        private void Start()
+        [Inject]
+        private void Init(SignalBus signalBus, Container container, SpawnController spawnController)
         {
-            company = container.Companies[0];
+            this.signalBus = signalBus;
+            this.container = container;
+            this.spawnController = spawnController;
             
-            CreateCustomers();
-            StartCoroutine(CreateNewCostumer());
+            this.signalBus.Subscribe<GameStateSignal>(StateDependency);
         }
-
+        private void StateDependency(GameStateSignal gameStateSignal)
+        {
+            switch (gameStateSignal.state)
+            {
+                case GameState.NONE:
+                    break;
+                case GameState.INTRO:
+                    break;
+                case GameState.LOADING:
+                    break;
+                case GameState.MAIN_MENU:
+                    break;
+                case GameState.PREGAME:
+                    break;
+                case GameState.GAME:
+                    company = container.Companies[0];
+            
+                    CreateCustomers();
+                    StartCoroutine(CreateNewCostumer());
+                    break;
+                case GameState.EXIT:
+                    break;
+            }
+        }
 
         private IEnumerator CreateNewCostumer()
         {
@@ -58,6 +82,15 @@ namespace Human.Customer.Generator
                 CustomerData customer = new CustomerData((CustomerType) customersValues.GetValue(i),spawnPosition,container);
                 company.Customers.Add(customer);
             }
+        }
+
+        private void OnApplicationQuit()
+        {
+            signalBus.TryUnsubscribe<GameStateSignal>(StateDependency);
+        }
+        private void OnDestroy()
+        {
+            signalBus.TryUnsubscribe<GameStateSignal>(StateDependency);
         }
     }
 }

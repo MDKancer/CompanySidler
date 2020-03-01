@@ -1,6 +1,6 @@
 using Zenject;
 
-namespace Signals.Zenject_Test
+namespace Zenject_Initializer
 {
     public class SharedContextInstaller : MonoInstaller<SharedContextInstaller>
     {

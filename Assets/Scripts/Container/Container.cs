@@ -6,6 +6,7 @@ using Enums;
 using StateMachine;
 using UnityEngine;
 using Zenject;
+using Zenject_Signals;
 using Resources = UnityEngine.Resources;
 
  namespace GameCloud
@@ -19,15 +20,16 @@ using Resources = UnityEngine.Resources;
         private List<Material> materials = new List<Material>();
         private List<Material> particleMaterials = new List<Material>();
         private List<GameObject> particleSystems = new List<GameObject>();
+        
         [Inject]
         private StateController<GameState> gameStateController;
+       
+        /// <summary>
+        /// Es wird ganz am anfang alle Prefabs aus den Ordnern im Dictionary reingepackt.
+        /// </summary>
         public void LoadAllResources()
         {
-           //TODO: hier wird alle Prefabs aus den Ordnern im Dictionary reingepackt.
-           
-           // wenn mann von Main Menu anfangen moechte.... dann auskommentieren.
-          // if (Boot.gameStateController.CurrentState == GameState.INTRO)
-           //{
+
                addPrefabs(Resources.LoadAll<GameObject>("Prefabs/Buildings"), EntityType.BUILDING);
                addPrefabs(Resources.LoadAll<GameObject>("Prefabs/Offices"), EntityType.OFFICES);
                addPrefabs(Resources.LoadAll<GameObject>("Prefabs/Fortniture"), EntityType.FORNITURE);
@@ -38,15 +40,13 @@ using Resources = UnityEngine.Resources;
                materials.AddRange(Resources.LoadAll<Material>("Materials"));
                particleMaterials.AddRange(Resources.LoadAll<Material>("Materials/Particle"));
                particleSystems.AddRange(Resources.LoadAll<GameObject>("Prefabs/ParticleSystems"));
-           //}
         }
-
+        /// <summary>
+        /// Es wird ausgeführt wenn man alle wichtige Daten schon eingegeben hat um ein Unternehmen zu erstellen.
+        /// </summary>
         public void SetDatas()
         {
-            if(gameStateController.CurrentState == GameState.GAME)
-            {
                 SetCompanyData();
-            }
         }
 
         public List<Material> Materials => materials;
@@ -91,7 +91,7 @@ using Resources = UnityEngine.Resources;
         }
         private void SetCompanyData()
         {
-            CompanyData companyData = Boot.boot_Instance.companyData;
+            CompanyData companyData = BootController.BootControllerInstance.companyData;
             string companyName = companyData.nameCompany;
             
             GameObject company = GameObject.Find("Company");

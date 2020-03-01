@@ -25,12 +25,6 @@ namespace BuildingPackage
             
             stateController.CurrentState = BuildingState.EMPTY;
         }
-
-        private void Start()
-        {
-            stateController.CurrentState = BuildingState.WORK;
-        }
-
         public void TakeLoan([NotNull]Company company,int amount)
         {
             if(!CompanyHaveLoan(company))

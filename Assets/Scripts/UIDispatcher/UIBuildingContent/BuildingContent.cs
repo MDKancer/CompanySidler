@@ -206,12 +206,12 @@ namespace UIPackage.UIBuildingContent
         {
             if(building.BuildingData.workers > 0)
             {
-                Boot.boot_Instance.monoBehaviour.StartCoroutine(routine: ShowProgressbarProcess(material: material));
-                Boot.boot_Instance.monoBehaviour.StartCoroutine(routine: UpdateTextLabelButton(btn: btn, project: project));
+                BootController.BootControllerInstance.monoBehaviour.StartCoroutine(routine: ShowProgressbarProcess(material: material));
+                BootController.BootControllerInstance.monoBehaviour.StartCoroutine(routine: UpdateTextLabelButton(btn: btn, project: project));
                 btn.onClick.AddListener(call: () =>
                 {
                     building.ApplyProject(newProject: project);
-                    Boot.boot_Instance.monoBehaviour.StartCoroutine(routine: ButtonLifeTime(btn: btn, project: project));
+                    BootController.BootControllerInstance.monoBehaviour.StartCoroutine(routine: ButtonLifeTime(btn: btn, project: project));
                 });
             }
         }
@@ -233,9 +233,9 @@ namespace UIPackage.UIBuildingContent
             material.SetFloat("_Width" , 1f);
             var step = 1f;
             
-            while (building.Project != null && step >= 0f)
+            while (building.CurrentProject != null && step >= 0f)
             {
-                step = 1 - (building.Project.percentprocessBar / 100f);
+                step = 1 - (building.CurrentProject.percentprocessBar / 100f);
                 
                 material.SetFloat("_Width" , step);
                 yield return null;
@@ -244,7 +244,7 @@ namespace UIPackage.UIBuildingContent
 
         private IEnumerator UpdateTextLabelButton(Button btn, Project project)
         {
-            while (building.Project != null &&  !btn.Equals(null))
+            while (building.CurrentProject != null &&  !btn.Equals(null))
             {
                 if (project.percentprocessBar > 0)
                 {
@@ -257,7 +257,7 @@ namespace UIPackage.UIBuildingContent
         private IEnumerator ButtonLifeTime(Button btn, Project project)
         {
             SetAllProjectButtonsInteractable(false);
-            while (building.Project != null)
+            while (building.CurrentProject != null)
             {
                 if(!btn.Equals(null))
                 {

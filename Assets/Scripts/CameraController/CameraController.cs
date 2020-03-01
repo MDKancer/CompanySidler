@@ -4,8 +4,6 @@ using Enums;
 using StateMachine;
 using UnityEngine;
 using Zenject;
-using Quaternion = UnityEngine.Quaternion;
-using Vector3 = UnityEngine.Vector3;
 
 namespace PlayerView
 {
@@ -33,15 +31,15 @@ namespace PlayerView
             originPosition = mainCameraGameObject.transform.position;
             originRotation = mainCameraGameObject.transform.rotation;
 
-            Boot.boot_Instance.monoBehaviour.StartCoroutine(MoveTo(endPosition));
-            Boot.boot_Instance.monoBehaviour.StartCoroutine(ChangeState());
+            BootController.BootControllerInstance.monoBehaviour.StartCoroutine(MoveTo(endPosition));
+            BootController.BootControllerInstance.monoBehaviour.StartCoroutine(ChangeState());
         }
         public void ToEmptyPos()
         {
-            Boot.boot_Instance.monoBehaviour.StartCoroutine(MoveTo(originPosition));
+            BootController.BootControllerInstance.monoBehaviour.StartCoroutine(MoveTo(originPosition));
             mainCameraGameObject.transform.rotation = originRotation;
 
-            Boot.boot_Instance.runtimeStateController.SwitchToLastState();
+            runtimeStateController.SwitchToLastState();
         }
 
         public void Move(Vector3 direction)

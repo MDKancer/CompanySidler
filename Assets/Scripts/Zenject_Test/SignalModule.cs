@@ -1,6 +1,7 @@
 using Zenject;
+using Zenject_Signals;
 
-namespace Signals.Zenject_Test
+namespace Zenject_Initializer
 {
     public class SignalModule : Installer<SignalModule>
     {
@@ -9,6 +10,7 @@ namespace Signals.Zenject_Test
             SignalBusInstaller.Install(Container);
 
             Container.DeclareSignal<CustomerSignals>().OptionalSubscriber();
+            Container.DeclareSignal<GameStateSignal>().OptionalSubscriber();
         }
     }
 }

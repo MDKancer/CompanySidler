@@ -40,14 +40,6 @@ namespace BuildingPackage
             };
             stateController.CurrentState = BuildingState.EMPTY;
         }
-
-        void Start()
-        {
-            stateController.CurrentState = BuildingState.WORK;
-            StartCoroutine(UpdateManyGenerator());
-        }
-        //coroutine -> alternative zu update
-
         public int ToLearn()
         {
             return BuildingData.wastage; 

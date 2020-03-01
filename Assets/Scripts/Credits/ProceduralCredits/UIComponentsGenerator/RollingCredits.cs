@@ -27,7 +27,7 @@ namespace Credits
 
                     if (rT.localPosition == v3_endPosition)
                     {
-                        Boot.boot_Instance.monoBehaviour.StopCoroutine(StartRolling(label));
+                        BootController.BootControllerInstance.monoBehaviour.StopCoroutine(StartRolling(label));
                         Object.Destroy(label);
                     }
                 }

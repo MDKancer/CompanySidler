@@ -2,29 +2,21 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
-using BootManager;
 using BuildingPackage.OfficeWorker;
 using Enums;
-using JetBrains.Annotations;
 using Human;
+using JetBrains.Annotations;
 using ProjectPackage;
-using Signals.Zenject_Test;
 using SpawnManager;
-using StateMachine;
-using UIPackage;
 using UnityEngine;
 using Zenject;
-using Random = UnityEngine.Random;
+using Zenject_Signals;
 
 namespace BuildingPackage
 {
     public class TarentTown : Building, iTarent
     {
         private List<Dictionary<BuildingType, CustomerType>> customerCompatibleBuilding;
-        [Inject]
-        private SpawnController spawnController;
-
-        
         void Awake()
         {
             #region
@@ -85,22 +77,21 @@ namespace BuildingPackage
             
             stateController.CurrentState = BuildingState.EMPTY;
         }
-
-        [Inject]
-        public void Init(SignalBus signalBus)
+        protected override void StateDependency(GameStateSignal gameStateSignal)
         {
-            signalBus.Subscribe<CustomerSignals>(GetSignal);
-        }
-
-        private void GetSignal(CustomerSignals customerSignals)
-        {
-            Debug.Log(customerSignals.name);
+            base.StateDependency(gameStateSignal);
+            
+            switch (gameStateSignal.state)
+            {
+                case GameState.GAME:
+                    Debug.Log("DistributeProjects");
+                    StartCoroutine(DistributeProjects());
+                    break;
+            }
         }
         void Start()
         {
-            stateController.CurrentState = BuildingState.WORK;
-            StartCoroutine(UpdateManyGenerator());
-            StartCoroutine(DistributeProjects());
+            
         }
 
         public void TakeProject(ref Project newProject,CustomerType customerType)
@@ -135,7 +126,7 @@ namespace BuildingPackage
                 isBuying = value;
             }
         }
-        private IEnumerator UpdateManyGenerator()
+        protected override IEnumerator UpdateManyGenerator()
         {
             if (stateController.CurrentState == BuildingState.WORK)
             {
@@ -172,13 +163,19 @@ namespace BuildingPackage
             
             if (isFor(customerType,buildingType))
             {
-                Building building = Company.GetOffice(buildingType);
-                building.possibleProjects = company.GetProjectsByType(customerType);
+                try
+                {
+                    //TODO: Manchmal GetOffice wirft Null zurück und dass soll nicht passieren.
+                    Building building = Company.GetOffice(buildingType);
+                    building.possibleProjects = company.GetProjectsByType(customerType);
+                }
+                catch (Exception e)
+                {
+                    Debug.LogError(e.Message);
+                }
+                
             }
         }
-
-
-
         private bool isFor(CustomerType customerType, BuildingType buildingType)
         {
             string customerTypeLowerCase = customerType.ToString().ToLower();

@@ -219,9 +219,11 @@ namespace BuildingPackage
         }
 
         /// <summary>
-        /// Es ist eine Funktion was funktioniert auf Assembly ebene.
+        /// Es ist eine Funktion die auf Assembly ebene funktioniert.
         /// die sammelt alle Interfaces von alle Klasse die von Hauptklasse Building erben.
         /// </summary>
+        ///
+        /// TODO: Vieleicht nicht alle Interfaces sondern Klassen die erben von Building!!!!
         private void GetAllInterfaces()
         {
             List<Type[]> unorderedTypes = AppDomain.CurrentDomain.GetAssemblies().SelectMany(x => x.GetTypes())
@@ -240,7 +242,5 @@ namespace BuildingPackage
                 }
             }
         }
-
-       
     }
 }

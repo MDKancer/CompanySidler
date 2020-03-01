@@ -98,8 +98,11 @@ namespace PlayerView
         // Update is called once per frame
         void Update()
         {
-            CurrentBudget();
-            ShowBuildingInfoWindow();
+            if(gameStateController.CurrentState == GameState.GAME)
+            {
+                CurrentBudget();
+                ShowBuildingInfoWindow();
+            }
         }
         
         public void ApplyEmployee(String employeeType)

@@ -26,12 +26,6 @@ namespace BuildingPackage
             };
             stateController.CurrentState = BuildingState.EMPTY;
         }
-
-        void Start()
-        {
-            stateController.CurrentState = BuildingState.WORK;
-            StartCoroutine(UpdateManyGenerator());
-        }
         public int Relax()
         {
             return BuildingData.wastage; 

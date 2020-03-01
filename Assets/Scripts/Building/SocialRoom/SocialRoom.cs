@@ -31,12 +31,6 @@ namespace BuildingPackage
             };
             stateController.CurrentState = BuildingState.EMPTY;
         }
-
-        void Start()
-        {
-            stateController.CurrentState = BuildingState.WORK;
-            StartCoroutine(UpdateManyGenerator());
-        }
         public int Communication()
         {
             return BuildingData.wastage; 

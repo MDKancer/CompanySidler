@@ -1,7 +1,6 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
-using BootManager;
 using Enums;
 using Human;
 using NaughtyAttributes;
@@ -10,57 +9,55 @@ using SpawnManager;
 using StateMachine;
 using UnityEngine;
 using Zenject;
+using Zenject_Signals;
 
 namespace BuildingPackage
 {
     public class Building : MonoBehaviour,iBuilding
     {
-        public int budget;
-        public List<Project> possibleProjects = new List<Project>(3);
-        [SerializeField,Required]
-        protected  GameObject officePrefab;
+        public delegate void ApplyWorkerEvent(Employee employee);
+        public ApplyWorkerEvent applyWorkerEvent;
         
+        public List<Project> possibleProjects = new List<Project>(3);
+        
+        public int budget;
+        [SerializeField,Required] 
+        protected  GameObject officePrefab;
+        [ShowNonSerializedField]  
+        protected bool isBuying = false;
         protected float buildTime;
         protected Company company;
         protected StateController<BuildingState> stateController = new StateController<BuildingState>();
         protected BuildingData buildingData;
-        
-        [ShowNonSerializedField]
-        protected bool isBuying = false;
-        
-        public delegate void ApplyWorkerEvent(Employee employee);
 
-        public ApplyWorkerEvent applyWorkerEvent;
-        private Project project = null;
+        protected SpawnController spawnController;
+        protected SignalBus signalBus;
+        
+
+        private Project currentProject = null;
+        
         [Inject]
-        private SpawnController spawnController;
+        protected virtual void Init(SignalBus signalBus, SpawnController spawnController)
+        {
+            this.signalBus = signalBus;
+            this.spawnController = spawnController;
+            this.signalBus.Subscribe<GameStateSignal>(StateDependency);
+        }
         public void OnEnable()
         {
             applyWorkerEvent += ApplyWorker;
         }
-
         public void Upgrade()
         {
             buildingData.workPlacesLimit += 5;
             buildingData.upgradePrice *= 2;
             buildingData.moneyPerSec *= 2;
         }
-
-        /// <summary>
-        /// Beim einkaufs des Büro werden die Objecte gespawnt. 
-        /// </summary>
-        protected void Buy(GameObject prefab, Vector3 position)
-        {
-            if (!isBuying)
-            {
-                spawnController.SpawnOffice(prefab, position);
-            }
-        }
-
         public void DoDamage(int damagePercent = 0)
         {
             buildingData.currentHitPoints -= damagePercent;
         }
+
         /// <summary>
         /// den Zustand des Gebüude ändernt.
         /// </summary>
@@ -80,9 +77,9 @@ namespace BuildingPackage
                     //Abhängig von Anzahl des Mitarbeiter wird der Verbrauch reduziert.
                     buildingData.ChangeWastage();
                     
-                    if(project != null && VARIABLE.Worker.EmployeeData.Project == null)
+                    if(currentProject != null && VARIABLE.Worker.EmployeeData.Project == null)
                     {
-                        VARIABLE.Worker.EmployeeData.Project = project;
+                        VARIABLE.Worker.EmployeeData.Project = currentProject;
                     }
                     return;
                 }
@@ -107,9 +104,9 @@ namespace BuildingPackage
 
         public void ApplyProject(Project newProject)
         {
-            if(buildingData.workers > 0 && project == null)
+            if(buildingData.workers > 0 && currentProject == null)
             {
-                this.project = newProject;
+                this.currentProject = newProject;
                 budget = newProject.Budget;
                 
                 foreach (var worker in BuildingData.AvailableWorker)
@@ -133,7 +130,7 @@ namespace BuildingPackage
         /// <summary>
         /// Das Project wird automatisch gelöscht/zerstört, wenn das ganzes Projekt "Done" ist.
         /// </summary>
-        public Project Project => project;
+        public Project CurrentProject => currentProject;
 
         public virtual bool IsBuying { set;get;}
 
@@ -146,12 +143,64 @@ namespace BuildingPackage
             set => company = value;
         }
 
+        protected virtual void StateDependency(GameStateSignal gameStateSignal)
+        {
+            switch (gameStateSignal.state)
+            {
+                case GameState.NONE:
+                    break;
+                case GameState.INTRO:
+                    break;
+                case GameState.LOADING:
+                    break;
+                case GameState.MAIN_MENU:
+                    break;
+                case GameState.PREGAME:
+                    break;
+                case GameState.GAME:
+                    stateController.CurrentState = BuildingState.WORK;
+                    Debug.Log("UpdateManyGenerator");
+                    StartCoroutine(UpdateManyGenerator());
+                    break;
+                case GameState.EXIT:
+                    break;
+            }
+        }
+
+        protected virtual IEnumerator UpdateManyGenerator(){yield return null;}
+        
+
+        /// <summary>
+        /// Beim einkaufs des Büro werden die Objecte gespawnt. 
+        /// </summary>
+        protected void Buy(GameObject prefab, Vector3 position)
+        {
+            if (!isBuying)
+            {
+                spawnController.SpawnOffice(prefab, position);
+            }
+        }
+        protected virtual void OnApplicationQuit()
+        {
+            Debug.Log("Unsubscribe");
+            signalBus.TryUnsubscribe<GameStateSignal>(StateDependency);
+        }
+        protected virtual void OnDestroy()
+        {
+            signalBus.TryUnsubscribe<GameStateSignal>(StateDependency);
+        }
+
+        protected void OnDisable()
+        {
+            signalBus.TryUnsubscribe<GameStateSignal>(StateDependency);
+        }
+
         private IEnumerator CheckIfProjectIsDone()
         {
-            while (!project.IsDone) yield return null;
+            while (!currentProject.IsDone) yield return null;
             var particleSystem =  spawnController.SpawnEffect(buildingData.buildingType, ParticleType.PROJECT);
             Destroy(particleSystem.gameObject, 2f);
-            project = null;
+            currentProject = null;
         }
     }
 }

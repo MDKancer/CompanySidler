@@ -10,10 +10,7 @@ namespace BuildingPackage.OfficeWorker
             this.workerType = WorkerType;
         }
 
-        public BuildingWorkers()
-        {
-            
-        }
+        public BuildingWorkers(){}
 
         public T Worker
         {

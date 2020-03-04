@@ -4,6 +4,7 @@ using Enums;
 using StateMachine;
 using UnityEngine;
 using Zenject;
+using Zenject_Signals;
 
 namespace PlayerView
 {
@@ -14,14 +15,15 @@ namespace PlayerView
         private Vector3 originPosition;
         private Quaternion originRotation;
         private bool isArrive;
-
-        [Inject]
+        private SignalBus signalBus;
         private StateController<RunTimeState> runtimeStateController;
 
-        public CameraController()
+        public CameraController(SignalBus signalBus,  StateController<RunTimeState> runtimeStateController)
         {
             mainCameraGameObject = Camera.main.gameObject;
             mainCamera = Camera.main;
+            this.signalBus = signalBus;
+            this.runtimeStateController = runtimeStateController;
         }
         public void FocusOn(Vector3 endPosition)
         {
@@ -70,8 +72,8 @@ namespace PlayerView
         private IEnumerator ChangeState()
         {
             while (isArrive == false) yield return null;
-
             runtimeStateController.CurrentState = RunTimeState.BUILDING_INFO;
+            signalBus.Fire(new ShowBuildingData{});
         }
     }
 }

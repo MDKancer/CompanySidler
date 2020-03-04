@@ -142,6 +142,7 @@
     <Compile Include="Assets\Scripts\Zenject_Test\SignalModule.cs" />
     <Compile Include="Assets\Scripts\Zenject_Test\Signals\CustomerSignals.cs" />
     <Compile Include="Assets\Scripts\Zenject_Test\Signals\GameStateSignal.cs" />
+    <Compile Include="Assets\Scripts\Zenject_Test\Signals\ShowBuildingData.cs" />
     <Compile Include="Assets\Tests\ConvertToPrefab.cs" />
     <Compile Include="Assets\Tests\ConvertToVertexColor.cs" />
     <None Include="Assets\Tests\VertexInputSimple.shader" />

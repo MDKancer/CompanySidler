@@ -101,7 +101,7 @@ namespace BootManager
             while (gameStateController.CurrentState != gameState)
             {
                 gameStateController.CurrentState =  (GameState)Enum.GetValues(typeof(GameState)).GetValue(index);
-                Debug.Log(gameStateController.CurrentState);
+                //Debug.Log(gameStateController.CurrentState);
                 index++;
                 yield return new WaitForSeconds(0.3f);
             }

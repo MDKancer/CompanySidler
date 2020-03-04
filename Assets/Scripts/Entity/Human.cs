@@ -1,6 +1,7 @@
 using System;
 using BuildingPackage;
 using Enums;
+using GameCloud;
 using StateMachine;
 using UIPackage.UIBuildingContent;
 using UnityEngine;
@@ -19,7 +20,6 @@ namespace Human
         public delegate void AttachAnBuilding(Building myOffice);
 
         public AttachAnBuilding AttachEvent;
-
         public void Awake()
         {
             

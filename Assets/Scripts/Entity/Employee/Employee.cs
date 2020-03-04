@@ -22,11 +22,10 @@ namespace Human
 
         private EmployeeData employeeData = null;
         private TextMeshProUGUI namePoster;
-        [Inject]
-        private Container container;
 
         public void OnEnable()
         {
+            //TODO: das soll auch geändert werden, ist dumm gemacht.
             AttachEvent += SetOffice;
         }
 
@@ -100,9 +99,9 @@ namespace Human
         {
             int index = 0;
             List<HumanState> myKeys = EmployeeData.GetEntityWorkingCycle.Keys.ToList();
-            List<Company> firmas = container.Companies;
+            Company company = employeeData.Company;
             Vector3 initialPosition = gameObject.transform.position;
-            Vector3 officePosition =firmas[0].GetOffice(EmployeeData.GetHisOffice).gameObject.transform.position;
+            Vector3 officePosition =company.GetOffice(EmployeeData.GetHisOffice).gameObject.transform.position;
             Vector3 targetPosition = GenerateRandomPosition(officePosition);
             
             destination = EmployeeData.GetHisOffice;
@@ -149,7 +148,7 @@ namespace Human
                         index = index >= myKeys.Count ? 0 : index;
                         
                         destination = EmployeeData.GetEntityWorkingCycle[myKeys[index]];
-                        officePosition = firmas[0].GetOffice(destination).gameObject.transform.position;
+                        officePosition = company.GetOffice(destination).gameObject.transform.position;
                         
                         SelfState.CurrentState = myKeys[index];
                         

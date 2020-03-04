@@ -60,6 +60,8 @@ namespace SpawnManager
                    Employee employee = objectInstace.AddComponent<Employee>();
                    
                    employee.EmployeeData = employeeData;
+                   //TODO: der Employee soll automatisch den Zugriff auf Container kriegen.
+                   //Vieleicht die Company in Employeedata weitergeben, und nicht den Container.
                    employee.AttachEvent(workerOffice);
                    employee.Work();
                 }

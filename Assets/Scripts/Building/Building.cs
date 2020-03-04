@@ -34,7 +34,7 @@ namespace BuildingPackage
         protected SignalBus signalBus;
         
 
-        private Project currentProject = null;
+        private Project startupProject = null;
         
         [Inject]
         protected virtual void Init(SignalBus signalBus, SpawnController spawnController)
@@ -67,23 +67,24 @@ namespace BuildingPackage
         }
         public void ApplyWorker(Employee employee)
         {
-            foreach (var VARIABLE in BuildingData.AvailableWorker)
-            {
-                if (VARIABLE.WorkerType == employee.EmployeeData.GetEntityType && VARIABLE.Worker == null)
+
+                foreach (var buildingWorkers in BuildingData.AvailableWorker)
                 {
-                    VARIABLE.Worker = employee;
-                    buildingData.workers++;
-                    
-                    //Abhängig von Anzahl des Mitarbeiter wird der Verbrauch reduziert.
-                    buildingData.ChangeWastage();
-                    
-                    if(currentProject != null && VARIABLE.Worker.EmployeeData.Project == null)
+                    if (buildingWorkers.WorkerType == employee.EmployeeData.GetEntityType && buildingWorkers.Worker == null)
                     {
-                        VARIABLE.Worker.EmployeeData.Project = currentProject;
+                        buildingWorkers.Worker = employee;
+                        buildingData.workers++;
+                        
+                        //Abhängig von Anzahl des Mitarbeiter wird der Verbrauch reduziert.
+                        buildingData.ChangeWastage();
+                        
+                        if(startupProject != null && buildingWorkers.Worker.EmployeeData.Project == null)
+                        {
+                            buildingWorkers.Worker.EmployeeData.Project = startupProject;
+                        }
+                        return;
                     }
-                    return;
                 }
-            }
         }
 
         public void QuitWorker(Employee employee)
@@ -104,9 +105,9 @@ namespace BuildingPackage
 
         public void ApplyProject(Project newProject)
         {
-            if(buildingData.workers > 0 && currentProject == null)
+            if(buildingData.workers > 0 && startupProject == null)
             {
-                this.currentProject = newProject;
+                this.startupProject = newProject;
                 budget = newProject.Budget;
                 
                 foreach (var worker in BuildingData.AvailableWorker)
@@ -130,7 +131,7 @@ namespace BuildingPackage
         /// <summary>
         /// Das Project wird automatisch gelöscht/zerstört, wenn das ganzes Projekt "Done" ist.
         /// </summary>
-        public Project CurrentProject => currentProject;
+        public Project StartupProject => startupProject;
 
         public virtual bool IsBuying { set;get;}
 
@@ -197,10 +198,10 @@ namespace BuildingPackage
 
         private IEnumerator CheckIfProjectIsDone()
         {
-            while (!currentProject.IsDone) yield return null;
+            while (!startupProject.IsDone) yield return null;
             var particleSystem =  spawnController.SpawnEffect(buildingData.buildingType, ParticleType.PROJECT);
             Destroy(particleSystem.gameObject, 2f);
-            currentProject = null;
+            startupProject = null;
         }
     }
 }

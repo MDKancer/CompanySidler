@@ -1,15 +1,15 @@
+using System;
 using System.Collections;
 using BootManager;
 using BuildingPackage;
 using Enums;
 using GameCloud;
 using Human;
-using PlayerView;
 using ProjectPackage;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
-using Zenject;
+using Object = UnityEngine.Object;
 
 namespace UIPackage.UIBuildingContent
 {
@@ -19,6 +19,24 @@ namespace UIPackage.UIBuildingContent
     /// </summary>
     public class BuildingContent
     {
+#region Delegates and Events
+
+        public delegate void UpdateWindow();
+        public delegate void UpgradeBuilding();
+        public delegate void BuyBuilding();
+        public delegate void ChangeStateBuilding(Transform transform);
+        public delegate void ApplyEmployee(String employeeType);
+        public delegate void QuitEmployee(Employee employee);
+        public delegate void StartProject(Project project);
+        public event UpdateWindow windowUpdateEvent;
+        public event UpgradeBuilding buildingUpgradeEvent;
+        public event BuyBuilding buyBuildingEvent;
+        public event ChangeStateBuilding changeStateBuilding;
+        public event ApplyEmployee applyEmployeeEvent;
+        public event QuitEmployee quitEmployeeEvent;
+  
+#endregion
+        public event StartProject startProject;
         private readonly UiElements uiElements;        
         private readonly GameObject buildingContent;
         private readonly RectTransform buildingContentRectTransform;
@@ -26,9 +44,8 @@ namespace UIPackage.UIBuildingContent
         private Building building;
         private UIData uiData;
 
-        [Inject]
         private Container container;
-        public BuildingContent( GameObject buildingContent)
+        public BuildingContent(GameObject buildingContent, Container container)
         {
             this.buildingContent = buildingContent;
             buildingContentRectTransform = buildingContent.GetComponent<RectTransform>();
@@ -58,22 +75,23 @@ namespace UIPackage.UIBuildingContent
         private void SetEmployeesButton()
         {
             var index = 1;
-            foreach (var VARIABLE in building.BuildingData.AvailableWorker)
+            foreach (var buildingWorker in building.BuildingData.AvailableWorker)
             {
-                if (VARIABLE != null)
+                if (buildingWorker != null)
                 {
-                    if (!uiData.Contains(VARIABLE.WorkerType.ToString()))
+                    if (!uiData.Contains(buildingWorker.WorkerType.ToString()))
                     {
+                        
                         var btn = uiElements.CreateButton(
                             buildingContentRectTransform,
-                            VARIABLE.WorkerType.ToString(),
-                            index,
-                            AnchorType.TOP_LEFT,
-                            Column.FIRST);
+                            buildingWorker.WorkerType.ToString(),
+                            index: index,
+                            anchorType: AnchorType.TOP_LEFT,
+                            column: Column.FIRST);
 
-                        SetEventListener(btn, VARIABLE.WorkerType);
+                        SetEventListener(btn, buildingWorker.WorkerType);
                         
-                        var (employedPlaces, countEmployedPlaces) = building.BuildingData.GetCountOfEmployed(VARIABLE.WorkerType);
+                        var (employedPlaces, countEmployedPlaces) = building.BuildingData.GetCountOfEmployed(buildingWorker.WorkerType);
                         var countLabel = uiElements.GenerateCountOfEmployedWorker(
                             buildingContentRectTransform,
                             index,
@@ -82,15 +100,15 @@ namespace UIPackage.UIBuildingContent
                         
                         if(employedPlaces > 0)
                         {
-                            var quitBtn = uiElements.CreateButton(
-                                buildingContentRectTransform,
+                            var signsoBtn = uiElements.CreateButton(
+                                parent: buildingContentRectTransform,
                                 "Quit",
-                                index,
-                                AnchorType.TOP_LEFT,
-                                Column.THIRD);
-                            SetEventListener(quitBtn, VARIABLE.Worker, VARIABLE.WorkerType);
+                                index: index,
+                                anchorType: AnchorType.TOP_LEFT,
+                                column: Column.THIRD);
+                            SetEventListener(signsoBtn, buildingWorker.Worker, buildingWorker.WorkerType);
                             //--------------
-                            uiData.AddEmployeesQuitButton(quitBtn, quitBtn.gameObject.transform.GetChild(0).GetComponent<TextMeshProUGUI>());
+                            uiData.AddEmployeesQuitButton(signsoBtn, signsoBtn.gameObject.transform.GetChild(0).GetComponent<TextMeshProUGUI>());
                             
                         }
                         //----------
@@ -184,8 +202,11 @@ namespace UIPackage.UIBuildingContent
                 var (employedPlaces, countEmployedPlaces) = building.BuildingData.GetCountOfEmployed(workerType);
                 if(employedPlaces < countEmployedPlaces)
                 {
-                    PlayerViewController.playerViewController.ApplyEmployee(workerType.ToString());
+                    this.applyEmployeeEvent(workerType.ToString());
                     UpdateEmployeeWorkers(uiData.GetEmployeesCountLabel(workerType.ToString()),  workerType);
+                    
+                    windowUpdateEvent();
+
                 }
             });
         }
@@ -196,8 +217,10 @@ namespace UIPackage.UIBuildingContent
                 var (employedPlaces, countEmployedPlaces) = building.BuildingData.GetCountOfEmployed(workerType);
                 if(employedPlaces > 0)
                 {
-                    building.QuitWorker(employee);
+                    quitEmployeeEvent(employee);
                     UpdateEmployeeWorkers(uiData.GetEmployeesCountLabel(workerType.ToString()), workerType);
+                   
+                    windowUpdateEvent();
                 }
             });
         }
@@ -210,7 +233,7 @@ namespace UIPackage.UIBuildingContent
                 BootController.BootControllerInstance.monoBehaviour.StartCoroutine(routine: UpdateTextLabelButton(btn: btn, project: project));
                 btn.onClick.AddListener(call: () =>
                 {
-                    building.ApplyProject(newProject: project);
+                    startProject(project);
                     BootController.BootControllerInstance.monoBehaviour.StartCoroutine(routine: ButtonLifeTime(btn: btn, project: project));
                 });
             }
@@ -233,9 +256,9 @@ namespace UIPackage.UIBuildingContent
             material.SetFloat("_Width" , 1f);
             var step = 1f;
             
-            while (building.CurrentProject != null && step >= 0f)
+            while (building.StartupProject != null && step >= 0f)
             {
-                step = 1 - (building.CurrentProject.percentprocessBar / 100f);
+                step = 1 - (building.StartupProject.percentprocessBar / 100f);
                 
                 material.SetFloat("_Width" , step);
                 yield return null;
@@ -244,7 +267,7 @@ namespace UIPackage.UIBuildingContent
 
         private IEnumerator UpdateTextLabelButton(Button btn, Project project)
         {
-            while (building.CurrentProject != null &&  !btn.Equals(null))
+            while (building.StartupProject != null &&  !btn.Equals(null))
             {
                 if (project.percentprocessBar > 0)
                 {
@@ -257,7 +280,7 @@ namespace UIPackage.UIBuildingContent
         private IEnumerator ButtonLifeTime(Button btn, Project project)
         {
             SetAllProjectButtonsInteractable(false);
-            while (building.CurrentProject != null)
+            while (building.StartupProject != null)
             {
                 if(!btn.Equals(null))
                 {

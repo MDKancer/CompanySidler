@@ -1,5 +1,4 @@
-using System;
-using BootManager;
+using System.Collections;
 using BuildingPackage;
 using Enums;
 using UnityEngine;
@@ -8,6 +7,7 @@ using StateMachine;
 using TMPro;
 using UIPackage.UIBuildingContent;
 using Zenject;
+using Zenject_Signals;
 
 namespace InputManager
 {
@@ -29,38 +29,71 @@ namespace InputManager
         private UiElements uiElements = new UiElements();
         private TextMeshProUGUI buildingLabel;
 
-        [Inject]
+        private SignalBus signalBus;
         private StateController<GameState> gameStateController;
-        [Inject]
         private StateController<RunTimeState> runtimeStateController;
+
+        [Inject]
+        private void Init(SignalBus signalBus, StateController<GameState> gameStateController,
+            StateController<RunTimeState> runtimeStateController)
+        {
+            this.signalBus = signalBus;
+            this.gameStateController = gameStateController;
+            this.runtimeStateController = runtimeStateController;
+            
+            //signalBus.Subscribe<ShowBuildingData>(OnWindowOpen);
+            signalBus.Subscribe<GameStateSignal>(StateDependency);
+        }
+
+        private void StateDependency(GameStateSignal gameStateSignal)
+        {
+            switch (gameStateSignal.state)
+            {
+                case GameState.NONE:
+                    break;
+                case GameState.INTRO:
+                    break;
+                case GameState.LOADING:
+                    break;
+                case GameState.MAIN_MENU:
+                    break;
+                case GameState.PREGAME:
+                    break;
+                case GameState.GAME:
+                    SetCameraController();
+                    showBuildingDataEvent += PlayerViewController.playerViewController.FocusedBuilding;
+                    StartCoroutine(CameraUpdate());
+                    break;
+                case GameState.EXIT:
+                    break;
+            }
+        }
         public  void Awake()
         {
-            // wenn mann von Main Menu anfangen moechte.... dann auskommentieren.
-            //if (Boot.gameStateController.CurrentState == GameState.GAME)
-            //{
-               StartCameraController();
-            //}
+
         }
 
         public void Start()
         {
-            showBuildingDataEvent += PlayerViewController.playerViewController.FocusedBuilding;
+            
         }
 
-        public void StartCameraController()
+        public void SetCameraController()
         {
-            cameraController = new CameraController();
+            cameraController = new CameraController(signalBus,runtimeStateController);
             focusObject = GameObject.Find("Company")?.gameObject;
             focusPoint = focusObject.transform.position;
             buildingLabel = uiElements.GetCanvas("");
             buildingLabel.gameObject.SetActive(false);
         }
 
-        public void Update()
+        private IEnumerator CameraUpdate()
         {
-            if(gameStateController.CurrentState == GameState.GAME)
+            Debug.Log("Coroutine ist gestartet");
+            while (gameStateController.CurrentState == GameState.GAME)
             {
-                CameraEvents();
+                    CameraEvents();
+                yield return null;
             }
         }
 
@@ -109,9 +142,9 @@ namespace InputManager
                             focusPoint = rayCastHit.point;
                             focusedBuilding = rayCastHit.collider.gameObject;
                             
-                            var buildingType = (Building)focusedBuilding?.GetComponent(typeof(Building));
+                            var building = (Building)focusedBuilding?.GetComponent(typeof(Building));
                             
-                            showBuildingDataEvent(buildingType);
+                            showBuildingDataEvent(building);
                             
                             cameraController.FocusOn(rayCastHit.point);
                         }
@@ -128,6 +161,7 @@ namespace InputManager
                     cameraController.ToEmptyPos();
 
                     runtimeStateController.CurrentState = RunTimeState.PLAYING;
+                    signalBus.Fire(new ShowBuildingData{});
                     focusPoint = focusObject.transform.position;
                 }
             }

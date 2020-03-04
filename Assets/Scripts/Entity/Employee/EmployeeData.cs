@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using BootManager;
+using BuildingPackage;
 using Enums;
 using GameCloud;
 using ProjectPackage;
@@ -20,16 +21,20 @@ namespace Human
         private Project project;
         private Dictionary<HumanState,BuildingType> entityWorkCycle = new Dictionary<HumanState, BuildingType>();
         private GameObject prefab = null;
-        [Inject]
-        private Container container;
 
-        public EmployeeData(EntityType entityType, BuildingType hisOffice)
+        private Company company;
+
+        public EmployeeData(Company company,GameObject prefab,EntityType entityType, BuildingType hisOffice)
         {
+            this.company = company;
             this.hisOffice = hisOffice;
             this.entityType = entityType;
+            this.prefab = prefab;
             SetDataFields();
         }
         public GameObject GetPrefab => prefab;
+
+        public Company Company => company;
 
         public Project Project
         {
@@ -46,17 +51,9 @@ namespace Human
 
         private void SetDataFields()
         {
-         SetPrefabField();
          SetEntityWorkCycleField();
         }
 
-        private void SetPrefabField()
-        {
-            if (entityType != EntityType.NONE && entityType != EntityType.CUSTOMER)
-            {
-               prefab = container.GetPrefabsByType(EntityType.DEVELOPER)[0];
-            }
-        }
 
         private void SetEntityWorkCycleField()
         {

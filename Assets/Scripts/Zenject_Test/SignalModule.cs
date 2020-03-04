@@ -11,6 +11,7 @@ namespace Zenject_Initializer
 
             Container.DeclareSignal<CustomerSignals>().OptionalSubscriber();
             Container.DeclareSignal<GameStateSignal>().OptionalSubscriber();
+            Container.DeclareSignal<ShowBuildingData>().OptionalSubscriber();
         }
     }
 }

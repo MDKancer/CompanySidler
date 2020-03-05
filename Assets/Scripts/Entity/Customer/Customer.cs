@@ -70,7 +70,7 @@ namespace Human.Customer
         }
         private IEnumerator ShowMyNamePoster()
         {
-            namePoster = uiElements.GetCanvas(this.customerData.customerType.ToString());
+            namePoster = proceduralUiElements.GetCanvas(this.customerData.customerType.ToString());
             
             RectTransform rectTransform = namePoster.GetComponent<RectTransform>();
             while (!gameObject.Equals(null))

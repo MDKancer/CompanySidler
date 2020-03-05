@@ -41,7 +41,7 @@ namespace BootManager
             this.sceneManager = sceneManager;
             
             this.signalBus.Subscribe<GameStateSignal>(StateDependency);
-            
+            this.signalBus.Fire(new MonoBehaviourSignal{monoBehaviour = this});
         }
 
         private void StateDependency(GameStateSignal gameStateSignal)

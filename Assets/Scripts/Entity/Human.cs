@@ -13,7 +13,7 @@ namespace Human
     {
         
         public BuildingType destination = BuildingType.NONE;
-        protected UiElements uiElements = new UiElements();
+        protected ProceduralUiElements proceduralUiElements = new ProceduralUiElements();
         
         private StateController<HumanState> selfState = new StateController<HumanState>();
 

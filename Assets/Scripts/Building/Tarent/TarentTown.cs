@@ -84,7 +84,7 @@ namespace BuildingPackage
             switch (gameStateSignal.state)
             {
                 case GameState.GAME:
-                    Debug.Log("DistributeProjects");
+
                     StartCoroutine(DistributeProjects());
                     break;
             }
@@ -171,7 +171,7 @@ namespace BuildingPackage
                 }
                 catch (Exception e)
                 {
-                    Debug.LogError(e.Message);
+                    Debug.LogWarning(e.Message);
                 }
                 
             }

@@ -185,7 +185,7 @@ namespace Human
 
         private IEnumerator ShowMyCanvas()
         {
-            namePoster = uiElements.GetCanvas(this.employeeData.GetEntityType.ToString());
+            namePoster = proceduralUiElements.GetCanvas(this.employeeData.GetEntityType.ToString());
             var main = Camera.main;
             RectTransform rectTransform = namePoster.GetComponent<RectTransform>();
             while (gameObject != null)

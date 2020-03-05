@@ -1,14 +1,16 @@
 using System;
 using System.Collections;
-using BootManager;
 using BuildingPackage;
 using Enums;
 using GameCloud;
 using Human;
+using ModestTree;
 using ProjectPackage;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
+using Zenject;
+using Zenject_Signals;
 using Object = UnityEngine.Object;
 
 namespace UIPackage.UIBuildingContent
@@ -29,29 +31,33 @@ namespace UIPackage.UIBuildingContent
         public delegate void QuitEmployee(Employee employee);
         public delegate void StartProject(Project project);
         public event UpdateWindow windowUpdateEvent;
-        public event UpgradeBuilding buildingUpgradeEvent;
-        public event BuyBuilding buyBuildingEvent;
-        public event ChangeStateBuilding changeStateBuilding;
-        public event ApplyEmployee applyEmployeeEvent;
+        public UpgradeBuilding buildingUpgradeEvent;
+        public BuyBuilding buyBuildingEvent;
+        public ChangeStateBuilding changeStateBuilding;
+        public ApplyEmployee applyEmployeeEvent;
         public event QuitEmployee quitEmployeeEvent;
   
 #endregion
         public event StartProject startProject;
-        private readonly UiElements uiElements;        
-        private readonly GameObject buildingContent;
-        private readonly RectTransform buildingContentRectTransform;
-        private readonly Material projectButtonMaterial;
+        private readonly ProceduralUiElements proceduralUiElements;        
+        private Material projectButtonMaterial;
         private Building building;
         private UIData uiData;
-
+        private MonoBehaviour monoBehaviour;
         private Container container;
-        public BuildingContent(GameObject buildingContent, Container container)
+        private SignalBus signalBus;
+        public BuildingContent(ref UIData uiData)
         {
-            this.buildingContent = buildingContent;
-            buildingContentRectTransform = buildingContent.GetComponent<RectTransform>();
             
-            uiElements = new UiElements();
-            uiData = new UIData();
+            this.uiData = uiData;
+            proceduralUiElements = new ProceduralUiElements();
+            
+        }
+        [Inject]
+        private void Init(SignalBus signalBus,Container container)
+        {
+            this.signalBus = signalBus;
+            this.container = container;
             
             foreach (var material in container.Materials)
             {
@@ -60,11 +66,16 @@ namespace UIPackage.UIBuildingContent
                     projectButtonMaterial = material;
                 }
             }
+            
+            this.signalBus.Subscribe<MonoBehaviourSignal>(GetMonoBehaviour);
         }
-        
-        public void CreateBuildingContent(ref UIData uiData, Building building)
+
+        private void GetMonoBehaviour(MonoBehaviourSignal monoBehaviourSignal)
         {
-            this.uiData = uiData;
+            monoBehaviour = monoBehaviourSignal.monoBehaviour;
+        }
+        public void CreateBuildingContent(Building building)
+        {
             this.building = building;
             SetEmployeesButton();
 
@@ -74,38 +85,32 @@ namespace UIPackage.UIBuildingContent
 
         private void SetEmployeesButton()
         {
-            var index = 1;
             foreach (var buildingWorker in building.BuildingData.AvailableWorker)
             {
                 if (buildingWorker != null)
                 {
                     if (!uiData.Contains(buildingWorker.WorkerType.ToString()))
                     {
-                        
-                        var btn = uiElements.CreateButton(
-                            buildingContentRectTransform,
-                            buildingWorker.WorkerType.ToString(),
-                            index: index,
-                            anchorType: AnchorType.TOP_LEFT,
-                            column: Column.FIRST);
+
+                        var btn = proceduralUiElements.CreateButton(
+                            uiData.employeeLayout.rectTransform,
+                            buildingWorker.WorkerType.ToString());
 
                         SetEventListener(btn, buildingWorker.WorkerType);
                         
                         var (employedPlaces, countEmployedPlaces) = building.BuildingData.GetCountOfEmployed(buildingWorker.WorkerType);
-                        var countLabel = uiElements.GenerateCountOfEmployedWorker(
-                            buildingContentRectTransform,
-                            index,
-                            (employedPlaces,countEmployedPlaces),
-                            AnchorType.TOP_LEFT);
+                       
+                        var countLabel = proceduralUiElements.GenerateCountOfEmployedWorker(
+                            uiData.countLayout.rectTransform,
+                            (employedPlaces,countEmployedPlaces)
+                            );
                         
                         if(employedPlaces > 0)
                         {
-                            var signsoBtn = uiElements.CreateButton(
-                                parent: buildingContentRectTransform,
-                                "Quit",
-                                index: index,
-                                anchorType: AnchorType.TOP_LEFT,
-                                column: Column.THIRD);
+                            var signsoBtn = proceduralUiElements.CreateButton(
+                                parent: uiData.quitLayout.rectTransform,
+                                "Quit"
+                                );
                             SetEventListener(signsoBtn, buildingWorker.Worker, buildingWorker.WorkerType);
                             //--------------
                             uiData.AddEmployeesQuitButton(signsoBtn, signsoBtn.gameObject.transform.GetChild(0).GetComponent<TextMeshProUGUI>());
@@ -114,8 +119,6 @@ namespace UIPackage.UIBuildingContent
                         //----------
                         uiData.AddEmployeesApplyButton(btn,btn.gameObject.transform.GetChild(0).GetComponent<TextMeshProUGUI>());
                         uiData.AddEmployeesCountButton(btn,countLabel);
-                                                
-                        index++;
                     }
                 }
             }
@@ -123,32 +126,26 @@ namespace UIPackage.UIBuildingContent
         
         private void SetProjectsButton()
         {
-            var index = 1;
             if(building.GetType() != typeof(TarentTown))
             {
                 foreach (var project in building.possibleProjects)
                 {
                     if (project != null)
                     {
-                        var btnName = project.customerType.ToString() + "(" + index + ")";
+                        var btnName = project.customerType.ToString() + "(" + project.GetHashCode() + ")";
                         
                         if (!uiData.Contains(btnName))
                         {
                             var materialInstance = GetCopyOfMaterial(projectButtonMaterial);
-                            var btn = uiElements.CreateButton
+                            var btn = proceduralUiElements.CreateButton
                             (
-                                buildingContentRectTransform,
+                                uiData.projectsLayout.rectTransform,
                                 btnName,
-                                index,
-                                AnchorType.TOP_LEFT,
-                                Column.FOURTH,
                                 materialInstance
                             );
                             SetEventListener(btn,project,materialInstance);
                             
-                            //----------
                             uiData.AddProjectApplyButton(btn, btn.gameObject.transform.GetChild(0).GetComponent<TextMeshProUGUI>());
-                            index++;
                         }
                     }
                 }
@@ -160,35 +157,18 @@ namespace UIPackage.UIBuildingContent
                 {
                     if (allProjects[i] != null)
                     {
-                        var btnName = allProjects[i].customerType.ToString() + "(" + index + ")";
-                        Column column;
-
-                        if (i < 6)
-                        {
-                            column =  Column.FOURTH;
-                        }
-                        else
-                        {
-                            column = Column.FIVETH;
-                            if(index > 5) index = 1;
-                        }
+                        var btnName = allProjects[i].customerType.ToString() + "(" + allProjects[i].GetHashCode() + ")";
                         
                         if (!uiData.Contains(btnName))
                         {
-                            var materialInstance = GetCopyOfMaterial(projectButtonMaterial);
-                            var btn = uiElements.CreateButton
+                            var btn = proceduralUiElements.CreateButton
                             (
-                                buildingContentRectTransform,
-                                btnName,
-                                index,
-                                AnchorType.TOP_LEFT,
-                                column,
-                                materialInstance
+                                uiData.projectsLayout.rectTransform,
+                                btnName
                             );
                             btn.interactable = false;
                             //----------
                             uiData.AddProjectApplyButton(btn, btn.gameObject.transform.GetChild(0).GetComponent<TextMeshProUGUI>());
-                            index++;
                         }
                     }
                 }
@@ -229,12 +209,12 @@ namespace UIPackage.UIBuildingContent
         {
             if(building.BuildingData.workers > 0)
             {
-                BootController.BootControllerInstance.monoBehaviour.StartCoroutine(routine: ShowProgressbarProcess(material: material));
-                BootController.BootControllerInstance.monoBehaviour.StartCoroutine(routine: UpdateTextLabelButton(btn: btn, project: project));
+                monoBehaviour.StartCoroutine(routine: ShowProgressbarProcess(material: material));
+                monoBehaviour.StartCoroutine(routine: UpdateTextLabelButton(btn: btn, project: project));
                 btn.onClick.AddListener(call: () =>
                 {
                     startProject(project);
-                    BootController.BootControllerInstance.monoBehaviour.StartCoroutine(routine: ButtonLifeTime(btn: btn, project: project));
+                    monoBehaviour.StartCoroutine(routine: ButtonLifeTime(btn: btn, project: project));
                 });
             }
         }
@@ -279,7 +259,7 @@ namespace UIPackage.UIBuildingContent
 
         private IEnumerator ButtonLifeTime(Button btn, Project project)
         {
-            SetAllProjectButtonsInteractable(false);
+            MakeButtonsProjectInactive(false);
             while (building.StartupProject != null)
             {
                 if(!btn.Equals(null))
@@ -300,13 +280,17 @@ namespace UIPackage.UIBuildingContent
             }
         }
 
-        private void SetAllProjectButtonsInteractable(bool interactable)
+        private void MakeButtonsProjectInactive(bool interactable)
         {
             foreach (var btn in uiData.ProjectApplyButtons)
             {
                 btn.interactable = interactable;
             }
         }
-        
+
+        ~BuildingContent()
+        {
+            signalBus.TryUnsubscribe<MonoBehaviourSignal>(GetMonoBehaviour);
+        }
     }
 }

@@ -26,7 +26,7 @@ namespace InputManager
         //private float distance;
         private Vector3 focusPoint;
         private static GameObject focusedBuilding;
-        private UiElements uiElements = new UiElements();
+        private ProceduralUiElements proceduralUiElements = new ProceduralUiElements();
         private TextMeshProUGUI buildingLabel;
 
         private SignalBus signalBus;
@@ -83,13 +83,12 @@ namespace InputManager
             cameraController = new CameraController(signalBus,runtimeStateController);
             focusObject = GameObject.Find("Company")?.gameObject;
             focusPoint = focusObject.transform.position;
-            buildingLabel = uiElements.GetCanvas("");
+            buildingLabel = proceduralUiElements.GetCanvas("");
             buildingLabel.gameObject.SetActive(false);
         }
 
         private IEnumerator CameraUpdate()
         {
-            Debug.Log("Coroutine ist gestartet");
             while (gameStateController.CurrentState == GameState.GAME)
             {
                     CameraEvents();

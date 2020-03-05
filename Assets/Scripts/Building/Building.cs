@@ -160,7 +160,7 @@ namespace BuildingPackage
                     break;
                 case GameState.GAME:
                     stateController.CurrentState = BuildingState.WORK;
-                    Debug.Log("UpdateManyGenerator");
+                    
                     StartCoroutine(UpdateManyGenerator());
                     break;
                 case GameState.EXIT:
@@ -183,7 +183,6 @@ namespace BuildingPackage
         }
         protected virtual void OnApplicationQuit()
         {
-            Debug.Log("Unsubscribe");
             signalBus.TryUnsubscribe<GameStateSignal>(StateDependency);
         }
         protected virtual void OnDestroy()

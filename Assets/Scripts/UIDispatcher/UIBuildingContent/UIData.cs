@@ -1,9 +1,8 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using Enums;
 using JetBrains.Annotations;
-using NaughtyAttributes;
+using Sirenix.OdinInspector;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -34,6 +33,8 @@ namespace UIPackage.UIBuildingContent
         public Button upgradeBtn;
         [Required]
         public Button buyBtn;
+        [Required]
+        public Button stateBtn;
         [Required]
         public TextMeshProUGUI budget_Label;
         [Required]

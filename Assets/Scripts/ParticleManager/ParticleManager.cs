@@ -1,8 +1,7 @@
-﻿using BootManager;
-using BuildingPackage;
+﻿using BuildingPackage;
 using Enums;
 using GameCloud;
-using NaughtyAttributes;
+using Sirenix.OdinInspector;
 using UnityEngine;
 using Zenject;
 

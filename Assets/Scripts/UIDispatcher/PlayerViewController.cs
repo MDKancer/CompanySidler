@@ -1,10 +1,10 @@
 ﻿using System;
 using System.Globalization;
+using System.Reflection;
 using BuildingPackage;
 using Enums;
 using GameCloud;
 using Human;
-using NaughtyAttributes;
 using ProjectPackage;
 using SpawnManager;
 using StateMachine;
@@ -53,6 +53,13 @@ namespace PlayerView
             
             SetDatas();
             signalBus.Subscribe<ShowBuildingData>(StateDependency);
+            
+            signalBus.Subscribe<UpdateUIWindow>(UpdateWindow);
+            
+            signalBus.Subscribe<StartProjectSignal>(ApplyProject);
+            signalBus.Subscribe<CloseProjectSignal>(CloseProject);
+            signalBus.Subscribe<ApplyEmployeeSignal>(ApplyEmployee);
+            signalBus.Subscribe<QuitEmployeeSignal>(QuitEmployee);
         }
         
         protected virtual void StateDependency(ShowBuildingData showBuildingData)
@@ -80,18 +87,10 @@ namespace PlayerView
         {
             playerViewController = this;
 
-            this.buildingContent = new BuildingContent(ref uiData);
-
-            buildingContent.windowUpdateEvent += UpdateWindow;
-            buildingContent.buyBuildingEvent += BuyBuilding;
-            buildingContent.buildingUpgradeEvent += UpgradeBuilding;
-            buildingContent.applyEmployeeEvent += ApplyEmployee;
-            buildingContent.changeStateBuilding += ChangeBuildingState;
-            buildingContent.quitEmployeeEvent += QuitEmployee;
-            buildingContent.startProject += ApplyProject;
-                
+            this.buildingContent = new BuildingContent(signalBus,container,ref uiData);
             uiData.buildingInfo.SetActive(false);
         }
+
 
         // Update is called once per frame
         void Update()
@@ -102,14 +101,14 @@ namespace PlayerView
             }
         }
         
-        private void ApplyEmployee(String employeeType)
+        private void ApplyEmployee(ApplyEmployeeSignal applyEmployeeSignal)
         {
 
                 var spawnPosition = new Vector3(4f, 1f, 2f);
                 var humanData = new EmployeeData(
                     company: container.Companies[0],
                     prefab: container.GetPrefabsByType(EntityType.DEVELOPER)[0],
-                    entityType: GetValue(employeeType),
+                    entityType: applyEmployeeSignal.employeeType,//GetValue(employeeType),
                     hisOffice: Building.BuildingData.buildingType
                 );
 
@@ -118,15 +117,15 @@ namespace PlayerView
                 uiData.workersCount_Label.SetText(workerCount.ToString());
         }
 
-        private void QuitEmployee(Employee employee)
+        private void QuitEmployee(QuitEmployeeSignal quitEmployeeSignal)
         {
 
-                Building.QuitWorker(employee);
+                Building.QuitWorker(quitEmployeeSignal.employee);
         }
 
-        private void ApplyProject(Project project)
+        private void ApplyProject(StartProjectSignal startProjectSignal)
         {
-            Building.ApplyProject(project);
+            Building.ApplyProject(startProjectSignal.project);
         }
         private void BuyBuilding()
         {
@@ -139,6 +138,11 @@ namespace PlayerView
                     Building.IsBuying = true;
                 }
             }
+        }
+
+        private void CloseProject(CloseProjectSignal closeProjectSignal)
+        {
+            Building.RemoveFinishedProject(closeProjectSignal.project);
         }
 
         private void UpgradeBuilding()
@@ -173,6 +177,7 @@ namespace PlayerView
         {
             Building = focusedBuilding;
         }
+        
 
         protected virtual void UpdateWindow()
         {
@@ -180,11 +185,14 @@ namespace PlayerView
         }
         private void ShowBuildingInfoWindow()
         {
+            
             //________________________________________________________________________________________________________________________________________
                 if (runtimeStateController.CurrentState == RunTimeState.BUILDING_INFO 
                     && 
                     gameStateController.CurrentState == GameState.GAME)
                 {
+                        RemoveBuildingContent();
+                        
                         uiData.buildingInfo.SetActive(true);
                         if(Building != null)
                         {
@@ -289,6 +297,7 @@ namespace PlayerView
         private void OnDestroy()
         {
             signalBus.TryUnsubscribe<ShowBuildingData>(StateDependency);
+            signalBus.TryUnsubscribe<UpdateUIWindow>(UpdateWindow);
         }        
     }
 }

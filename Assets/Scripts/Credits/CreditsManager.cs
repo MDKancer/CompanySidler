@@ -1,5 +1,5 @@
 ﻿using System.Collections;
-using NaughtyAttributes;
+using Sirenix.OdinInspector;
 using UnityEngine;
 
 namespace Credits

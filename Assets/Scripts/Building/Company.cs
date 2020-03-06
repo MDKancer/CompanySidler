@@ -10,6 +10,7 @@ namespace BuildingPackage
 {
     public class Company
     {
+        private static Company currentCompany = null;
         public string name = null;
         public bool needProject = true;
         public int numberOfCustomers = 0;
@@ -31,7 +32,6 @@ namespace BuildingPackage
             this.gameObject = company;
             this.name = gameObject.name;
             this.currentBudget = 0;
-            
             GetAllInterfaces();
             
             offices = new Dictionary<Building, BuildingType>();
@@ -68,6 +68,10 @@ namespace BuildingPackage
             protected set => currentBudget = value;
         }
 
+        public void TakeLoan(int amount)
+        {
+            currentBudget += amount;
+        }
         public List<CustomerData> Customers => customers;
         public List<Building> GetAllOffices => offices.Keys.ToList();
         public IList<Project> GetAllProjects => companyProjects.Keys.ToList().AsReadOnly();
@@ -117,7 +121,7 @@ namespace BuildingPackage
             }
         }
 
-        public List<Project> GetProjectsByType(CustomerType customerType)
+        public List<Project> GetProjectsIfExist(CustomerType customerType)
         {
             List<Project> returnList = new List<Project>();
 
@@ -142,11 +146,14 @@ namespace BuildingPackage
                 if(office!=null)
                 {
                     office.Company = this;
-                    //nur am Anfang als test. als StartCapital
+                    // nur am Anfang als test. als StartCapital
+                    // only on Begin as test, for the StartBudget
                     office.budget = 3300;
                     
                     offices.Add(office,GetBuildingType(office.gameObject));
                 }
+
+                GameObject.FindObjectOfType<Bank>().Company = this;
             }
         }
 

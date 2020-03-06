@@ -1744,7 +1744,7 @@ PrefabInstance:
     - target: {fileID: 1413460096836920943, guid: 0344ed40815daad0f8d4139ae28dc1fa,
         type: 3}
       propertyPath: m_Name
-      value: Bank (1)
+      value: Bank
       objectReference: {fileID: 0}
     - target: {fileID: 2722082518285259900, guid: 0344ed40815daad0f8d4139ae28dc1fa,
         type: 3}
@@ -5319,5 +5319,10 @@ PrefabInstance:
       propertyPath: m_Camera
       value: 
       objectReference: {fileID: 1687258584}
+    - target: {fileID: 5198851459592849591, guid: c679fb47e38ac49cabf93fa1c8c4d8d0,
+        type: 3}
+      propertyPath: m_BlockingMask.m_Bits
+      value: 4026532151
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c679fb47e38ac49cabf93fa1c8c4d8d0, type: 3}

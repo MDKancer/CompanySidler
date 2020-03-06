@@ -167,7 +167,9 @@ namespace BuildingPackage
                 {
                     //TODO: Manchmal GetOffice wirft Null zurück und dass soll nicht passieren.
                     Building building = Company.GetOffice(buildingType);
-                    building.possibleProjects = company.GetProjectsByType(customerType);
+                    
+                    //wenn exist the projects for this office than give there
+                    building.possibleProjects.AddRange(company.GetProjectsIfExist(customerType));
                 }
                 catch (Exception e)
                 {

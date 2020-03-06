@@ -8,6 +8,7 @@ namespace BuildingPackage
     public class Bank : Building, iBank
     {
         private List<LoanData> loans;
+        
         private void Awake()
         {
             buildingData = new BuildingData
@@ -22,7 +23,7 @@ namespace BuildingPackage
                 moneyPerSec = 0
             };
             loans = new List<LoanData>();
-            
+            this.IsBuying = true;
             stateController.CurrentState = BuildingState.EMPTY;
         }
         public void TakeLoan([NotNull]Company company,int amount)
@@ -35,12 +36,14 @@ namespace BuildingPackage
                     company = company
                 };
                 loans.Add(loan);
+                company.TakeLoan(amount);
             }
             else
             {
                 var loanData = GetLoanData(company);
                 var data = loanData.Value;
                 data.loan_Amount += amount;
+                company.TakeLoan(amount);
             }
         }
 
@@ -51,6 +54,7 @@ namespace BuildingPackage
                 {
                     var data = loanData.Value;
                     data.repay_Amount += amount;
+                    company.TakeLoan(-amount);
                 }
                 else
                 {

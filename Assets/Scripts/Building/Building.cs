@@ -1,10 +1,9 @@
-using System;
 using System.Collections;
 using System.Collections.Generic;
 using Enums;
 using Human;
-using NaughtyAttributes;
 using ProjectPackage;
+using Sirenix.OdinInspector;
 using SpawnManager;
 using StateMachine;
 using UnityEngine;
@@ -23,7 +22,7 @@ namespace BuildingPackage
         public int budget;
         [SerializeField,Required] 
         protected  GameObject officePrefab;
-        [ShowNonSerializedField]  
+        [ShowInInspector]  
         protected bool isBuying = false;
         protected float buildTime;
         protected Company company;
@@ -123,6 +122,12 @@ namespace BuildingPackage
             }
         }
 
+        public void RemoveFinishedProject(Project project)
+        {
+            possibleProjects.Remove(project);
+            company.RemoveProject(project);
+        }
+
         public bool BuildingRepair()
         {
             return false;
@@ -133,7 +138,7 @@ namespace BuildingPackage
         /// </summary>
         public Project StartupProject => startupProject;
 
-        public virtual bool IsBuying { set;get;}
+        public virtual bool IsBuying { set=>isBuying= value;get=>isBuying;}
 
         public BuildingData BuildingData => buildingData;
         public BuildingState buildingWorkingState => stateController.CurrentState;

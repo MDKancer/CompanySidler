@@ -3,6 +3,7 @@ using System.Collections;
 using Enums;
 using GameCloud;
 using SceneController;
+using Sirenix.OdinInspector;
 using SpawnManager;
 using StateMachine;
 using UnityEngine;
@@ -21,10 +22,13 @@ namespace BootManager
         private StateController<RunTimeState> runtimeStateController;
         private SpawnController spawnController;
         private SceneManager sceneManager;
-
+        
+        [HideInInspector]
         public MonoBehaviour monoBehaviour;
         
         public CompanyData companyData;
+        
+        [Title("Game State"),EnumToggleButtons, HideLabel]
         public GameState gameState;
 
         [Inject]
@@ -41,7 +45,6 @@ namespace BootManager
             this.sceneManager = sceneManager;
             
             this.signalBus.Subscribe<GameStateSignal>(StateDependency);
-            this.signalBus.Fire(new MonoBehaviourSignal{monoBehaviour = this});
         }
 
         private void StateDependency(GameStateSignal gameStateSignal)
@@ -93,6 +96,11 @@ namespace BootManager
         private void Start()
         {
             StartCoroutine(StartSimulating());
+        }
+
+        private void LateUpdate()
+        {
+            this.signalBus.Fire(new MonoBehaviourSignal{monoBehaviour = this});
         }
 
         private IEnumerator StartSimulating()

@@ -22,13 +22,15 @@ namespace Human.Customer.Generator
         private SignalBus signalBus;
         private Container container;
         private SpawnController spawnController;
+        private MonoBehaviour monoBehaviour;
 
         [Inject]
-        private void Init(SignalBus signalBus, Container container, SpawnController spawnController)
+        private void Init(SignalBus signalBus, Container container, SpawnController spawnController,MonoBehaviourSignal monoBehaviourSignal)
         {
             this.signalBus = signalBus;
             this.container = container;
             this.spawnController = spawnController;
+            this.monoBehaviour = monoBehaviourSignal;
             
             this.signalBus.Subscribe<GameStateSignal>(StateDependency);
         }
@@ -79,7 +81,7 @@ namespace Human.Customer.Generator
             
             for (int i = 0; i < countCustomers; i++)
             {
-                CustomerData customer = new CustomerData((CustomerType) customersValues.GetValue(i),spawnPosition,container);
+                CustomerData customer = new CustomerData((CustomerType) customersValues.GetValue(i),spawnPosition,container,monoBehaviour);
                 company.Customers.Add(customer);
             }
         }

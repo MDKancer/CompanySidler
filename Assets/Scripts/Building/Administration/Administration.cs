@@ -22,6 +22,7 @@ namespace BuildingPackage
                 name = name,
                 maxHitPoints = 2000,
                 currentHitPoints = 2000,
+                price = 0,
                 upgradePrice = 0,
                 workPlacesLimit = 1,
                 moneyPerSec = 5,
@@ -76,7 +77,11 @@ namespace BuildingPackage
             {
                 while (stateController.CurrentState == BuildingState.WORK)
                 {
-                    budget += Supporting();
+                    if (company != null)
+                    {
+                        company.CurrentBudget += Supporting();
+                        budget += Supporting();
+                    }
                     yield return new WaitForSeconds(1f);
                 }
             }

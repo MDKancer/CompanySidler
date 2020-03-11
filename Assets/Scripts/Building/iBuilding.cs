@@ -12,6 +12,7 @@ namespace BuildingPackage
     void Upgrade();
     //void Buy();
     void DoDamage(int damagePercent = 0);
+    Company Company { get; set; }
     void SwitchWorkingState();
     void ApplyWorker([NotNull] Employee employee);
     void QuitWorker([NotNull] Employee employee);

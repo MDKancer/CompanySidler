@@ -32,15 +32,18 @@ namespace InputManager
         private SignalBus signalBus;
         private StateController<GameState> gameStateController;
         private StateController<RunTimeState> runtimeStateController;
-
+        private MonoBehaviour monoBehaviour;
+        private string companyName = "Company";
         [Inject]
         private void Init(SignalBus signalBus, StateController<GameState> gameStateController,
-            StateController<RunTimeState> runtimeStateController)
+            StateController<RunTimeState> runtimeStateController,MonoBehaviourSignal monoBehaviourSignal,CompanyData companyData)
         {
+
             this.signalBus = signalBus;
             this.gameStateController = gameStateController;
             this.runtimeStateController = runtimeStateController;
-            
+            this.monoBehaviour = monoBehaviourSignal;
+            this.companyName = companyData.nameCompany;
             //signalBus.Subscribe<ShowBuildingData>(OnWindowOpen);
             signalBus.Subscribe<GameStateSignal>(StateDependency);
         }
@@ -80,8 +83,8 @@ namespace InputManager
 
         public void SetCameraController()
         {
-            cameraController = new CameraController(signalBus,runtimeStateController);
-            focusObject = GameObject.Find("Company")?.gameObject;
+            cameraController = new CameraController(signalBus,monoBehaviour,runtimeStateController);
+            focusObject = GameObject.Find(companyName)?.gameObject;
             focusPoint = focusObject.transform.position;
             buildingLabel = proceduralUiElements.GetCanvas("");
             buildingLabel.gameObject.SetActive(false);

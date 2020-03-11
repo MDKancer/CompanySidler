@@ -1,4 +1,3 @@
-using System.Reflection;
 using BuildingPackage;
 using TMPro;
 using UIPackage.UIBuildingContent;
@@ -16,14 +15,14 @@ namespace PlayerView
         private UIData uiData;
         private ProceduralUiElements proceduralUiElements;
         private MonoBehaviour monoBehaviour;
-        public BankUIData(SignalBus signalBus,ref UIData uiData, Building bank)
+        public BankUIData(SignalBus signalBus,MonoBehaviour monoBehaviour,ref UIData uiData, Building bank)
         {
             this.uiData = uiData;
             this.proceduralUiElements = new ProceduralUiElements();
             this.bank = bank as T;
             
             this.signalBus = signalBus;
-            this.signalBus.Subscribe<MonoBehaviourSignal>(GetMonoBehaviour);
+            this.monoBehaviour = monoBehaviour;
         }
         public void SetBankInteractions()
         {
@@ -32,10 +31,6 @@ namespace PlayerView
             uiData.stateBtn.gameObject.SetActive(false);
             SetTakeLoanInteractions();
             SetRepayLoanInteractions();
-        }
-        private void GetMonoBehaviour(MonoBehaviourSignal monoBehaviourSignal)
-        {
-            monoBehaviour = monoBehaviourSignal.monoBehaviour;
         }
 
         private void SetTakeLoanInteractions()
@@ -47,7 +42,7 @@ namespace PlayerView
             
             takeLoan.onClick.AddListener(() =>
             {
-                bank.TakeLoan(bank.Company, 1000);
+                bank.TakeLoan( 1000);
                 this.signalBus.Fire(new UpdateUIWindow());
             });   
             //it should be in another List 
@@ -62,7 +57,7 @@ namespace PlayerView
             
             repayLoan.onClick.AddListener(() =>
             {
-                bank.RepayLoan(bank.Company, 1000);
+                bank.RepayLoan( 1000);
                 this.signalBus.Fire(new UpdateUIWindow());
             });   
             //it should be in another List 
@@ -71,7 +66,6 @@ namespace PlayerView
         
         ~BankUIData()
         {
-            this.signalBus.TryUnsubscribe<MonoBehaviourSignal>(GetMonoBehaviour);
             this.signalBus.Fire(new UpdateUIWindow());
             uiData.buyBtn.gameObject.SetActive(true);
             uiData.upgradeBtn.gameObject.SetActive(true);

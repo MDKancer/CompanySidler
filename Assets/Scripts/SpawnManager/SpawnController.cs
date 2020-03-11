@@ -8,9 +8,11 @@ using Enums;
 using GameCloud;
 using Human;
 using Human.Customer;
+using PlayerView;
 using UnityEngine;
 using UnityEngine.AI;
 using Zenject;
+using Zenject_Signals;
 using Object = UnityEngine.Object;
 
 namespace SpawnManager
@@ -18,13 +20,24 @@ namespace SpawnManager
     public class SpawnController
     {
         private int index = 0;
-        [Inject]private Container container;
+        private SignalBus signalBus;
+        private Container container;
+        private CompanyData companyData;
+        private MonoBehaviour monoBehaviour;
+        [Inject]
+        private void Init(SignalBus signalBus,Container container,CompanyData companyData,MonoBehaviourSignal monoBehaviourSignal)
+        {
+            this.signalBus = signalBus;
+            this.container = container;
+            this.companyData = companyData;
+            this.monoBehaviour = monoBehaviourSignal;
+        }
         public void InitialSpawnWave()
         {
-            foreach (var officePrefab in BootController.BootControllerInstance.companyData.basicOffices.offices)
+            foreach (var officePrefab in companyData.basicOffices.offices)
             {
                 var building = container.Companies[0].GetOffice(officePrefab);
-                BootController.BootControllerInstance.monoBehaviour.StartCoroutine(SpawnAfterInstancing(building));
+                monoBehaviour.StartCoroutine(SpawnAfterInstancing(building));
             }
         }
         public void SpawnOffice(GameObject office, Vector3 targetPosition)

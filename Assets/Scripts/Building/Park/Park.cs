@@ -17,6 +17,7 @@ namespace BuildingPackage
                 workers = 0,
                 maxHitPoints = 2000,
                 currentHitPoints = 2000,
+                price = 0,
                 upgradePrice = 0,
                 workPlacesLimit = 1,
                 moneyPerSec = -5,
@@ -58,7 +59,11 @@ namespace BuildingPackage
             {
                 while (stateController.CurrentState == BuildingState.WORK)
                 {
-                    budget += Relax();
+                    if (company != null)
+                    {
+                        company.CurrentBudget += Relax();
+                        budget += Relax();
+                    }
                     yield return new WaitForSeconds(1f);
                 }
             }

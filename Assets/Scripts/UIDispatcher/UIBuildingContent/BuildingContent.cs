@@ -1,18 +1,9 @@
-using System;
-using System.Collections;
-using System.Reflection;
 using BuildingPackage;
-using Enums;
 using GameCloud;
-using Human;
 using PlayerView;
-using ProjectPackage;
-using TMPro;
 using UnityEngine;
-using UnityEngine.UI;
 using Zenject;
 using Zenject_Signals;
-using Object = UnityEngine.Object;
 
 namespace UIPackage.UIBuildingContent
 {
@@ -27,30 +18,28 @@ namespace UIPackage.UIBuildingContent
         private UIData uiData;
         private SignalBus signalBus;
         private Container container;
-        public BuildingContent(SignalBus signalBus, Container container, ref UIData uiData)
+        private MonoBehaviour monoBehaviour;
+        public BuildingContent(SignalBus signalBus,MonoBehaviour monoBehaviour, Container container, ref UIData uiData)
         {
-            Init(signalBus,container);
+            this.signalBus = signalBus;
             this.container = container;
+            this.monoBehaviour = monoBehaviour;
             this.uiData = uiData;
             proceduralUiElements = new ProceduralUiElements();
         }
 
-        private void Init(SignalBus signalBus,Container container)
-        {
-            this.signalBus = signalBus;
-        }
 
         public void CreateBuildingContent(Building building)
         {
             this.building = building;
             if (building.GetType() == typeof(Bank))
             {
-                var bankUIData = new BankUIData<Bank>(signalBus,ref uiData, building);
+                var bankUIData = new BankUIData<Bank>(signalBus,monoBehaviour,ref uiData, building);
                 bankUIData.SetBankInteractions();
             }
             else
             {
-                var buildingUIData = new BuildingUIData<Building>(signalBus,container,ref uiData,building);
+                var buildingUIData = new BuildingUIData<Building>(signalBus,monoBehaviour,container,ref uiData,building);
                 buildingUIData.SetBuildingInteractions();
             }
         }

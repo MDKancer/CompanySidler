@@ -24,8 +24,6 @@ namespace StateMachine
                lastState = currentState != null ? currentState : lastState;
                 
                 currentState = value;
-                
-                if(currentState.GetType() == typeof(GameState)) GlobalSignal();
             }
             get => currentState;
         }
@@ -48,14 +46,6 @@ namespace StateMachine
                 Debug.LogError(e);
                 throw;
             }
-        }
-
-        private void GlobalSignal()
-        {
-            signalBus.Fire(new GameStateSignal
-            {
-                state = (GameState) (currentState as object)
-            });
         }
     }
 }

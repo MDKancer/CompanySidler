@@ -17,13 +17,15 @@ namespace PlayerView
         private bool isArrive;
         private SignalBus signalBus;
         private StateController<RunTimeState> runtimeStateController;
+        private MonoBehaviour monoBehaviour;
 
-        public CameraController(SignalBus signalBus,  StateController<RunTimeState> runtimeStateController)
+        public CameraController(SignalBus signalBus,MonoBehaviour monoBehaviour,StateController<RunTimeState> runtimeStateController)
         {
             mainCameraGameObject = Camera.main.gameObject;
             mainCamera = Camera.main;
             this.signalBus = signalBus;
             this.runtimeStateController = runtimeStateController;
+            this.monoBehaviour = monoBehaviour;
         }
         public void FocusOn(Vector3 endPosition)
         {
@@ -33,12 +35,12 @@ namespace PlayerView
             originPosition = mainCameraGameObject.transform.position;
             originRotation = mainCameraGameObject.transform.rotation;
 
-            BootController.BootControllerInstance.monoBehaviour.StartCoroutine(MoveTo(endPosition));
-            BootController.BootControllerInstance.monoBehaviour.StartCoroutine(ChangeState());
+            monoBehaviour.StartCoroutine(MoveTo(endPosition));
+            monoBehaviour.StartCoroutine(ChangeState());
         }
         public void ToEmptyPos()
         {
-            BootController.BootControllerInstance.monoBehaviour.StartCoroutine(MoveTo(originPosition));
+            monoBehaviour.StartCoroutine(MoveTo(originPosition));
             mainCameraGameObject.transform.rotation = originRotation;
 
             runtimeStateController.SwitchToLastState();

@@ -22,6 +22,7 @@ namespace BuildingPackage
                 workers = 0,
                 maxHitPoints = 2000,
                 currentHitPoints = 2000,
+                price = 0,
                 upgradePrice = 0,
                 workPlacesLimit = 1,
                 moneyPerSec = 11,
@@ -75,8 +76,12 @@ namespace BuildingPackage
             {
                 while (stateController.CurrentState == BuildingState.WORK)
                 {
-                    //TODO : Die Gehälter werden nur bezahlt wenn der Mitarbeiter Im Office sich befindet.
-                    budget += Programming();
+                    if (company != null)
+                    {
+                        //TODO : Die Gehälter werden nur bezahlt wenn der Mitarbeiter Im Office sich befindet.
+                        company.CurrentBudget += Programming();
+                        budget += Programming();
+                    }
                     yield return new WaitForSeconds(1f);
                 }
             }

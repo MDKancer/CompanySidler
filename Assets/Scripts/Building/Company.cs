@@ -5,6 +5,8 @@ using Entity.Customer.Data;
 using Enums;
 using ProjectPackage;
 using UnityEngine;
+using Zenject;
+using Zenject_Signals;
 
 namespace BuildingPackage
 {
@@ -26,9 +28,10 @@ namespace BuildingPackage
         private Dictionary<Project,CustomerType> companyProjects;
         private int projectCount;
         private readonly List<CustomerData> customers;
-        
-        public Company(GameObject company)
+        private SignalBus signalBus;
+        public Company(SignalBus signalBus,GameObject company)
         {
+            this.signalBus = signalBus;
             this.gameObject = company;
             this.name = gameObject.name;
             this.currentBudget = 0;
@@ -58,20 +61,16 @@ namespace BuildingPackage
         {
             get
             {
-                currentBudget = 0;
-                foreach (var office in offices)
-                {
-                    currentBudget += office.Key.budget;
-                }
+//                currentBudget = 0;
+//                foreach (var office in offices)
+//                {
+//                    currentBudget += office.Key.budget;
+//                }
                 return currentBudget;  
             } 
-            protected set => currentBudget = value;
+            set => currentBudget = value;
         }
 
-        public void TakeLoan(int amount)
-        {
-            currentBudget += amount;
-        }
         public List<CustomerData> Customers => customers;
         public List<Building> GetAllOffices => offices.Keys.ToList();
         public IList<Project> GetAllProjects => companyProjects.Keys.ToList().AsReadOnly();
@@ -140,21 +139,26 @@ namespace BuildingPackage
         {
             if (gameObject == null) return;
             
+            
+            signalBus.Fire(new CurrentCompanySignal
+            {
+                company = this
+            });
+            var summ = 0;
             for (int i = 0; i < gameObject.transform.childCount; i++)
             {
                 var office = gameObject.transform.GetChild(i).GetComponent(typeof(Building)) as Building;
                 if(office!=null)
                 {
-                    office.Company = this;
                     // nur am Anfang als test. als StartCapital
                     // only on Begin as test, for the StartBudget
-                    office.budget = 3300;
+                     summ += 3300;
                     
                     offices.Add(office,GetBuildingType(office.gameObject));
                 }
-
-                GameObject.FindObjectOfType<Bank>().Company = this;
             }
+
+            currentBudget = summ;
         }
 
         /// <summary>

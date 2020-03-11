@@ -55,6 +55,7 @@ namespace BuildingPackage
                 prefab =  this.officePrefab,
                 name = name,
                 workers = 0,
+                wastage = 0,
                 maxHitPoints = 2000,
                 currentHitPoints = 2000,
                 upgradePrice = 0,
@@ -132,7 +133,11 @@ namespace BuildingPackage
             {
                 while (stateController.CurrentState == BuildingState.WORK)
                 {
-                    budget += ToHold();
+                    if (company != null)
+                    {
+                        company.CurrentBudget += ToHold();
+                        budget += ToHold();
+                    }
                     yield return new WaitForSeconds(1f);
                 }
             }

@@ -1,6 +1,8 @@
 ﻿using System.Collections;
 using Sirenix.OdinInspector;
 using UnityEngine;
+using Zenject;
+using Zenject_Signals;
 
 namespace Credits
 {
@@ -11,10 +13,21 @@ namespace Credits
         [Required]
         public GameObject Parent;
         
-        private readonly LabelCreator labelCreator = new LabelCreator();
-        private readonly RollingCredits rollingCredits = new RollingCredits();
+        private LabelCreator labelCreator;
+        private RollingCredits rollingCredits ;
         private GameObject title;
 
+        private SignalBus signalBus;
+        private MonoBehaviour monoBehaviour;
+
+        [Inject]
+        private void Init(SignalBus signalBus,MonoBehaviourSignal monoBehaviourSignal)
+        {
+            this.signalBus = signalBus;
+            this.monoBehaviour = monoBehaviourSignal;
+            labelCreator = new LabelCreator();
+            rollingCredits = new RollingCredits(monoBehaviour);
+        }
         // Use this for initialization
         public void StartCredits()
         {

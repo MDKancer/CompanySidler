@@ -38,10 +38,18 @@ namespace BuildingPackage
         [Inject]
         protected virtual void Init(SignalBus signalBus, SpawnController spawnController)
         {
+            
             this.signalBus = signalBus;
             this.spawnController = spawnController;
             this.signalBus.Subscribe<GameStateSignal>(StateDependency);
+            this.signalBus.Subscribe<CurrentCompanySignal>(SetCompany);
         }
+
+        protected virtual void SetCompany(CurrentCompanySignal currentCompanySignal)
+        {
+            company = currentCompanySignal.company;
+        }
+
         public void OnEnable()
         {
             applyWorkerEvent += ApplyWorker;

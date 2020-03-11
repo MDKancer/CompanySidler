@@ -6,7 +6,6 @@ using Enums;
 using StateMachine;
 using UnityEngine;
 using Zenject;
-using Zenject_Signals;
 using Resources = UnityEngine.Resources;
 
  namespace GameCloud
@@ -20,10 +19,18 @@ using Resources = UnityEngine.Resources;
         private List<Material> materials = new List<Material>();
         private List<Material> particleMaterials = new List<Material>();
         private List<GameObject> particleSystems = new List<GameObject>();
+
+        private SignalBus signalBus;
+        private StateController<GameState> gameStateController;
+        private CompanyData companyData;
         
         [Inject]
-        private StateController<GameState> gameStateController;
-       
+        private void Init(SignalBus signalBus, StateController<GameState> gameStateController,CompanyData companyData)
+        {
+            this.signalBus = signalBus;
+            this.gameStateController = gameStateController;
+            this.companyData = companyData;
+        }
         /// <summary>
         /// Es wird ganz am anfang alle Prefabs aus den Ordnern im Dictionary reingepackt.
         /// </summary>
@@ -91,12 +98,11 @@ using Resources = UnityEngine.Resources;
         }
         private void SetCompanyData()
         {
-            CompanyData companyData = BootController.BootControllerInstance.companyData;
             string companyName = companyData.nameCompany;
             
             GameObject company = GameObject.Find("Company");
             company.name = companyName;
-            companies.Add(new Company(company));
+            companies.Add(new Company(signalBus,company));
         }
     }
 }

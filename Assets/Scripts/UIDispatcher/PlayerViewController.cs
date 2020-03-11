@@ -35,6 +35,8 @@ namespace PlayerView
         protected StateController<RunTimeState> runtimeStateController;
         protected SpawnController spawnController;
         protected Container container;
+
+        private MonoBehaviour monoBehaviour;
         
         [Inject]
         protected virtual void Init(
@@ -42,14 +44,16 @@ namespace PlayerView
                             StateController<GameState> gameStateController,
                             StateController<RunTimeState> runtimeStateController,
                             SpawnController spawnController,
-                            Container container
-                            )
+                            Container container,
+                            MonoBehaviourSignal monoBehaviourSignal)
         {
             this.signalBus = signalBus;
             this.gameStateController = gameStateController;
             this.runtimeStateController = runtimeStateController;
             this.spawnController = spawnController;
             this.container = container;
+
+            this.monoBehaviour = monoBehaviourSignal;
             
             SetDatas();
             signalBus.Subscribe<ShowBuildingData>(StateDependency);
@@ -87,7 +91,7 @@ namespace PlayerView
         {
             playerViewController = this;
 
-            this.buildingContent = new BuildingContent(signalBus,container,ref uiData);
+            this.buildingContent = new BuildingContent(signalBus,monoBehaviour,container,ref uiData);
             uiData.buildingInfo.SetActive(false);
         }
 
@@ -131,6 +135,7 @@ namespace PlayerView
         {
             if (runtimeStateController.CurrentState == RunTimeState.BUILDING_INFO) // && Boot.gameStateController.CurrentState == GameState.GAME
             {
+                Debug.Log(Building.Company);
                 if (Building.Company.CurrentBudget >= Building.BuildingData.price)
                 {
                     var currentBudget = container.Companies[0].CurrentBudget;

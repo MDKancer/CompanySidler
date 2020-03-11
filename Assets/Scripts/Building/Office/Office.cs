@@ -4,8 +4,12 @@ using BootManager;
 using BuildingPackage.OfficeWorker;
 using Enums;
 using Human;
+using PlayerView;
+using SpawnManager;
 using UIPackage;
 using UnityEngine;
+using Zenject;
+using Zenject_Signals;
 
 namespace BuildingPackage
 {
@@ -21,6 +25,7 @@ namespace BuildingPackage
                 workers = 0,
                 maxHitPoints = 2000,
                 currentHitPoints = 2000,
+                price = 0,
                 upgradePrice = 0,
                 workPlacesLimit = 1,
                 moneyPerSec = -2,
@@ -38,7 +43,9 @@ namespace BuildingPackage
                 }
             };
             stateController.CurrentState = BuildingState.EMPTY;
+            
         }
+
         public int Managment()
         {
             return BuildingData.wastage; 
@@ -66,13 +73,18 @@ namespace BuildingPackage
                 isBuying = value;
             }
         }
-        private IEnumerator UpdateManyGenerator()
+        protected override IEnumerator UpdateManyGenerator()
         {
             if (stateController.CurrentState == BuildingState.WORK)
             {
                 while (stateController.CurrentState == BuildingState.WORK)
                 {
-                    budget += Managment();
+                    if (company != null)
+                    {
+                        company.CurrentBudget += Managment();
+                        budget += Managment();
+                        
+                    }
                     yield return new WaitForSeconds(1f);
                 }
             }

@@ -21,9 +21,10 @@ namespace Entity.Customer.Data
 
         private readonly TarentTown tarentTown;
         private CustomerLevelData customerLevelData;
+        private MonoBehaviour monoBehaviour;
 
         //TODO: es muss ohne Container Fuktionieren!!!
-        public CustomerData(CustomerType customerType,Vector3 spawnPosition,Container container)
+        public CustomerData(CustomerType customerType,Vector3 spawnPosition,Container container,MonoBehaviour monoBehaviour)
         {
             customerLevelData = new CustomerLevelData();
             
@@ -34,14 +35,15 @@ namespace Entity.Customer.Data
             tarentTown = (TarentTown) company.GetOffice(BuildingType.TARENT_TOWN);
             
             this.prefab = container.GetPrefabsByType(EntityType.CUSTOMER)[0];
-            
+            this.monoBehaviour = monoBehaviour;
+
         }
 
         public void GenerateNewProject()
         {
             var maxCountTasks = Enum.GetValues(typeof(TaskType)).Length;
             var randomCountTasks = Random.Range(5, maxCountTasks);
-            this.project = new Project(randomCountTasks);
+            this.project = new Project(randomCountTasks,monoBehaviour);
             project.customerType = customerType;
         }
 

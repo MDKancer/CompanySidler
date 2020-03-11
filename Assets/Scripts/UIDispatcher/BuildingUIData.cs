@@ -23,7 +23,7 @@ namespace PlayerView
         private MonoBehaviour monoBehaviour;
         private Material projectButtonMaterial;
         
-        public BuildingUIData(SignalBus signalBus,Container container,ref UIData uiData, Building office)
+        public BuildingUIData(SignalBus signalBus,MonoBehaviour monoBehaviour,Container container,ref UIData uiData, Building office)
         {
             this.signalBus = signalBus;
             this.container = container;
@@ -35,7 +35,7 @@ namespace PlayerView
             {
                 if (material.name == "progressBar") projectButtonMaterial = material;
             } );
-            this.signalBus.Subscribe<MonoBehaviourSignal>(GetMonoBehaviour);
+            this.monoBehaviour = monoBehaviour;
         }
         public void SetBuildingInteractions()
         {
@@ -256,15 +256,6 @@ namespace PlayerView
 
              return materialCopy;
          }
-        private void GetMonoBehaviour(MonoBehaviourSignal monoBehaviourSignal)
-        {
-            monoBehaviour = monoBehaviourSignal.monoBehaviour;
-        }
-        
-                
-        ~BuildingUIData()
-        {
-            this.signalBus.TryUnsubscribe<MonoBehaviourSignal>(GetMonoBehaviour);
-        }
+
     }
 }

@@ -1,10 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
-using BootManager;
 using BuildingPackage.OfficeWorker;
 using Enums;
 using Human;
-using UIPackage;
 using UnityEngine;
 
 namespace BuildingPackage

@@ -5,7 +5,7 @@ using UnityEngine;
 using Zenject;
 using Zenject_Signals;
 
-public class IntroStartGame : MonoBehaviour
+public class BootInit : MonoBehaviour
 {
     public bool simulateGame;
     public GameState gameState;

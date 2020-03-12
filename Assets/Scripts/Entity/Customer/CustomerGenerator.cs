@@ -1,7 +1,5 @@
 using System;
 using System.Collections;
-using System.Collections.Generic;
-using BootManager;
 using BuildingPackage;
 using Entity.Customer.Data;
 using Enums;

@@ -1,4 +1,3 @@
-using BootManager;
 using Enums;
 using GameCloud;
 using SpawnManager;
@@ -18,18 +17,16 @@ namespace Zenject_Initializer
         public override void InstallBindings()
         {
             // here will be only the Scene Bindings
-            
             CompanyData companyData = Resources.LoadAll<CompanyData>("SO")[0];
 
-            Container.Bind<BootController>().AsSingle().NonLazy();
             Container.Bind<FinalStateManager>().AsSingle().NonLazy();
-            Container.Bind<Container>().AsSingle().NonLazy();
             Container.Bind<StateController<GameState>>().AsSingle().NonLazy();
             Container.Bind<StateController<RunTimeState>>().AsSingle().NonLazy();
-            Container.Bind<SpawnController>().AsSingle().NonLazy();
             Container.Bind<CompanyData>().FromScriptableObject(companyData).AsSingle().NonLazy();
-            Container.Bind<MonoBehaviourSignal>().FromNewComponentOnNewGameObject().AsSingle().NonLazy();
+            Container.Bind<Container>().AsSingle().NonLazy();
+            Container.Bind<SpawnController>().AsSingle().NonLazy();
             Container.Bind<SceneManager>().AsSingle().NonLazy();
+            Container.Bind<MonoBehaviourSignal>().FromNewComponentOnNewGameObject().AsSingle().NonLazy();
             
         }
     }

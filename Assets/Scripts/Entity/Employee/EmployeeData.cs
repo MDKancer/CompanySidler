@@ -1,11 +1,8 @@
 using System.Collections.Generic;
-using BootManager;
 using BuildingPackage;
 using Enums;
-using GameCloud;
 using ProjectPackage;
 using UnityEngine;
-using Zenject;
 
 namespace Human
 {

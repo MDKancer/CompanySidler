@@ -59,8 +59,7 @@
   </ItemGroup>
   <ItemGroup>
      <Compile Include="Assets\Foreign\SimpleCameraController.cs" />
-     <Compile Include="Assets\Scripts\BootManager\BootController.cs" />
-     <Compile Include="Assets\Scripts\BootManager\ReferenceService.cs" />
+     <Compile Include="Assets\Scripts\BootInitializer\BootInit.cs" />
      <Compile Include="Assets\Scripts\Building\Accounting\Accounting.cs" />
      <Compile Include="Assets\Scripts\Building\Accounting\iAccounting.cs" />
      <Compile Include="Assets\Scripts\Building\Administration\Administration.cs" />
@@ -115,7 +114,6 @@
      <Compile Include="Assets\Scripts\Entity\IHuman.cs" />
      <Compile Include="Assets\Scripts\Enums\Enums.cs" />
      <Compile Include="Assets\Scripts\InputManager\InputController.cs" />
-     <Compile Include="Assets\Scripts\Intro\IntroStartGame.cs" />
      <Compile Include="Assets\Scripts\JSon_Manager\FakeData.cs" />
      <Compile Include="Assets\Scripts\JSon_Manager\JSon_Manager.cs" />
      <Compile Include="Assets\Scripts\ParticleManager\ParticleManager.cs" />
@@ -131,6 +129,14 @@
      <Compile Include="Assets\Scripts\StateManager\FinalStateManager.cs" />
      <Compile Include="Assets\Scripts\StateManager\IFSM.cs" />
      <Compile Include="Assets\Scripts\StateManager\StateManager.cs" />
+     <Compile Include="Assets\Scripts\StateManager\States\Exit.cs" />
+     <Compile Include="Assets\Scripts\StateManager\States\Game.cs" />
+     <Compile Include="Assets\Scripts\StateManager\States\Intro.cs" />
+     <Compile Include="Assets\Scripts\StateManager\States\Loading.cs" />
+     <Compile Include="Assets\Scripts\StateManager\States\MainMenu.cs" />
+     <Compile Include="Assets\Scripts\StateManager\States\PreGame.cs" />
+     <Compile Include="Assets\Scripts\StateManager\States\Template\AState.cs" />
+     <Compile Include="Assets\Scripts\StateManager\States\Template\IState.cs" />
      <Compile Include="Assets\Scripts\UIDispatcher\BankUIData.cs" />
      <Compile Include="Assets\Scripts\UIDispatcher\BuildingUIData.cs" />
      <Compile Include="Assets\Scripts\UIDispatcher\PlayerViewController.cs" />

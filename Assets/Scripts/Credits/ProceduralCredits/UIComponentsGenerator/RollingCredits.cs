@@ -1,5 +1,4 @@
 ﻿using System.Collections;
-using BootManager;
 using UnityEngine;
 
 namespace Credits

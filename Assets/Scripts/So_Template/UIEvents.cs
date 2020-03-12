@@ -1,11 +1,9 @@
-﻿using BootManager;
-using Enums;
+﻿using Enums;
 using SceneController;
 using StateMachine;
 using UnityEngine;
 using Zenject;
 
-//[CreateAssetMenu (fileName = "UIEvents", menuName = "ScriptableObjects/UIEvents", order = 2)]
 public class UIEvents : MonoBehaviour
 {
     [Inject]
@@ -14,14 +12,10 @@ public class UIEvents : MonoBehaviour
     public SceneManager sceneManager;
     public void PlayGame()
     {
-        //gameStateController.CurrentState = GameState.GAME;
         sceneManager.GoTo(Scenes.GAME);  
     }
     public void StartGame()
     {
-        //first
-        //gameStateController.CurrentState = GameState.PREGAME;
-        //second
         sceneManager.GoTo(Scenes.PREGAME);
     }
     

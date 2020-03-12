@@ -1,18 +1,13 @@
-using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
-using BootManager;
 using BuildingPackage;
 using Enums;
-using GameCloud;
-using InputManager;
 using JetBrains.Annotations;
 using PathFinderManager;
 using ProjectPackage.ProjectTasks;
 using TMPro;
 using UnityEngine;
-using Zenject;
 using Random = UnityEngine.Random;
 
 namespace Human

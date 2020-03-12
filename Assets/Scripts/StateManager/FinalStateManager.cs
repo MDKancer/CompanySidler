@@ -24,13 +24,14 @@ namespace StateMachine
         /// Here will be all global signals initialized, to make easily to handle
         /// </summary>
         [Inject]
-        protected virtual void Init(SignalBus signalBus,
-            Container container,
-            StateController<GameState> gameStateController,
-            StateController<RunTimeState> runTimeStateController,
-            MonoBehaviourSignal monoBehaviourSignal,
-            SceneManager sceneManager,
-            SpawnController spawnController)
+        protected virtual void Init(
+                SignalBus signalBus,
+                Container container,
+                StateController<GameState> gameStateController,
+                StateController<RunTimeState> runTimeStateController,
+                MonoBehaviourSignal monoBehaviourSignal,
+                SceneManager sceneManager,
+                SpawnController spawnController)
         {
             this.signalBus = signalBus;
             this.container = container;
@@ -175,7 +176,6 @@ namespace StateMachine
                     break;
                 case GameState.EXIT:
                     break;
-
                 default:
                     throw new ArgumentOutOfRangeException();
             }

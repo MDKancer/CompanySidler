@@ -1,15 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
-using BootManager;
 using BuildingPackage.OfficeWorker;
 using Enums;
 using Human;
-using PlayerView;
-using SpawnManager;
-using UIPackage;
 using UnityEngine;
-using Zenject;
-using Zenject_Signals;
 
 namespace BuildingPackage
 {

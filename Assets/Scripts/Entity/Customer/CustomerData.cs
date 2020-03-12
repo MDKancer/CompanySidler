@@ -1,11 +1,9 @@
 using System;
-using BootManager;
 using BuildingPackage;
 using Enums;
 using GameCloud;
 using ProjectPackage;
 using UnityEngine;
-using Zenject;
 using Random = UnityEngine.Random;
 
 namespace Entity.Customer.Data

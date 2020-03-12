@@ -1,14 +1,11 @@
 ﻿using System;
 using System.Collections;
-using System.Threading.Tasks;
-using BootManager;
 using BuildingPackage;
 using Entity.Customer.Data;
 using Enums;
 using GameCloud;
 using Human;
 using Human.Customer;
-using PlayerView;
 using UnityEngine;
 using UnityEngine.AI;
 using Zenject;

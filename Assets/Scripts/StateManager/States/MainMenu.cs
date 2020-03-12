@@ -2,6 +2,7 @@
 using GameCloud;
 using SceneController;
 using SpawnManager;
+using UnityEngine;
 using Zenject;
 using Zenject_Signals;
 
@@ -26,6 +27,7 @@ namespace StateMachine.States
 
         public override void OnEnter()
         {
+            Debug.Log($"Current State {this}");
         }
 
         public override void OnUpdate()

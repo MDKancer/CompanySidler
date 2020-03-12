@@ -5,6 +5,7 @@ using StateMachine;
 using UnityEngine;
 using Zenject;
 using SceneController;
+using StateMachine.States;
 using Zenject_Signals;
 
 
@@ -20,8 +21,10 @@ namespace Zenject_Initializer
             CompanyData companyData = Resources.LoadAll<CompanyData>("SO")[0];
 
             Container.Bind<FinalStateManager>().AsSingle().NonLazy();
+            Container.Bind<FinalStateManager_Test>().AsSingle().NonLazy();
             Container.Bind<StateController<GameState>>().AsSingle().NonLazy();
             Container.Bind<StateController<RunTimeState>>().AsSingle().NonLazy();
+            Container.Bind<StateMachineClass<AState>>().AsSingle().NonLazy();
             Container.Bind<CompanyData>().FromScriptableObject(companyData).AsSingle().NonLazy();
             Container.Bind<Container>().AsSingle().NonLazy();
             Container.Bind<SpawnController>().AsSingle().NonLazy();

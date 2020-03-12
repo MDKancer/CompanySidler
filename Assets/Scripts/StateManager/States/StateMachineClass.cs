@@ -1,0 +1,49 @@
+﻿using System;
+using UnityEngine;
+using Zenject;
+
+namespace StateMachine.States
+{
+    public class StateMachineClass<T> where T : AState,IState
+    {
+        private T currentState;
+        private T lastState;
+        private SignalBus signalBus;
+
+        [Inject]
+        private void Init(SignalBus signalBus)
+        {
+            this.signalBus = signalBus;
+        }
+        public T CurrentState
+        {
+            set
+            { 
+                lastState = currentState != null ? currentState : lastState;
+                
+                currentState = value;
+            }
+            get => currentState;
+        }
+        public T LastState
+        {
+            private set => currentState = value;
+            get => currentState;
+        }
+
+        public void SwitchToLastState()
+        {
+            try
+            {
+                var temp = lastState;
+                LastState = currentState;
+                currentState = temp;
+            }
+            catch (Exception e)
+            {
+                Debug.LogError(e);
+                throw;
+            }
+        }
+    }
+}

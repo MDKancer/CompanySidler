@@ -2,6 +2,7 @@
 using GameCloud;
 using SceneController;
 using SpawnManager;
+using UnityEngine;
 using Zenject;
 using Zenject_Signals;
 
@@ -26,9 +27,10 @@ namespace StateMachine.States
 
         public override void OnEnter()
         {
-            container.SetDatas();
-            spawnController.InitialSpawnWave();
-            runTimeStateController.CurrentState = RunTimeState.PLAYING;
+            // container.SetDatas();
+            // spawnController.InitialSpawnWave();
+            // runTimeStateController.CurrentState = RunTimeState.PLAYING;
+            Debug.Log($"Current State {this}");
         }
 
         public override void OnUpdate()

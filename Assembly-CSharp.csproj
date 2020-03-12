@@ -128,6 +128,8 @@
      <Compile Include="Assets\Scripts\So_Template\CompanyData.cs" />
      <Compile Include="Assets\Scripts\So_Template\UIEvents.cs" />
      <Compile Include="Assets\Scripts\SpawnManager\SpawnController.cs" />
+     <Compile Include="Assets\Scripts\StateManager\FinalStateManager.cs" />
+     <Compile Include="Assets\Scripts\StateManager\IFSM.cs" />
      <Compile Include="Assets\Scripts\StateManager\StateManager.cs" />
      <Compile Include="Assets\Scripts\UIDispatcher\BankUIData.cs" />
      <Compile Include="Assets\Scripts\UIDispatcher\BuildingUIData.cs" />

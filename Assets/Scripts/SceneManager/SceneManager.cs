@@ -1,10 +1,9 @@
 ﻿
 using System;
 using System.Collections;
-using System.Linq;
 using Enums;
-using PlayerView;
 using StateMachine;
+using StateMachine.States;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using Zenject;
@@ -16,6 +15,7 @@ namespace SceneController
     {
         private SignalBus signalBus;
         private StateController<GameState> gameStateController;
+        private StateMachineClass<AState> stateMachineClass;
         
         private Scenes lastScene;
         private Scenes currentScene;
@@ -24,10 +24,13 @@ namespace SceneController
         
         [Inject]
         private void Init(SignalBus signalBus,
-            StateController<GameState> gameStateController,MonoBehaviourSignal monoBehaviourSignal)
+            StateController<GameState> gameStateController,
+            MonoBehaviourSignal monoBehaviourSignal,
+            StateMachineClass<AState> stateMachineClass)
         {
             this.signalBus = signalBus;
             this.gameStateController = gameStateController;
+            this.stateMachineClass = stateMachineClass;
             this.monoBehaviour = monoBehaviourSignal;
         }
 
@@ -76,13 +79,15 @@ namespace SceneController
         {
           // Debug.Log($"{CurrentScene} : progress {asyncOperation.progress*100f} %  is Done {nextScene.isDone}");
             GameState gameState = (GameState) Enum.GetValues(typeof(GameState)).GetValue((int) CurrentScene);
+            
+            stateMachineClass.CurrentState = new MainMenu();
+            
             gameStateController.CurrentState = gameState;
             //Debug.Log($"is loaded {gameStateController.CurrentState }");
             signalBus.Fire(new GameStateSignal
             {
                 state = gameState
             });
-            
             
         }
     }

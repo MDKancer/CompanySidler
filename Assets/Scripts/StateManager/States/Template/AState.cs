@@ -18,7 +18,7 @@ namespace StateMachine.States
         protected MonoBehaviourSignal monoBehaviourSignal;
         protected GameStateSignal gameStateSignal;
         /// <summary>
-        /// Here will be all global signals initialized, to make easily to handle
+        /// Here will be all global signals initialized, to make easily to handle.
         /// </summary>
         protected abstract void Init(SignalBus signalBus,
             Container container,

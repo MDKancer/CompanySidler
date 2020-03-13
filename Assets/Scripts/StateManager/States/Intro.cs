@@ -28,15 +28,17 @@ namespace StateMachine.States
         public override void OnEnter()
         {
             // container.LoadAllResources();
-            Debug.Log($"Current State {this}");
+            Debug.Log($"Current State On Enter {this}");
         }
 
         public override void OnUpdate()
         {
+            Debug.Log($"Current State On Update {this}");
         }
 
         public override void OnExit()
         {
+            Debug.Log($"Current State On Exit {this}");
         }
 
         ~Intro()

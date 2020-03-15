@@ -1,15 +1,16 @@
 ﻿using Enums;
+using GameCloud;
 using SceneController;
 using StateMachine;
+using StateMachine.States;
 using UnityEngine;
 using Zenject;
 
 public class UIEvents : MonoBehaviour
 {
-    [Inject]
-    public StateController<GameState> gameStateController;
-    [Inject]
-    public SceneManager sceneManager;
+    [Inject] public StateMachineClass<AState> stateMachineClass;
+    [Inject] public SceneManager sceneManager;
+    [Inject] private Container container;
     public void PlayGame()
     {
         sceneManager.GoTo(Scenes.GAME);  
@@ -22,8 +23,7 @@ public class UIEvents : MonoBehaviour
     public void Exit()
     {
         //first
-        gameStateController.CurrentState = GameState.EXIT;
+        stateMachineClass.CurrentState = container.GetGameState(Scenes.EXIT);
         //second
-        Application.Quit();
     }
 }

@@ -2,6 +2,7 @@
 using GameCloud;
 using SceneController;
 using SpawnManager;
+using UnityEngine;
 using Zenject;
 using Zenject_Signals;
 
@@ -14,15 +15,15 @@ namespace StateMachine.States
         protected StateController<RunTimeState> runTimeStateController;
         protected SceneManager sceneManager;
         protected SpawnController spawnController;
-        protected MonoBehaviourSignal monoBehaviourSignal;
+        protected MonoBehaviour monoBehaviour;
         protected GameStateSignal gameStateSignal;
         /// <summary>
         /// Here will be all global signals initialized, to make easily to handle.
         /// </summary>
-        protected abstract void Init(SignalBus signalBus,
+        public abstract void Init(SignalBus signalBus,
             Container container,
             StateController<RunTimeState> runTimeStateController,
-            MonoBehaviourSignal monoBehaviourSignal,
+            MonoBehaviour monoBehaviour,
             SceneManager sceneManager,
             SpawnController spawnController);
 

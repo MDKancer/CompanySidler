@@ -10,11 +10,10 @@ namespace StateMachine.States
 {
     public class Intro : AState
     {
-        [Inject]
-        protected override void Init(SignalBus signalBus,
+        public override void Init(SignalBus signalBus,
             Container container,
             StateController<RunTimeState> runTimeStateController,
-            MonoBehaviourSignal monoBehaviourSignal,
+            MonoBehaviour monoBehaviour,
             SceneManager sceneManager,
             SpawnController spawnController)
         {
@@ -23,23 +22,14 @@ namespace StateMachine.States
             this.runTimeStateController = runTimeStateController;
             this.sceneManager = sceneManager;
             this.spawnController = spawnController;
-            this.monoBehaviourSignal = monoBehaviourSignal;
-            
+            this.monoBehaviour = monoBehaviour;
         }
-        // Inainte de a schimba scena dorita, eu chem scena loading pentru a incarca scena dorita.
         public override void OnEnter()
         {
+            Debug.Log($"Current State On Enter {this}");
             container.LoadAllResources();
             
-            //TODO : Löschen
-            this.signalBus.Fire(new GameStateSignal
-            {
-                state =  GameState.INTRO
-            });
-            //TODO : Hier muss ich irgendwie  den Loading State zwieschen State einbauen
-            
             sceneManager.GoTo(Scenes.MAIN_MENU);
-            Debug.Log($"Current State On Enter {this}");
         }
 
         public override void OnUpdate()

@@ -127,9 +127,9 @@
      <Compile Include="Assets\Scripts\So_Template\UIEvents.cs" />
      <Compile Include="Assets\Scripts\SpawnManager\SpawnController.cs" />
      <Compile Include="Assets\Scripts\StateManager\FinalStateManager.cs" />
-     <Compile Include="Assets\Scripts\StateManager\FinalStateManager_Test.cs" />
      <Compile Include="Assets\Scripts\StateManager\IFSM _Test.cs" />
      <Compile Include="Assets\Scripts\StateManager\IFSM.cs" />
+     <Compile Include="Assets\Scripts\StateManager\StateMachineClass.cs" />
      <Compile Include="Assets\Scripts\StateManager\StateManager.cs" />
      <Compile Include="Assets\Scripts\StateManager\States\Exit.cs" />
      <Compile Include="Assets\Scripts\StateManager\States\Game.cs" />
@@ -137,7 +137,6 @@
      <Compile Include="Assets\Scripts\StateManager\States\Loading.cs" />
      <Compile Include="Assets\Scripts\StateManager\States\MainMenu.cs" />
      <Compile Include="Assets\Scripts\StateManager\States\PreGame.cs" />
-     <Compile Include="Assets\Scripts\StateManager\States\StateMachineClass.cs" />
      <Compile Include="Assets\Scripts\StateManager\States\Template\AState.cs" />
      <Compile Include="Assets\Scripts\StateManager\States\Template\IState.cs" />
      <Compile Include="Assets\Scripts\UIDispatcher\BankUIData.cs" />

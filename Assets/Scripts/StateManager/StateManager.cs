@@ -6,7 +6,10 @@ using Zenject_Signals;
 
 namespace StateMachine
 {
-    public class StateController<T>
+    /// <summary>
+    /// It is a enum class state machine.
+    /// </summary>
+    public class StateController<T> where T : Enum
     {
         private T currentState;
         private T lastState;

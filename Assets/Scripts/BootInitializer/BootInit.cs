@@ -34,13 +34,6 @@ public class BootInit : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        stateMachineClass.CurrentState = container.GetGameState(GameState.INTRO);
-//        
-//        gameStateController.CurrentState = gameState;
-//        this.signalBus.Fire(new GameStateSignal
-//        {
-//            state =  gameState
-//        });
-//        sceneManager.GoTo(Scenes.MAIN_MENU);
+        stateMachineClass.CurrentState = new Intro();
     }
 }

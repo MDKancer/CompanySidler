@@ -12,11 +12,11 @@ namespace StateMachine.States
     public class Loading : AState
     {
         private TextMeshProUGUI label;
-        [Inject]
-        protected override void Init(SignalBus signalBus,
+
+        public override void Init(SignalBus signalBus,
             Container container,
             StateController<RunTimeState> runTimeStateController,
-            MonoBehaviourSignal monoBehaviourSignal,
+            MonoBehaviour monoBehaviour,
             SceneManager sceneManager,
             SpawnController spawnController)
         {
@@ -25,7 +25,7 @@ namespace StateMachine.States
             this.runTimeStateController = runTimeStateController;
             this.sceneManager = sceneManager;
             this.spawnController = spawnController;
-            this.monoBehaviourSignal = monoBehaviourSignal;
+            this.monoBehaviour = monoBehaviour;
             
         }
 

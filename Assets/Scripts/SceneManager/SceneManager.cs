@@ -1,10 +1,7 @@
-﻿using System;
-using System.Collections;
-using Enums;
-using StateMachine;
+﻿using Enums;
+using GameCloud;
 using StateMachine.States;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 using Zenject;
 using Zenject_Signals;
 
@@ -12,57 +9,48 @@ namespace SceneController
 {
     public class SceneManager
     {
-        private SignalBus signalBus;
-        private StateController<GameState> gameStateController;
-        private StateMachineClass<AState> stateMachineClass;
-        
         private Scenes lastScene;
         private Scenes currentScene;
         private Scenes targetScene;
         private AsyncOperation loadingSceneOperation;
-        private AsyncOperation targetSceneOperation;
-        private MonoBehaviour monoBehaviour;
+        
+        private Container container;
+        private StateMachineClass<AState> stateMachineClass;
         
         [Inject]
-        private void Init(SignalBus signalBus,
-            StateController<GameState> gameStateController,
+        private void Init(
+            Container container,
             MonoBehaviourSignal monoBehaviourSignal,
             StateMachineClass<AState> stateMachineClass)
         {
-            this.signalBus = signalBus;
-            this.gameStateController = gameStateController;
+            this.container = container;
             this.stateMachineClass = stateMachineClass;
-            this.monoBehaviour = monoBehaviourSignal;
         }
 
-
+        /// <summary>
+        /// Loaded the target scene.
+        /// <remarks>Before the target will be loaded,
+        /// first will be a loading scene started to show the progress of the loading of target scene. </remarks>
+        /// </summary>
         public void GoTo(Scenes scenes)
         {
-
             //the scene what need to be loaded
             TargetScene = scenes;
             //the loading scene what loads the target scene
             CurrentScene = Scenes.LOADING;
             
-            loadingSceneOperation =  UnityEngine.SceneManagement.SceneManager.LoadSceneAsync(scenes.ToString());
+            loadingSceneOperation =  UnityEngine.SceneManagement.SceneManager.LoadSceneAsync(CurrentScene.ToString());
             //when the loading Scene is completed 
             loadingSceneOperation.completed += LoadingSceneCompleted;
-
         }
-
         public Scenes CurrentScene
         {
             get => currentScene;
             private set
             {
-                lastScene = currentScene;
+                LastScene = currentScene;
                 currentScene = value;
             }
-        }
-        public Scenes TargetScene
-        {
-            get => targetScene;
-            private set => targetScene = value;
         }
         public Scenes LastScene
         {
@@ -72,21 +60,50 @@ namespace SceneController
 
         public void SwitchToLastScene()
         {
-            
             Scenes temp = CurrentScene;
             CurrentScene = LastScene;
             LastScene = temp;
             
             GoTo(CurrentScene);
         }
-
-        public float SceneProgress => targetSceneOperation.progress;
+        
+        /// <summary>
+        /// It is the progress of the scene that is loading now.
+        /// </summary>
+        public float SceneProgress => loadingSceneOperation.progress;
+        
+        /// <summary>
+        /// It is the scene what it need to be loaded.
+        /// <remarks>It is not the Loading scene !!!</remarks>
+        /// </summary>
+        private Scenes TargetScene
+        {
+            get => targetScene;
+            set => targetScene = value;
+        }
+        
+        /// <summary>
+        /// when the loading scene is completely loaded,
+        /// will be loading up the target scene. 
+        /// </summary>
         private void LoadingSceneCompleted(AsyncOperation asyncOperation)
         {
           // Debug.Log($"{CurrentScene} : progress {asyncOperation.progress*100f} %  is Done {nextScene.isDone}");
-            GameState gameState = (GameState) Enum.GetValues(typeof(GameState)).GetValue((int) CurrentScene);
+            stateMachineClass.CurrentState = container.GetGameState(CurrentScene);
             
-            targetSceneOperation = UnityEngine.SceneManagement.SceneManager.LoadSceneAsync(targetScene.ToString());
+            loadingSceneOperation = UnityEngine.SceneManagement.SceneManager.LoadSceneAsync(TargetScene.ToString());
+            loadingSceneOperation.completed += TargetSceneCompleted;
+        }
+        /// <summary>
+        /// when the target scene is completely loaded,
+        /// will be the current state set up. 
+        /// </summary>
+        private void TargetSceneCompleted(AsyncOperation asyncOperation)
+        {
+            CurrentScene = TargetScene;
+            TargetScene = Scenes.NONE;
+            
+            stateMachineClass.CurrentState = container.GetGameState(CurrentScene);
         }
     }
 }

@@ -21,7 +21,6 @@ namespace Zenject_Initializer
             CompanyData companyData = Resources.LoadAll<CompanyData>("SO")[0];
 
             Container.Bind<FinalStateManager>().AsSingle().NonLazy();
-            Container.Bind<FinalStateManager_Test>().AsSingle().NonLazy();
             Container.Bind<StateController<GameState>>().AsSingle().NonLazy();
             Container.Bind<StateController<RunTimeState>>().AsSingle().NonLazy();
             Container.Bind<StateMachineClass<AState>>().AsSingle().NonLazy();

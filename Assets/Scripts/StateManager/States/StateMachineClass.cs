@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Diagnostics.Tracing;
 using UnityEngine;
+using UnityEngine.InputSystem.Interactions;
 using Zenject;
 using Zenject_Signals;
 
@@ -80,7 +81,7 @@ namespace StateMachine.States
             catch (Exception e)
             {
                 Debug.LogError(e);
-                throw;
+                Console.WriteLine(e);
             }
         }
     }

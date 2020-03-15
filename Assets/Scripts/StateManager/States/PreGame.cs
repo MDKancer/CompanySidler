@@ -11,13 +11,15 @@ namespace StateMachine.States
     public class PreGame : AState
     {
         [Inject]
-        protected override void Init(SignalBus signalBus, Container container, StateController<GameState> gameStateController,
-            StateController<RunTimeState> runTimeStateController, MonoBehaviourSignal monoBehaviourSignal, SceneManager sceneManager,
+        protected override void Init(SignalBus signalBus,
+            Container container,
+            StateController<RunTimeState> runTimeStateController,
+            MonoBehaviourSignal monoBehaviourSignal,
+            SceneManager sceneManager,
             SpawnController spawnController)
         {
             this.signalBus = signalBus;
             this.container = container;
-            this.gameStateController = gameStateController;
             this.runTimeStateController = runTimeStateController;
             this.sceneManager = sceneManager;
             this.spawnController = spawnController;
@@ -27,7 +29,7 @@ namespace StateMachine.States
 
         public override void OnEnter()
         {
-            // runTimeStateController.CurrentState = RunTimeState.NONE;
+            runTimeStateController.CurrentState = RunTimeState.NONE;
             Debug.Log($"Current State {this}");
         }
 

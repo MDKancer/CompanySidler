@@ -2,6 +2,7 @@
 using GameCloud;
 using SceneController;
 using SpawnManager;
+using UnityEngine;
 using Zenject;
 using Zenject_Signals;
 
@@ -10,13 +11,15 @@ namespace StateMachine.States
     public class Exit : AState
     {
         [Inject]
-        protected override void Init(SignalBus signalBus, Container container, StateController<GameState> gameStateController,
-            StateController<RunTimeState> runTimeStateController, MonoBehaviourSignal monoBehaviourSignal, SceneManager sceneManager,
+        protected override void Init(SignalBus signalBus,
+            Container container,
+            StateController<RunTimeState> runTimeStateController,
+            MonoBehaviourSignal monoBehaviourSignal,
+            SceneManager sceneManager,
             SpawnController spawnController)
         {
             this.signalBus = signalBus;
             this.container = container;
-            this.gameStateController = gameStateController;
             this.runTimeStateController = runTimeStateController;
             this.sceneManager = sceneManager;
             this.spawnController = spawnController;
@@ -26,7 +29,7 @@ namespace StateMachine.States
 
         public override void OnEnter()
         {
-            container.LoadAllResources();
+            Application.Quit();
         }
 
         public override void OnUpdate()
@@ -35,6 +38,7 @@ namespace StateMachine.States
 
         public override void OnExit()
         {
+            
         }
 
         ~Exit()

@@ -1,19 +1,13 @@
 ﻿using System.Collections;
 using StateMachine.States;
-using UnityEngine;
 using Zenject;
-using Zenject_Signals;
-using Container = GameCloud.Container;
 
 namespace StateMachine
 {
     public class FinalStateManager_Test : IFSM_Test
     {
         protected SignalBus signalBus;
-        protected Container container;
         protected StateMachineClass<AState> stateMachineClass;
-        protected MonoBehaviourSignal monoBehaviourSignal;
-        private GameStateSignal gameStateSignal;
 
         /// <summary>
         /// Here will be all global signals initialized, to make easily to handle
@@ -21,29 +15,20 @@ namespace StateMachine
         [Inject]
         protected virtual void Init(
                 SignalBus signalBus,
-                StateMachineClass<AState> stateMachineClass,
-                MonoBehaviourSignal monoBehaviourSignal)
+                StateMachineClass<AState> stateMachineClass)
         {
             this.signalBus = signalBus;
             this.stateMachineClass = stateMachineClass;
-            this.monoBehaviourSignal = monoBehaviourSignal;
             
             //first need to exit from the last State
             this.stateMachineClass.stateChanged += OnExit;
             //than initialize the currentState
             this.stateMachineClass.stateChanged += OnEnter;
+            //will be On Update inside current state in loop executed
             this.stateMachineClass.currentStateUpdated += OnUpdate;
             
-            this.signalBus.Subscribe<GameStateSignal>(SignalHandel);
         }
 
-        /// <summary>
-        /// Handles the received signal state.
-        /// </summary>
-        private void SignalHandel(GameStateSignal stateSignal)
-        {
-            this.gameStateSignal = stateSignal;
-        }
         /// <summary>
         /// Here the process is handled when the state signal is received.
         /// </summary>
@@ -71,9 +56,6 @@ namespace StateMachine
         public void OnExit()
         {
             stateMachineClass.CurrentState.OnExit();
-            // aici trebuie sa execut mai intaii vechiul Status 
-            // si dupa curentul
-            // sau doar currentul?
         }
 
         /// <summary>
@@ -81,7 +63,6 @@ namespace StateMachine
         /// </summary>
         ~FinalStateManager_Test()
         {
-            this.signalBus.TryUnsubscribe<GameStateSignal>(OnEnter);
         }
     }
 }

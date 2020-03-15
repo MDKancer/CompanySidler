@@ -1,5 +1,4 @@
-﻿
-using System;
+﻿using System;
 using System.Collections;
 using Enums;
 using StateMachine;
@@ -19,7 +18,9 @@ namespace SceneController
         
         private Scenes lastScene;
         private Scenes currentScene;
-        private AsyncOperation nextScene;
+        private Scenes targetScene;
+        private AsyncOperation loadingSceneOperation;
+        private AsyncOperation targetSceneOperation;
         private MonoBehaviour monoBehaviour;
         
         [Inject]
@@ -37,12 +38,16 @@ namespace SceneController
 
         public void GoTo(Scenes scenes)
         {
-            CurrentScene = scenes;
-            nextScene =  UnityEngine.SceneManagement.SceneManager.LoadSceneAsync(scenes.ToString());
+
+            //the scene what need to be loaded
+            TargetScene = scenes;
+            //the loading scene what loads the target scene
+            CurrentScene = Scenes.LOADING;
             
-            nextScene.completed += Debuging;
-            IEnumerator gamestate = SetGameState();
-            monoBehaviour.StartCoroutine(gamestate);
+            loadingSceneOperation =  UnityEngine.SceneManagement.SceneManager.LoadSceneAsync(scenes.ToString());
+            //when the loading Scene is completed 
+            loadingSceneOperation.completed += LoadingSceneCompleted;
+
         }
 
         public Scenes CurrentScene
@@ -54,41 +59,34 @@ namespace SceneController
                 currentScene = value;
             }
         }
-
-        public Scenes LastScene => lastScene;
+        public Scenes TargetScene
+        {
+            get => targetScene;
+            private set => targetScene = value;
+        }
+        public Scenes LastScene
+        {
+            get =>lastScene; 
+            private set => lastScene = value;
+        }
 
         public void SwitchToLastScene()
         {
             
-            Scenes temp = currentScene;
-            currentScene = lastScene;
-            lastScene = temp;
-            UnityEngine.SceneManagement.SceneManager.LoadScene(currentScene.ToString(),LoadSceneMode.Single);
+            Scenes temp = CurrentScene;
+            CurrentScene = LastScene;
+            LastScene = temp;
+            
+            GoTo(CurrentScene);
         }
 
-        private IEnumerator SetGameState()
-        {
-            while (nextScene.progress < 0.9f)
-            {
-//                Debug.Log($"{CurrentScene} loading {nextScene.progress} %");
-                yield return null;
-            }
-        }
-
-        private void Debuging(AsyncOperation asyncOperation)
+        public float SceneProgress => targetSceneOperation.progress;
+        private void LoadingSceneCompleted(AsyncOperation asyncOperation)
         {
           // Debug.Log($"{CurrentScene} : progress {asyncOperation.progress*100f} %  is Done {nextScene.isDone}");
             GameState gameState = (GameState) Enum.GetValues(typeof(GameState)).GetValue((int) CurrentScene);
             
-            stateMachineClass.CurrentState = new MainMenu();
-            
-            gameStateController.CurrentState = gameState;
-            //Debug.Log($"is loaded {gameStateController.CurrentState }");
-            signalBus.Fire(new GameStateSignal
-            {
-                state = gameState
-            });
-            
+            targetSceneOperation = UnityEngine.SceneManagement.SceneManager.LoadSceneAsync(targetScene.ToString());
         }
     }
 }

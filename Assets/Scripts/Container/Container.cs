@@ -1,9 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using BuildingPackage;
 using Enums;
+using Sirenix.Utilities;
 using StateMachine;
+using StateMachine.States;
 using UnityEngine;
+using UnityEngine.SocialPlatforms;
 using Zenject;
 using Resources = UnityEngine.Resources;
 
@@ -18,6 +22,7 @@ using Resources = UnityEngine.Resources;
         private List<Material> materials = new List<Material>();
         private List<Material> particleMaterials = new List<Material>();
         private List<GameObject> particleSystems = new List<GameObject>();
+        private Dictionary<GameState,AState> gameStates = new Dictionary<GameState, AState>();
 
         private SignalBus signalBus;
         private StateController<GameState> gameStateController;
@@ -35,7 +40,6 @@ using Resources = UnityEngine.Resources;
         /// </summary>
         public void LoadAllResources()
         {
-
                addPrefabs(Resources.LoadAll<GameObject>("Prefabs/Buildings"), EntityType.BUILDING);
                addPrefabs(Resources.LoadAll<GameObject>("Prefabs/Offices"), EntityType.OFFICES);
                addPrefabs(Resources.LoadAll<GameObject>("Prefabs/Fortniture"), EntityType.FORNITURE);
@@ -46,6 +50,14 @@ using Resources = UnityEngine.Resources;
                materials.AddRange(Resources.LoadAll<Material>("Materials"));
                particleMaterials.AddRange(Resources.LoadAll<Material>("Materials/Particle"));
                particleSystems.AddRange(Resources.LoadAll<GameObject>("Prefabs/ParticleSystems"));
+               
+               
+               //creat the instances for the game states
+               gameStates.Add(GameState.INTRO,new Intro());
+               gameStates.Add(GameState.MAIN_MENU,new MainMenu());
+               gameStates.Add(GameState.PREGAME,new PreGame());
+               gameStates.Add(GameState.GAME,new Game());
+               gameStates.Add(GameState.LOADING,new Loading());
         }
         /// <summary>
         /// Es wird ausgeführt wenn man alle wichtige Daten schon eingegeben hat um ein Unternehmen zu erstellen.
@@ -70,7 +82,9 @@ using Resources = UnityEngine.Resources;
     
         public  IList<GameObject> SpawnedGameObjects =>  spawnedGameObjects.AsReadOnly();
         public Boolean isSpawned(GameObject gameObject) => spawnedGameObjects.Contains(gameObject);
+        public IList<AState> GetGameStates => gameStates.Values.ToList().AsReadOnly();
 
+        public AState GetGameState(GameState gameState) => gameStates[gameState];
         public List<GameObject> GetPrefabsByType(EntityType entityType)
         {
             List<GameObject> gameObjects = new List<GameObject>();

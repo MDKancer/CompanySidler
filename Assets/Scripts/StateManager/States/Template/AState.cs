@@ -11,7 +11,6 @@ namespace StateMachine.States
     {
         protected SignalBus signalBus;
         protected Container container;
-        protected StateController<GameState> gameStateController;
         protected StateController<RunTimeState> runTimeStateController;
         protected SceneManager sceneManager;
         protected SpawnController spawnController;
@@ -22,7 +21,6 @@ namespace StateMachine.States
         /// </summary>
         protected abstract void Init(SignalBus signalBus,
             Container container,
-            StateController<GameState> gameStateController,
             StateController<RunTimeState> runTimeStateController,
             MonoBehaviourSignal monoBehaviourSignal,
             SceneManager sceneManager,

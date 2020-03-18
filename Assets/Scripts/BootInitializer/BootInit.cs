@@ -1,11 +1,11 @@
-﻿using Enums;
+﻿using System;
+using Enums;
 using GameCloud;
 using SceneController;
 using StateMachine;
 using StateMachine.States;
 using UnityEngine;
 using Zenject;
-using Zenject_Signals;
 
 public class BootInit : MonoBehaviour
 {
@@ -34,6 +34,16 @@ public class BootInit : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        stateMachineClass.CurrentState = new Intro();
+        try
+        {
+            stateMachineClass.CurrentState = new Intro();
+
+        }
+        catch (Exception e)
+        {
+            Debug.Log($" The {this}.Init method wasn't executed");
+            Debug.LogError(e);
+            throw;
+        }
     }
 }

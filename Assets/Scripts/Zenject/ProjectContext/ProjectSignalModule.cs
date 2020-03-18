@@ -13,7 +13,8 @@ namespace Zenject_Initializer
         {
             //Here will be only the Project / Global Signals declared
             SignalBusInstaller.Install(Container);
-            
+
+            Container.DeclareSignal<ShowBuildingData>().OptionalSubscriber();
             Container.DeclareSignal<CurrentCompanySignal>().OptionalSubscriber();
             Container.DeclareSignal<GameStateSignal>().OptionalSubscriber();
         }

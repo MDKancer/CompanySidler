@@ -88,10 +88,11 @@ namespace SceneController
         /// </summary>
         private void LoadingSceneCompleted(AsyncOperation asyncOperation)
         {
-          // Debug.Log($"{CurrentScene} : progress {asyncOperation.progress*100f} %  is Done {nextScene.isDone}");
             stateMachineClass.CurrentState = container.GetGameState(CurrentScene);
             
             loadingSceneOperation = UnityEngine.SceneManagement.SceneManager.LoadSceneAsync(TargetScene.ToString());
+            
+            loadingSceneOperation.completed -= LoadingSceneCompleted;
             loadingSceneOperation.completed += TargetSceneCompleted;
         }
         /// <summary>
@@ -103,6 +104,7 @@ namespace SceneController
             CurrentScene = TargetScene;
             TargetScene = Scenes.NONE;
             
+            loadingSceneOperation.completed -= TargetSceneCompleted;
             stateMachineClass.CurrentState = container.GetGameState(CurrentScene);
         }
     }

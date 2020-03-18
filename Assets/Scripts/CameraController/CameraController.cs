@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using Enums;
 using StateMachine;
+using StateMachine.States;
 using UnityEngine;
 using Zenject;
 using Zenject_Signals;
@@ -20,12 +21,16 @@ namespace PlayerView
 
         public CameraController(SignalBus signalBus,MonoBehaviour monoBehaviour,StateController<RunTimeState> runtimeStateController)
         {
-            mainCameraGameObject = Camera.main.gameObject;
             mainCamera = Camera.main;
+            mainCameraGameObject = mainCamera.gameObject;
             this.signalBus = signalBus;
             this.runtimeStateController = runtimeStateController;
             this.monoBehaviour = monoBehaviour;
         }
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="endPosition"></param>
         public void FocusOn(Vector3 endPosition)
         {
             isArrive = false;
@@ -73,7 +78,9 @@ namespace PlayerView
         private IEnumerator ChangeState()
         {
             while (isArrive == false) yield return null;
+            
             runtimeStateController.CurrentState = RunTimeState.BUILDING_INFO;
+            // the signal bus is to early instantiate as the ShowBuildingData in Game scene new declarated
             signalBus.Fire(new ShowBuildingData{});
         }
     }

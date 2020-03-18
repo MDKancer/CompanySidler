@@ -1,12 +1,10 @@
 ﻿using System;
 using System.Collections;
-using System.Diagnostics.Tracing;
 using Enums;
 using GameCloud;
 using SceneController;
 using SpawnManager;
 using UnityEngine;
-using UnityEngine.InputSystem.Interactions;
 using Zenject;
 using Zenject_Signals;
 
@@ -39,6 +37,7 @@ namespace StateMachine.States
         protected SpawnController spawnController;
         protected MonoBehaviour monoBehaviour;
         protected GameStateSignal gameStateSignal;
+        protected CompanyData companyData;
         private IEnumerator update;
 
         [Inject]
@@ -47,7 +46,8 @@ namespace StateMachine.States
             StateController<RunTimeState> runTimeStateController,
             MonoBehaviourSignal monoBehaviourSignal,
             SceneManager sceneManager,
-            SpawnController spawnController)
+            SpawnController spawnController,
+            CompanyData companyData)
         {
             this.signalBus = signalBus;
             this.container = container;
@@ -55,6 +55,7 @@ namespace StateMachine.States
             this.sceneManager = sceneManager;
             this.spawnController = spawnController;
             this.monoBehaviour = monoBehaviourSignal;
+            this.companyData = companyData;
         }
         public T CurrentState
         {
@@ -75,7 +76,13 @@ namespace StateMachine.States
                 currentState = value;
                 
                 // the important fields send on to the current state
-                currentState.Init(signalBus,container,runTimeStateController,monoBehaviour,sceneManager,spawnController);
+                currentState.Init(signalBus: signalBus,
+                    container: container,
+                    runTimeStateController: runTimeStateController,
+                    monoBehaviour: monoBehaviour,
+                    sceneManager: sceneManager,
+                    spawnController: spawnController,
+                    companyData: companyData);
                 
                 //now the current state was changed, and that mean the state is initialized
                 // OnEnter()

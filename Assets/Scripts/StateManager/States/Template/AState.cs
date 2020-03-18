@@ -17,6 +17,8 @@ namespace StateMachine.States
         protected SpawnController spawnController;
         protected MonoBehaviour monoBehaviour;
         protected GameStateSignal gameStateSignal;
+        protected CompanyData companyData;
+
         /// <summary>
         /// Here will be all global signals initialized, to make easily to handle.
         /// </summary>
@@ -25,7 +27,8 @@ namespace StateMachine.States
             StateController<RunTimeState> runTimeStateController,
             MonoBehaviour monoBehaviour,
             SceneManager sceneManager,
-            SpawnController spawnController);
+            SpawnController spawnController,
+            CompanyData companyData);
 
         /// <summary>
         /// Here the process is handled when the state signal is received.

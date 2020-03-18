@@ -1,11 +1,9 @@
 ﻿using System;
 using System.Globalization;
-using System.Reflection;
 using BuildingPackage;
 using Enums;
 using GameCloud;
 using Human;
-using ProjectPackage;
 using SpawnManager;
 using StateMachine;
 using TMPro;
@@ -31,7 +29,6 @@ namespace PlayerView
 
         protected BuildingContent buildingContent;
         protected SignalBus signalBus;
-        protected StateController<GameState> gameStateController;
         protected StateController<RunTimeState> runtimeStateController;
         protected SpawnController spawnController;
         protected Container container;
@@ -41,14 +38,12 @@ namespace PlayerView
         [Inject]
         protected virtual void Init(
                             SignalBus signalBus, 
-                            StateController<GameState> gameStateController,
                             StateController<RunTimeState> runtimeStateController,
                             SpawnController spawnController,
                             Container container,
                             MonoBehaviourSignal monoBehaviourSignal)
         {
             this.signalBus = signalBus;
-            this.gameStateController = gameStateController;
             this.runtimeStateController = runtimeStateController;
             this.spawnController = spawnController;
             this.container = container;
@@ -68,24 +63,7 @@ namespace PlayerView
         
         protected virtual void StateDependency(ShowBuildingData showBuildingData)
         {
-            switch (gameStateController.CurrentState)
-            {
-                case GameState.NONE:
-                    break;
-                case GameState.INTRO:
-                    break;
-                case GameState.LOADING:
-                    break;
-                case GameState.MAIN_MENU:
-                    break;
-                case GameState.PREGAME:
-                    break;
-                case GameState.GAME:
-                    ShowBuildingInfoWindow();
-                    break;
-                case GameState.EXIT:
-                    break;
-            }
+            ShowBuildingInfoWindow();
         }
         protected virtual void SetDatas()
         {
@@ -99,10 +77,7 @@ namespace PlayerView
         // Update is called once per frame
         void Update()
         {
-            if(gameStateController.CurrentState == GameState.GAME)
-            {
-                CurrentBudget();
-            }
+               // CurrentBudget();
         }
         
         private void ApplyEmployee(ApplyEmployeeSignal applyEmployeeSignal)
@@ -135,7 +110,6 @@ namespace PlayerView
         {
             if (runtimeStateController.CurrentState == RunTimeState.BUILDING_INFO) // && Boot.gameStateController.CurrentState == GameState.GAME
             {
-                Debug.Log(Building.Company);
                 if (Building.Company.CurrentBudget >= Building.BuildingData.price)
                 {
                     var currentBudget = container.Companies[0].CurrentBudget;
@@ -164,9 +138,7 @@ namespace PlayerView
         }
         private void ChangeBuildingState(Transform button)
         {
-                if (runtimeStateController.CurrentState == RunTimeState.BUILDING_INFO 
-                    && 
-                    gameStateController.CurrentState == GameState.GAME)
+                if (runtimeStateController.CurrentState == RunTimeState.BUILDING_INFO)
                 {
                         Building.SwitchWorkingState();
                         
@@ -192,9 +164,7 @@ namespace PlayerView
         {
             
             //________________________________________________________________________________________________________________________________________
-                if (runtimeStateController.CurrentState == RunTimeState.BUILDING_INFO 
-                    && 
-                    gameStateController.CurrentState == GameState.GAME)
+                if (runtimeStateController.CurrentState == RunTimeState.BUILDING_INFO)
                 {
                         RemoveBuildingContent();
                         
@@ -227,8 +197,7 @@ namespace PlayerView
                         }
                 }
                 else if(runtimeStateController.CurrentState != RunTimeState.BUILDING_INFO
-                        && runtimeStateController.CurrentState != RunTimeState.GAME_MENU
-                        && gameStateController.CurrentState == GameState.GAME)
+                        && runtimeStateController.CurrentState != RunTimeState.GAME_MENU)
                 {
                     if(Building != null && Building.IsBuying)
                     {
@@ -244,13 +213,9 @@ namespace PlayerView
 
             haveContentBtn = false;
         }
-        private void CurrentBudget()
+        public void CurrentBudget()
         {
-            if(gameStateController.CurrentState == GameState.GAME)
-            {
-                            
                 uiData.budget_Label?.SetText(container.Companies[0].CurrentBudget.ToString());
-            }
         }
 
         private EntityType GetValue(String value) => (EntityType) Enum.Parse(typeof(EntityType), value.ToUpper());
@@ -272,20 +237,6 @@ namespace PlayerView
             uiData.numberOfCustomers_Label?.SetText(container.Companies[0].numberOfCustomers.ToString());
         }
         private Building Building { get; set; }
-
-        /// <summary>
-        /// Es ist nur temporär um zu wissen ob alles gut Läuft.
-        /// </summary>
-        private void CheckCurrentState()
-        {
-            if(gameStateController != null)
-            {
-                if (currentGameState != gameStateController.CurrentState)
-                {
-                    currentGameState = gameStateController.CurrentState;
-                }
-            }
-        }
 
         private void GenerateBuildingContent()
         {

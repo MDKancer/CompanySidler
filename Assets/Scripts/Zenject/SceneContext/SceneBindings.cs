@@ -1,6 +1,4 @@
-
 using UnityEngine;
-using Zenject_Signals;
 using Zenject;
 
 namespace Zenject_Initializer
@@ -11,7 +9,7 @@ namespace Zenject_Initializer
         public override void InstallBindings()
         {
             // here will be only the Scene Bindings
-            
+
         }
     }
 }

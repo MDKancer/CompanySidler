@@ -2,6 +2,9 @@
 
 namespace CameraManager
 {
+    /// <summary>
+    /// Developmnet Test
+    /// </summary>
     public class Controller : MonoBehaviour
     {
         private Rigidbody rigidBody;

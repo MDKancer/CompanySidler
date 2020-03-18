@@ -15,7 +15,8 @@ namespace StateMachine.States
             StateController<RunTimeState> runTimeStateController,
             MonoBehaviour monoBehaviour,
             SceneManager sceneManager,
-            SpawnController spawnController)
+            SpawnController spawnController,
+            CompanyData companyData)
         {
             this.signalBus = signalBus;
             this.container = container;
@@ -23,22 +24,23 @@ namespace StateMachine.States
             this.sceneManager = sceneManager;
             this.spawnController = spawnController;
             this.monoBehaviour = monoBehaviour;
-            
+            this.companyData = companyData;
+
         }
 
         public override void OnEnter()
         {
-            Debug.Log($"Current State On Enter {this}");
+            //Debug.Log($"Current State On Enter {this}");
         }
 
         public override void OnUpdate()
         {
-            Debug.Log($"Current State On Update {this}");
+            //Debug.Log($"Current State On Update {this}");
         }
 
         public override void OnExit()
         {
-            Debug.Log($"Current State On Exit {this}");
+            //Debug.Log($"Current State On Exit {this}");
         }
 
         ~MainMenu()

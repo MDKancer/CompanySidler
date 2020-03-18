@@ -1,4 +1,3 @@
-using System.Collections;
 using BuildingPackage;
 using Enums;
 using UnityEngine;
@@ -11,7 +10,7 @@ using Zenject_Signals;
 
 namespace InputManager
 {
-    public class InputController : MonoBehaviour
+    public class InputController
     {
         public float speed = 1f;
 
@@ -30,57 +29,21 @@ namespace InputManager
         private TextMeshProUGUI buildingLabel;
 
         private SignalBus signalBus;
-        private StateController<GameState> gameStateController;
         private StateController<RunTimeState> runtimeStateController;
         private MonoBehaviour monoBehaviour;
         private string companyName = "Company";
-        [Inject]
-        private void Init(SignalBus signalBus, StateController<GameState> gameStateController,
-            StateController<RunTimeState> runtimeStateController,MonoBehaviourSignal monoBehaviourSignal,CompanyData companyData)
+        
+        public void Init(SignalBus signalBus,
+            StateController<RunTimeState> runtimeStateController, 
+            MonoBehaviour monoBehaviour,
+            CompanyData companyData)
         {
-
             this.signalBus = signalBus;
-            this.gameStateController = gameStateController;
             this.runtimeStateController = runtimeStateController;
-            this.monoBehaviour = monoBehaviourSignal;
+            this.monoBehaviour = monoBehaviour;
             this.companyName = companyData.nameCompany;
             //signalBus.Subscribe<ShowBuildingData>(OnWindowOpen);
-            signalBus.Subscribe<GameStateSignal>(StateDependency);
         }
-
-        private void StateDependency(GameStateSignal gameStateSignal)
-        {
-            switch (gameStateSignal.state)
-            {
-                case GameState.NONE:
-                    break;
-                case GameState.INTRO:
-                    break;
-                case GameState.LOADING:
-                    break;
-                case GameState.MAIN_MENU:
-                    break;
-                case GameState.PREGAME:
-                    break;
-                case GameState.GAME:
-                    SetCameraController();
-                    showBuildingDataEvent += PlayerViewController.playerViewController.FocusedBuilding;
-                    StartCoroutine(CameraUpdate());
-                    break;
-                case GameState.EXIT:
-                    break;
-            }
-        }
-        public  void Awake()
-        {
-
-        }
-
-        public void Start()
-        {
-            
-        }
-
         public void SetCameraController()
         {
             cameraController = new CameraController(signalBus,monoBehaviour,runtimeStateController);
@@ -90,16 +53,7 @@ namespace InputManager
             buildingLabel.gameObject.SetActive(false);
         }
 
-        private IEnumerator CameraUpdate()
-        {
-            while (gameStateController.CurrentState == GameState.GAME)
-            {
-                    CameraEvents();
-                yield return null;
-            }
-        }
-
-        private void CameraEvents()
+        public void CameraEvents()
         {
             var transform = cameraController.mainCamera.transform;
             middleDirection = (transform.up + transform.forward) / 2; 
@@ -152,7 +106,6 @@ namespace InputManager
                         }
                     }
                 }
-
             }
             if (Input.GetKeyDown(KeyCode.Escape))
             {
@@ -163,22 +116,13 @@ namespace InputManager
                     cameraController.ToEmptyPos();
 
                     runtimeStateController.CurrentState = RunTimeState.PLAYING;
+                    // the signal bus is to early instantiate as the ShowBuildingData in Game scene new declarated
                     signalBus.Fire(new ShowBuildingData{});
                     focusPoint = focusObject.transform.position;
                 }
             }
             ShowNameOffice();
         }
-        
-        /// <summary>
-        /// Gibt den gecklikten Gebäude zurrück.
-        /// </summary>
-//        public static GameObject FocusedBuilding
-//        {
-//            get => focusedBuilding;
-//            private set => focusedBuilding = value;
-//        }
-
         private bool isBuilding(GameObject targetObject)
         {
             Component[] buildingComponent = targetObject.GetComponents(typeof(Building));

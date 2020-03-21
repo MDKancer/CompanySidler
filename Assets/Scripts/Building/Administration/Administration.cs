@@ -1,14 +1,10 @@
 using System.Collections;
 using System.Collections.Generic;
-using BootManager;
-using BuildingPackage.OfficeWorker;
+using Entity.Employee;
 using Enums;
-using Human;
-using StateMachine;
-using UIPackage;
 using UnityEngine;
 
-namespace BuildingPackage
+namespace Building.Administration
 {
     public class Administration : Building, iAdministration
     {
@@ -22,6 +18,7 @@ namespace BuildingPackage
                 name = name,
                 maxHitPoints = 2000,
                 currentHitPoints = 2000,
+                price = 0,
                 upgradePrice = 0,
                 workPlacesLimit = 1,
                 moneyPerSec = 5,
@@ -76,7 +73,11 @@ namespace BuildingPackage
             {
                 while (stateController.CurrentState == BuildingState.WORK)
                 {
-                    budget += Supporting();
+                    if (company != null)
+                    {
+                        company.CurrentBudget += Supporting();
+                        budget += Supporting();
+                    }
                     yield return new WaitForSeconds(1f);
                 }
             }

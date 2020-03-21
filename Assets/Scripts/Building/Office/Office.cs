@@ -1,13 +1,10 @@
 using System.Collections;
 using System.Collections.Generic;
-using BootManager;
-using BuildingPackage.OfficeWorker;
+using Entity.Employee;
 using Enums;
-using Human;
-using UIPackage;
 using UnityEngine;
 
-namespace BuildingPackage
+namespace Building.Office
 {
     public class Office : Building, iOffice
     {
@@ -21,6 +18,7 @@ namespace BuildingPackage
                 workers = 0,
                 maxHitPoints = 2000,
                 currentHitPoints = 2000,
+                price = 0,
                 upgradePrice = 0,
                 workPlacesLimit = 1,
                 moneyPerSec = -2,
@@ -38,7 +36,9 @@ namespace BuildingPackage
                 }
             };
             stateController.CurrentState = BuildingState.EMPTY;
+            
         }
+
         public int Managment()
         {
             return BuildingData.wastage; 
@@ -66,13 +66,18 @@ namespace BuildingPackage
                 isBuying = value;
             }
         }
-        private IEnumerator UpdateManyGenerator()
+        protected override IEnumerator UpdateManyGenerator()
         {
             if (stateController.CurrentState == BuildingState.WORK)
             {
                 while (stateController.CurrentState == BuildingState.WORK)
                 {
-                    budget += Managment();
+                    if (company != null)
+                    {
+                        company.CurrentBudget += Managment();
+                        budget += Managment();
+                        
+                    }
                     yield return new WaitForSeconds(1f);
                 }
             }

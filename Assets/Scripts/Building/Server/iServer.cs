@@ -1,4 +1,4 @@
-namespace BuildingPackage
+namespace Building.Server
 {
     public interface iServer
     {

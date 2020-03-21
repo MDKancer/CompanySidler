@@ -1,4 +1,4 @@
-namespace Human.Customer
+namespace Entity.Customer
 {
     public interface iCustomer
     {

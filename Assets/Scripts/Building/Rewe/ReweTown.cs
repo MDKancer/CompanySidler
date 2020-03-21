@@ -1,14 +1,10 @@
 using System.Collections;
 using System.Collections.Generic;
-using BootManager;
-using BuildingPackage.OfficeWorker;
+using Entity.Employee;
 using Enums;
-using Human;
-using StateMachine;
-using UIPackage;
 using UnityEngine;
 
-namespace BuildingPackage
+namespace Building.Rewe
 {
     public class ReweTown : Building, iRewe
     {
@@ -23,6 +19,7 @@ namespace BuildingPackage
                 workers = 0,
                 maxHitPoints = 2000,
                 currentHitPoints = 2000,
+                price = 0,
                 upgradePrice = 0,
                 workPlacesLimit = 1,
                 moneyPerSec = 10,
@@ -74,7 +71,11 @@ namespace BuildingPackage
             {
                 while (stateController.CurrentState == BuildingState.WORK)
                 {
-                    budget += Programming();
+                    if (company != null)
+                    {
+                        company.CurrentBudget += Programming();
+                        budget += Programming();
+                    }
                     yield return new WaitForSeconds(1f);
                 }
             }

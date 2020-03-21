@@ -1,7 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
-using BootManager;
 using Enums;
 using ProjectPackage.ProjectTasks;
 using UnityEngine;
@@ -19,7 +18,7 @@ namespace ProjectPackage
         private bool isDone = false;
         private List<Task> tasks;
 
-        public Project(int workersCount)
+        public Project(int workersCount,MonoBehaviour monoBehaviour)
         {
             tasks = new List<Task>(workersCount);
             GenerateTasks(workersCount);
@@ -31,7 +30,7 @@ namespace ProjectPackage
             budget = workersCount * totalHourlyWage * (int) timeDuration;
             punishment  = budget * wastagePercent / 100;
             
-            BootController.BootControllerInstance.monoBehaviour.StartCoroutine(CheckIfIsDone());
+            monoBehaviour.StartCoroutine(CheckIfIsDone());
         }
 
         public int Budget => budget;

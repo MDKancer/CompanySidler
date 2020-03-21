@@ -1,36 +1,29 @@
-using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
-using BootManager;
-using BuildingPackage;
+using Building;
 using Enums;
-using GameCloud;
-using InputManager;
 using JetBrains.Annotations;
-using PathFinderManager;
 using ProjectPackage.ProjectTasks;
 using TMPro;
 using UnityEngine;
-using Zenject;
 using Random = UnityEngine.Random;
 
-namespace Human
+namespace Entity.Employee
 {
     public class Employee : Human, IWorker
     {
 
         private EmployeeData employeeData = null;
         private TextMeshProUGUI namePoster;
-        [Inject]
-        private Container container;
 
         public void OnEnable()
         {
+            //TODO: das soll auch geändert werden, ist dumm gemacht.
             AttachEvent += SetOffice;
         }
 
-        private void SetOffice(Building myOffice)
+        private void SetOffice(Building.Building myOffice)
         {
             myOffice.applyWorkerEvent(this);
         }
@@ -100,13 +93,13 @@ namespace Human
         {
             int index = 0;
             List<HumanState> myKeys = EmployeeData.GetEntityWorkingCycle.Keys.ToList();
-            List<Company> firmas = container.Companies;
+            Company company = employeeData.Company;
             Vector3 initialPosition = gameObject.transform.position;
-            Vector3 officePosition =firmas[0].GetOffice(EmployeeData.GetHisOffice).gameObject.transform.position;
+            Vector3 officePosition =company.GetOffice(EmployeeData.GetHisOffice).gameObject.transform.position;
             Vector3 targetPosition = GenerateRandomPosition(officePosition);
             
             destination = EmployeeData.GetHisOffice;
-            PathFinder.MoveTo(gameObject,targetPosition);
+            PathFinder.Navigator.MoveTo(gameObject,targetPosition);
             while (SelfState.CurrentState != HumanState.QUITED)
             {
                 if (transform.position.x == targetPosition.x && transform.position.z == targetPosition.z)
@@ -149,20 +142,20 @@ namespace Human
                         index = index >= myKeys.Count ? 0 : index;
                         
                         destination = EmployeeData.GetEntityWorkingCycle[myKeys[index]];
-                        officePosition = firmas[0].GetOffice(destination).gameObject.transform.position;
+                        officePosition = company.GetOffice(destination).gameObject.transform.position;
                         
                         SelfState.CurrentState = myKeys[index];
                         
                         targetPosition = GenerateRandomPosition(officePosition);
                 
-                        PathFinder.MoveTo(gameObject,targetPosition);
+                        PathFinder.Navigator.MoveTo(gameObject,targetPosition);
                         index++;
                     }
                 }
                 
                 
                 // hier passiert alles wärend des Laufens
-                if (PathFinder.MyPathStatus(gameObject) == PathProgress.NONE)
+                if (PathFinder.Navigator.MyPathStatus(gameObject) == PathProgress.NONE)
                 {
                     
                     targetPosition = GenerateRandomPosition(officePosition);
@@ -172,7 +165,7 @@ namespace Human
 
             destination = BuildingType.NONE;
             targetPosition = initialPosition;
-            PathFinder.MoveTo(gameObject,targetPosition);
+            PathFinder.Navigator.MoveTo(gameObject,targetPosition);
 
             while (SelfState.CurrentState == HumanState.QUITED)
             {
@@ -186,7 +179,7 @@ namespace Human
 
         private IEnumerator ShowMyCanvas()
         {
-            namePoster = uiElements.GetCanvas(this.employeeData.GetEntityType.ToString());
+            namePoster = proceduralUiElements.GetCanvas(this.employeeData.GetEntityType.ToString());
             var main = Camera.main;
             RectTransform rectTransform = namePoster.GetComponent<RectTransform>();
             while (gameObject != null)

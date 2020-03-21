@@ -2,14 +2,17 @@
 using Enums;
 using UnityEngine;
 
-[CreateAssetMenu(menuName = "Credits")]
-public class SoWorkers : ScriptableObject {
+namespace Credits.ProceduralCredits.ListOfProjectsWorkers
+{
+    [CreateAssetMenu(menuName = "Credits")]
+    public class SoWorkers : ScriptableObject {
 
-    public string ProjektName = "tarentSidler";
-    public List<Worker_Position> Position;
+        public string ProjektName = "tarentSidler";
+        public List<Worker_Position> Position;
 
-    public List<string> Worker;
+        public List<string> Worker;
 
 
 
+    }
 }

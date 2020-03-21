@@ -1,11 +1,15 @@
 ﻿using System.Collections;
-using BootManager;
 using UnityEngine;
 
-namespace Credits
+namespace Credits.ProceduralCredits.UIComponentsGenerator
 {
     public sealed class RollingCredits
     {
+        private MonoBehaviour monoBehaviour;
+        public RollingCredits(MonoBehaviour monoBehaviour)
+        {
+            this.monoBehaviour = monoBehaviour;
+        }
         public IEnumerator StartRolling(GameObject label)
         {
             GameObject lbl = label;
@@ -27,7 +31,7 @@ namespace Credits
 
                     if (rT.localPosition == v3_endPosition)
                     {
-                        BootController.BootControllerInstance.monoBehaviour.StopCoroutine(StartRolling(label));
+                        monoBehaviour.StopCoroutine(StartRolling(label));
                         Object.Destroy(label);
                     }
                 }

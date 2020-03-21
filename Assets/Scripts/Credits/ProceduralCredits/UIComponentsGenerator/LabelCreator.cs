@@ -1,8 +1,8 @@
-﻿ using Enums;
- using UnityEngine;
- using UnityEngine.UI;
+﻿using Enums;
+using UnityEngine;
+using UnityEngine.UI;
 
- namespace Credits
+namespace Credits.ProceduralCredits.UIComponentsGenerator
  {
      public sealed class LabelCreator
      {

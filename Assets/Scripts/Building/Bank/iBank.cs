@@ -1,11 +1,9 @@
-using JetBrains.Annotations;
-
-namespace BuildingPackage
+namespace Building.Bank
 {
     public interface iBank
     {
-        void TakeLoan([NotNull]Company company,int amount);
+        void TakeLoan(int amount);
 
-        void RepayLoan([NotNull]Company company,int amount);
+        void RepayLoan(int amount);
     }
 }

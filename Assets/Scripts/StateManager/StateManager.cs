@@ -1,12 +1,13 @@
 ﻿using System;
-using Enums;
 using UnityEngine;
 using Zenject;
-using Zenject_Signals;
 
-namespace StateMachine
+namespace StateManager
 {
-    public class StateController<T>
+    /// <summary>
+    /// It is a enum class state machine.
+    /// </summary>
+    public class StateController<T> where T : Enum
     {
         private T currentState;
         private T lastState;
@@ -24,8 +25,6 @@ namespace StateMachine
                lastState = currentState != null ? currentState : lastState;
                 
                 currentState = value;
-                
-                if(currentState.GetType() == typeof(GameState)) GlobalSignal();
             }
             get => currentState;
         }
@@ -48,14 +47,6 @@ namespace StateMachine
                 Debug.LogError(e);
                 throw;
             }
-        }
-
-        private void GlobalSignal()
-        {
-            signalBus.Fire(new GameStateSignal
-            {
-                state = (GameState) (currentState as object)
-            });
         }
     }
 }

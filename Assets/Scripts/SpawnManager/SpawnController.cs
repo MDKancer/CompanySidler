@@ -1,16 +1,13 @@
 ﻿using System;
 using System.Collections;
-using System.Threading.Tasks;
-using BootManager;
-using BuildingPackage;
-using Entity.Customer.Data;
+using Entity.Customer;
+using Entity.Employee;
 using Enums;
-using GameCloud;
-using Human;
-using Human.Customer;
+using So_Template;
 using UnityEngine;
 using UnityEngine.AI;
 using Zenject;
+using Zenject.ProjectContext.Signals;
 using Object = UnityEngine.Object;
 
 namespace SpawnManager
@@ -18,13 +15,24 @@ namespace SpawnManager
     public class SpawnController
     {
         private int index = 0;
-        [Inject]private Container container;
+        private SignalBus signalBus;
+        private Container.Cloud cloud;
+        private CompanyData companyData;
+        private MonoBehaviour monoBehaviour;
+        [Inject]
+        private void Init(SignalBus signalBus,Container.Cloud cloud,CompanyData companyData,MonoBehaviourSignal monoBehaviourSignal)
+        {
+            this.signalBus = signalBus;
+            this.cloud = cloud;
+            this.companyData = companyData;
+            this.monoBehaviour = monoBehaviourSignal;
+        }
         public void InitialSpawnWave()
         {
-            foreach (var officePrefab in BootController.BootControllerInstance.companyData.basicOffices.offices)
+            foreach (var officePrefab in companyData.basicOffices.offices)
             {
-                var building = container.Companies[0].GetOffice(officePrefab);
-                BootController.BootControllerInstance.monoBehaviour.StartCoroutine(SpawnAfterInstancing(building));
+                var building = cloud.Companies[0].GetOffice(officePrefab);
+                monoBehaviour.StartCoroutine(SpawnAfterInstancing(building));
             }
         }
         public void SpawnOffice(GameObject office, Vector3 targetPosition)
@@ -32,9 +40,9 @@ namespace SpawnManager
             GameObject instance = Object.Instantiate(
                 office,
                 targetPosition,Quaternion.identity,
-                container.Companies[0].getCompanyGameObject().transform);
+                cloud.Companies[0].getCompanyGameObject().transform);
             
-            container.AddSpawnedGameObject(instance);
+            cloud.AddSpawnedGameObject(instance);
         }
         
         /// <summary>
@@ -44,7 +52,7 @@ namespace SpawnManager
         /// <param name="employeeData"></param>
         /// <param name="spawnPosition"></param>
         /// <returns>Wenn das Object Instantiert wurde und in den Container gepseichert wurde, bekommt man zurrück ein true.</returns>
-        public Boolean SpawnWorker(Building workerOffice,EmployeeData employeeData,Vector3 spawnPosition) //GameObject prefab, EntityType workerEntityType
+        public Boolean SpawnWorker(Building.Building workerOffice,EmployeeData employeeData,Vector3 spawnPosition) //GameObject prefab, EntityType workerEntityType
         {
             try
             {
@@ -60,11 +68,13 @@ namespace SpawnManager
                    Employee employee = objectInstace.AddComponent<Employee>();
                    
                    employee.EmployeeData = employeeData;
+                   //TODO: der Employee soll automatisch den Zugriff auf Container kriegen.
+                   //Vieleicht die Company in Employeedata weitergeben, und nicht den Container.
                    employee.AttachEvent(workerOffice);
                    employee.Work();
                 }
 
-                container.AddSpawnedGameObject(objectInstace);
+                cloud.AddSpawnedGameObject(objectInstace);
 
                 return true;
             }
@@ -94,7 +104,7 @@ namespace SpawnManager
                    customer.customerData = customerData;
                 }
 
-                container.AddSpawnedGameObject(instantiate);
+                cloud.AddSpawnedGameObject(instantiate);
                 return true;
             }
             catch (Exception e)
@@ -106,8 +116,8 @@ namespace SpawnManager
 
         public ParticleSystem SpawnEffect(BuildingType buildingType,ParticleType particleType)
         {
-            var particleSystemObj = container.ParticleSystems[0];
-            var company = container.Companies[0];
+            var particleSystemObj = cloud.ParticleSystems[0];
+            var company = cloud.Companies[0];
 
             var targetPosition =
                 company.GetOffice(buildingType).transform.position + Vector3.up * 30;
@@ -119,10 +129,10 @@ namespace SpawnManager
             switch (particleType)
             {
                 case ParticleType.CASH:
-                    particleSystemRenderer.material = container.ParticleMaterials[0];
+                    particleSystemRenderer.material = cloud.ParticleMaterials[0];
                     break;
                 case ParticleType.PROJECT:
-                    particleSystemRenderer.material = container.ParticleMaterials[1];
+                    particleSystemRenderer.material = cloud.ParticleMaterials[1];
                     break;
                 default:
                     break;
@@ -133,7 +143,7 @@ namespace SpawnManager
         }
 
 
-        private IEnumerator SpawnAfterInstancing(Building building)
+        private IEnumerator SpawnAfterInstancing(Building.Building building)
         {
             while (building.BuildingData.prefab == null)
             {

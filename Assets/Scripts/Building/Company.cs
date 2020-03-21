@@ -1,15 +1,30 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using Entity.Customer.Data;
+using Building.Accounting;
+using Building.Administration;
+using Building.Azubi;
+using Building.DevOps;
+using Building.Marketing;
+using Building.Office;
+using Building.Rewe;
+using Building.Server;
+using Building.SocialRoom;
+using Building.Tarent;
+using Building.Telekom;
+using Building.Tom;
+using Entity.Customer;
 using Enums;
 using ProjectPackage;
 using UnityEngine;
+using Zenject;
+using Zenject.SceneContext.Signals;
 
-namespace BuildingPackage
+namespace Building
 {
     public class Company
     {
+        private static Company currentCompany = null;
         public string name = null;
         public bool needProject = true;
         public int numberOfCustomers = 0;
@@ -25,13 +40,13 @@ namespace BuildingPackage
         private Dictionary<Project,CustomerType> companyProjects;
         private int projectCount;
         private readonly List<CustomerData> customers;
-        
-        public Company(GameObject company)
+        private SignalBus signalBus;
+        public Company(SignalBus signalBus,GameObject company)
         {
+            this.signalBus = signalBus;
             this.gameObject = company;
             this.name = gameObject.name;
             this.currentBudget = 0;
-            
             GetAllInterfaces();
             
             offices = new Dictionary<Building, BuildingType>();
@@ -58,14 +73,14 @@ namespace BuildingPackage
         {
             get
             {
-                currentBudget = 0;
-                foreach (var office in offices)
-                {
-                    currentBudget += office.Key.budget;
-                }
+//                currentBudget = 0;
+//                foreach (var office in offices)
+//                {
+//                    currentBudget += office.Key.budget;
+//                }
                 return currentBudget;  
             } 
-            protected set => currentBudget = value;
+            set => currentBudget = value;
         }
 
         public List<CustomerData> Customers => customers;
@@ -117,7 +132,7 @@ namespace BuildingPackage
             }
         }
 
-        public List<Project> GetProjectsByType(CustomerType customerType)
+        public List<Project> GetProjectsIfExist(CustomerType customerType)
         {
             List<Project> returnList = new List<Project>();
 
@@ -136,18 +151,26 @@ namespace BuildingPackage
         {
             if (gameObject == null) return;
             
+            
+            signalBus.Fire(new CurrentCompanySignal
+            {
+                company = this
+            });
+            var summ = 0;
             for (int i = 0; i < gameObject.transform.childCount; i++)
             {
                 var office = gameObject.transform.GetChild(i).GetComponent(typeof(Building)) as Building;
                 if(office!=null)
                 {
-                    office.Company = this;
-                    //nur am Anfang als test. als StartCapital
-                    office.budget = 3300;
+                    // nur am Anfang als test. als StartCapital
+                    // only on Begin as test, for the StartBudget
+                     summ += 3300;
                     
                     offices.Add(office,GetBuildingType(office.gameObject));
                 }
             }
+
+            currentBudget = summ;
         }
 
         /// <summary>

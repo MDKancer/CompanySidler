@@ -1,4 +1,4 @@
-namespace BuildingPackage
+namespace Building.Telekom
 {
     public interface iTelekom
     {

@@ -1,4 +1,4 @@
-namespace BuildingPackage
+namespace Building.Rewe
 {
     public interface iRewe
     {

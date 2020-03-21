@@ -2,17 +2,13 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
-using BuildingPackage.OfficeWorker;
+using Entity.Employee;
 using Enums;
-using Human;
-using JetBrains.Annotations;
 using ProjectPackage;
-using SpawnManager;
 using UnityEngine;
-using Zenject;
-using Zenject_Signals;
+using Zenject.ProjectContext.Signals;
 
-namespace BuildingPackage
+namespace Building.Tarent
 {
     public class TarentTown : Building, iTarent
     {
@@ -55,6 +51,7 @@ namespace BuildingPackage
                 prefab =  this.officePrefab,
                 name = name,
                 workers = 0,
+                wastage = 0,
                 maxHitPoints = 2000,
                 currentHitPoints = 2000,
                 upgradePrice = 0,
@@ -84,7 +81,7 @@ namespace BuildingPackage
             switch (gameStateSignal.state)
             {
                 case GameState.GAME:
-                    Debug.Log("DistributeProjects");
+
                     StartCoroutine(DistributeProjects());
                     break;
             }
@@ -132,7 +129,11 @@ namespace BuildingPackage
             {
                 while (stateController.CurrentState == BuildingState.WORK)
                 {
-                    budget += ToHold();
+                    if (company != null)
+                    {
+                        company.CurrentBudget += ToHold();
+                        budget += ToHold();
+                    }
                     yield return new WaitForSeconds(1f);
                 }
             }
@@ -167,11 +168,13 @@ namespace BuildingPackage
                 {
                     //TODO: Manchmal GetOffice wirft Null zurück und dass soll nicht passieren.
                     Building building = Company.GetOffice(buildingType);
-                    building.possibleProjects = company.GetProjectsByType(customerType);
+                    
+                    //wenn exist the projects for this office than give there
+                    building.possibleProjects.AddRange(company.GetProjectsIfExist(customerType));
                 }
                 catch (Exception e)
                 {
-                    Debug.LogError(e.Message);
+                    Debug.LogWarning(e.Message);
                 }
                 
             }

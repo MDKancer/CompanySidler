@@ -1,4 +1,4 @@
-namespace Human
+namespace Entity.Employee
 {
     public interface IWorker
     {

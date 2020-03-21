@@ -3,11 +3,12 @@ using Enums;
 using JetBrains.Annotations;
 using UnityEngine;
 
-namespace BuildingPackage
+namespace Building.Bank
 {
     public class Bank : Building, iBank
     {
         private List<LoanData> loans;
+        
         private void Awake()
         {
             buildingData = new BuildingData
@@ -22,10 +23,11 @@ namespace BuildingPackage
                 moneyPerSec = 0
             };
             loans = new List<LoanData>();
-            
+            this.IsBuying = true;
             stateController.CurrentState = BuildingState.EMPTY;
         }
-        public void TakeLoan([NotNull]Company company,int amount)
+
+        public void TakeLoan(int amount)
         {
             if(!CompanyHaveLoan(company))
             {
@@ -35,22 +37,25 @@ namespace BuildingPackage
                     company = company
                 };
                 loans.Add(loan);
+                company.CurrentBudget += amount;
             }
             else
             {
                 var loanData = GetLoanData(company);
                 var data = loanData.Value;
                 data.loan_Amount += amount;
+                company.CurrentBudget += amount;
             }
         }
 
-        public void RepayLoan([NotNull]Company company,int amount)
+        public void RepayLoan(int amount)
         {
                 var loanData = GetLoanData(company);
                 if (loanData.HasValue)
                 {
                     var data = loanData.Value;
                     data.repay_Amount += amount;
+                    company.CurrentBudget -= amount;
                 }
                 else
                 {

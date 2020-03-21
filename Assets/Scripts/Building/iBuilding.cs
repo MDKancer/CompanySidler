@@ -1,9 +1,8 @@
-using System;
+using Entity.Employee;
 using Enums;
 using JetBrains.Annotations;
-using Human;
 
-namespace BuildingPackage
+namespace Building
 {
 
   public interface iBuilding
@@ -12,6 +11,7 @@ namespace BuildingPackage
     void Upgrade();
     //void Buy();
     void DoDamage(int damagePercent = 0);
+    Company Company { get; set; }
     void SwitchWorkingState();
     void ApplyWorker([NotNull] Employee employee);
     void QuitWorker([NotNull] Employee employee);

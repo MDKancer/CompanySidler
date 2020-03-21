@@ -1,13 +1,20 @@
 ﻿using System;
 using System.Collections.Generic;
-using NaughtyAttributes;
+using Sirenix.OdinInspector;
 using UnityEditor;
 using UnityEngine;
 
 [ExecuteInEditMode]
 public class ConvertToPrefab : MonoBehaviour
 {
-    [Required("FBX Object Missing"), ReorderableList]
+    [Required("FBX Object Missing"), 
+    ListDrawerSettings(
+        DraggableItems = false,
+        Expanded = false,
+        ShowIndexLabels = true,
+        ShowPaging = false,
+        ShowItemCount = false,
+        HideRemoveButton = true)]
     public List<GameObject> FBX_GameObjects = new List<GameObject>();
 
     public string target_Folder = "Assets/Generated_Prefabs/";

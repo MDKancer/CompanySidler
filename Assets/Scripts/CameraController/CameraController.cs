@@ -1,11 +1,11 @@
 ﻿using System.Collections;
-using BootManager;
 using Enums;
-using StateMachine;
+using StateManager;
 using UnityEngine;
 using Zenject;
+using Zenject.SceneContext.Signals;
 
-namespace PlayerView
+namespace CameraController
 {
     public class CameraController
     {
@@ -14,15 +14,22 @@ namespace PlayerView
         private Vector3 originPosition;
         private Quaternion originRotation;
         private bool isArrive;
-
-        [Inject]
+        private SignalBus signalBus;
         private StateController<RunTimeState> runtimeStateController;
+        private MonoBehaviour monoBehaviour;
 
-        public CameraController()
+        public CameraController(SignalBus signalBus,MonoBehaviour monoBehaviour,StateController<RunTimeState> runtimeStateController)
         {
-            mainCameraGameObject = Camera.main.gameObject;
             mainCamera = Camera.main;
+            mainCameraGameObject = mainCamera.gameObject;
+            this.signalBus = signalBus;
+            this.runtimeStateController = runtimeStateController;
+            this.monoBehaviour = monoBehaviour;
         }
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="endPosition"></param>
         public void FocusOn(Vector3 endPosition)
         {
             isArrive = false;
@@ -31,12 +38,12 @@ namespace PlayerView
             originPosition = mainCameraGameObject.transform.position;
             originRotation = mainCameraGameObject.transform.rotation;
 
-            BootController.BootControllerInstance.monoBehaviour.StartCoroutine(MoveTo(endPosition));
-            BootController.BootControllerInstance.monoBehaviour.StartCoroutine(ChangeState());
+            monoBehaviour.StartCoroutine(MoveTo(endPosition));
+            monoBehaviour.StartCoroutine(ChangeState());
         }
         public void ToEmptyPos()
         {
-            BootController.BootControllerInstance.monoBehaviour.StartCoroutine(MoveTo(originPosition));
+            monoBehaviour.StartCoroutine(MoveTo(originPosition));
             mainCameraGameObject.transform.rotation = originRotation;
 
             runtimeStateController.SwitchToLastState();
@@ -70,8 +77,10 @@ namespace PlayerView
         private IEnumerator ChangeState()
         {
             while (isArrive == false) yield return null;
-
+            
             runtimeStateController.CurrentState = RunTimeState.BUILDING_INFO;
+            // the signal bus is to early instantiate as the ShowBuildingData in Game scene new declarated
+            signalBus.Fire(new ShowBuildingData{});
         }
     }
 }

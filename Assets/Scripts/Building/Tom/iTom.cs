@@ -1,4 +1,4 @@
-namespace BuildingPackage
+namespace Building.Tom
 {
     public interface iTom
     {

@@ -1,17 +1,17 @@
-using System;
 using System.Collections;
 using System.Collections.Generic;
+using Entity.Employee;
 using Enums;
-using Human;
-using NaughtyAttributes;
 using ProjectPackage;
+using Sirenix.OdinInspector;
 using SpawnManager;
-using StateMachine;
+using StateManager;
 using UnityEngine;
 using Zenject;
-using Zenject_Signals;
+using Zenject.ProjectContext.Signals;
+using Zenject.SceneContext.Signals;
 
-namespace BuildingPackage
+namespace Building
 {
     public class Building : MonoBehaviour,iBuilding
     {
@@ -23,7 +23,7 @@ namespace BuildingPackage
         public int budget;
         [SerializeField,Required] 
         protected  GameObject officePrefab;
-        [ShowNonSerializedField]  
+        [ShowInInspector]  
         protected bool isBuying = false;
         protected float buildTime;
         protected Company company;
@@ -34,15 +34,23 @@ namespace BuildingPackage
         protected SignalBus signalBus;
         
 
-        private Project currentProject = null;
+        private Project startupProject = null;
         
         [Inject]
         protected virtual void Init(SignalBus signalBus, SpawnController spawnController)
         {
+            
             this.signalBus = signalBus;
             this.spawnController = spawnController;
             this.signalBus.Subscribe<GameStateSignal>(StateDependency);
+            this.signalBus.Subscribe<CurrentCompanySignal>(SetCompany);
         }
+
+        protected virtual void SetCompany(CurrentCompanySignal currentCompanySignal)
+        {
+            company = currentCompanySignal.company;
+        }
+
         public void OnEnable()
         {
             applyWorkerEvent += ApplyWorker;
@@ -67,23 +75,24 @@ namespace BuildingPackage
         }
         public void ApplyWorker(Employee employee)
         {
-            foreach (var VARIABLE in BuildingData.AvailableWorker)
-            {
-                if (VARIABLE.WorkerType == employee.EmployeeData.GetEntityType && VARIABLE.Worker == null)
+
+                foreach (var buildingWorkers in BuildingData.AvailableWorker)
                 {
-                    VARIABLE.Worker = employee;
-                    buildingData.workers++;
-                    
-                    //Abhängig von Anzahl des Mitarbeiter wird der Verbrauch reduziert.
-                    buildingData.ChangeWastage();
-                    
-                    if(currentProject != null && VARIABLE.Worker.EmployeeData.Project == null)
+                    if (buildingWorkers.WorkerType == employee.EmployeeData.GetEntityType && buildingWorkers.Worker == null)
                     {
-                        VARIABLE.Worker.EmployeeData.Project = currentProject;
+                        buildingWorkers.Worker = employee;
+                        buildingData.workers++;
+                        
+                        //Abhängig von Anzahl des Mitarbeiter wird der Verbrauch reduziert.
+                        buildingData.ChangeWastage();
+                        
+                        if(startupProject != null && buildingWorkers.Worker.EmployeeData.Project == null)
+                        {
+                            buildingWorkers.Worker.EmployeeData.Project = startupProject;
+                        }
+                        return;
                     }
-                    return;
                 }
-            }
         }
 
         public void QuitWorker(Employee employee)
@@ -104,9 +113,9 @@ namespace BuildingPackage
 
         public void ApplyProject(Project newProject)
         {
-            if(buildingData.workers > 0 && currentProject == null)
+            if(buildingData.workers > 0 && startupProject == null)
             {
-                this.currentProject = newProject;
+                this.startupProject = newProject;
                 budget = newProject.Budget;
                 
                 foreach (var worker in BuildingData.AvailableWorker)
@@ -122,6 +131,12 @@ namespace BuildingPackage
             }
         }
 
+        public void RemoveFinishedProject(Project project)
+        {
+            possibleProjects.Remove(project);
+            company.RemoveProject(project);
+        }
+
         public bool BuildingRepair()
         {
             return false;
@@ -130,9 +145,9 @@ namespace BuildingPackage
         /// <summary>
         /// Das Project wird automatisch gelöscht/zerstört, wenn das ganzes Projekt "Done" ist.
         /// </summary>
-        public Project CurrentProject => currentProject;
+        public Project StartupProject => startupProject;
 
-        public virtual bool IsBuying { set;get;}
+        public virtual bool IsBuying { set=>isBuying= value;get=>isBuying;}
 
         public BuildingData BuildingData => buildingData;
         public BuildingState buildingWorkingState => stateController.CurrentState;
@@ -159,7 +174,7 @@ namespace BuildingPackage
                     break;
                 case GameState.GAME:
                     stateController.CurrentState = BuildingState.WORK;
-                    Debug.Log("UpdateManyGenerator");
+                    
                     StartCoroutine(UpdateManyGenerator());
                     break;
                 case GameState.EXIT:
@@ -182,7 +197,6 @@ namespace BuildingPackage
         }
         protected virtual void OnApplicationQuit()
         {
-            Debug.Log("Unsubscribe");
             signalBus.TryUnsubscribe<GameStateSignal>(StateDependency);
         }
         protected virtual void OnDestroy()
@@ -197,10 +211,10 @@ namespace BuildingPackage
 
         private IEnumerator CheckIfProjectIsDone()
         {
-            while (!currentProject.IsDone) yield return null;
+            while (!startupProject.IsDone) yield return null;
             var particleSystem =  spawnController.SpawnEffect(buildingData.buildingType, ParticleType.PROJECT);
             Destroy(particleSystem.gameObject, 2f);
-            currentProject = null;
+            startupProject = null;
         }
     }
 }

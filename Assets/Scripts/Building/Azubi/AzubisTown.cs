@@ -1,13 +1,10 @@
 using System.Collections;
 using System.Collections.Generic;
-using BootManager;
-using BuildingPackage.OfficeWorker;
+using Entity.Employee;
 using Enums;
-using Human;
-using UIPackage;
 using UnityEngine;
 
-namespace BuildingPackage
+namespace Building.Azubi
 {
     public class AzubisTown : Building, iAzubis
     {
@@ -21,6 +18,7 @@ namespace BuildingPackage
                 workers = 0,
                 maxHitPoints = 2000,
                 currentHitPoints = 2000,
+                price = 0,
                 upgradePrice = 0,
                 workPlacesLimit = 1,
                 moneyPerSec = -4,
@@ -73,7 +71,11 @@ namespace BuildingPackage
             {
                 while (stateController.CurrentState == BuildingState.WORK)
                 {
-                    budget += ToLearn();
+                    if (company != null)
+                    {
+                        company.CurrentBudget += ToLearn();
+                        budget += ToLearn();
+                    }
                     yield return new WaitForSeconds(1f);
                 }
             }

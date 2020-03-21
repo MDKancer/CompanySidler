@@ -1,4 +1,4 @@
-namespace BuildingPackage
+namespace Building.Accounting
 {
   public interface iAccounting : iBuilding
   {

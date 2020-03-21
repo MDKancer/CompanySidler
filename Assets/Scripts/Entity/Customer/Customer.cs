@@ -1,12 +1,9 @@
-using System;
 using System.Collections;
-using Entity.Customer.Data;
 using Enums;
-using PathFinderManager;
 using TMPro;
 using UnityEngine;
 
-namespace Human.Customer
+namespace Entity.Customer
 {
     public class Customer : Human, iCustomer
     {
@@ -30,7 +27,7 @@ namespace Human.Customer
             Vector3 tarentPosition = customerData.TarentTownPosition();
             Vector3 targetPosition = GenerateRandomPosition(tarentPosition);
             
-            PathFinder.MoveTo(gameObject,targetPosition);
+            PathFinder.Navigator.MoveTo(gameObject,targetPosition);
             SelfState.CurrentState = HumanState.WORK;
             //-------------------------Move to Target------------------------
             // || || || || || || || || || || || || || || || || || || || || ||
@@ -40,7 +37,7 @@ namespace Human.Customer
 //                Debug.Log("Name "+this.customerData.customerType+" "+transform.position + " Target " + tarentPosition);
                 // irgendwas
                 // hier passiert alles wärend des laufens den Kunden.
-                if (PathFinder.MyPathStatus(gameObject) == PathProgress.NONE)
+                if (PathFinder.Navigator.MyPathStatus(gameObject) == PathProgress.NONE)
                 {
                     targetPosition = GenerateRandomPosition(targetPosition);
                 }
@@ -56,7 +53,7 @@ namespace Human.Customer
             customerData.SellProject();
 
             SelfState.CurrentState = HumanState.QUITED;
-            PathFinder.MoveTo(gameObject,customerData.initialPosition);
+            PathFinder.Navigator.MoveTo(gameObject,customerData.initialPosition);
             //-------------------------Return Back---------------------------
             // || || || || || || || || || || || || || || || || || || || || ||
             // \/ \/ \/ \/ \/ \/ \/ \/ \/ \/ \/ \/ \/ \/ \/ \/ \/ \/ \/ \/ \/
@@ -70,7 +67,7 @@ namespace Human.Customer
         }
         private IEnumerator ShowMyNamePoster()
         {
-            namePoster = uiElements.GetCanvas(this.customerData.customerType.ToString());
+            namePoster = proceduralUiElements.GetCanvas(this.customerData.customerType.ToString());
             
             RectTransform rectTransform = namePoster.GetComponent<RectTransform>();
             while (!gameObject.Equals(null))

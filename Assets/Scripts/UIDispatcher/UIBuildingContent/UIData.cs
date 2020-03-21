@@ -1,17 +1,62 @@
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using JetBrains.Annotations;
+using Sirenix.OdinInspector;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
+using Object = UnityEngine.Object;
 
-namespace UIPackage.UIBuildingContent
+namespace UIDispatcher.UIBuildingContent
 {
     /// <summary>
     ///  Die Datenbindung der Benutzeroberfläche bindet generische Elemente der Benutzeroberfläche an den PlayerViewController.
     /// </summary>
+    [Serializable]
     public class UIData
     {
+        /// <summary>
+        /// Das UI Fenster wo alle Informationen über Das Gebäude sich befinden.
+        /// </summary>
+        [Required]
+        public GameObject buildingInfo;
+        [Required]
+        public Image employeeLayout;
+        [Required]
+        public Image countLayout;
+        [Required]
+        public Image quitLayout;
+        [Required]
+        public Image projectsLayout;
+        [Required]
+        public Button upgradeBtn;
+        [Required]
+        public Button buyBtn;
+        [Required]
+        public Button stateBtn;
+        [Required]
+        public TextMeshProUGUI budget_Label;
+        [Required]
+        public TextMeshProUGUI numberOfCustomers_Label;
+        [Required]
+        public TextMeshProUGUI workersCount_Label;
+        [Required]
+        public TextMeshProUGUI buildingTitle_Label;
+        [Required]
+        public TextMeshProUGUI employeeCount_Label;
+        [Required]
+        public TextMeshProUGUI employeeLimit_Label;
+        [Required]
+        public TextMeshProUGUI price_Label;
+        [Required]
+        public TextMeshProUGUI currentBudget_Label;
+        /// <summary>
+        /// Akktuelles  Gebäude-Lebenspunkte.
+        /// </summary>
+        [Required]
+        public Image currentHP;
+        
         private readonly List<Dictionary<Button, TextMeshProUGUI>> allUIElements;
         private readonly Dictionary<Button, TextMeshProUGUI> employeesApply;
         private readonly Dictionary<Button, TextMeshProUGUI> employeesCount;

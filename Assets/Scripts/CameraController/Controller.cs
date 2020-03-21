@@ -1,7 +1,10 @@
 ﻿using UnityEngine;
 
-namespace CameraManager
+namespace CameraController
 {
+    /// <summary>
+    /// Developmnet Test
+    /// </summary>
     public class Controller : MonoBehaviour
     {
         private Rigidbody rigidBody;

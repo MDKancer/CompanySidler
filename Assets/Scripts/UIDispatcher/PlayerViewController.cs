@@ -1,21 +1,17 @@
 ﻿using System;
 using System.Globalization;
-using BootManager;
-using BuildingPackage;
+using Entity.Employee;
 using Enums;
-using GameCloud;
-using Human;
-using InputManager;
-using NaughtyAttributes;
 using SpawnManager;
-using StateMachine;
+using StateManager;
 using TMPro;
-using UIPackage.UIBuildingContent;
+using UIDispatcher.UIBuildingContent;
 using UnityEngine;
-using UnityEngine.UI;
 using Zenject;
+using Zenject.ProjectContext.Signals;
+using Zenject.SceneContext.Signals;
 
-namespace PlayerView
+namespace UIDispatcher
 {
     /// <summary>
     /// Player View Controller verwaltet einen Teil der Benutzeroberfläche sowie die Interaktionen zwischen dieser Oberfläche und den zugrunde liegenden Daten.
@@ -24,109 +20,110 @@ namespace PlayerView
     public class PlayerViewController : MonoBehaviour
     {
         public static PlayerViewController playerViewController;
-        /// <summary>
-        /// Das UI Fenster wo alle Informationen über Das Gebäude sich befinden.
-        /// </summary>
-        [Required]
-        public GameObject buildingInfo;
-        [ReadOnly]
+        public UIData uiData = new UIData();
         public  GameState currentGameState;
-        
 
-        
-        //------------------Static UI Elements----------------
-        private GameObject buildingContentObj;
+        protected int workerCount = 0;
+        protected bool haveContentBtn = false;
 
-        private Button upgradeBtn;
-        private Button buyBtn;
-        private TextMeshProUGUI budget_Label;
-        private TextMeshProUGUI numberOfCustomers_Label;
-        private TextMeshProUGUI workersCount_Label;
-        private TextMeshProUGUI buildingTitle_Label;
-        private TextMeshProUGUI employeeCount_Label;
-        private TextMeshProUGUI employeeLimit_Label;
-        private TextMeshProUGUI price_Label;
-        private TextMeshProUGUI currentBudget_Label;
-        /// <summary>
-        /// Akktuelles  Gebäude-Lebenspunkte.
-        /// </summary>
-        private GameObject currentHP;
-        //----------------------------------------------------
-        
-        //-----------------Generic UI Elements----------------
-        private BuildingContent buildingContent;
-        private UIData uiData = new UIData();
-        //----------------------------------------------------
-        private int workerCount = 0;
-        private bool haveContentBtn = false;
+        protected BuildingContent buildingContent;
+        protected SignalBus signalBus;
+        protected StateController<RunTimeState> runtimeStateController;
+        protected SpawnController spawnController;
+        protected Container.Cloud cloud;
 
+        private MonoBehaviour monoBehaviour;
+        
         [Inject]
-        private StateController<GameState> gameStateController;
-        [Inject]
-        private StateController<RunTimeState> runtimeStateController;
-        [Inject]
-        private SpawnController spawnController;
-        [Inject]
-        private Container container;
-        public void Awake()
+        protected virtual void Init(
+                            SignalBus signalBus, 
+                            StateController<RunTimeState> runtimeStateController,
+                            SpawnController spawnController,
+                            Container.Cloud cloud,
+                            MonoBehaviourSignal monoBehaviourSignal)
+        {
+            this.signalBus = signalBus;
+            this.runtimeStateController = runtimeStateController;
+            this.spawnController = spawnController;
+            this.cloud = cloud;
+
+            this.monoBehaviour = monoBehaviourSignal;
+            
+            SetDatas();
+            signalBus.Subscribe<ShowBuildingData>(StateDependency);
+            
+            signalBus.Subscribe<UpdateUIWindow>(UpdateWindow);
+            
+            signalBus.Subscribe<StartProjectSignal>(ApplyProject);
+            signalBus.Subscribe<CloseProjectSignal>(CloseProject);
+            signalBus.Subscribe<ApplyEmployeeSignal>(ApplyEmployee);
+            signalBus.Subscribe<QuitEmployeeSignal>(QuitEmployee);
+        }
+        
+        protected virtual void StateDependency(ShowBuildingData showBuildingData)
+        {
+            ShowBuildingInfoWindow();
+        }
+        protected virtual void SetDatas()
         {
             playerViewController = this;
-            if(gameStateController.CurrentState == GameState.GAME)
-            {
-                
-                buildingInfo = GameObject.Find("BuildingInfo")?.gameObject;
-                buildingContentObj = GameObject.Find("BuildingContent")?.gameObject;
-                budget_Label = GameObject.Find("Panel_Geld_Nr")?.GetComponent<TextMeshProUGUI>();
-                numberOfCustomers_Label = GameObject.Find("Panel_Kunde_Nr")?.GetComponent<TextMeshProUGUI>();
-                workersCount_Label = GameObject.Find("Panel_Mitarbeiter_Nr")?.GetComponent<TextMeshProUGUI>();
-                
-                buildingTitle_Label = GameObject.Find("BuildingTitle")?.GetComponent<TextMeshProUGUI>();
-                employeeCount_Label = GameObject.Find("WorkerCount")?.GetComponent<TextMeshProUGUI>();
-                employeeLimit_Label = GameObject.Find("WorkerLimit")?.GetComponent<TextMeshProUGUI>();
-                price_Label = GameObject.Find("Price")?.GetComponent<TextMeshProUGUI>();
-                currentBudget_Label = GameObject.Find("Geld")?.GetComponent<TextMeshProUGUI>();
-                currentHP = GameObject.Find("HitPoints");
 
-                upgradeBtn = GameObject.Find("BuildingUpgrade").GetComponent<Button>();
-                upgradeBtn.gameObject.SetActive(false);
-                buyBtn = GameObject.Find("BuildingBuying").GetComponent<Button>();
-                
-                buildingInfo.SetActive(false);
-            }
+            this.buildingContent = new BuildingContent(signalBus,monoBehaviour,cloud,ref uiData);
+            uiData.buildingInfo.SetActive(false);
         }
+
 
         // Update is called once per frame
         void Update()
         {
-            if(gameStateController.CurrentState == GameState.GAME)
-            {
-                CurrentBudget();
-                ShowBuildingInfoWindow();
-            }
+               // CurrentBudget();
         }
         
-        public void ApplyEmployee(String employeeType)
+        private void ApplyEmployee(ApplyEmployeeSignal applyEmployeeSignal)
         {
-            var  spawnPosition = new Vector3(4f,1f,2f);
-            var humanData = new EmployeeData(GetValue(employeeType),Building.BuildingData.buildingType);
 
-            spawnController.SpawnWorker(Building, humanData,spawnPosition);
-            workerCount++;
-            workersCount_Label.SetText(workerCount.ToString());
+                var spawnPosition = new Vector3(4f, 1f, 2f);
+                var humanData = new EmployeeData(
+                    company: cloud.Companies[0],
+                    prefab: cloud.GetPrefabsByType(EntityType.DEVELOPER)[0],
+                    entityType: applyEmployeeSignal.employeeType,//GetValue(employeeType),
+                    hisOffice: Building.BuildingData.buildingType
+                );
+
+                spawnController.SpawnWorker(Building, humanData, spawnPosition);
+                workerCount++;
+                uiData.workersCount_Label.SetText(workerCount.ToString());
         }
-        public void BuyBuilding()
+
+        private void QuitEmployee(QuitEmployeeSignal quitEmployeeSignal)
+        {
+
+                Building.QuitWorker(quitEmployeeSignal.employee);
+        }
+
+        private void ApplyProject(StartProjectSignal startProjectSignal)
+        {
+            Building.ApplyProject(startProjectSignal.project);
+        }
+        private void BuyBuilding()
         {
             if (runtimeStateController.CurrentState == RunTimeState.BUILDING_INFO) // && Boot.gameStateController.CurrentState == GameState.GAME
             {
                 if (Building.Company.CurrentBudget >= Building.BuildingData.price)
                 {
-                    var currentBudget = container.Companies[0].CurrentBudget;
+                    var currentBudget = cloud.Companies[0].CurrentBudget;
+                    //TODO : wenn mann es kauf wird es von budge abgezogen
                     Building.IsBuying = true;
                 }
             }
         }
 
-        public void UpgradeBuilding()
+        private void CloseProject(CloseProjectSignal closeProjectSignal)
+        {
+            Building.RemoveFinishedProject(closeProjectSignal.project);
+        }
+
+        private void UpgradeBuilding()
         {
             if (runtimeStateController.CurrentState == RunTimeState.BUILDING_INFO ) // && Boot.gameStateController.CurrentState == GameState.GAME
             {
@@ -134,59 +131,62 @@ namespace PlayerView
                 {
                     Building.Upgrade();
                     // content refresh
-                    RemoveBuildingContent();
+                    UpdateWindow();
                 }
             }
         }
-        public void ChangeBuildingState(Transform button)
+        private void ChangeBuildingState(Transform button)
         {
-                if (runtimeStateController.CurrentState == RunTimeState.BUILDING_INFO 
-                    && 
-                    gameStateController.CurrentState == GameState.GAME)
+                if (runtimeStateController.CurrentState == RunTimeState.BUILDING_INFO)
                 {
                         Building.SwitchWorkingState();
                         
                         TextMeshProUGUI btnText = button.GetComponent<TextMeshProUGUI>();
                         btnText.SetText(
                                 btnText.text.ToLower().Contains(BuildingState.PAUSE.ToString().ToLower()) ? 
-                                        BuildingState.WORK.ToString() : BuildingState.PAUSE.ToString()
+                                BuildingState.WORK.ToString() : BuildingState.PAUSE.ToString()
                                         );
                 } 
         }
 
-        public void FocusedBuilding(Building focusedBuilding)
+        public void FocusedBuilding(Building.Building focusedBuilding)
         {
             Building = focusedBuilding;
+        }
+        
+
+        protected virtual void UpdateWindow()
+        {
+            ShowBuildingInfoWindow();
         }
         private void ShowBuildingInfoWindow()
         {
             
-            
             //________________________________________________________________________________________________________________________________________
-                if (runtimeStateController.CurrentState == RunTimeState.BUILDING_INFO 
-                    && 
-                    gameStateController.CurrentState == GameState.GAME)
+                if (runtimeStateController.CurrentState == RunTimeState.BUILDING_INFO)
                 {
-                        buildingInfo.SetActive(true);
+                        RemoveBuildingContent();
+                        
+                        uiData.buildingInfo.SetActive(true);
                         if(Building != null)
                         {
                             SetBuildingDataInContent();
                         }
                         if (Building.IsBuying)
                         {
-                            upgradeBtn.gameObject.SetActive(true);
-                            buyBtn.gameObject.SetActive(false);
+                            uiData.upgradeBtn.gameObject.SetActive(true);
+                            uiData.buyBtn.gameObject.SetActive(false);
                         }
                         else
                         {
-                            upgradeBtn.gameObject.SetActive(false);
-                            buyBtn.gameObject.SetActive(true);
+                            uiData.upgradeBtn.gameObject.SetActive(false);
+                            uiData.buyBtn.gameObject.SetActive(true);
                         }
                         
                         float currentSize = (Building.BuildingData.currentHitPoints * 100f /
                                             Building.BuildingData.maxHitPoints) / 100f;
                         
-                        currentHP.transform.localScale = new Vector3( currentSize, 1f,1f);
+                        uiData.currentHP.transform.localScale = new Vector3( currentSize, 1f,1f);
                         if(Building != null && Building.IsBuying)
                         {
                             if (!haveContentBtn)
@@ -196,15 +196,14 @@ namespace PlayerView
                         }
                 }
                 else if(runtimeStateController.CurrentState != RunTimeState.BUILDING_INFO
-                        && runtimeStateController.CurrentState != RunTimeState.GAME_MENU
-                        && gameStateController.CurrentState == GameState.GAME)
+                        && runtimeStateController.CurrentState != RunTimeState.GAME_MENU)
                 {
                     if(Building != null && Building.IsBuying)
                     {
                         RemoveBuildingContent();
                     }
                     
-                    buildingInfo?.SetActive(false);
+                    uiData.buildingInfo?.SetActive(false);
                 }
         }
         private void RemoveBuildingContent()
@@ -213,13 +212,9 @@ namespace PlayerView
 
             haveContentBtn = false;
         }
-        private void CurrentBudget()
+        public void CurrentBudget()
         {
-            if(gameStateController.CurrentState == GameState.GAME)
-            {
-                            
-                budget_Label?.SetText(container.Companies[0].CurrentBudget.ToString());
-            }
+                uiData.budget_Label?.SetText(cloud.Companies[0].CurrentBudget.ToString());
         }
 
         private EntityType GetValue(String value) => (EntityType) Enum.Parse(typeof(EntityType), value.ToUpper());
@@ -228,40 +223,36 @@ namespace PlayerView
         private void SetBuildingDataInContent()
         {
                     
-            buildingTitle_Label.SetText(Building.BuildingData.name);
+            uiData.buildingTitle_Label.SetText(Building.BuildingData.name);
                     
-            employeeCount_Label.SetText(Building.BuildingData.workers.ToString());
+            uiData.employeeCount_Label.SetText(Building.BuildingData.workers.ToString());
                     
-            employeeLimit_Label.SetText("/ "+Building.BuildingData.workPlacesLimit);
+            uiData.employeeLimit_Label.SetText("/ "+Building.BuildingData.workPlacesLimit);
                     
-            price_Label.SetText(Building.BuildingData.upgradePrice.ToString(CultureInfo.CurrentCulture));
+            uiData.price_Label.SetText(Building.BuildingData.upgradePrice.ToString(CultureInfo.CurrentCulture));
                     
-            currentBudget_Label.SetText(Building.BuildingData.moneyPerSec.ToString());
+            uiData.currentBudget_Label.SetText(Building.BuildingData.moneyPerSec.ToString());
                     
-            numberOfCustomers_Label?.SetText(container.Companies[0].numberOfCustomers.ToString());
+            uiData.numberOfCustomers_Label?.SetText(cloud.Companies[0].numberOfCustomers.ToString());
         }
-        private Building Building { get; set; }
-
-        /// <summary>
-        /// Es ist nur temporär um zu wissen ob alles gut Läuft.
-        /// </summary>
-        private void CheckCurrentState()
-        {
-            if(gameStateController != null)
-            {
-                if (currentGameState != gameStateController.CurrentState)
-                {
-                    currentGameState = gameStateController.CurrentState;
-                }
-            }
-        }
+        private Building.Building Building { get; set; }
 
         private void GenerateBuildingContent()
         {
-                buildingContent = new BuildingContent(buildingContentObj);
-                buildingContent.CreateBuildingContent(ref uiData, Building);
+            
+            buildingContent.CreateBuildingContent(Building);
 
             haveContentBtn = true;
         }
+
+        private void OnApplicationQuit()
+        {
+            signalBus.TryUnsubscribe<ShowBuildingData>(StateDependency);
+        }
+        private void OnDestroy()
+        {
+            signalBus.TryUnsubscribe<ShowBuildingData>(StateDependency);
+            signalBus.TryUnsubscribe<UpdateUIWindow>(UpdateWindow);
+        }        
     }
 }

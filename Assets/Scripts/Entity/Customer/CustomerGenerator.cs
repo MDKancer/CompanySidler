@@ -1,96 +1,74 @@
 using System;
 using System.Collections;
-using System.Collections.Generic;
-using BootManager;
-using BuildingPackage;
-using Entity.Customer.Data;
+using Building;
 using Enums;
-using GameCloud;
 using SpawnManager;
 using UnityEngine;
 using Zenject;
-using Zenject_Signals;
 using Random = UnityEngine.Random;
 
-namespace Human.Customer.Generator
+namespace Entity.Customer
 {
-    public class CustomerGenerator : MonoBehaviour
+    public class CustomerGenerator
     {
-        private readonly Vector3 spawnPosition = new Vector3(4f, 1f, 2f);
+        public readonly Vector3 spawnPosition = new Vector3(4f, 1f, 2f);
         private Company company;
         
         private SignalBus signalBus;
-        private Container container;
+        private Container.Cloud cloud;
         private SpawnController spawnController;
+        private MonoBehaviour monoBehaviour;
 
-        [Inject]
-        private void Init(SignalBus signalBus, Container container, SpawnController spawnController)
+        public void Init(SignalBus signalBus, Container.Cloud cloud, SpawnController spawnController,MonoBehaviour monoBehaviour)
         {
             this.signalBus = signalBus;
-            this.container = container;
+            this.cloud = cloud;
             this.spawnController = spawnController;
-            
-            this.signalBus.Subscribe<GameStateSignal>(StateDependency);
-        }
-        private void StateDependency(GameStateSignal gameStateSignal)
-        {
-            switch (gameStateSignal.state)
-            {
-                case GameState.NONE:
-                    break;
-                case GameState.INTRO:
-                    break;
-                case GameState.LOADING:
-                    break;
-                case GameState.MAIN_MENU:
-                    break;
-                case GameState.PREGAME:
-                    break;
-                case GameState.GAME:
-                    company = container.Companies[0];
-            
-                    CreateCustomers();
-                    StartCoroutine(CreateNewCostumer());
-                    break;
-                case GameState.EXIT:
-                    break;
-            }
+            this.monoBehaviour = monoBehaviour;
+            company = this.cloud.Companies[0];
         }
 
-        private IEnumerator CreateNewCostumer()
+        public void Awake()
+        {
+            //CreateCustomers();
+        }
+
+        public void Start()
+        {
+            //StartCoroutine(CreateNewCostumer());
+        }
+
+        /// <summary>
+        /// for each spawned customers is one project generated. 
+        /// </summary>
+        public IEnumerator CreateNewCostumer()
         {
             while (true)
             {
-                if (container.Companies[0].needProject)
+                if (cloud.Companies[0].needProject)
                 {
                     CustomerData customerData = company.Customers[Random.Range(0, company.Customers.Count - 1)];
                     customerData.GenerateNewProject();
                     spawnController.SpawnCustomer(ref customerData,spawnPosition);
-
                 }
                 yield return new WaitForSeconds(Random.Range(10f,15f));
             }
         }
-
-        private void CreateCustomers()
+        /// <summary>
+        /// create the template costumers.
+        /// </summary>
+        public void CreateCustomers()
         {
+            
+            
             var customersValues = Enum.GetValues(typeof(CustomerType));
             var countCustomers = customersValues.Length;
             
             for (int i = 0; i < countCustomers; i++)
             {
-                CustomerData customer = new CustomerData((CustomerType) customersValues.GetValue(i),spawnPosition,container);
+                CustomerData customer = new CustomerData((CustomerType) customersValues.GetValue(i),spawnPosition,cloud,monoBehaviour);
                 company.Customers.Add(customer);
             }
-        }
-
-        private void OnApplicationQuit()
-        {
-            signalBus.TryUnsubscribe<GameStateSignal>(StateDependency);
-        }
-        private void OnDestroy()
-        {
-            signalBus.TryUnsubscribe<GameStateSignal>(StateDependency);
         }
     }
 }

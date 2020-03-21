@@ -1,7 +1,6 @@
 using System.IO;
-using System.Runtime.Serialization.Json;
 
-namespace Signals.JSon_Manager
+namespace JSon_Manager
 {
     public class JSon_Manager
     {

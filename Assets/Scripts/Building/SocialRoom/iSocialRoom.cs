@@ -1,4 +1,4 @@
-namespace BuildingPackage
+namespace Building.SocialRoom
 {
     public interface iSocialRoom
     {

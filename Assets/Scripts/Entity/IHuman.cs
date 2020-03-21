@@ -1,8 +1,7 @@
-using System.Collections;
 using Enums;
-using StateMachine;
+using StateManager;
 
-namespace Human
+namespace Entity
 {
     public interface IHuman
     {

@@ -1,4 +1,4 @@
-namespace Entity.Customer.Data
+namespace Entity.Customer
 {
     internal class CustomerLevelData
     {

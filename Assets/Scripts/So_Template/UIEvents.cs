@@ -1,35 +1,30 @@
-﻿using BootManager;
-using Enums;
-using SceneController;
-using StateMachine;
+﻿using Enums;
+using StateManager;
+using StateManager.State.Template;
 using UnityEngine;
 using Zenject;
 
-//[CreateAssetMenu (fileName = "UIEvents", menuName = "ScriptableObjects/UIEvents", order = 2)]
-public class UIEvents : MonoBehaviour
+namespace So_Template
 {
-    [Inject]
-    public StateController<GameState> gameStateController;
-    [Inject]
-    public SceneManager sceneManager;
-    public void PlayGame()
+    public class UIEvents : MonoBehaviour
     {
-        gameStateController.CurrentState = GameState.GAME;
-        sceneManager.GoTo(Scenes.GAME);  
-    }
-    public void StartGame()
-    {
-        //first
-        gameStateController.CurrentState = GameState.PREGAME;
-        //second
-        sceneManager.GoTo(Scenes.PREGAME);
-    }
+        [Inject] public StateMachineClass<AState> stateMachineClass;
+        [Inject] public SceneManager.SceneManager sceneManager;
+        [Inject] private Container.Cloud cloud;
+        public void PlayGame()
+        {
+            sceneManager.GoTo(Scenes.GAME);  
+        }
+        public void StartGame()
+        {
+            sceneManager.GoTo(Scenes.PREGAME);
+        }
     
-    public void Exit()
-    {
-        //first
-        gameStateController.CurrentState = GameState.EXIT;
-        //second
-        Application.Quit();
+        public void Exit()
+        {
+            //first
+            stateMachineClass.CurrentState = cloud.GetGameState(Scenes.EXIT);
+            //second
+        }
     }
 }

@@ -1,4 +1,4 @@
-namespace BuildingPackage
+namespace Building.Administration
 {
     public interface iAdministration
     {

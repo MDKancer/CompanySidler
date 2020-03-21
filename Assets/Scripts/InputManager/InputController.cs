@@ -1,12 +1,11 @@
-using BuildingPackage;
 using Enums;
+using So_Template;
+using StateManager;
 using UnityEngine;
-using PlayerView;
-using StateMachine;
 using TMPro;
-using UIPackage.UIBuildingContent;
+using UIDispatcher.UIBuildingContent;
 using Zenject;
-using Zenject_Signals;
+using Zenject.SceneContext.Signals;
 
 namespace InputManager
 {
@@ -14,11 +13,11 @@ namespace InputManager
     {
         public float speed = 1f;
 
-        public delegate void FocusedBuild(Building focusesBuilding);
+        public delegate void FocusedBuild(Building.Building focusesBuilding);
         public FocusedBuild showBuildingDataEvent;
         
         private GameObject focusObject;
-        private CameraController cameraController;
+        private CameraController.CameraController cameraController;
         private Ray ray;
         private RaycastHit rayCastHit;
         private Vector3 middleDirection = Vector3.zero;
@@ -46,7 +45,7 @@ namespace InputManager
         }
         public void SetCameraController()
         {
-            cameraController = new CameraController(signalBus,monoBehaviour,runtimeStateController);
+            cameraController = new CameraController.CameraController(signalBus,monoBehaviour,runtimeStateController);
             focusObject = GameObject.Find(companyName)?.gameObject;
             focusPoint = focusObject.transform.position;
             buildingLabel = proceduralUiElements.GetCanvas("");
@@ -98,7 +97,7 @@ namespace InputManager
                             focusPoint = rayCastHit.point;
                             focusedBuilding = rayCastHit.collider.gameObject;
                             
-                            var building = (Building)focusedBuilding?.GetComponent(typeof(Building));
+                            var building = (Building.Building)focusedBuilding?.GetComponent(typeof(Building.Building));
                             
                             showBuildingDataEvent(building);
                             
@@ -125,7 +124,7 @@ namespace InputManager
         }
         private bool isBuilding(GameObject targetObject)
         {
-            Component[] buildingComponent = targetObject.GetComponents(typeof(Building));
+            Component[] buildingComponent = targetObject.GetComponents(typeof(Building.Building));
 
             return buildingComponent.Length > 0;
         }
@@ -139,7 +138,7 @@ namespace InputManager
                 if(isBuilding(rayCastHit.collider.gameObject))
                 {
                     buildingLabel.gameObject.SetActive(true);        
-                    var targetBuilding = (Building)rayCastHit.collider.GetComponent(typeof(Building));
+                    var targetBuilding = (Building.Building)rayCastHit.collider.GetComponent(typeof(Building.Building));
                     buildingLabel.SetText(targetBuilding.BuildingData.name);
                     
                     

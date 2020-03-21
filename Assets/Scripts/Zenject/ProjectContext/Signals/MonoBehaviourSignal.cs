@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace Zenject_Signals
+namespace Zenject.ProjectContext.Signals
 {
     public class MonoBehaviourSignal: MonoBehaviour
     {

@@ -2,17 +2,13 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
-using BuildingPackage.OfficeWorker;
+using Entity.Employee;
 using Enums;
-using Human;
-using JetBrains.Annotations;
 using ProjectPackage;
-using SpawnManager;
 using UnityEngine;
-using Zenject;
-using Zenject_Signals;
+using Zenject.ProjectContext.Signals;
 
-namespace BuildingPackage
+namespace Building.Tarent
 {
     public class TarentTown : Building, iTarent
     {

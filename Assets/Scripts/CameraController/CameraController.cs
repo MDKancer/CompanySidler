@@ -1,12 +1,11 @@
 ﻿using System.Collections;
 using Enums;
-using StateMachine;
-using StateMachine.States;
+using StateManager;
 using UnityEngine;
 using Zenject;
-using Zenject_Signals;
+using Zenject.SceneContext.Signals;
 
-namespace PlayerView
+namespace CameraController
 {
     public class CameraController
     {

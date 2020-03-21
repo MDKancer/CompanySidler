@@ -1,51 +1,52 @@
-﻿using BuildingPackage;
+﻿using Building;
 using Enums;
-using GameCloud;
 using Sirenix.OdinInspector;
 using UnityEngine;
 using Zenject;
 
-
-public class ParticleManager : MonoBehaviour
+namespace ParticleManager
 {
-    [Required]
-    public Material cashMaterial;
-    [Required]
-    public Material projectMaterial;
-    [Required]
-    public ParticleSystem particleSystem;
-
-    private ParticleSystemRenderer particleSystemRenderer;
-    [Inject] private Container container;
-    private Company company;
-    // Start is called before the first frame update
-    void Awake()
+    public class ParticleManager : MonoBehaviour
     {
-        company = container.Companies[0];
-        particleSystem = transform.GetChild(0).GetComponent<ParticleSystem>();
-        particleSystemRenderer = particleSystem.GetComponent<ParticleSystemRenderer>();
-    }
+        [Required]
+        public Material cashMaterial;
+        [Required]
+        public Material projectMaterial;
+        [Required]
+        public ParticleSystem particleSystem;
 
-    public void StartEffect(BuildingType buildingType,ParticleType particleType)
-    {
-        var position = particleSystem.gameObject.transform.position;
-        position = Vector3.zero;
-        
-        position =
-            company.GetOffice(buildingType).transform.position + Vector3.up * 30;
-        particleSystem.gameObject.transform.position = position;
-        
-        switch (particleType)
+        private ParticleSystemRenderer particleSystemRenderer;
+        [Inject] private Container.Cloud cloud;
+        private Company company;
+        // Start is called before the first frame update
+        void Awake()
         {
-            case ParticleType.CASH:
-                particleSystemRenderer.material = cashMaterial;
-                break;
-            case ParticleType.PROJECT:
-                particleSystemRenderer.material = projectMaterial;
-                break;
-            default:
-                break;
+            company = cloud.Companies[0];
+            particleSystem = transform.GetChild(0).GetComponent<ParticleSystem>();
+            particleSystemRenderer = particleSystem.GetComponent<ParticleSystemRenderer>();
         }
-        particleSystem.Play();
+
+        public void StartEffect(BuildingType buildingType,ParticleType particleType)
+        {
+            var position = particleSystem.gameObject.transform.position;
+            position = Vector3.zero;
+        
+            position =
+                company.GetOffice(buildingType).transform.position + Vector3.up * 30;
+            particleSystem.gameObject.transform.position = position;
+        
+            switch (particleType)
+            {
+                case ParticleType.CASH:
+                    particleSystemRenderer.material = cashMaterial;
+                    break;
+                case ParticleType.PROJECT:
+                    particleSystemRenderer.material = projectMaterial;
+                    break;
+                default:
+                    break;
+            }
+            particleSystem.Play();
+        }
     }
 }

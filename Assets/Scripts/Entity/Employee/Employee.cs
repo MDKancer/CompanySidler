@@ -1,16 +1,15 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
-using BuildingPackage;
+using Building;
 using Enums;
 using JetBrains.Annotations;
-using PathFinderManager;
 using ProjectPackage.ProjectTasks;
 using TMPro;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
-namespace Human
+namespace Entity.Employee
 {
     public class Employee : Human, IWorker
     {
@@ -24,7 +23,7 @@ namespace Human
             AttachEvent += SetOffice;
         }
 
-        private void SetOffice(Building myOffice)
+        private void SetOffice(Building.Building myOffice)
         {
             myOffice.applyWorkerEvent(this);
         }
@@ -100,7 +99,7 @@ namespace Human
             Vector3 targetPosition = GenerateRandomPosition(officePosition);
             
             destination = EmployeeData.GetHisOffice;
-            PathFinder.MoveTo(gameObject,targetPosition);
+            PathFinder.Navigator.MoveTo(gameObject,targetPosition);
             while (SelfState.CurrentState != HumanState.QUITED)
             {
                 if (transform.position.x == targetPosition.x && transform.position.z == targetPosition.z)
@@ -149,14 +148,14 @@ namespace Human
                         
                         targetPosition = GenerateRandomPosition(officePosition);
                 
-                        PathFinder.MoveTo(gameObject,targetPosition);
+                        PathFinder.Navigator.MoveTo(gameObject,targetPosition);
                         index++;
                     }
                 }
                 
                 
                 // hier passiert alles wärend des Laufens
-                if (PathFinder.MyPathStatus(gameObject) == PathProgress.NONE)
+                if (PathFinder.Navigator.MyPathStatus(gameObject) == PathProgress.NONE)
                 {
                     
                     targetPosition = GenerateRandomPosition(officePosition);
@@ -166,7 +165,7 @@ namespace Human
 
             destination = BuildingType.NONE;
             targetPosition = initialPosition;
-            PathFinder.MoveTo(gameObject,targetPosition);
+            PathFinder.Navigator.MoveTo(gameObject,targetPosition);
 
             while (SelfState.CurrentState == HumanState.QUITED)
             {

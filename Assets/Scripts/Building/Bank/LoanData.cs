@@ -1,4 +1,4 @@
-namespace BuildingPackage
+namespace Building.Bank
 {
     public struct LoanData
     {

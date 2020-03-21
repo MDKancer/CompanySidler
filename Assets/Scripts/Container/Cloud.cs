@@ -1,24 +1,24 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using BuildingPackage;
+using Building;
 using Enums;
-using Sirenix.Utilities;
-using StateMachine;
-using StateMachine.States;
+using So_Template;
+using StateManager;
+using StateManager.State;
+using StateManager.State.Template;
 using UnityEngine;
-using UnityEngine.SocialPlatforms;
 using Zenject;
 using Resources = UnityEngine.Resources;
 
- namespace GameCloud
+ namespace Container
 {
-    public class Container  {
+    public class Cloud  {
 
         private List<Company> companies = new List<Company>();
         private Dictionary<GameObject,EntityType> prefabsObjects = new Dictionary<GameObject, EntityType>();
         private List<GameObject> spawnedGameObjects = new List<GameObject>();
-        private Dictionary<KeyCode, Actions> InputListenners = new Dictionary<KeyCode, Actions>();
+        private Dictionary<Actions,KeyCode> inputListenners = new Dictionary<Actions,KeyCode>();
         private List<Material> materials = new List<Material>();
         private List<Material> particleMaterials = new List<Material>();
         private List<GameObject> particleSystems = new List<GameObject>();
@@ -40,13 +40,13 @@ using Resources = UnityEngine.Resources;
         /// </summary>
         public void LoadAllResources()
         {
-               addPrefabs(Resources.LoadAll<GameObject>("Prefabs/Buildings"), EntityType.BUILDING);
-               addPrefabs(Resources.LoadAll<GameObject>("Prefabs/Offices"), EntityType.OFFICES);
-               addPrefabs(Resources.LoadAll<GameObject>("Prefabs/Fortniture"), EntityType.FORNITURE);
-               addPrefabs(Resources.LoadAll<GameObject>("Prefabs/Environment"), EntityType.ENVIRONMENT);
-               addPrefabs(Resources.LoadAll<GameObject>("Prefabs/Entitys/Workers/Developers"), EntityType.DEVELOPER);
-               addPrefabs(Resources.LoadAll<GameObject>("Prefabs/Entitys/Azubis"), EntityType.AZUBI);
-               addPrefabs(Resources.LoadAll<GameObject>("Prefabs/Entitys/Clients"), EntityType.CUSTOMER);
+               AddPrefabs(Resources.LoadAll<GameObject>("Prefabs/Buildings"), EntityType.BUILDING);
+               AddPrefabs(Resources.LoadAll<GameObject>("Prefabs/Offices"), EntityType.OFFICES);
+               AddPrefabs(Resources.LoadAll<GameObject>("Prefabs/Fortniture"), EntityType.FORNITURE);
+               AddPrefabs(Resources.LoadAll<GameObject>("Prefabs/Environment"), EntityType.ENVIRONMENT);
+               AddPrefabs(Resources.LoadAll<GameObject>("Prefabs/Entitys/Workers/Developers"), EntityType.DEVELOPER);
+               AddPrefabs(Resources.LoadAll<GameObject>("Prefabs/Entitys/Azubis"), EntityType.AZUBI);
+               AddPrefabs(Resources.LoadAll<GameObject>("Prefabs/Entitys/Clients"), EntityType.CUSTOMER);
                materials.AddRange(Resources.LoadAll<Material>("Materials"));
                particleMaterials.AddRange(Resources.LoadAll<Material>("Materials/Particle"));
                particleSystems.AddRange(Resources.LoadAll<GameObject>("Prefabs/ParticleSystems"));
@@ -69,8 +69,8 @@ using Resources = UnityEngine.Resources;
 
         public List<Material> Materials => materials;
         public List<Material> ParticleMaterials => particleMaterials;
-
         public List<GameObject> ParticleSystems => particleSystems;
+        public Dictionary<Actions,KeyCode> InputListenners => inputListenners;
 
         public List<Company> Companies
         {
@@ -81,7 +81,7 @@ using Resources = UnityEngine.Resources;
         public void AddSpawnedGameObject(GameObject gameObject) => spawnedGameObjects.Add(gameObject);
     
         public  IList<GameObject> SpawnedGameObjects =>  spawnedGameObjects.AsReadOnly();
-        public Boolean isSpawned(GameObject gameObject) => spawnedGameObjects.Contains(gameObject);
+        public Boolean IsSpawned(GameObject gameObject) => spawnedGameObjects.Contains(gameObject);
         public IList<AState> GetGameStates => gameStates.Values.ToList().AsReadOnly();
 
         public AState GetGameState(Scenes scene) => gameStates[scene];
@@ -99,7 +99,7 @@ using Resources = UnityEngine.Resources;
             return gameObjects;
         }
 
-        private void addPrefabs(GameObject[] prefabs,EntityType entityType)
+        private void AddPrefabs(GameObject[] prefabs,EntityType entityType)
         {
             foreach (var prefab in prefabs)
             {
@@ -111,9 +111,10 @@ using Resources = UnityEngine.Resources;
         }
         private void SetCompanyData()
         {
+            GameObject company = GameObject.Find("Company");
+            
             string companyName = companyData.nameCompany;
             
-            GameObject company = GameObject.Find("Company");
             company.name = companyName;
             companies.Add(new Company(signalBus,company));
         }

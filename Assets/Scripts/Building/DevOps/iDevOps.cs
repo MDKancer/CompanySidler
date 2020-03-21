@@ -1,4 +1,4 @@
-namespace BuildingPackage
+namespace Building.DevOps
 {
     public interface iDevOps
     {

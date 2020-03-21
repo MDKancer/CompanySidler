@@ -1,15 +1,12 @@
 using Enums;
-using GameCloud;
+using So_Template;
 using SpawnManager;
-using StateMachine;
+using StateManager;
+using StateManager.State.Template;
 using UnityEngine;
-using Zenject;
-using SceneController;
-using StateMachine.States;
-using Zenject_Signals;
+using Zenject.ProjectContext.Signals;
 
-
-namespace Zenject_Initializer
+namespace Zenject.ProjectContext
 {
     [CreateAssetMenu(fileName = "GlobalBindings", menuName = "Installers/GlobalBindings")]
     public class GlobalBindings : ScriptableObjectInstaller<GlobalBindings>
@@ -25,9 +22,9 @@ namespace Zenject_Initializer
             Container.Bind<StateController<RunTimeState>>().AsSingle().NonLazy();
             Container.Bind<StateMachineClass<AState>>().AsSingle().NonLazy();
             Container.Bind<CompanyData>().FromScriptableObject(companyData).AsSingle().NonLazy();
-            Container.Bind<Container>().AsSingle().NonLazy();
+            Container.Bind<Container.Cloud>().AsSingle().NonLazy();
             Container.Bind<SpawnController>().AsSingle().NonLazy();
-            Container.Bind<SceneManager>().AsSingle().NonLazy();
+            Container.Bind<SceneManager.SceneManager>().AsSingle().NonLazy();
             Container.Bind<MonoBehaviourSignal>().FromNewComponentOnNewGameObject().AsSingle().NonLazy();
             
         }

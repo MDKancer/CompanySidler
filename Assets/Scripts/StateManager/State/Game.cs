@@ -1,29 +1,29 @@
-﻿using Enums;
-using GameCloud;
-using Human.Customer.Generator;
+﻿using Entity.Customer;
+using Enums;
 using InputManager;
-using PlayerView;
-using SceneController;
+using So_Template;
 using SpawnManager;
+using StateManager.State.Template;
+using UIDispatcher;
 using UnityEngine;
 using Zenject;
 
-namespace StateMachine.States
+namespace StateManager.State
 {
     public class Game : AState
     {
         private InputController inputController;
         private CustomerGenerator customerGenerator;
         public override void Init(SignalBus signalBus,
-            Container container,
+            Container.Cloud cloud,
             StateController<RunTimeState> runTimeStateController,
             MonoBehaviour monoBehaviour,
-            SceneManager sceneManager,
+            SceneManager.SceneManager sceneManager,
             SpawnController spawnController,
             CompanyData companyData)
         {
             this.signalBus = signalBus;
-            this.container = container;
+            this.cloud = cloud;
             this.runTimeStateController = runTimeStateController;
             this.sceneManager = sceneManager;
             this.spawnController = spawnController;
@@ -36,13 +36,13 @@ namespace StateMachine.States
         public override void OnEnter()
         {
             // set the Container data and the Company Data
-             container.SetDatas();
+             cloud.SetDatas();
              spawnController.InitialSpawnWave();
              runTimeStateController.CurrentState = RunTimeState.PLAYING;
              
              //important data send on
              inputController.Init(signalBus,runTimeStateController,monoBehaviour,companyData);
-             customerGenerator.Init(signalBus,container,spawnController,monoBehaviour);
+             customerGenerator.Init(signalBus,cloud,spawnController,monoBehaviour);
             
              
              inputController.SetCameraController();

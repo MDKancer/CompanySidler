@@ -1,25 +1,24 @@
 ﻿using Enums;
-using GameCloud;
-using SceneController;
+using So_Template;
 using SpawnManager;
+using StateManager.State.Template;
 using UnityEngine;
 using Zenject;
-using Zenject_Signals;
 
-namespace StateMachine.States
+namespace StateManager.State
 {
-    public class MainMenu : AState
+    public class Exit : AState
     {
         public override void Init(SignalBus signalBus,
-            Container container,
+            Container.Cloud cloud,
             StateController<RunTimeState> runTimeStateController,
             MonoBehaviour monoBehaviour,
-            SceneManager sceneManager,
+            SceneManager.SceneManager sceneManager,
             SpawnController spawnController,
             CompanyData companyData)
         {
             this.signalBus = signalBus;
-            this.container = container;
+            this.cloud = cloud;
             this.runTimeStateController = runTimeStateController;
             this.sceneManager = sceneManager;
             this.spawnController = spawnController;
@@ -30,20 +29,19 @@ namespace StateMachine.States
 
         public override void OnEnter()
         {
-            //Debug.Log($"Current State On Enter {this}");
+            Application.Quit();
         }
 
         public override void OnUpdate()
         {
-            //Debug.Log($"Current State On Update {this}");
         }
 
         public override void OnExit()
         {
-            //Debug.Log($"Current State On Exit {this}");
+            
         }
 
-        ~MainMenu()
+        ~Exit()
         {
             
         }

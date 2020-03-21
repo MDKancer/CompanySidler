@@ -1,14 +1,26 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using Entity.Customer.Data;
+using Building.Accounting;
+using Building.Administration;
+using Building.Azubi;
+using Building.DevOps;
+using Building.Marketing;
+using Building.Office;
+using Building.Rewe;
+using Building.Server;
+using Building.SocialRoom;
+using Building.Tarent;
+using Building.Telekom;
+using Building.Tom;
+using Entity.Customer;
 using Enums;
 using ProjectPackage;
 using UnityEngine;
 using Zenject;
-using Zenject_Signals;
+using Zenject.SceneContext.Signals;
 
-namespace BuildingPackage
+namespace Building
 {
     public class Company
     {

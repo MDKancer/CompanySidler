@@ -2,7 +2,7 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace UIPackage.UIBuildingContent
+namespace UIDispatcher.UIBuildingContent
 {
     internal enum AnchorType
     {

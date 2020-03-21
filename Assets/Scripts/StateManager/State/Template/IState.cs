@@ -1,4 +1,4 @@
-﻿namespace StateMachine.States
+﻿namespace StateManager.State.Template
 {
     public interface IState
     {

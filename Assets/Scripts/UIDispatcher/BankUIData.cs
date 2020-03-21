@@ -1,12 +1,12 @@
-using BuildingPackage;
+using Building.Bank;
 using TMPro;
-using UIPackage.UIBuildingContent;
+using UIDispatcher.UIBuildingContent;
 using UnityEngine;
 using UnityEngine.UI;
 using Zenject;
-using Zenject_Signals;
+using Zenject.SceneContext.Signals;
 
-namespace PlayerView
+namespace UIDispatcher
 {
     public class BankUIData<T> where T : Bank
     {
@@ -15,7 +15,7 @@ namespace PlayerView
         private UIData uiData;
         private ProceduralUiElements proceduralUiElements;
         private MonoBehaviour monoBehaviour;
-        public BankUIData(SignalBus signalBus,MonoBehaviour monoBehaviour,ref UIData uiData, Building bank)
+        public BankUIData(SignalBus signalBus,MonoBehaviour monoBehaviour,ref UIData uiData, Building.Building bank)
         {
             this.uiData = uiData;
             this.proceduralUiElements = new ProceduralUiElements();

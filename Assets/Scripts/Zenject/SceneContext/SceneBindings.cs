@@ -1,7 +1,6 @@
 using UnityEngine;
-using Zenject;
 
-namespace Zenject_Initializer
+namespace Zenject.SceneContext
 {
     [CreateAssetMenu(fileName = "SceneBindings", menuName = "Installers/SceneBindings")]
     public class SceneBindings : ScriptableObjectInstaller<SceneBindings>

@@ -1,16 +1,17 @@
 using System.Collections;
 using System.Collections.Generic;
+using Entity.Employee;
 using Enums;
-using Human;
 using ProjectPackage;
 using Sirenix.OdinInspector;
 using SpawnManager;
-using StateMachine;
+using StateManager;
 using UnityEngine;
 using Zenject;
-using Zenject_Signals;
+using Zenject.ProjectContext.Signals;
+using Zenject.SceneContext.Signals;
 
-namespace BuildingPackage
+namespace Building
 {
     public class Building : MonoBehaviour,iBuilding
     {

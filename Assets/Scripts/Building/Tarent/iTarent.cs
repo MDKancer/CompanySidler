@@ -1,8 +1,4 @@
-using System.Collections.Generic;
-using Enums;
-using Unity.Entities;
-
-namespace BuildingPackage
+namespace Building.Tarent
 {
     public interface iTarent
     {

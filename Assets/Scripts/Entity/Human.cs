@@ -1,13 +1,10 @@
-using System;
-using BuildingPackage;
 using Enums;
-using GameCloud;
-using StateMachine;
-using UIPackage.UIBuildingContent;
+using StateManager;
+using UIDispatcher.UIBuildingContent;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
-namespace Human
+namespace Entity
 {
     public class Human : MonoBehaviour , IHuman
     {
@@ -17,7 +14,7 @@ namespace Human
         
         private StateController<HumanState> selfState = new StateController<HumanState>();
 
-        public delegate void AttachAnBuilding(Building myOffice);
+        public delegate void AttachAnBuilding(Building.Building myOffice);
 
         public AttachAnBuilding AttachEvent;
         public void Awake()

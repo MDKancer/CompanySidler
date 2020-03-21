@@ -1,6 +1,4 @@
-using Zenject;
-
-namespace Zenject_Initializer
+namespace Zenject.SceneContext
 {
     public class SceneContextInstaller : MonoInstaller<SceneContextInstaller>
     {

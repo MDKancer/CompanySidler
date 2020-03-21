@@ -1,14 +1,14 @@
 ﻿using System;
 using System.Collections;
 using Enums;
-using GameCloud;
-using SceneController;
+using So_Template;
 using SpawnManager;
+using StateManager.State.Template;
 using UnityEngine;
 using Zenject;
-using Zenject_Signals;
+using Zenject.ProjectContext.Signals;
 
-namespace StateMachine.States
+namespace StateManager
 {
     /// <summary>
     /// It is a based class state machine.
@@ -31,9 +31,9 @@ namespace StateMachine.States
         private T currentState;
         private T lastState;
         protected SignalBus signalBus;
-        protected Container container;
+        protected Container.Cloud cloud;
         protected StateController<RunTimeState> runTimeStateController;
-        protected SceneManager sceneManager;
+        protected SceneManager.SceneManager sceneManager;
         protected SpawnController spawnController;
         protected MonoBehaviour monoBehaviour;
         protected GameStateSignal gameStateSignal;
@@ -42,15 +42,15 @@ namespace StateMachine.States
 
         [Inject]
         private void Init(SignalBus signalBus,
-            Container container,
+            Container.Cloud cloud,
             StateController<RunTimeState> runTimeStateController,
             MonoBehaviourSignal monoBehaviourSignal,
-            SceneManager sceneManager,
+            SceneManager.SceneManager sceneManager,
             SpawnController spawnController,
             CompanyData companyData)
         {
             this.signalBus = signalBus;
-            this.container = container;
+            this.cloud = cloud;
             this.runTimeStateController = runTimeStateController;
             this.sceneManager = sceneManager;
             this.spawnController = spawnController;
@@ -77,7 +77,7 @@ namespace StateMachine.States
                 
                 // the important fields send on to the current state
                 currentState.Init(signalBus: signalBus,
-                    container: container,
+                    cloud: cloud,
                     runTimeStateController: runTimeStateController,
                     monoBehaviour: monoBehaviour,
                     sceneManager: sceneManager,

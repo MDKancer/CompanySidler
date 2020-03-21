@@ -1,10 +1,10 @@
 using System.Collections.Generic;
-using BuildingPackage;
+using Building;
 using Enums;
 using ProjectPackage;
 using UnityEngine;
 
-namespace Human
+namespace Entity.Employee
 {
     public class EmployeeData
     {

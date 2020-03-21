@@ -1,9 +1,8 @@
-using System;
+using Entity.Employee;
 using Enums;
 using JetBrains.Annotations;
-using Human;
 
-namespace BuildingPackage
+namespace Building
 {
 
   public interface iBuilding

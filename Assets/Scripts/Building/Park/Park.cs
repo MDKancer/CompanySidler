@@ -2,7 +2,7 @@ using System.Collections;
 using Enums;
 using UnityEngine;
 
-namespace BuildingPackage
+namespace Building.Park
 {
     public class Park : Building, iPark
     {

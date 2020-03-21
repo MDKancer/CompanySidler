@@ -1,8 +1,8 @@
 using System;
 using System.Collections.Generic;
-using BuildingPackage.OfficeWorker;
+using Building;
+using Entity.Employee;
 using Enums;
-using Human;
 using UnityEngine;
 using Random = UnityEngine.Random;
 

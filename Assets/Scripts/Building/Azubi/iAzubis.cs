@@ -1,4 +1,4 @@
-namespace BuildingPackage
+namespace Building.Azubi
 {
     public interface iAzubis
     {

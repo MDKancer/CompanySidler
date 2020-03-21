@@ -1,15 +1,13 @@
 using System;
 using System.Collections;
-using BuildingPackage;
-using Entity.Customer.Data;
+using Building;
 using Enums;
-using GameCloud;
 using SpawnManager;
 using UnityEngine;
 using Zenject;
 using Random = UnityEngine.Random;
 
-namespace Human.Customer.Generator
+namespace Entity.Customer
 {
     public class CustomerGenerator
     {
@@ -17,17 +15,17 @@ namespace Human.Customer.Generator
         private Company company;
         
         private SignalBus signalBus;
-        private Container container;
+        private Container.Cloud cloud;
         private SpawnController spawnController;
         private MonoBehaviour monoBehaviour;
 
-        public void Init(SignalBus signalBus, Container container, SpawnController spawnController,MonoBehaviour monoBehaviour)
+        public void Init(SignalBus signalBus, Container.Cloud cloud, SpawnController spawnController,MonoBehaviour monoBehaviour)
         {
             this.signalBus = signalBus;
-            this.container = container;
+            this.cloud = cloud;
             this.spawnController = spawnController;
             this.monoBehaviour = monoBehaviour;
-            company = this.container.Companies[0];
+            company = this.cloud.Companies[0];
         }
 
         public void Awake()
@@ -47,7 +45,7 @@ namespace Human.Customer.Generator
         {
             while (true)
             {
-                if (container.Companies[0].needProject)
+                if (cloud.Companies[0].needProject)
                 {
                     CustomerData customerData = company.Customers[Random.Range(0, company.Customers.Count - 1)];
                     customerData.GenerateNewProject();
@@ -68,7 +66,7 @@ namespace Human.Customer.Generator
             
             for (int i = 0; i < countCustomers; i++)
             {
-                CustomerData customer = new CustomerData((CustomerType) customersValues.GetValue(i),spawnPosition,container,monoBehaviour);
+                CustomerData customer = new CustomerData((CustomerType) customersValues.GetValue(i),spawnPosition,cloud,monoBehaviour);
                 company.Customers.Add(customer);
             }
         }

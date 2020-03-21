@@ -1,12 +1,12 @@
 using System;
-using BuildingPackage;
+using Building;
+using Building.Tarent;
 using Enums;
-using GameCloud;
 using ProjectPackage;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
-namespace Entity.Customer.Data
+namespace Entity.Customer
 {
     public class CustomerData
     {
@@ -22,17 +22,17 @@ namespace Entity.Customer.Data
         private MonoBehaviour monoBehaviour;
 
         //TODO: es muss ohne Container Fuktionieren!!!
-        public CustomerData(CustomerType customerType,Vector3 spawnPosition,Container container,MonoBehaviour monoBehaviour)
+        public CustomerData(CustomerType customerType,Vector3 spawnPosition,Container.Cloud cloud,MonoBehaviour monoBehaviour)
         {
             customerLevelData = new CustomerLevelData();
             
             this.initialPosition = spawnPosition;
             this.customerType = customerType;
 
-            this.company = container.Companies[0];
+            this.company = cloud.Companies[0];
             tarentTown = (TarentTown) company.GetOffice(BuildingType.TARENT_TOWN);
             
-            this.prefab = container.GetPrefabsByType(EntityType.CUSTOMER)[0];
+            this.prefab = cloud.GetPrefabsByType(EntityType.CUSTOMER)[0];
             this.monoBehaviour = monoBehaviour;
 
         }

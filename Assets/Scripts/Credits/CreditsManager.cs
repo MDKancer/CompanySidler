@@ -1,8 +1,10 @@
 ﻿using System.Collections;
+using Credits.ProceduralCredits.ListOfProjectsWorkers;
+using Credits.ProceduralCredits.UIComponentsGenerator;
 using Sirenix.OdinInspector;
 using UnityEngine;
 using Zenject;
-using Zenject_Signals;
+using Zenject.ProjectContext.Signals;
 
 namespace Credits
 {

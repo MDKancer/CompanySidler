@@ -1,11 +1,10 @@
 using System.Collections;
 using System.Collections.Generic;
-using BuildingPackage.OfficeWorker;
+using Entity.Employee;
 using Enums;
-using Human;
 using UnityEngine;
 
-namespace BuildingPackage
+namespace Building.Azubi
 {
     public class AzubisTown : Building, iAzubis
     {

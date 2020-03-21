@@ -1,11 +1,11 @@
 ﻿using Enums;
-using GameCloud;
-using StateMachine.States;
+using StateManager;
+using StateManager.State.Template;
 using UnityEngine;
 using Zenject;
-using Zenject_Signals;
+using Zenject.ProjectContext.Signals;
 
-namespace SceneController
+namespace SceneManager
 {
     public class SceneManager
     {
@@ -14,16 +14,16 @@ namespace SceneController
         private Scenes targetScene;
         private AsyncOperation loadingSceneOperation;
         
-        private Container container;
+        private Container.Cloud cloud;
         private StateMachineClass<AState> stateMachineClass;
         
         [Inject]
         private void Init(
-            Container container,
+            Container.Cloud cloud,
             MonoBehaviourSignal monoBehaviourSignal,
             StateMachineClass<AState> stateMachineClass)
         {
-            this.container = container;
+            this.cloud = cloud;
             this.stateMachineClass = stateMachineClass;
         }
 
@@ -88,7 +88,7 @@ namespace SceneController
         /// </summary>
         private void LoadingSceneCompleted(AsyncOperation asyncOperation)
         {
-            stateMachineClass.CurrentState = container.GetGameState(CurrentScene);
+            stateMachineClass.CurrentState = cloud.GetGameState(CurrentScene);
             
             loadingSceneOperation = UnityEngine.SceneManagement.SceneManager.LoadSceneAsync(TargetScene.ToString());
             
@@ -105,7 +105,7 @@ namespace SceneController
             TargetScene = Scenes.NONE;
             
             loadingSceneOperation.completed -= TargetSceneCompleted;
-            stateMachineClass.CurrentState = container.GetGameState(CurrentScene);
+            stateMachineClass.CurrentState = cloud.GetGameState(CurrentScene);
         }
     }
 }

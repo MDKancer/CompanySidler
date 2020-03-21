@@ -1,6 +1,4 @@
-using JetBrains.Annotations;
-
-namespace BuildingPackage
+namespace Building.Bank
 {
     public interface iBank
     {

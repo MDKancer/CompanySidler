@@ -1,4 +1,4 @@
-namespace BuildingPackage
+namespace Building.Marketing
 {
     public interface iMarketing
     {

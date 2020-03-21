@@ -1,7 +1,7 @@
 ﻿using System.Collections;
 using UnityEngine;
 
-namespace Credits
+namespace Credits.ProceduralCredits.UIComponentsGenerator
 {
     public sealed class RollingCredits
     {

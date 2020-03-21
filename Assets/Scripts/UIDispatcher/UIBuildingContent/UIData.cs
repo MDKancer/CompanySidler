@@ -8,7 +8,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using Object = UnityEngine.Object;
 
-namespace UIPackage.UIBuildingContent
+namespace UIDispatcher.UIBuildingContent
 {
     /// <summary>
     ///  Die Datenbindung der Benutzeroberfläche bindet generische Elemente der Benutzeroberfläche an den PlayerViewController.

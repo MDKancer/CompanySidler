@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace CameraManager
+namespace CameraController
 {
     /// <summary>
     /// Developmnet Test

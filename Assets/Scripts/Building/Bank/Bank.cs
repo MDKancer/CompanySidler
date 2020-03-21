@@ -2,9 +2,8 @@ using System.Collections.Generic;
 using Enums;
 using JetBrains.Annotations;
 using UnityEngine;
-using Zenject_Signals;
 
-namespace BuildingPackage
+namespace Building.Bank
 {
     public class Bank : Building, iBank
     {

@@ -3,9 +3,12 @@ using Enums;
 using Sirenix.OdinInspector;
 using UnityEngine;
 
-[CreateAssetMenu (fileName = "BeginsOffices", menuName = "ScriptableObjects/BeginsOffices", order = 3)]
-public class BasicsOffice : ScriptableObject
+namespace So_Template
 {
-    [AssetList, Header("List of all Offices")]
-    public List<BuildingType> offices = new List<BuildingType>();
+    [CreateAssetMenu (fileName = "BeginsOffices", menuName = "ScriptableObjects/BeginsOffices", order = 3)]
+    public class BasicsOffice : ScriptableObject
+    {
+        [AssetList, Header("List of all Offices")]
+        public List<BuildingType> offices = new List<BuildingType>();
+    }
 }

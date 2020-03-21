@@ -1,11 +1,8 @@
-using BuildingPackage;
-using GameCloud;
-using PlayerView;
+using Building.Bank;
 using UnityEngine;
 using Zenject;
-using Zenject_Signals;
 
-namespace UIPackage.UIBuildingContent
+namespace UIDispatcher.UIBuildingContent
 {
     /// <summary>
     /// Ein einfacher Content Generator, hier werden alle UI Elemente und Funktionen was ein Büro braucht.
@@ -14,22 +11,22 @@ namespace UIPackage.UIBuildingContent
     public class BuildingContent
     {
         private readonly ProceduralUiElements proceduralUiElements;        
-        private Building building;
+        private Building.Building building;
         private UIData uiData;
         private SignalBus signalBus;
-        private Container container;
+        private Container.Cloud cloud;
         private MonoBehaviour monoBehaviour;
-        public BuildingContent(SignalBus signalBus,MonoBehaviour monoBehaviour, Container container, ref UIData uiData)
+        public BuildingContent(SignalBus signalBus,MonoBehaviour monoBehaviour, Container.Cloud cloud, ref UIData uiData)
         {
             this.signalBus = signalBus;
-            this.container = container;
+            this.cloud = cloud;
             this.monoBehaviour = monoBehaviour;
             this.uiData = uiData;
             proceduralUiElements = new ProceduralUiElements();
         }
 
 
-        public void CreateBuildingContent(Building building)
+        public void CreateBuildingContent(Building.Building building)
         {
             this.building = building;
             if (building.GetType() == typeof(Bank))
@@ -39,7 +36,7 @@ namespace UIPackage.UIBuildingContent
             }
             else
             {
-                var buildingUIData = new BuildingUIData<Building>(signalBus,monoBehaviour,container,ref uiData,building);
+                var buildingUIData = new BuildingUIData<Building.Building>(signalBus,monoBehaviour,cloud,ref uiData,building);
                 buildingUIData.SetBuildingInteractions();
             }
         }

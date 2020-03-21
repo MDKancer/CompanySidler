@@ -1,6 +1,6 @@
 using Enums;
 
-namespace Zenject_Signals
+namespace Zenject.ProjectContext.Signals
 {
     public struct GameStateSignal
     {

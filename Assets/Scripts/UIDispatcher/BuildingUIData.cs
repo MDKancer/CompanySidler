@@ -1,37 +1,36 @@
 using System.Collections;
-using BuildingPackage;
+using Building.Tarent;
+using Entity.Employee;
 using Enums;
-using GameCloud;
-using Human;
 using ProjectPackage;
 using TMPro;
-using UIPackage.UIBuildingContent;
+using UIDispatcher.UIBuildingContent;
 using UnityEngine;
 using UnityEngine.UI;
 using Zenject;
-using Zenject_Signals;
+using Zenject.SceneContext.Signals;
 
-namespace PlayerView
+namespace UIDispatcher
 {
-    public class BuildingUIData<T> where T : Building
+    public class BuildingUIData<T> where T : Building.Building
     {
         private T building;
         private SignalBus signalBus;
         private UIData uiData;
         private ProceduralUiElements proceduralUiElements;
-        private Container container;
+        private Container.Cloud cloud;
         private MonoBehaviour monoBehaviour;
         private Material projectButtonMaterial;
         
-        public BuildingUIData(SignalBus signalBus,MonoBehaviour monoBehaviour,Container container,ref UIData uiData, Building office)
+        public BuildingUIData(SignalBus signalBus,MonoBehaviour monoBehaviour,Container.Cloud cloud,ref UIData uiData, Building.Building office)
         {
             this.signalBus = signalBus;
-            this.container = container;
+            this.cloud = cloud;
             this.uiData = uiData;
             this.proceduralUiElements = new ProceduralUiElements();
             this.building = office as T;
             
-            container.Materials.ForEach(material =>
+            cloud.Materials.ForEach(material =>
             {
                 if (material.name == "progressBar") projectButtonMaterial = material;
             } );

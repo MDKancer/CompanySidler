@@ -1,48 +1,49 @@
 ﻿using Enums;
-using GameCloud;
-using SceneController;
+using So_Template;
 using SpawnManager;
+using StateManager.State.Template;
+using TMPro;
 using UnityEngine;
 using Zenject;
-using Zenject_Signals;
 
-namespace StateMachine.States
+namespace StateManager.State
 {
-    public class Exit : AState
+    public class Loading : AState
     {
+        private TextMeshProUGUI label;
+
         public override void Init(SignalBus signalBus,
-            Container container,
+            Container.Cloud cloud,
             StateController<RunTimeState> runTimeStateController,
             MonoBehaviour monoBehaviour,
-            SceneManager sceneManager,
+            SceneManager.SceneManager sceneManager,
             SpawnController spawnController,
             CompanyData companyData)
         {
             this.signalBus = signalBus;
-            this.container = container;
+            this.cloud = cloud;
             this.runTimeStateController = runTimeStateController;
             this.sceneManager = sceneManager;
             this.spawnController = spawnController;
             this.monoBehaviour = monoBehaviour;
             this.companyData = companyData;
-
         }
 
         public override void OnEnter()
         {
-            Application.Quit();
+             label = GameObject.Find("Loading_Label").GetComponent<TextMeshProUGUI>();
         }
 
         public override void OnUpdate()
         {
+            label.SetText($"Loading ... {sceneManager.SceneProgress}");
         }
 
         public override void OnExit()
         {
-            
         }
 
-        ~Exit()
+        ~Loading()
         {
             
         }

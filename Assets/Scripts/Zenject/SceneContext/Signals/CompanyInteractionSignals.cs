@@ -1,9 +1,9 @@
-using BuildingPackage;
+using Building;
+using Entity.Employee;
 using Enums;
-using Human;
 using ProjectPackage;
 
-namespace Zenject_Signals
+namespace Zenject.SceneContext.Signals
 {
     public struct ApplyEmployeeSignal
     {

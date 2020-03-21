@@ -1,19 +1,18 @@
 ﻿using Enums;
-using GameCloud;
-using SceneController;
+using So_Template;
 using SpawnManager;
 using UnityEngine;
 using Zenject;
-using Zenject_Signals;
+using Zenject.ProjectContext.Signals;
 
-namespace StateMachine.States
+namespace StateManager.State.Template
 {
     public abstract class AState : IState
     {
         protected SignalBus signalBus;
-        protected Container container;
+        protected Container.Cloud cloud;
         protected StateController<RunTimeState> runTimeStateController;
-        protected SceneManager sceneManager;
+        protected SceneManager.SceneManager sceneManager;
         protected SpawnController spawnController;
         protected MonoBehaviour monoBehaviour;
         protected GameStateSignal gameStateSignal;
@@ -23,10 +22,10 @@ namespace StateMachine.States
         /// Here will be all global signals initialized, to make easily to handle.
         /// </summary>
         public abstract void Init(SignalBus signalBus,
-            Container container,
+            Container.Cloud cloud,
             StateController<RunTimeState> runTimeStateController,
             MonoBehaviour monoBehaviour,
-            SceneManager sceneManager,
+            SceneManager.SceneManager sceneManager,
             SpawnController spawnController,
             CompanyData companyData);
 

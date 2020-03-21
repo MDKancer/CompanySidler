@@ -1,16 +1,19 @@
 ﻿using UnityEngine;
 
-public class FakeData : MonoBehaviour
+namespace JSon_Manager
 {
-    // Start is called before the first frame update
-    void Start()
+    public class FakeData : MonoBehaviour
     {
+        // Start is called before the first frame update
+        void Start()
+        {
         
-    }
+        }
 
-    // Update is called once per frame
-    void Update()
-    {
+        // Update is called once per frame
+        void Update()
+        {
         
+        }
     }
 }

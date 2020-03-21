@@ -1,18 +1,17 @@
 ﻿using System;
 using System.Globalization;
-using BuildingPackage;
+using Entity.Employee;
 using Enums;
-using GameCloud;
-using Human;
 using SpawnManager;
-using StateMachine;
+using StateManager;
 using TMPro;
-using UIPackage.UIBuildingContent;
+using UIDispatcher.UIBuildingContent;
 using UnityEngine;
 using Zenject;
-using Zenject_Signals;
+using Zenject.ProjectContext.Signals;
+using Zenject.SceneContext.Signals;
 
-namespace PlayerView
+namespace UIDispatcher
 {
     /// <summary>
     /// Player View Controller verwaltet einen Teil der Benutzeroberfläche sowie die Interaktionen zwischen dieser Oberfläche und den zugrunde liegenden Daten.
@@ -31,7 +30,7 @@ namespace PlayerView
         protected SignalBus signalBus;
         protected StateController<RunTimeState> runtimeStateController;
         protected SpawnController spawnController;
-        protected Container container;
+        protected Container.Cloud cloud;
 
         private MonoBehaviour monoBehaviour;
         
@@ -40,13 +39,13 @@ namespace PlayerView
                             SignalBus signalBus, 
                             StateController<RunTimeState> runtimeStateController,
                             SpawnController spawnController,
-                            Container container,
+                            Container.Cloud cloud,
                             MonoBehaviourSignal monoBehaviourSignal)
         {
             this.signalBus = signalBus;
             this.runtimeStateController = runtimeStateController;
             this.spawnController = spawnController;
-            this.container = container;
+            this.cloud = cloud;
 
             this.monoBehaviour = monoBehaviourSignal;
             
@@ -69,7 +68,7 @@ namespace PlayerView
         {
             playerViewController = this;
 
-            this.buildingContent = new BuildingContent(signalBus,monoBehaviour,container,ref uiData);
+            this.buildingContent = new BuildingContent(signalBus,monoBehaviour,cloud,ref uiData);
             uiData.buildingInfo.SetActive(false);
         }
 
@@ -85,8 +84,8 @@ namespace PlayerView
 
                 var spawnPosition = new Vector3(4f, 1f, 2f);
                 var humanData = new EmployeeData(
-                    company: container.Companies[0],
-                    prefab: container.GetPrefabsByType(EntityType.DEVELOPER)[0],
+                    company: cloud.Companies[0],
+                    prefab: cloud.GetPrefabsByType(EntityType.DEVELOPER)[0],
                     entityType: applyEmployeeSignal.employeeType,//GetValue(employeeType),
                     hisOffice: Building.BuildingData.buildingType
                 );
@@ -112,7 +111,7 @@ namespace PlayerView
             {
                 if (Building.Company.CurrentBudget >= Building.BuildingData.price)
                 {
-                    var currentBudget = container.Companies[0].CurrentBudget;
+                    var currentBudget = cloud.Companies[0].CurrentBudget;
                     //TODO : wenn mann es kauf wird es von budge abgezogen
                     Building.IsBuying = true;
                 }
@@ -150,7 +149,7 @@ namespace PlayerView
                 } 
         }
 
-        public void FocusedBuilding(Building focusedBuilding)
+        public void FocusedBuilding(Building.Building focusedBuilding)
         {
             Building = focusedBuilding;
         }
@@ -215,7 +214,7 @@ namespace PlayerView
         }
         public void CurrentBudget()
         {
-                uiData.budget_Label?.SetText(container.Companies[0].CurrentBudget.ToString());
+                uiData.budget_Label?.SetText(cloud.Companies[0].CurrentBudget.ToString());
         }
 
         private EntityType GetValue(String value) => (EntityType) Enum.Parse(typeof(EntityType), value.ToUpper());
@@ -234,9 +233,9 @@ namespace PlayerView
                     
             uiData.currentBudget_Label.SetText(Building.BuildingData.moneyPerSec.ToString());
                     
-            uiData.numberOfCustomers_Label?.SetText(container.Companies[0].numberOfCustomers.ToString());
+            uiData.numberOfCustomers_Label?.SetText(cloud.Companies[0].numberOfCustomers.ToString());
         }
-        private Building Building { get; set; }
+        private Building.Building Building { get; set; }
 
         private void GenerateBuildingContent()
         {

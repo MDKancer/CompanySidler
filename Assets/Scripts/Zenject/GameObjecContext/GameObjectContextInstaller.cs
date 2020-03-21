@@ -1,6 +1,4 @@
-using Zenject;
-
-namespace DefaultNamespace
+namespace Zenject.GameObjecContext
 {
     public class GameObjectContextInstaller : MonoInstaller<GameObjectContextInstaller>
     {

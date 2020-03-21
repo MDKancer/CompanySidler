@@ -1,7 +1,7 @@
-using Zenject;
-using Zenject_Signals;
+using Zenject.ProjectContext.Signals;
+using Zenject.SceneContext.Signals;
 
-namespace Zenject_Initializer
+namespace Zenject.ProjectContext
 {
     public class ProjectSignalModule : Installer<ProjectSignalModule>
     {

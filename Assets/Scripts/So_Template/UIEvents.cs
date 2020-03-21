@@ -1,29 +1,30 @@
 ﻿using Enums;
-using GameCloud;
-using SceneController;
-using StateMachine;
-using StateMachine.States;
+using StateManager;
+using StateManager.State.Template;
 using UnityEngine;
 using Zenject;
 
-public class UIEvents : MonoBehaviour
+namespace So_Template
 {
-    [Inject] public StateMachineClass<AState> stateMachineClass;
-    [Inject] public SceneManager sceneManager;
-    [Inject] private Container container;
-    public void PlayGame()
+    public class UIEvents : MonoBehaviour
     {
-        sceneManager.GoTo(Scenes.GAME);  
-    }
-    public void StartGame()
-    {
-        sceneManager.GoTo(Scenes.PREGAME);
-    }
+        [Inject] public StateMachineClass<AState> stateMachineClass;
+        [Inject] public SceneManager.SceneManager sceneManager;
+        [Inject] private Container.Cloud cloud;
+        public void PlayGame()
+        {
+            sceneManager.GoTo(Scenes.GAME);  
+        }
+        public void StartGame()
+        {
+            sceneManager.GoTo(Scenes.PREGAME);
+        }
     
-    public void Exit()
-    {
-        //first
-        stateMachineClass.CurrentState = container.GetGameState(Scenes.EXIT);
-        //second
+        public void Exit()
+        {
+            //first
+            stateMachineClass.CurrentState = cloud.GetGameState(Scenes.EXIT);
+            //second
+        }
     }
 }

@@ -1,8 +1,7 @@
 using System;
 using Sirenix.OdinInspector;
-using Zenject;
 
-namespace Zenject_Initializer
+namespace Zenject.ProjectContext
 {
     public class ProjectContextInstaller : MonoInstaller<ProjectContextInstaller>
     {

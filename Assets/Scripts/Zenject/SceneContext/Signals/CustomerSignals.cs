@@ -1,4 +1,4 @@
-namespace Zenject_Signals
+namespace Zenject.SceneContext.Signals
 {
     public struct CustomerSignals 
     {

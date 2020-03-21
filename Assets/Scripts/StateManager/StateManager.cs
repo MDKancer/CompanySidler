@@ -1,10 +1,8 @@
 ﻿using System;
-using Enums;
 using UnityEngine;
 using Zenject;
-using Zenject_Signals;
 
-namespace StateMachine
+namespace StateManager
 {
     /// <summary>
     /// It is a enum class state machine.

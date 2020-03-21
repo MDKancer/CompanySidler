@@ -2,15 +2,14 @@
 using UnityEngine;
 using UnityEngine.AI;
 
-namespace PathFinderManager
+namespace PathFinder
 {
-    public static class PathFinder
+    public static class Navigator
     {
         /// <summary>
         /// Um ein Object zu einem bestimmten ort bewegen zu lassen,
         /// braucht man ein ZielPosition was ZielPosition.y Axe ist gleich mit der me.position.y Axe
         /// </summary>
-        /// <param name="me"></param>
         /// <param name="targetPosition"> <example>(gameObject.transform.position.y == targetPosition.y)</example></param>
         public static void MoveTo(GameObject me, Vector3 targetPosition)
         {
@@ -44,7 +43,6 @@ namespace PathFinderManager
                     return PathProgress.NONE;
                 }
             }
-
             return PathProgress.NONE;
         }
     }

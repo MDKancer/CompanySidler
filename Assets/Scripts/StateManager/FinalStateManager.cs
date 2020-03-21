@@ -1,10 +1,10 @@
 ﻿using System.Collections;
-using StateMachine.States;
+using StateManager.State.Template;
 using Zenject;
 
-namespace StateMachine
+namespace StateManager
 {
-    public class FinalStateManager : IFSM_Test
+    public class FinalStateManager : IFSM
     {
         protected SignalBus signalBus;
         protected StateMachineClass<AState> stateMachineClass;

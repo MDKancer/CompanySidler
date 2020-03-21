@@ -20,17 +20,23 @@ namespace InputWrapper
             if (GetBindings.ContainsValue(newkeyCode))
             {
                 var affectedAction = GetAction(newkeyCode);
+                if (affectedAction != Actions.NONE)
+                {
+                    GetBindings[affectedAction] = oldkeyCode;
+                }
             }
+
+            GetBindings[targetAction] = newkeyCode;
         }
 
-        private Actions? GetAction(KeyCode keyCode)
+        private Actions GetAction(KeyCode keyCode)
         {
             foreach (var item in GetBindings)
             {
                 if (item.Value == keyCode) return item.Key;
             }
 
-            return null;
+            return Actions.NONE;
         }
     }
 }

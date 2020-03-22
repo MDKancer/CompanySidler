@@ -9,6 +9,7 @@ using StateManager.State;
 using StateManager.State.Template;
 using UnityEngine;
 using Zenject;
+using Action = Enums.Action;
 using Resources = UnityEngine.Resources;
 
  namespace Container
@@ -18,7 +19,7 @@ using Resources = UnityEngine.Resources;
         private List<Company> companies = new List<Company>();
         private Dictionary<GameObject,EntityType> prefabsObjects = new Dictionary<GameObject, EntityType>();
         private List<GameObject> spawnedGameObjects = new List<GameObject>();
-        private Dictionary<Actions,KeyCode> inputListenners = new Dictionary<Actions,KeyCode>();
+        private Dictionary<Action,KeyCode> inputListenners = new Dictionary<Action,KeyCode>();
         private List<Material> materials = new List<Material>();
         private List<Material> particleMaterials = new List<Material>();
         private List<GameObject> particleSystems = new List<GameObject>();
@@ -70,7 +71,7 @@ using Resources = UnityEngine.Resources;
         public List<Material> Materials => materials;
         public List<Material> ParticleMaterials => particleMaterials;
         public List<GameObject> ParticleSystems => particleSystems;
-        public Dictionary<Actions,KeyCode> InputListenners => inputListenners;
+        public Dictionary<Action,KeyCode> InputListenners => inputListenners;
 
         public List<Company> Companies
         {

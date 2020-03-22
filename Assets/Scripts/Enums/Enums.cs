@@ -99,7 +99,7 @@
         
     }
 
-    public enum Actions
+    public enum Action
     {
         NONE = 0,
         ROTATE_RIGHT = 1,

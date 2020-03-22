@@ -9,34 +9,43 @@ namespace InputWrapper
     {
         private Cloud cloud;
 
-        public Dictionary<Actions,KeyCode> GetBindings
+        public Dictionary<Action,KeyCode> GetBindings
         {
             get => cloud.InputListenners;
         }
 
-        public void ChangeBinding(KeyCode oldkeyCode, KeyCode newkeyCode)
+        public void Reset()
         {
-            var targetAction = GetAction(oldkeyCode);
-            if (GetBindings.ContainsValue(newkeyCode))
+            
+        }
+
+        public bool OnPress(Action action)
+        {
+            return Input.GetKey(GetBindings[action]);
+        }
+        public void ChangeBinding(KeyCode oldKeyCode, KeyCode newKeyCode)
+        {
+            var targetAction = GetAction(oldKeyCode);
+            if (GetBindings.ContainsValue(newKeyCode))
             {
-                var affectedAction = GetAction(newkeyCode);
-                if (affectedAction != Actions.NONE)
+                var affectedAction = GetAction(newKeyCode);
+                if (affectedAction != Action.NONE)
                 {
-                    GetBindings[affectedAction] = oldkeyCode;
+                    GetBindings[affectedAction] = oldKeyCode;
                 }
             }
 
-            GetBindings[targetAction] = newkeyCode;
+            GetBindings[targetAction] = newKeyCode;
         }
 
-        private Actions GetAction(KeyCode keyCode)
+        private Action GetAction(KeyCode keyCode)
         {
             foreach (var item in GetBindings)
             {
                 if (item.Value == keyCode) return item.Key;
             }
 
-            return Actions.NONE;
+            return Action.NONE;
         }
     }
 }

@@ -1,4 +1,6 @@
-﻿using Enums;
+﻿using Container;
+using Enums;
+using InputManager;
 using So_Template;
 using SpawnManager;
 using UnityEngine;
@@ -10,8 +12,9 @@ namespace StateManager.State.Template
     public abstract class AState : IState
     {
         protected SignalBus signalBus;
-        protected Container.Cloud cloud;
+        protected Cloud cloud;
         protected StateController<RunTimeState> runTimeStateController;
+        protected InputController inputController;
         protected SceneManager.SceneManager sceneManager;
         protected SpawnController spawnController;
         protected MonoBehaviour monoBehaviour;
@@ -22,8 +25,9 @@ namespace StateManager.State.Template
         /// Here will be all global signals initialized, to make easily to handle.
         /// </summary>
         public abstract void Init(SignalBus signalBus,
-            Container.Cloud cloud,
+            Cloud cloud,
             StateController<RunTimeState> runTimeStateController,
+            InputController inputController,
             MonoBehaviour monoBehaviour,
             SceneManager.SceneManager sceneManager,
             SpawnController spawnController,

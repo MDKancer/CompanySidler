@@ -5,7 +5,7 @@ namespace So_Template
     [CreateAssetMenu (fileName = "CompanyData", menuName = "ScriptableObjects/CompanyData", order = 1)]
     public class CompanyData : ScriptableObject
     {
-        public string nameCompany;
+        public string nameCompany = "Company";
     
         /// <summary>
         /// Gibts ein Eigenenkapital oder nicht.

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using Building;
 using Enums;
+using JSon_Manager;
 using So_Template;
 using StateManager;
 using StateManager.State;
@@ -19,7 +20,7 @@ using Resources = UnityEngine.Resources;
         private List<Company> companies = new List<Company>();
         private Dictionary<GameObject,EntityType> prefabsObjects = new Dictionary<GameObject, EntityType>();
         private List<GameObject> spawnedGameObjects = new List<GameObject>();
-        private Dictionary<Action,KeyCode> inputListenners = new Dictionary<Action,KeyCode>();
+        private SettingsData settingsData;
         private List<Material> materials = new List<Material>();
         private List<Material> particleMaterials = new List<Material>();
         private List<GameObject> particleSystems = new List<GameObject>();
@@ -59,6 +60,8 @@ using Resources = UnityEngine.Resources;
                gameStates.Add(Scenes.PREGAME,new PreGame());
                gameStates.Add(Scenes.GAME,new Game());
                gameStates.Add(Scenes.LOADING,new Loading());
+               
+               SetGameSettings();
         }
         /// <summary>
         /// Es wird ausgeführt wenn man alle wichtige Daten schon eingegeben hat um ein Unternehmen zu erstellen.
@@ -71,7 +74,7 @@ using Resources = UnityEngine.Resources;
         public List<Material> Materials => materials;
         public List<Material> ParticleMaterials => particleMaterials;
         public List<GameObject> ParticleSystems => particleSystems;
-        public Dictionary<Action,KeyCode> InputListenners => inputListenners;
+        public SettingsData SettingsData => settingsData;
 
         public List<Company> Companies
         {
@@ -84,7 +87,7 @@ using Resources = UnityEngine.Resources;
         public  IList<GameObject> SpawnedGameObjects =>  spawnedGameObjects.AsReadOnly();
         public Boolean IsSpawned(GameObject gameObject) => spawnedGameObjects.Contains(gameObject);
         public IList<AState> GetGameStates => gameStates.Values.ToList().AsReadOnly();
-
+        public void InputBindingsReset() => SetGameSettings();
         public AState GetGameState(Scenes scene) => gameStates[scene];
         public List<GameObject> GetPrefabsByType(EntityType entityType)
         {
@@ -109,6 +112,13 @@ using Resources = UnityEngine.Resources;
                     prefabsObjects.Add(prefab, entityType);
                 }
             }
+        }
+
+        private void SetGameSettings()
+        {
+            var JSon_manager = new JSon_Manager.Json_Stream("InputBindings");
+            settingsData = JSon_manager.GetSettings();
+            JSon_manager.WriteJson();
         }
         private void SetCompanyData()
         {

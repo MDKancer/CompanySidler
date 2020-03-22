@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections;
 using Enums;
+using InputManager;
+using InputWrapper;
 using So_Template;
 using SpawnManager;
 using StateManager.State.Template;
@@ -33,6 +35,7 @@ namespace StateManager
         protected SignalBus signalBus;
         protected Container.Cloud cloud;
         protected StateController<RunTimeState> runTimeStateController;
+        protected InputController inputController;
         protected SceneManager.SceneManager sceneManager;
         protected SpawnController spawnController;
         protected MonoBehaviour monoBehaviour;
@@ -44,6 +47,7 @@ namespace StateManager
         private void Init(SignalBus signalBus,
             Container.Cloud cloud,
             StateController<RunTimeState> runTimeStateController,
+            InputController inputController,
             MonoBehaviourSignal monoBehaviourSignal,
             SceneManager.SceneManager sceneManager,
             SpawnController spawnController,
@@ -52,6 +56,7 @@ namespace StateManager
             this.signalBus = signalBus;
             this.cloud = cloud;
             this.runTimeStateController = runTimeStateController;
+            this.inputController = inputController;
             this.sceneManager = sceneManager;
             this.spawnController = spawnController;
             this.monoBehaviour = monoBehaviourSignal;
@@ -79,6 +84,7 @@ namespace StateManager
                 currentState.Init(signalBus: signalBus,
                     cloud: cloud,
                     runTimeStateController: runTimeStateController,
+                    inputController: inputController,
                     monoBehaviour: monoBehaviour,
                     sceneManager: sceneManager,
                     spawnController: spawnController,

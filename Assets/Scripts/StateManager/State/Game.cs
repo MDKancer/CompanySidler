@@ -12,11 +12,11 @@ namespace StateManager.State
 {
     public class Game : AState
     {
-        private InputController inputController;
         private CustomerGenerator customerGenerator;
         public override void Init(SignalBus signalBus,
             Container.Cloud cloud,
             StateController<RunTimeState> runTimeStateController,
+            InputController inputController,
             MonoBehaviour monoBehaviour,
             SceneManager.SceneManager sceneManager,
             SpawnController spawnController,
@@ -29,7 +29,7 @@ namespace StateManager.State
             this.spawnController = spawnController;
             this.monoBehaviour = monoBehaviour;
             this.companyData = companyData;
-            this.inputController = new InputController();
+            this.inputController = inputController;
             this.customerGenerator = new CustomerGenerator();
         }
 
@@ -41,7 +41,6 @@ namespace StateManager.State
              runTimeStateController.CurrentState = RunTimeState.PLAYING;
              
              //important data send on
-             inputController.Init(signalBus,runTimeStateController,monoBehaviour,companyData);
              customerGenerator.Init(signalBus,cloud,spawnController,monoBehaviour);
             
              

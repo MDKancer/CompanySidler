@@ -1,4 +1,6 @@
-﻿namespace Enums
+﻿using System;
+
+namespace Enums
 {
     public enum GameState 
     {
@@ -154,5 +156,24 @@
         CASH = 0,
         PROJECT = 1
     }
+    [Serializable]
+    public enum Resolution
+    {
+        _800x600 = 0,
+        _1024x768 = 1,
+        _1280x720 = 2,
+        _1920x1080 = 3,
+        _1920x1200 = 4,
+        _2560x1440 = 5,
+        _3840x2160 = 6,
+    }
 
+    [Serializable]
+    public enum Details
+    {
+        Low = 0,
+        Medium = 1,
+        High = 2,
+        Ultra = 3
+    }
 }

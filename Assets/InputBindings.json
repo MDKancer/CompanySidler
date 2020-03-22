@@ -1,0 +1,41 @@
+{
+  "volume": 80,
+  "inputBindings": [
+    {
+      "action": "MOVE_FORWARD",
+      "keyCode": 119
+    },
+    {
+      "action": "MOVE_BACK",
+      "keyCode": 115
+    },
+    {
+      "action": "MOVE_LEFT",
+      "keyCode": 97
+    },
+    {
+      "action": "MOVE_RIGHT",
+      "keyCode": 100
+    },
+    {
+      "action": "ROTATE_RIGHT",
+      "keyCode": 101
+    },
+    {
+      "action": "ROTATE_LEFT",
+      "keyCode": 113
+    },
+    {
+      "action": "FOCUS_ON",
+      "keyCode": 323
+    },
+    {
+      "action": "RETURN",
+      "keyCode": 27
+    },
+    {
+      "action": "MENU",
+      "keyCode": 109
+    }
+  ]
+}

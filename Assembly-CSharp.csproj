@@ -115,8 +115,11 @@
      <Compile Include="Assets\Scripts\Enums\Enums.cs" />
      <Compile Include="Assets\Scripts\InputManager\InputController.cs" />
      <Compile Include="Assets\Scripts\InputWrapper\InputBinding.cs" />
-     <Compile Include="Assets\Scripts\JSon_Manager\FakeData.cs" />
-     <Compile Include="Assets\Scripts\JSon_Manager\JSon_Manager.cs" />
+     <Compile Include="Assets\Scripts\JSon_Manager\AudioData.cs" />
+     <Compile Include="Assets\Scripts\JSon_Manager\Json_Stream.cs" />
+     <Compile Include="Assets\Scripts\JSon_Manager\KeyboardsData.cs" />
+     <Compile Include="Assets\Scripts\JSon_Manager\SettingsData.cs" />
+     <Compile Include="Assets\Scripts\JSon_Manager\VideoData.cs" />
      <Compile Include="Assets\Scripts\ParticleManager\ParticleManager.cs" />
      <Compile Include="Assets\Scripts\PathFinder\Navigator.cs" />
      <Compile Include="Assets\Scripts\ProjectPackage\Project.cs" />

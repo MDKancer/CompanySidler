@@ -1,4 +1,5 @@
 ﻿using Enums;
+using InputManager;
 using So_Template;
 using SpawnManager;
 using StateManager.State.Template;
@@ -12,6 +13,7 @@ namespace StateManager.State
         public override void Init(SignalBus signalBus,
             Container.Cloud cloud,
             StateController<RunTimeState> runTimeStateController,
+            InputController inputController,
             MonoBehaviour monoBehaviour,
             SceneManager.SceneManager sceneManager,
             SpawnController spawnController,
@@ -20,6 +22,7 @@ namespace StateManager.State
             this.signalBus = signalBus;
             this.cloud = cloud;
             this.runTimeStateController = runTimeStateController;
+            this.inputController = inputController;
             this.sceneManager = sceneManager;
             this.spawnController = spawnController;
             this.monoBehaviour = monoBehaviour;

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using Building;
 using Enums;
+using GameSettings;
 using JSon_Manager;
 using So_Template;
 using StateManager;
@@ -25,7 +26,8 @@ using Resources = UnityEngine.Resources;
         private List<Material> particleMaterials = new List<Material>();
         private List<GameObject> particleSystems = new List<GameObject>();
         private Dictionary<Scenes,AState> gameStates = new Dictionary<Scenes, AState>();
-
+        Json_Stream jSon_manager = new Json_Stream("InputBindings");
+        
         private SignalBus signalBus;
         private StateController<GameState> gameStateController;
         private CompanyData companyData;
@@ -61,7 +63,7 @@ using Resources = UnityEngine.Resources;
                gameStates.Add(Scenes.GAME,new Game());
                gameStates.Add(Scenes.LOADING,new Loading());
                
-               SetGameSettings();
+               LoadSettingsData();
         }
         /// <summary>
         /// Es wird ausgeführt wenn man alle wichtige Daten schon eingegeben hat um ein Unternehmen zu erstellen.
@@ -74,7 +76,9 @@ using Resources = UnityEngine.Resources;
         public List<Material> Materials => materials;
         public List<Material> ParticleMaterials => particleMaterials;
         public List<GameObject> ParticleSystems => particleSystems;
-        public SettingsData SettingsData => settingsData;
+        public AudioData AudiosData => settingsData.audioData;
+        public VideoData VideosData => settingsData.videoData;
+        public Dictionary<Action, KeyCode> InputKeyboardData => settingsData.keyboardData;
 
         public List<Company> Companies
         {
@@ -87,7 +91,7 @@ using Resources = UnityEngine.Resources;
         public  IList<GameObject> SpawnedGameObjects =>  spawnedGameObjects.AsReadOnly();
         public Boolean IsSpawned(GameObject gameObject) => spawnedGameObjects.Contains(gameObject);
         public IList<AState> GetGameStates => gameStates.Values.ToList().AsReadOnly();
-        public void InputBindingsReset() => SetGameSettings();
+        
         public AState GetGameState(Scenes scene) => gameStates[scene];
         public List<GameObject> GetPrefabsByType(EntityType entityType)
         {
@@ -102,7 +106,15 @@ using Resources = UnityEngine.Resources;
             }
             return gameObjects;
         }
-
+        public void SettingsDataReset()
+        {
+            settingsData.Reset();
+            SaveSettingsData();
+        }
+        public void SaveSettingsData()
+        {
+            jSon_manager.WriteJson(settingsData);
+        }
         private void AddPrefabs(GameObject[] prefabs,EntityType entityType)
         {
             foreach (var prefab in prefabs)
@@ -114,12 +126,12 @@ using Resources = UnityEngine.Resources;
             }
         }
 
-        private void SetGameSettings()
+        private void LoadSettingsData()
         {
-            var JSon_manager = new JSon_Manager.Json_Stream("InputBindings");
-            settingsData = JSon_manager.GetSettings();
-            JSon_manager.WriteJson();
+             settingsData = jSon_manager.GetSettings();
         }
+        
+        
         private void SetCompanyData()
         {
             GameObject company = GameObject.Find("Company");

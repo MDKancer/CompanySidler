@@ -32,6 +32,8 @@ namespace StateManager.State
 
         public override void OnEnter()
         {
+            Debug.Log($"volume : {cloud.AudiosData.music} \n " +
+                      $"KeyBoard : {cloud.InputKeyboardData[Action.MOVE_BACK]}" );
             //Debug.Log($"Current State On Enter {this}");
         }
 

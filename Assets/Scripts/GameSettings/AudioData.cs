@@ -1,6 +1,6 @@
 using System;
 
-namespace JSon_Manager
+namespace GameSettings
 {
     [Serializable]
     public class AudioData

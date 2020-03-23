@@ -1,29 +1,43 @@
+using System;
 using System.IO;
+using GameSettings;
+using JetBrains.Annotations;
 using UnityEngine;
 
 namespace JSon_Manager
 {
     public class Json_Stream
     {
-        private string path ;
+        public readonly string path ;
         public Json_Stream(string fileName)
         {
             path = Application.dataPath + "/" + fileName + ".json";
         }
 
-        public void WriteJson()
+        public void WriteJson(SettingsData settingsData)
         {
             string jsonContext = null;
-            var settingsData = new SettingsData();
+            
+            settingsData.DictionaryToJsonContext();
             
             jsonContext = JsonUtility.ToJson(settingsData);
 
             File.WriteAllText(path,jsonContext);
         }
-
+        [CanBeNull]
         public SettingsData GetSettings()
         {
-            SettingsData settingsData = JsonUtility.FromJson<SettingsData>(path);
+            string json = String.Empty;
+
+            if (!File.Exists(path))
+            {
+                WriteJson(new SettingsData());
+            }
+            
+            json = File.ReadAllText(path);
+
+            SettingsData settingsData = JsonUtility.FromJson(json,typeof(SettingsData)) as SettingsData;
+            settingsData.ArrayToDictionary();
             return settingsData;
         }
     }

@@ -1,7 +1,7 @@
 using System;
 using Enums;
 
-namespace JSon_Manager
+namespace GameSettings
 {
     [Serializable]
     public class VideoData

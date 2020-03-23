@@ -1,13 +1,11 @@
 ﻿using System;
-using Enums;
-using UnityEngine;
 
-namespace JSon_Manager
+namespace GameSettings
 {
     [Serializable]
     public struct KeyboardsData
     {
         public string action;
-        public int keyCode;
+        public string keyCode;
     }
 }

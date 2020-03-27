@@ -1,9 +1,11 @@
-﻿using Container;
+﻿using AudioManager;
+using Container;
 using Enums;
 using InputManager;
 using So_Template;
 using SpawnManager;
 using UnityEngine;
+using VideoManager;
 using Zenject;
 using Zenject.ProjectContext.Signals;
 
@@ -15,6 +17,8 @@ namespace StateManager.State.Template
         protected Cloud cloud;
         protected StateController<RunTimeState> runTimeStateController;
         protected InputController inputController;
+        protected AudioController audioController;
+        protected VideoController videoController;
         protected SceneManager.SceneManager sceneManager;
         protected SpawnController spawnController;
         protected MonoBehaviour monoBehaviour;
@@ -28,6 +32,8 @@ namespace StateManager.State.Template
             Cloud cloud,
             StateController<RunTimeState> runTimeStateController,
             InputController inputController,
+            AudioController audioController,
+            VideoController videoController,
             MonoBehaviour monoBehaviour,
             SceneManager.SceneManager sceneManager,
             SpawnController spawnController,

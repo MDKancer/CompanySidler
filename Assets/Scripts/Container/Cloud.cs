@@ -62,6 +62,7 @@ using Resources = UnityEngine.Resources;
                gameStates.Add(Scenes.PREGAME,new PreGame());
                gameStates.Add(Scenes.GAME,new Game());
                gameStates.Add(Scenes.LOADING,new Loading());
+               gameStates.Add(Scenes.EXIT,new Exit());
                
                LoadSettingsData();
         }

@@ -157,7 +157,7 @@ namespace Enums
         PROJECT = 1
     }
     [Serializable]
-    public enum Resolution
+    public enum ScreenResolution
     {
         _800x600 = 0,
         _1024x768 = 1,

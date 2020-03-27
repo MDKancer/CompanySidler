@@ -4,7 +4,12 @@ stages:
   - deploy
 unit-test:
   stage: test
-  script: echo 'Testing...'
+  script: "/home/dlozan/Unity/Hub/Editor/2019.3.4f1/Editor/Unity.app/Contents/Linux/Unity \
+              -batchmode \
+              -projectPath . \
+              -runTests -testPlatform editmode \
+              -logFile \
+              -testResults ./unit-tests.xml"
   tags:
     - unity
 unity-build:

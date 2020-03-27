@@ -1,10 +1,14 @@
 ﻿using System;
 using System.Collections;
+using AudioManager;
 using Enums;
+using InputManager;
+using InputWrapper;
 using So_Template;
 using SpawnManager;
 using StateManager.State.Template;
 using UnityEngine;
+using VideoManager;
 using Zenject;
 using Zenject.ProjectContext.Signals;
 
@@ -33,6 +37,9 @@ namespace StateManager
         protected SignalBus signalBus;
         protected Container.Cloud cloud;
         protected StateController<RunTimeState> runTimeStateController;
+        protected InputController inputController;
+        protected AudioController audioController;
+        protected VideoController videoController;
         protected SceneManager.SceneManager sceneManager;
         protected SpawnController spawnController;
         protected MonoBehaviour monoBehaviour;
@@ -44,6 +51,9 @@ namespace StateManager
         private void Init(SignalBus signalBus,
             Container.Cloud cloud,
             StateController<RunTimeState> runTimeStateController,
+            InputController inputController,
+            AudioController audioController,
+            VideoController videoController,
             MonoBehaviourSignal monoBehaviourSignal,
             SceneManager.SceneManager sceneManager,
             SpawnController spawnController,
@@ -52,6 +62,9 @@ namespace StateManager
             this.signalBus = signalBus;
             this.cloud = cloud;
             this.runTimeStateController = runTimeStateController;
+            this.inputController = inputController;
+            this.audioController = audioController;
+            this.videoController = videoController;
             this.sceneManager = sceneManager;
             this.spawnController = spawnController;
             this.monoBehaviour = monoBehaviourSignal;
@@ -79,6 +92,9 @@ namespace StateManager
                 currentState.Init(signalBus: signalBus,
                     cloud: cloud,
                     runTimeStateController: runTimeStateController,
+                    inputController: inputController,
+                    audioController: audioController,
+                    videoController: videoController,
                     monoBehaviour: monoBehaviour,
                     sceneManager: sceneManager,
                     spawnController: spawnController,

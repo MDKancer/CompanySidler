@@ -1,10 +1,12 @@
 using Enums;
+using InputWrapper;
 using So_Template;
 using StateManager;
 using UnityEngine;
 using TMPro;
 using UIDispatcher.UIBuildingContent;
 using Zenject;
+using Zenject.ProjectContext.Signals;
 using Zenject.SceneContext.Signals;
 
 namespace InputManager
@@ -29,16 +31,20 @@ namespace InputManager
 
         private SignalBus signalBus;
         private StateController<RunTimeState> runtimeStateController;
+        private InputBinding inputBinding;
         private MonoBehaviour monoBehaviour;
         private string companyName = "Company";
         
-        public void Init(SignalBus signalBus,
-            StateController<RunTimeState> runtimeStateController, 
-            MonoBehaviour monoBehaviour,
+        [Inject]
+        private void Init(SignalBus signalBus,
+            StateController<RunTimeState> runtimeStateController,
+            InputBinding inputBinding,
+            MonoBehaviourSignal monoBehaviour,
             CompanyData companyData)
         {
             this.signalBus = signalBus;
             this.runtimeStateController = runtimeStateController;
+            this.inputBinding = inputBinding;
             this.monoBehaviour = monoBehaviour;
             this.companyName = companyData.nameCompany;
             //signalBus.Subscribe<ShowBuildingData>(OnWindowOpen);
@@ -58,31 +64,31 @@ namespace InputManager
             middleDirection = (transform.up + transform.forward) / 2; 
             //distance = Vector3.Distance(cameraController.mainCameraGameObject.transform.position, focusObject.transform.position);
 
-            if (Input.GetKey(KeyCode.W))
+            if (inputBinding.OnPress(Action.MOVE_FORWARD))
             {
                 cameraController.Move( middleDirection * speed);
             }
-            if (Input.GetKey(KeyCode.S))
+            if (inputBinding.OnPress(Action.MOVE_BACK))
             {
                 cameraController.Move( -(middleDirection * speed));
             }
-            if (Input.GetKey(KeyCode.A))
+            if (inputBinding.OnPress(Action.MOVE_LEFT))
             {
                 cameraController.Move( -(cameraController.mainCamera.transform.right * speed));
             }
-            if (Input.GetKey(KeyCode.D))
+            if (inputBinding.OnPress(Action.MOVE_RIGHT))
             {
                 cameraController.Move( cameraController.mainCamera.transform.right * speed);
             }
-            if (Input.GetKey(KeyCode.E))
+            if (inputBinding.OnPress(Action.ROTATE_RIGHT))
             {
                 cameraController.Rotate(Vector3.down,focusPoint,speed);
             }
-            if (Input.GetKey(KeyCode.Q))
+            if (inputBinding.OnPress(Action.ROTATE_LEFT))
             {
                 cameraController.Rotate(Vector3.up,focusPoint,speed);
             }
-            if (Input.GetKeyDown(KeyCode.Mouse0))
+            if (inputBinding.OnPress(Action.FOCUS_ON))
             {
                 if (runtimeStateController.CurrentState != RunTimeState.FOCUS_ON &&
                     runtimeStateController.CurrentState != RunTimeState.BUILDING_INFO)
@@ -106,7 +112,7 @@ namespace InputManager
                     }
                 }
             }
-            if (Input.GetKeyDown(KeyCode.Escape))
+            if (inputBinding.OnPress(Action.RETURN))
             {
                 if(runtimeStateController.CurrentState == RunTimeState.FOCUS_ON || 
                    runtimeStateController.CurrentState == RunTimeState.BUILDING_INFO || 

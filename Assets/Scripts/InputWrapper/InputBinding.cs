@@ -1,36 +1,52 @@
-using System.Collections.Generic;
 using Container;
 using Enums;
 using UnityEngine;
+using Zenject;
 
 namespace InputWrapper
 {
     public class InputBinding
     {
+        private SignalBus signalBus;
         private Cloud cloud;
-
-        public Dictionary<Actions,KeyCode> GetBindings
+        [Inject]
+        private void Init(SignalBus signalBus, Cloud cloud)
         {
-            get => cloud.InputListenners;
+            this.signalBus = signalBus;
+            this.cloud = cloud;
         }
 
-        public void ChangeBinding(KeyCode oldkeyCode, KeyCode newkeyCode)
+        public void Reset()
         {
-            var targetAction = GetAction(oldkeyCode);
-            if (GetBindings.ContainsValue(newkeyCode))
+            cloud.SettingsDataReset();
+        }
+
+        public bool OnPress(Action action)
+        {
+            return Input.GetKey(cloud.InputKeyboardData[action]);
+        }
+        public void ChangeBinding(KeyCode oldKeyCode, KeyCode newKeyCode)
+        {
+            var targetAction = GetAction(oldKeyCode);
+            if (cloud.InputKeyboardData.ContainsValue(newKeyCode))
             {
-                var affectedAction = GetAction(newkeyCode);
+                var affectedAction = GetAction(newKeyCode);
+                if (affectedAction != Action.NONE)
+                {
+                    cloud.InputKeyboardData[affectedAction] = oldKeyCode;
+                }
             }
+
+            cloud.InputKeyboardData[targetAction] = newKeyCode;
         }
 
-        private Actions? GetAction(KeyCode keyCode)
+        private Action GetAction(KeyCode keyCode)
         {
-            foreach (var item in GetBindings)
+            foreach (var item in cloud.InputKeyboardData)
             {
                 if (item.Value == keyCode) return item.Key;
             }
-
-            return null;
+            return Action.NONE;
         }
     }
 }

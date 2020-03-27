@@ -3,12 +3,15 @@ using System.Collections.Generic;
 using System.Linq;
 using Building;
 using Enums;
+using GameSettings;
+using JSon_Manager;
 using So_Template;
 using StateManager;
 using StateManager.State;
 using StateManager.State.Template;
 using UnityEngine;
 using Zenject;
+using Action = Enums.Action;
 using Resources = UnityEngine.Resources;
 
  namespace Container
@@ -18,12 +21,13 @@ using Resources = UnityEngine.Resources;
         private List<Company> companies = new List<Company>();
         private Dictionary<GameObject,EntityType> prefabsObjects = new Dictionary<GameObject, EntityType>();
         private List<GameObject> spawnedGameObjects = new List<GameObject>();
-        private Dictionary<Actions,KeyCode> inputListenners = new Dictionary<Actions,KeyCode>();
+        private SettingsData settingsData;
         private List<Material> materials = new List<Material>();
         private List<Material> particleMaterials = new List<Material>();
         private List<GameObject> particleSystems = new List<GameObject>();
         private Dictionary<Scenes,AState> gameStates = new Dictionary<Scenes, AState>();
-
+        Json_Stream jSon_manager = new Json_Stream("InputBindings");
+        
         private SignalBus signalBus;
         private StateController<GameState> gameStateController;
         private CompanyData companyData;
@@ -58,6 +62,9 @@ using Resources = UnityEngine.Resources;
                gameStates.Add(Scenes.PREGAME,new PreGame());
                gameStates.Add(Scenes.GAME,new Game());
                gameStates.Add(Scenes.LOADING,new Loading());
+               gameStates.Add(Scenes.EXIT,new Exit());
+               
+               LoadSettingsData();
         }
         /// <summary>
         /// Es wird ausgeführt wenn man alle wichtige Daten schon eingegeben hat um ein Unternehmen zu erstellen.
@@ -70,7 +77,9 @@ using Resources = UnityEngine.Resources;
         public List<Material> Materials => materials;
         public List<Material> ParticleMaterials => particleMaterials;
         public List<GameObject> ParticleSystems => particleSystems;
-        public Dictionary<Actions,KeyCode> InputListenners => inputListenners;
+        public AudioData AudiosData => settingsData.audioData;
+        public VideoData VideosData => settingsData.videoData;
+        public Dictionary<Action, KeyCode> InputKeyboardData => settingsData.keyboardData;
 
         public List<Company> Companies
         {
@@ -83,7 +92,7 @@ using Resources = UnityEngine.Resources;
         public  IList<GameObject> SpawnedGameObjects =>  spawnedGameObjects.AsReadOnly();
         public Boolean IsSpawned(GameObject gameObject) => spawnedGameObjects.Contains(gameObject);
         public IList<AState> GetGameStates => gameStates.Values.ToList().AsReadOnly();
-
+        
         public AState GetGameState(Scenes scene) => gameStates[scene];
         public List<GameObject> GetPrefabsByType(EntityType entityType)
         {
@@ -98,7 +107,15 @@ using Resources = UnityEngine.Resources;
             }
             return gameObjects;
         }
-
+        public void SettingsDataReset()
+        {
+            settingsData.Reset();
+            SaveSettingsData();
+        }
+        public void SaveSettingsData()
+        {
+            jSon_manager.WriteJson(settingsData);
+        }
         private void AddPrefabs(GameObject[] prefabs,EntityType entityType)
         {
             foreach (var prefab in prefabs)
@@ -109,6 +126,13 @@ using Resources = UnityEngine.Resources;
                 }
             }
         }
+
+        private void LoadSettingsData()
+        {
+             settingsData = jSon_manager.GetSettings();
+        }
+        
+        
         private void SetCompanyData()
         {
             GameObject company = GameObject.Find("Company");

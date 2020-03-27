@@ -59,6 +59,8 @@
   </ItemGroup>
   <ItemGroup>
      <Compile Include="Assets\Foreign\SimpleCameraController.cs" />
+     <Compile Include="Assets\Scripts\AudioManager\AudioController.cs" />
+     <Compile Include="Assets\Scripts\AudioManager\AudioSettings.cs" />
      <Compile Include="Assets\Scripts\BootInitializer\BootInit.cs" />
      <Compile Include="Assets\Scripts\Building\Accounting\Accounting.cs" />
      <Compile Include="Assets\Scripts\Building\Accounting\iAccounting.cs" />
@@ -113,10 +115,13 @@
      <Compile Include="Assets\Scripts\Entity\Human.cs" />
      <Compile Include="Assets\Scripts\Entity\IHuman.cs" />
      <Compile Include="Assets\Scripts\Enums\Enums.cs" />
+     <Compile Include="Assets\Scripts\GameSettings\AudioData.cs" />
+     <Compile Include="Assets\Scripts\GameSettings\KeyboardsData.cs" />
+     <Compile Include="Assets\Scripts\GameSettings\SettingsData.cs" />
+     <Compile Include="Assets\Scripts\GameSettings\VideoData.cs" />
      <Compile Include="Assets\Scripts\InputManager\InputController.cs" />
      <Compile Include="Assets\Scripts\InputWrapper\InputBinding.cs" />
-     <Compile Include="Assets\Scripts\JSon_Manager\FakeData.cs" />
-     <Compile Include="Assets\Scripts\JSon_Manager\JSon_Manager.cs" />
+     <Compile Include="Assets\Scripts\JSon_Manager\Json_Stream.cs" />
      <Compile Include="Assets\Scripts\ParticleManager\ParticleManager.cs" />
      <Compile Include="Assets\Scripts\PathFinder\Navigator.cs" />
      <Compile Include="Assets\Scripts\ProjectPackage\Project.cs" />
@@ -146,6 +151,7 @@
      <Compile Include="Assets\Scripts\UIDispatcher\UIBuildingContent\BuildingContent.cs" />
      <Compile Include="Assets\Scripts\UIDispatcher\UIBuildingContent\ProceduralUiElements.cs" />
      <Compile Include="Assets\Scripts\UIDispatcher\UIBuildingContent\UIData.cs" />
+     <Compile Include="Assets\Scripts\VideoManager\VideoController.cs" />
      <Compile Include="Assets\Scripts\Zenject\GameObjecContext\GameObjectContextInstaller.cs" />
      <Compile Include="Assets\Scripts\Zenject\GameObjecContext\GameObjectSignalModule.cs" />
      <Compile Include="Assets\Scripts\Zenject\ProjectContext\GlobalBindings.cs" />

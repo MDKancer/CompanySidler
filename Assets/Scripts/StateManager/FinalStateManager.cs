@@ -1,12 +1,17 @@
 ﻿using System.Collections;
+using Container;
+using Enums;
 using StateManager.State.Template;
+using UnityEngine.WSA;
 using Zenject;
+using Application = UnityEngine.Application;
 
 namespace StateManager
 {
     public class FinalStateManager : IFSM
     {
         protected SignalBus signalBus;
+        protected Cloud cloud;
         protected StateMachineClass<AState> stateMachineClass;
 
         /// <summary>
@@ -15,19 +20,26 @@ namespace StateManager
         [Inject]
         protected virtual void Init(
                 SignalBus signalBus,
+                Cloud cloud,
                 StateMachineClass<AState> stateMachineClass)
         {
             this.signalBus = signalBus;
             this.stateMachineClass = stateMachineClass;
-            
+            this.cloud = cloud;
             //first need to exit from the last State
             this.stateMachineClass.stateChanged += OnExit;
             //than initialize the currentState
             this.stateMachineClass.stateChanged += OnEnter;
             //will be On Update inside current state in loop executed
             this.stateMachineClass.currentStateUpdated += OnUpdate;
-            
+            Application.quitting += OnQuitting;
         }
+
+        private void OnQuitting()
+        {
+            stateMachineClass.CurrentState = cloud.GetGameState(Scenes.EXIT);
+        }
+
 
         /// <summary>
         /// Here the process is handled when the state signal is received.

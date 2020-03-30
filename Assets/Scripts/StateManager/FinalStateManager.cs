@@ -2,7 +2,6 @@
 using Container;
 using Enums;
 using StateManager.State.Template;
-using UnityEngine.WSA;
 using Zenject;
 using Application = UnityEngine.Application;
 

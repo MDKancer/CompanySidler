@@ -1,12 +1,12 @@
 using Building.Bank;
 using TMPro;
-using UIDispatcher.UIBuildingContent;
+using UIDispatcher.GameComponents.UIBuildingContent;
 using UnityEngine;
 using UnityEngine.UI;
 using Zenject;
 using Zenject.SceneContext.Signals;
 
-namespace UIDispatcher
+namespace UIDispatcher.GameComponents
 {
     public class BankUIData<T> where T : Bank
     {

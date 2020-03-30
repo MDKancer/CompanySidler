@@ -6,6 +6,7 @@ using So_Template;
 using SpawnManager;
 using StateManager.State.Template;
 using UIDispatcher;
+using UIDispatcher.GameComponents;
 using UnityEngine;
 using VideoManager;
 using Zenject;

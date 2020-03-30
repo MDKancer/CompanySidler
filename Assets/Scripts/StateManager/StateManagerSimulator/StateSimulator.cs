@@ -1,8 +1,10 @@
+using AudioManager;
 using Container;
 using Enums;
 using Sirenix.OdinInspector;
 using StateManager.State.Template;
 using UnityEngine;
+using VideoManager;
 using Zenject;
 
 namespace StateManager.StateManagerSimulator
@@ -26,12 +28,16 @@ namespace StateManager.StateManagerSimulator
 
         private Cloud cloud;
         private StateMachineClass<AState> stateMachineClass;
+        private AudioController audioController;
+        private VideoController videoController;
 
         [Inject]
-        private void Init(Cloud cloud,StateMachineClass<AState> stateMachineClass)
+        private void Init(Cloud cloud,StateMachineClass<AState> stateMachineClass,AudioController audioController, VideoController videoController)
         {
             this.cloud = cloud;
             this.stateMachineClass = stateMachineClass;
+            this.audioController = audioController;
+            this.videoController = videoController;
         }
         private void Awake()
         {
@@ -40,6 +46,8 @@ namespace StateManager.StateManagerSimulator
                 //in Intro State stead
                 //load the all Resources in to Cloud
                 cloud.LoadAllResources();
+                audioController.SetImportData();
+                videoController.SetImportData();
             }
         }
 

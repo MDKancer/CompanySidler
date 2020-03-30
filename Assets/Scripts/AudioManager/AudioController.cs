@@ -28,16 +28,18 @@ namespace AudioManager
             this.cloud = cloud;
             this.audioMixer = audioMixer;
         }
-        
+
+        public AudioData AudioData => audioData;
+
         /// <summary>
         /// Get the sourcedata from the cloud, and set the audio mixer up.
         /// </summary>
         public void SetImportData()
         {
             this.audioData = cloud.AudiosData;
-            audioMixer.SetFloat("masterVol", Mathf.Log10(audioData.music) * 20);
-            audioMixer.SetFloat("sfxVol", Mathf.Log10(audioData.soundEffects) * 20);
-            audioMixer.SetFloat("ambientVol", Mathf.Log10(audioData.ambientSounds) * 20);
+            SetVolume(audioData.volume);
+            SetSoundEffects(audioData.soundEffects);
+            SetAmbient(audioData.ambientSounds);
             SetSpeakerMode(audioData.stereo);
         }
         /// <summary>
@@ -46,7 +48,7 @@ namespace AudioManager
         /// <param name="volume"> value need to be between 0..1</param>
         public void SetVolume(float volume)
         {
-            audioData.music = volume;
+            audioData.volume = volume;
             audioMixer.SetFloat("masterVol", Mathf.Log10(volume) * 20);
         }
         /// <summary>
@@ -68,17 +70,10 @@ namespace AudioManager
             audioMixer.SetFloat("ambientVol", Mathf.Log10(volume) * 20);
         }
 
-        public void SetSpeakerMode(bool mode)
+        public void SetSpeakerMode(AudioSpeakerMode audioSpeakerMode)
         {
-            audioData.stereo = mode;
-            if (mode)
-            {
-                UnityEngine.AudioSettings.speakerMode = AudioSpeakerMode.Stereo;
-            }
-            else
-            {
-                UnityEngine.AudioSettings.speakerMode = AudioSpeakerMode.Mono;
-            }
+            audioData.stereo = audioSpeakerMode;
+            UnityEngine.AudioSettings.speakerMode = AudioSpeakerMode.Stereo;
         }
 
         /// <summary>

@@ -60,7 +60,6 @@
   <ItemGroup>
      <Compile Include="Assets\Foreign\SimpleCameraController.cs" />
      <Compile Include="Assets\Scripts\AudioManager\AudioController.cs" />
-     <Compile Include="Assets\Scripts\AudioManager\AudioSettings.cs" />
      <Compile Include="Assets\Scripts\BootInitializer\BootInit.cs" />
      <Compile Include="Assets\Scripts\Building\Accounting\Accounting.cs" />
      <Compile Include="Assets\Scripts\Building\Accounting\iAccounting.cs" />

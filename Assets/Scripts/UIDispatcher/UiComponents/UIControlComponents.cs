@@ -7,7 +7,7 @@ using UnityEngine;
 using Action = Enums.Action;
 
 
-namespace UIDispatcher.GameComponents
+namespace UIDispatcher.UiComponents
 {
     [Serializable]
     public struct UIControlComponents
@@ -17,7 +17,7 @@ namespace UIDispatcher.GameComponents
         [HideLabel,HorizontalGroup("Controls")]
         public List<TextMeshProUGUI> events;
 
-        public void SetDatas(Dictionary<Action, KeyCode> data)
+        public void SetData(Dictionary<Action, KeyCode> data)
         {
             for (int i = 0; i < data.Count; i++)
             {

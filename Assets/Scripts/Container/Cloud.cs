@@ -26,21 +26,20 @@ using Resources = UnityEngine.Resources;
         private List<Material> particleMaterials = new List<Material>();
         private List<GameObject> particleSystems = new List<GameObject>();
         private Dictionary<Scenes,AState> gameStates = new Dictionary<Scenes, AState>();
-        Json_Stream jSon_manager = new Json_Stream("InputBindings");
+        private Json_Stream jSon_manager = new Json_Stream("InputBindings");
         
         private SignalBus signalBus;
-        private StateController<GameState> gameStateController;
         private CompanyData companyData;
         
         [Inject]
-        private void Init(SignalBus signalBus, StateController<GameState> gameStateController,CompanyData companyData)
+        private void Init(SignalBus signalBus,CompanyData companyData)
         {
             this.signalBus = signalBus;
-            this.gameStateController = gameStateController;
             this.companyData = companyData;
         }
         /// <summary>
         /// Es wird ganz am anfang alle Prefabs aus den Ordnern im Dictionary reingepackt.
+        /// It loaded all the stuff what will be need in the project.
         /// </summary>
         public void LoadAllResources()
         {
@@ -68,6 +67,7 @@ using Resources = UnityEngine.Resources;
         }
         /// <summary>
         /// Es wird ausgeführt wenn man alle wichtige Daten schon eingegeben hat um ein Unternehmen zu erstellen.
+        /// It loaded/created all data what the company need.
         /// </summary>
         public void SetDatas()
         {
@@ -94,6 +94,7 @@ using Resources = UnityEngine.Resources;
         public IList<AState> GetGameStates => gameStates.Values.ToList().AsReadOnly();
         
         public AState GetGameState(Scenes scene) => gameStates[scene];
+        
         public List<GameObject> GetPrefabsByType(EntityType entityType)
         {
             List<GameObject> gameObjects = new List<GameObject>();

@@ -2,7 +2,6 @@ using System;
 using System.Collections;
 using AudioManager;
 using Enums;
-using InputManager;
 using InputWrapper;
 using Sirenix.OdinInspector;
 using TMPro;
@@ -10,7 +9,7 @@ using UnityEngine;
 using VideoManager;
 using Zenject;
 
-namespace UIDispatcher.GameComponents
+namespace UIDispatcher.UiComponents
 {
     [GUIColor(0.36f,0.41f,0.71f,1f)]
     public class UIController : MonoBehaviour
@@ -38,7 +37,7 @@ namespace UIDispatcher.GameComponents
             //and than audiocontroller and video controller are not yet imported
             uiAudioComponents.SetData(audioController.AudioData);
             uiVideoComponents.SetData(videoController.VideoData);
-            uiControlComponents.SetDatas(inputBinding.KeyBoardData);
+            uiControlComponents.SetData(inputBinding.KeyBoardData);
         }
 
         #region AudioSettingEvents
@@ -105,7 +104,6 @@ namespace UIDispatcher.GameComponents
 
         public void OnClickLabel(TextMeshProUGUI label)
         {
-            Debug.Log("Label is Pressed");
             StartCoroutine(WaitForNewKeyCode(label));
         }
 

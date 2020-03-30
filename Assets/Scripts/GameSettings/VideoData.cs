@@ -5,6 +5,9 @@ using UnityEngine.Serialization;
 
 namespace GameSettings
 {
+    /// <summary>
+    /// all video settings
+    /// </summary>
     [Serializable]
     public class VideoData
     {

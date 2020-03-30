@@ -1,6 +1,6 @@
 using Enums;
 using StateManager;
-using UIDispatcher.UIBuildingContent;
+using UIDispatcher.GameComponents.UIBuildingContent;
 using UnityEngine;
 using Random = UnityEngine.Random;
 

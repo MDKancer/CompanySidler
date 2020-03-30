@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using Container;
 using Enums;
 using UnityEngine;
@@ -16,10 +17,7 @@ namespace InputWrapper
             this.cloud = cloud;
         }
 
-        public void Reset()
-        {
-            cloud.SettingsDataReset();
-        }
+        public Dictionary<Action, KeyCode> KeyBoardData => cloud.InputKeyboardData;
 
         public bool OnPress(Action action)
         {
@@ -40,6 +38,10 @@ namespace InputWrapper
             cloud.InputKeyboardData[targetAction] = newKeyCode;
         }
 
+        public void Reset()
+        {
+            cloud.SettingsDataReset();
+        }
         private Action GetAction(KeyCode keyCode)
         {
             foreach (var item in cloud.InputKeyboardData)

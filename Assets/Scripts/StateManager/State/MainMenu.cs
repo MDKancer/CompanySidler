@@ -38,8 +38,7 @@ namespace StateManager.State
 
         public override void OnEnter()
         {
-            audioController.SetImportData();
-            videoController.SetImportData();
+            
             //Debug.Log($"Current State On Enter {this}");
         }
 

@@ -2,7 +2,7 @@ using Building.Bank;
 using UnityEngine;
 using Zenject;
 
-namespace UIDispatcher.UIBuildingContent
+namespace UIDispatcher.GameComponents.UIBuildingContent
 {
     /// <summary>
     /// Ein einfacher Content Generator, hier werden alle UI Elemente und Funktionen was ein Büro braucht.

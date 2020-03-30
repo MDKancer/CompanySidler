@@ -5,13 +5,13 @@ using Enums;
 using SpawnManager;
 using StateManager;
 using TMPro;
-using UIDispatcher.UIBuildingContent;
+using UIDispatcher.GameComponents.UIBuildingContent;
 using UnityEngine;
 using Zenject;
 using Zenject.ProjectContext.Signals;
 using Zenject.SceneContext.Signals;
 
-namespace UIDispatcher
+namespace UIDispatcher.GameComponents
 {
     /// <summary>
     /// Player View Controller verwaltet einen Teil der Benutzeroberfläche sowie die Interaktionen zwischen dieser Oberfläche und den zugrunde liegenden Daten.

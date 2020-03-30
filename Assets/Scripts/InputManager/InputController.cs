@@ -4,7 +4,7 @@ using So_Template;
 using StateManager;
 using UnityEngine;
 using TMPro;
-using UIDispatcher.UIBuildingContent;
+using UIDispatcher.GameComponents.UIBuildingContent;
 using Zenject;
 using Zenject.ProjectContext.Signals;
 using Zenject.SceneContext.Signals;

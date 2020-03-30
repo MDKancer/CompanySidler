@@ -18,13 +18,34 @@ namespace VideoManager
             this.cloud = cloud;
         }
 
+        public VideoData VideoData => videoData;
+
         public void SetImportData()
         {
             this.videoData = cloud.VideosData;
+            SetFullScreen(videoData.fullScreen);
+            SetResolution(videoData.screenResolution);
+            SetAntiAliasing(videoData.antiAliasing);
+            SetAmbientIntensity(videoData.gamma);
+            SetBrightness(videoData.brightness);
+            SetTextureQuality(videoData.textureQuality);
+            SetShadowQuality(videoData.shadowQuality);
+        }
 
-            var resolution = GetResolution(videoData.screenResolution);
-            Screen.SetResolution(resolution.width,resolution.height,videoData.fullScreen);
+        public void SetResolution(ScreenResolution resolution)
+        {
+            videoData.screenResolution = resolution;
+            var res = GetResolution(videoData.screenResolution);
+            Screen.SetResolution(res.width,res.height,videoData.fullScreen);
+        }
 
+        public void SetFullScreen(bool value)
+        {
+            videoData.fullScreen = value;
+        }
+        public void SetAntiAliasing(bool status)
+        {
+            videoData.antiAliasing = status;
             if (videoData.antiAliasing)
             {
                 QualitySettings.antiAliasing = 2;
@@ -33,10 +54,34 @@ namespace VideoManager
             {
                 QualitySettings.antiAliasing = 0;
             }
+        }
+
+        public void SetAmbientIntensity(float gamma)
+        {
+            videoData.gamma = gamma;
             RenderSettings.ambientIntensity = videoData.gamma;
+        }
+
+        public void SetBrightness(float brightness)
+        {
+            videoData.brightness = brightness;
             Screen.brightness = videoData.brightness;
+        }
+
+        public void SetTextureQuality(Details details)
+        {
+            videoData.textureQuality = details;
             QualitySettings.masterTextureLimit = (int) videoData.textureQuality;
+        }
+
+        public void SetShadowQuality(ShadowResolution shadowQuality)
+        {
+            videoData.shadowQuality = shadowQuality;
             QualitySettings.shadowResolution = videoData.shadowQuality;
+        }
+        public void Reset()
+        {
+            cloud.SettingsDataReset();
         }
         
         private (int width, int height) GetResolution(ScreenResolution screenResolution)

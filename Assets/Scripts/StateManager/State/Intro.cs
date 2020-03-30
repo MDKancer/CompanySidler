@@ -37,6 +37,8 @@ namespace StateManager.State
         public override void OnEnter()
         {
             cloud.LoadAllResources();
+            audioController.SetImportData();
+            videoController.SetImportData();
             
             sceneManager.GoTo(Scenes.MAIN_MENU);
         }

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections;
+using Buildings;
 using Entity.Customer;
 using Entity.Employee;
 using Enums;
@@ -52,7 +53,7 @@ namespace SpawnManager
         /// <param name="employeeData"></param>
         /// <param name="spawnPosition"></param>
         /// <returns>Wenn das Object Instantiert wurde und in den Container gepseichert wurde, bekommt man zurrück ein true.</returns>
-        public Boolean SpawnWorker(Building.Building workerOffice,EmployeeData employeeData,Vector3 spawnPosition) //GameObject prefab, EntityType workerEntityType
+        public Boolean SpawnWorker(Building workerOffice,EmployeeData employeeData,Vector3 spawnPosition) //GameObject prefab, EntityType workerEntityType
         {
             try
             {
@@ -143,7 +144,7 @@ namespace SpawnManager
         }
 
 
-        private IEnumerator SpawnAfterInstancing(Building.Building building)
+        private IEnumerator SpawnAfterInstancing(Building building)
         {
             while (building.BuildingData.prefab == null)
             {

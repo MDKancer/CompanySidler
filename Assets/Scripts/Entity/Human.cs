@@ -1,3 +1,4 @@
+using Buildings;
 using Enums;
 using StateManager;
 using UIDispatcher.GameComponents.UIBuildingContent;
@@ -14,7 +15,7 @@ namespace Entity
         
         private StateController<HumanState> selfState = new StateController<HumanState>();
 
-        public delegate void AttachAnBuilding(Building.Building myOffice);
+        public delegate void AttachAnBuilding(Building myOffice);
 
         public AttachAnBuilding AttachEvent;
         public void Awake()

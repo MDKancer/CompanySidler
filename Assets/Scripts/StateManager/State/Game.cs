@@ -62,7 +62,7 @@ namespace StateManager.State
 
         public override void OnUpdate()
         {
-            inputController.CameraEvents();
+            inputController.InputEvents();
             PlayerViewController.playerViewController.CurrentBudget();
         }
 

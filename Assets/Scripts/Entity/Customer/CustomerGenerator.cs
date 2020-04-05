@@ -1,6 +1,6 @@
 using System;
 using System.Collections;
-using Building;
+using Buildings;
 using Enums;
 using SpawnManager;
 using UnityEngine;

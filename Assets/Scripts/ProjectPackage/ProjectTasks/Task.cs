@@ -1,6 +1,6 @@
 using System;
 using System.Collections.Generic;
-using Building;
+using Buildings;
 using Entity.Employee;
 using Enums;
 using UnityEngine;

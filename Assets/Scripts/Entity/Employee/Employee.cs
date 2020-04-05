@@ -1,7 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
-using Building;
+using Buildings;
 using Enums;
 using JetBrains.Annotations;
 using ProjectPackage.ProjectTasks;
@@ -23,7 +23,7 @@ namespace Entity.Employee
             AttachEvent += SetOffice;
         }
 
-        private void SetOffice(Building.Building myOffice)
+        private void SetOffice(Building myOffice)
         {
             myOffice.applyWorkerEvent(this);
         }
@@ -38,7 +38,7 @@ namespace Entity.Employee
             StartCoroutine(ShowMyCanvas());
         }
         
-        protected float TimeToDo()
+        protected float TaskDuration()
         {
             if (SelfState.CurrentState == HumanState.WALK)
             {
@@ -104,7 +104,7 @@ namespace Entity.Employee
             {
                 if (transform.position.x == targetPosition.x && transform.position.z == targetPosition.z)
                 {
-                    var taskDuration = TimeToDo();
+                    var taskDuration = TaskDuration();
                     if(SelfState.CurrentState == HumanState.WORK)
                     {
                         var task = GetTask();
@@ -157,7 +157,6 @@ namespace Entity.Employee
                 // hier passiert alles wärend des Laufens
                 if (PathFinder.Navigator.MyPathStatus(gameObject) == PathProgress.NONE)
                 {
-                    
                     targetPosition = GenerateRandomPosition(officePosition);
                 }
                 yield return null;
@@ -190,7 +189,6 @@ namespace Entity.Employee
                 yield return null;
             }
         }
-        //private iBuilding Building => InputController.FocusedBuilding?.GetComponent(typeof(iBuilding)) as iBuilding;
 
         private void OnDestroy()
         {

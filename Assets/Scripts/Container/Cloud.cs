@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using Building;
+using Buildings;
 using Enums;
 using GameSettings;
 using JSon_Manager;
@@ -26,7 +26,7 @@ using Resources = UnityEngine.Resources;
         private List<Material> particleMaterials = new List<Material>();
         private List<GameObject> particleSystems = new List<GameObject>();
         private Dictionary<Scenes,AState> gameStates = new Dictionary<Scenes, AState>();
-        private Json_Stream jSon_manager = new Json_Stream("InputBindings");
+        private Json_Stream jSon_manager = new Json_Stream("InputBindings.json");
         
         private SignalBus signalBus;
         private CompanyData companyData;
@@ -79,7 +79,7 @@ using Resources = UnityEngine.Resources;
         public List<GameObject> ParticleSystems => particleSystems;
         public AudioData AudiosData => settingsData.audioData;
         public VideoData VideosData => settingsData.videoData;
-        public Dictionary<Action, KeyCode> InputKeyboardData => settingsData.keyboardData;
+        public KeyboardsData[] InputKeyboardData => settingsData.inputBindings;
 
         public List<Company> Companies
         {
@@ -130,7 +130,7 @@ using Resources = UnityEngine.Resources;
 
         private void LoadSettingsData()
         {
-             settingsData = jSon_manager.GetSettings();
+             settingsData = jSon_manager.GetSettings<SettingsData>();
         }
         
         

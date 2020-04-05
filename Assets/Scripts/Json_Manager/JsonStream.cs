@@ -1,12 +1,11 @@
-using System;
 using System.IO;
 using GameSettings;
 using JetBrains.Annotations;
 using UnityEngine;
 
-namespace JSon_Manager
+namespace Json_Manager
 {
-    public class Json_Stream
+    public class JsonStream
     {
         private string absolutePath;
         private string localPath;
@@ -15,15 +14,14 @@ namespace JSon_Manager
         /// </summary>
         /// <example>test.json</example>
         /// <param name="fileName">with this name</param>
-        public Json_Stream(string fileName)
+        public JsonStream(string fileName)
         {
             LocalPath = fileName;
         }
 
-        public Json_Stream()
+        public JsonStream()
         {
-            LocalPath = String.Empty;
-            AbsolutePath = String.Empty;
+            LocalPath =  Application.dataPath + "/";
         }
 
         /// <summary>
@@ -34,7 +32,11 @@ namespace JSon_Manager
         public string AbsolutePath
         {
             get => absolutePath;
-            set => absolutePath = value;
+            set
+            {
+                localPath = string.Empty;
+                absolutePath = value;
+            }
         }
         /// <summary>
         /// Set the Local Path to the Json file.
@@ -50,29 +52,32 @@ namespace JSon_Manager
                 AbsolutePath = Path.GetFullPath(localPath);
             }
         }
-
+        /// <summary>
+        /// Write a serializable object data in to a json file.
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
         public void WriteJson<T>(T settingsData)
         {
-            string jsonContext = null;
-            
-            
-            jsonContext = JsonUtility.ToJson(settingsData);
+            var jsonContext = JsonUtility.ToJson(settingsData);
 
-            File.WriteAllText(absolutePath,jsonContext);
+            File.WriteAllText(AbsolutePath,jsonContext);
         }
+        
+        /// <summary>
+        /// read the the json file and return that in a serializable <typeparam name="T"></typeparam> object.
+        /// </summary>
+        /// <typeparam name="T">Type of json file</typeparam>
         [CanBeNull]
-        public T GetSettings<T>()
+        public T ReadJson<T>()
         {
-            string json = String.Empty;
-
             if (!File.Exists(absolutePath))
             {
                 WriteJson(new SettingsData());
             }
             
-            json = File.ReadAllText(absolutePath);
+            var json = File.ReadAllText(absolutePath);
 
-            T settingsData = (T) JsonUtility.FromJson(json,typeof(T));
+            var settingsData = (T) JsonUtility.FromJson(json,typeof(T));
             return settingsData;
         }
     }

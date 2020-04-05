@@ -1,13 +1,14 @@
-﻿using Enums;
+﻿using System;
+using Enums;
 using UnityEngine;
 using UnityEngine.AI;
 
 namespace PathFinder
 {
-    public static class Navigator
+    public class Navigator
     {
         /// <summary>
-        /// Um ein Object zu einem bestimmten ort bewegen zu lassen,
+        /// Um ein Object nach einem bestimmten ort bewegen zu lassen,
         /// braucht man ein ZielPosition was ZielPosition.y Axe ist gleich mit der me.position.y Axe
         /// </summary>
         /// <param name="targetPosition"> <example>(gameObject.transform.position.y == targetPosition.y)</example></param>
@@ -26,7 +27,7 @@ namespace PathFinder
             var agent = me.GetComponent<NavMeshAgent>();
             if (agent)
             {
-                if (agent.remainingDistance == 0f)
+                if (Mathf.Approximately(agent.remainingDistance,0f)) // agent.remainingDistance == 0f;
                 {
                     return PathProgress.FINISHED;
                 }

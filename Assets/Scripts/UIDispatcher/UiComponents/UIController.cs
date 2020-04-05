@@ -124,7 +124,6 @@ namespace UIDispatcher.UiComponents
         {
             var oldKeyCode = GetKeyCode(label.text);
 
-            //Development Version
             do
             {
                 //do somthing

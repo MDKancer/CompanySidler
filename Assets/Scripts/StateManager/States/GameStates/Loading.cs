@@ -1,21 +1,20 @@
 ﻿using AudioManager;
-using Entity.Customer;
 using Enums;
 using InputManager;
 using So_Template;
 using SpawnManager;
-using StateManager.State.Template;
-using UIDispatcher;
-using UIDispatcher.GameComponents;
+using StateManager.States.GameStates.Template;
+using TMPro;
 using UnityEngine;
 using VideoManager;
 using Zenject;
 
-namespace StateManager.State
+namespace StateManager.States.GameStates
 {
-    public class Game : AState
+    public class Loading : AState
     {
-        private CustomerGenerator customerGenerator;
+        private TextMeshProUGUI label;
+
         public override void Init(SignalBus signalBus,
             Container.Cloud cloud,
             StateController<RunTimeState> runTimeStateController,
@@ -37,41 +36,25 @@ namespace StateManager.State
             this.spawnController = spawnController;
             this.monoBehaviour = monoBehaviour;
             this.companyData = companyData;
-            this.customerGenerator = new CustomerGenerator();
         }
 
         public override void OnEnter()
         {
-            // set the Container data and the Company Data
-             cloud.SetDatas();
-             spawnController.InitialSpawnWave();
-             runTimeStateController.CurrentState = RunTimeState.PLAYING;
-             
-             //important data send on
-             customerGenerator.Init(signalBus,cloud,spawnController,monoBehaviour);
-            
-             
-             inputController.SetCameraController();
-             inputController.showBuildingDataEvent += PlayerViewController.playerViewController.FocusedBuilding;
-             
-             customerGenerator.CreateCustomers();
-
-             monoBehaviour.StartCoroutine(customerGenerator.CreateNewCostumer());
-             //Debug.Log($"Current State {this}");
+             label = GameObject.Find("Loading_Label").GetComponent<TextMeshProUGUI>();
         }
 
         public override void OnUpdate()
         {
-            inputController.InputEvents();
-            PlayerViewController.playerViewController.CurrentBudget();
+            label.SetText($"Loading ... {sceneManager.SceneProgress}");
         }
 
         public override void OnExit()
         {
         }
 
-        ~Game()
+        ~Loading()
         {
+            
         }
     }
 }

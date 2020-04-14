@@ -1,44 +1,50 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
-using Buildings;
+using System.Runtime.CompilerServices;
+using System.Threading.Tasks;
 using Enums;
 using JetBrains.Annotations;
+using PathFinder;
 using ProjectPackage.ProjectTasks;
+using Sirenix.OdinInspector;
 using TMPro;
 using UnityEngine;
+using UnityEngine.AI;
 using Random = UnityEngine.Random;
 
 namespace Entity.Employee
 {
     public class Employee : Human, IWorker
     {
-
-        private EmployeeData employeeData = null;
+        private Activity chore;
+        private float activityDuration;
+        private EmployeeData employeeData;
         private TextMeshProUGUI namePoster;
+        private List<HumanState> employeeStates;
+        private Task task;
+        private TaskAwaiter awaiter;
+        private void RegisterAn()
+        {
+            EmployeeData.Company
+                .GetOffice(EmployeeData.GetHisOffice)
+                .applyWorkerEvent(this);
+        }
+        public EmployeeData EmployeeData { get => employeeData; set => employeeData = value; }
 
-        public void OnEnable()
-        {
-            //TODO: das soll auch geändert werden, ist dumm gemacht.
-            AttachEvent += SetOffice;
-        }
-
-        private void SetOffice(Building myOffice)
-        {
-            myOffice.applyWorkerEvent(this);
-        }
-        public EmployeeData EmployeeData
-        {
-            get => employeeData;
-            set => employeeData = value;
-        }
         public void Work()
         {
-            StartCoroutine(DO());
+            gameObject.name = EmployeeData.GetEntityType.ToString();
+            navMeshAgent = GetComponent<NavMeshAgent>();
+            EmployeeData.Home = transform.position;
+            RegisterAn();
+            employeeStates = EmployeeData.EntityWorkCycle.Keys.ToList();
+            StartCoroutine(LifeCycle());
             StartCoroutine(ShowMyCanvas());
         }
         
-        protected float TaskDuration()
+        protected float ActivityDuration()
         {
             if (SelfState.CurrentState == HumanState.WALK)
             {
@@ -69,7 +75,7 @@ namespace Entity.Employee
         }
         
         [CanBeNull]
-        protected Task GetTask()
+        protected Activity GetActivity()
         {
             if(EmployeeData.Project != null)
             {
@@ -89,96 +95,108 @@ namespace Entity.Employee
             return null;
         }
         
-        private IEnumerator DO()
+        protected override IEnumerator LifeCycle()
         {
             int index = 0;
-            List<HumanState> myKeys = EmployeeData.GetEntityWorkingCycle.Keys.ToList();
-            Company company = employeeData.Company;
-            Vector3 initialPosition = gameObject.transform.position;
-            Vector3 officePosition =company.GetOffice(EmployeeData.GetHisOffice).gameObject.transform.position;
-            Vector3 targetPosition = GenerateRandomPosition(officePosition);
+            Vector3 targetPosition = Vector3.zero;
+            GoToOffice(out targetPosition);
             
-            destination = EmployeeData.GetHisOffice;
-            PathFinder.Navigator.MoveTo(gameObject,targetPosition);
             while (SelfState.CurrentState != HumanState.QUITED)
             {
-                if (transform.position.x == targetPosition.x && transform.position.z == targetPosition.z)
+                if (IsOnPosition(targetPosition))
                 {
-                    var taskDuration = TaskDuration();
+                    activityDuration = ActivityDuration();
+                    // when the activity is a task for the Project,
+                    // than need to work on them
                     if(SelfState.CurrentState == HumanState.WORK)
                     {
-                        var task = GetTask();
-                        if(task != null)
+                        #region Work on the Task 
+                        
+                        chore = GetActivity(); // Task/Activity for the Employee
+                        
+                        //Debug.Log($"State : {SelfState.CurrentState} , chore {chore}");
+                        if(chore != null)
                         {
-                            task.ApplyTaskTaker(this);
-
-                            taskDuration = task.TimeDuration;
-                            var taskProgressBar = task.ProgressBar;
-                            
-                            var time = 0f;
-                            var smoothDeltaTime = Time.smoothDeltaTime;
-                            var part = taskProgressBar.howMuchNeed / (taskDuration / smoothDeltaTime);
-                            
-                            while (time <= taskDuration && SelfState.CurrentState != HumanState.QUITED)
+                            task = WaitOfDoneTask(chore, activityDuration); // Threading.Task
+                            awaiter = task.GetAwaiter(); // TaskAwaiter
+                            do
                             {
-                                time += smoothDeltaTime;
-                                
-                                taskProgressBar.percentDoneProgress += part;
-                                task.ProgressBar = taskProgressBar;
-                                //Debug.Log("time : "+time+ " Total Time : " + taskDuration + " Progress : "+ taskProgressBar.percentDoneProgress);
+                                //Do something
+                                //Debug.Log($"State : {SelfState.CurrentState} , chore {chore}");
                                 yield return null;
-                            }
+                            } while (!awaiter.IsCompleted);
                         }
+
+                        #endregion
                     }
                     else
                     {
-                        // hier macht er seine Aufgabe.
-                        yield return new WaitForSeconds(taskDuration);
+                       // Debug.Log($"{SelfState.CurrentState} , activityDuration : {activityDuration}");
+                        // Make a Pause or talk with the others
+                        yield return new WaitForSeconds(activityDuration);
                     }
-                    
                     if(SelfState.CurrentState != HumanState.QUITED)
                     {
-                        // hier stellt er sein neue Ziel
-                        index = index >= myKeys.Count ? 0 : index;
+                        index = index >= employeeStates.Count ? 0 : index;
+                        // after he finished,
+                        // it going to the next Office and make yours Activity
+                        //Debug.Log($"{SelfState.CurrentState}");
+                        destination = EmployeeData.EntityWorkCycle[employeeStates[index]];
+            
+                        //Debug.Log($"index {index} , Destination {destination}");
+            
+                        targetPosition = EmployeeData.OfficePosition(destination);
                         
-                        destination = EmployeeData.GetEntityWorkingCycle[myKeys[index]];
-                        officePosition = company.GetOffice(destination).gameObject.transform.position;
+                        SelfState.CurrentState = employeeStates[index];
                         
-                        SelfState.CurrentState = myKeys[index];
-                        
-                        targetPosition = GenerateRandomPosition(officePosition);
-                
-                        PathFinder.Navigator.MoveTo(gameObject,targetPosition);
+                        targetPosition = GenerateRandomPosition(targetPosition);
+
+                        Navigator.MoveTo(navMeshAgent, targetPosition);
                         index++;
                     }
+                    
                 }
-                
                 
                 // hier passiert alles wärend des Laufens
-                if (PathFinder.Navigator.MyPathStatus(gameObject) == PathProgress.NONE)
+                if (Navigator.MyPathStatus(navMeshAgent) == PathProgress.NONE)
                 {
-                    targetPosition = GenerateRandomPosition(officePosition);
+                    
+                    Debug.Log($"{SelfState.CurrentState}");
+                    targetPosition = GenerateRandomPosition(EmployeeData.MyOfficePosition);
                 }
+                
                 yield return null;
             }
+            GoHome(EmployeeData.Home).Start();
+        }
 
+        private async Task GoHome(Vector3 targetPosition)
+        {
             destination = BuildingType.NONE;
-            targetPosition = initialPosition;
-            PathFinder.Navigator.MoveTo(gameObject,targetPosition);
+            Navigator.MoveTo(navMeshAgent,targetPosition);
 
             while (SelfState.CurrentState == HumanState.QUITED)
             {
-                if (transform.position.x == targetPosition.x && transform.position.z == targetPosition.z)
+                if (IsOnPosition(targetPosition))
                 {
                     Destroy(gameObject);
+                    await Task.Delay(1);
+                    return;
                 }
-                yield return null;
             }
         }
-
+        private void GoToOffice(out Vector3 targetPosition)
+        {
+            //That need to be combined
+            destination = EmployeeData.GetHisOffice;
+            targetPosition = GenerateRandomPosition(EmployeeData.MyOfficePosition);
+            //-------------------------------
+            
+            Navigator.MoveTo(navMeshAgent,targetPosition);
+        }
         private IEnumerator ShowMyCanvas()
         {
-            namePoster = proceduralUiElements.GetCanvas(this.employeeData.GetEntityType.ToString());
+            namePoster = proceduralUiElements.GetCanvas(this.EmployeeData.GetEntityType.ToString());
             var main = Camera.main;
             RectTransform rectTransform = namePoster.GetComponent<RectTransform>();
             while (gameObject != null)
@@ -190,6 +208,31 @@ namespace Entity.Employee
             }
         }
 
+        private async Task WaitOfDoneTask(Activity activity,float taskDuration)
+        {
+            activity.ApplyTaskTaker(this);
+                        
+            taskDuration = activity.TimeDuration;
+            var taskProgressBar = activity.ProgressBar;
+                            
+            var time = 0f;
+            var smoothDeltaTime = Time.smoothDeltaTime;
+            var part = taskProgressBar.howMuchNeed / (taskDuration / smoothDeltaTime);
+                            
+            while (time <= taskDuration && SelfState.CurrentState != HumanState.QUITED)
+            {
+                time += smoothDeltaTime;
+                                
+                taskProgressBar.percentDoneProgress += part;
+                activity.ProgressBar = taskProgressBar;
+
+                await Task.Delay((int) smoothDeltaTime);
+            }
+        }
+        private bool IsOnPosition(Vector3 targetPosition)
+        {
+            return (Math.Abs(transform.position.x - targetPosition.x) <= 0.1f && Math.Abs(transform.position.z - targetPosition.z) <= 0.1f);
+        }
         private void OnDestroy()
         {
             Destroy(namePoster);

@@ -9,7 +9,7 @@ using VideoManager;
 using Zenject;
 using Zenject.ProjectContext.Signals;
 
-namespace StateManager.State.Template
+namespace StateManager.States.GameStates.Template
 {
     public abstract class AState : IState
     {

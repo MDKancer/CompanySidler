@@ -3,14 +3,14 @@ using Enums;
 using InputManager;
 using So_Template;
 using SpawnManager;
-using StateManager.State.Template;
+using StateManager.States.GameStates.Template;
 using UnityEngine;
 using VideoManager;
 using Zenject;
 
-namespace StateManager.State
+namespace StateManager.States.GameStates
 {
-    public class PreGame : AState
+    public class Intro : AState
     {
         public override void Init(SignalBus signalBus,
             Container.Cloud cloud,
@@ -32,24 +32,28 @@ namespace StateManager.State
             this.sceneManager = sceneManager;
             this.spawnController = spawnController;
             this.monoBehaviour = monoBehaviour;
-            
+            this.companyData = companyData;
         }
-
         public override void OnEnter()
         {
-            runTimeStateController.CurrentState = RunTimeState.NONE;
-            //Debug.Log($"Current State {this}");
+            cloud.LoadAllResources();
+            audioController.SetImportData();
+            videoController.SetImportData();
+            
+            sceneManager.GoTo(Scenes.MAIN_MENU);
         }
 
         public override void OnUpdate()
         {
+            //Debug.Log($"Current State On Update {this}");
         }
 
         public override void OnExit()
         {
+            //Debug.Log($"Current State On Exit {this}");
         }
 
-        ~PreGame()
+        ~Intro()
         {
             
         }

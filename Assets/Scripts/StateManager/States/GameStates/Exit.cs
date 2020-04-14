@@ -3,12 +3,12 @@ using Enums;
 using InputManager;
 using So_Template;
 using SpawnManager;
-using StateManager.State.Template;
+using StateManager.States.GameStates.Template;
 using UnityEngine;
 using VideoManager;
 using Zenject;
 
-namespace StateManager.State
+namespace StateManager.States.GameStates
 {
     public class Exit : AState
     {

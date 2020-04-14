@@ -1,4 +1,4 @@
-﻿namespace StateManager.State.Template
+﻿namespace StateManager.States.GameStates.Template
 {
     public interface IState
     {

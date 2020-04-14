@@ -3,12 +3,13 @@ using System.Collections.Generic;
 using Buildings;
 using Entity.Employee;
 using Enums;
+using Sirenix.OdinInspector;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
 namespace ProjectPackage.ProjectTasks
 {
-    public class Task 
+    public class Activity 
     {
         private static int taskIndex = 0;
         public TaskType taskType;
@@ -17,7 +18,7 @@ namespace ProjectPackage.ProjectTasks
         private List<BuildingWorkers<Employee, EntityType>> taskTakers;
         private (float percentDoneProgress, float howMuchNeed) progressBar = (0,100.0f);
 
-        public Task()
+        public Activity()
         {
             var taskTypeValues =  Enum.GetValues(typeof(TaskType));
             var enumCount = taskTypeValues.Length;

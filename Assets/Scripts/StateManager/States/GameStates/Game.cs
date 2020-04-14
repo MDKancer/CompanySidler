@@ -1,17 +1,20 @@
 ﻿using AudioManager;
+using Entity.Customer;
 using Enums;
 using InputManager;
 using So_Template;
 using SpawnManager;
-using StateManager.State.Template;
+using StateManager.States.GameStates.Template;
+using UIDispatcher.GameComponents;
 using UnityEngine;
 using VideoManager;
 using Zenject;
 
-namespace StateManager.State
+namespace StateManager.States.GameStates
 {
-    public class Intro : AState
+    public class Game : AState
     {
+        private CustomerGenerator customerGenerator;
         public override void Init(SignalBus signalBus,
             Container.Cloud cloud,
             StateController<RunTimeState> runTimeStateController,
@@ -33,29 +36,41 @@ namespace StateManager.State
             this.spawnController = spawnController;
             this.monoBehaviour = monoBehaviour;
             this.companyData = companyData;
+            this.customerGenerator = new CustomerGenerator();
         }
+
         public override void OnEnter()
         {
-            cloud.LoadAllResources();
-            audioController.SetImportData();
-            videoController.SetImportData();
+            // set the Container data and the Company Data
+             cloud.SetDatas();
+             spawnController.InitialSpawnWave();
+             runTimeStateController.CurrentState = RunTimeState.PLAYING;
+             
+             //important data send on
+             customerGenerator.Init(signalBus,cloud,spawnController,monoBehaviour);
             
-            sceneManager.GoTo(Scenes.MAIN_MENU);
+             
+             inputController.SetCameraController();
+             inputController.showBuildingDataEvent += PlayerViewController.playerViewController.FocusedBuilding;
+             
+             customerGenerator.CreateCustomers();
+
+             monoBehaviour.StartCoroutine(customerGenerator.CreateNewCostumer());
+             //Debug.Log($"Current State {this}");
         }
 
         public override void OnUpdate()
         {
-            //Debug.Log($"Current State On Update {this}");
+            inputController.InputEvents();
+            PlayerViewController.playerViewController.CurrentBudget();
         }
 
         public override void OnExit()
         {
-            //Debug.Log($"Current State On Exit {this}");
         }
 
-        ~Intro()
+        ~Game()
         {
-            
         }
     }
 }

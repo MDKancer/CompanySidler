@@ -1,6 +1,6 @@
 ﻿using Enums;
 using StateManager;
-using StateManager.State.Template;
+using StateManager.States.GameStates.Template;
 using UnityEngine;
 using Zenject;
 using Zenject.ProjectContext.Signals;

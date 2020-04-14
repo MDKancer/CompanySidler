@@ -1,7 +1,7 @@
 ﻿using System;
 using StateManager;
-using StateManager.State;
-using StateManager.State.Template;
+using StateManager.States.GameStates;
+using StateManager.States.GameStates.Template;
 using UnityEngine;
 using Zenject;
 

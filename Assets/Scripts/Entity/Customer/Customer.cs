@@ -2,6 +2,7 @@ using System.Collections;
 using Enums;
 using TMPro;
 using UnityEngine;
+using UnityEngine.AI;
 
 namespace Entity.Customer
 {
@@ -17,6 +18,7 @@ namespace Entity.Customer
         private void Start()
         {
             gameObject.name = customerData.customerType.ToString();
+            navMeshAgent = GetComponent<NavMeshAgent>();
             StartCoroutine(ProjectTender());
             StartCoroutine(ShowMyNamePoster());
         }
@@ -27,7 +29,7 @@ namespace Entity.Customer
             Vector3 tarentPosition = customerData.TarentTownPosition();
             Vector3 targetPosition = GenerateRandomPosition(tarentPosition);
             
-            PathFinder.Navigator.MoveTo(gameObject,targetPosition);
+            PathFinder.Navigator.MoveTo(navMeshAgent,targetPosition);
             SelfState.CurrentState = HumanState.WORK;
             //-------------------------Move to Target------------------------
             // || || || || || || || || || || || || || || || || || || || || ||
@@ -37,7 +39,7 @@ namespace Entity.Customer
 //                Debug.Log("Name "+this.customerData.customerType+" "+transform.position + " Target " + tarentPosition);
                 // irgendwas
                 // hier passiert alles wärend des laufens den Kunden.
-                if (PathFinder.Navigator.MyPathStatus(gameObject) == PathProgress.NONE)
+                if (PathFinder.Navigator.MyPathStatus(navMeshAgent) == PathProgress.NONE)
                 {
                     targetPosition = GenerateRandomPosition(targetPosition);
                 }
@@ -53,7 +55,7 @@ namespace Entity.Customer
             customerData.SellProject();
 
             SelfState.CurrentState = HumanState.QUITED;
-            PathFinder.Navigator.MoveTo(gameObject,customerData.initialPosition);
+            PathFinder.Navigator.MoveTo(navMeshAgent,customerData.initialPosition);
             //-------------------------Return Back---------------------------
             // || || || || || || || || || || || || || || || || || || || || ||
             // \/ \/ \/ \/ \/ \/ \/ \/ \/ \/ \/ \/ \/ \/ \/ \/ \/ \/ \/ \/ \/

@@ -3,18 +3,15 @@ using Enums;
 using InputManager;
 using So_Template;
 using SpawnManager;
-using StateManager.State.Template;
-using TMPro;
+using StateManager.States.GameStates.Template;
 using UnityEngine;
 using VideoManager;
 using Zenject;
 
-namespace StateManager.State
+namespace StateManager.States.GameStates
 {
-    public class Loading : AState
+    public class MainMenu : AState
     {
-        private TextMeshProUGUI label;
-
         public override void Init(SignalBus signalBus,
             Container.Cloud cloud,
             StateController<RunTimeState> runTimeStateController,
@@ -36,23 +33,26 @@ namespace StateManager.State
             this.spawnController = spawnController;
             this.monoBehaviour = monoBehaviour;
             this.companyData = companyData;
+
         }
 
         public override void OnEnter()
         {
-             label = GameObject.Find("Loading_Label").GetComponent<TextMeshProUGUI>();
+            
+            //Debug.Log($"Current State On Enter {this}");
         }
 
         public override void OnUpdate()
         {
-            label.SetText($"Loading ... {sceneManager.SceneProgress}");
+            //Debug.Log($"Current State On Update {this}");
         }
 
         public override void OnExit()
         {
+            //Debug.Log($"Current State On Exit {this}");
         }
 
-        ~Loading()
+        ~MainMenu()
         {
             
         }

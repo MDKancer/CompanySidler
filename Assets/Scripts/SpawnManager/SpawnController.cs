@@ -57,25 +57,21 @@ namespace SpawnManager
         {
             try
             {
-                GameObject objectInstace = Object.Instantiate(employeeData.GetPrefab, spawnPosition, Quaternion.identity);
-                objectInstace.name = employeeData.GetEntityType.ToString();
-                if(objectInstace.GetComponent<NavMeshAgent>() == null)
+                var objectInstance = Object.Instantiate(employeeData.GetPrefab, spawnPosition, Quaternion.identity);
+                if(objectInstance.GetComponent<NavMeshAgent>() == null)
                 {
-                    NavMeshAgent agent = objectInstace.AddComponent<NavMeshAgent>();
+                    var agent = objectInstance.AddComponent<NavMeshAgent>();
                 }
-
-                if (objectInstace.GetComponent<Employee>() == null)
+                if (objectInstance.GetComponent<Employee>() == null)
                 {
-                   Employee employee = objectInstace.AddComponent<Employee>();
+                   var employee = objectInstance.AddComponent<Employee>();
                    
                    employee.EmployeeData = employeeData;
-                   //TODO: der Employee soll automatisch den Zugriff auf Container kriegen.
-                   //Vieleicht die Company in Employeedata weitergeben, und nicht den Container.
-                   employee.AttachEvent(workerOffice);
+                   
                    employee.Work();
                 }
 
-                cloud.AddSpawnedGameObject(objectInstace);
+                cloud.AddSpawnedGameObject(objectInstance);
 
                 return true;
             }

@@ -1,7 +1,7 @@
 ﻿using System.Collections;
 using Container;
 using Enums;
-using StateManager.State.Template;
+using StateManager.States.GameStates.Template;
 using Zenject;
 using Application = UnityEngine.Application;
 
@@ -38,8 +38,6 @@ namespace StateManager
         {
             stateMachineClass.CurrentState = cloud.GetGameState(Scenes.EXIT);
         }
-
-
         /// <summary>
         /// Here the process is handled when the state signal is received.
         /// </summary>
@@ -74,6 +72,10 @@ namespace StateManager
         /// </summary>
         ~FinalStateManager()
         {
+            this.stateMachineClass.stateChanged -= OnExit;
+            this.stateMachineClass.stateChanged -= OnEnter;
+            this.stateMachineClass.currentStateUpdated -= OnUpdate;
+            Application.quitting -= OnQuitting;
         }
     }
 }

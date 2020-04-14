@@ -1,23 +1,20 @@
-using Buildings;
+using System.Collections;
 using Enums;
 using StateManager;
 using UIDispatcher.GameComponents.UIBuildingContent;
 using UnityEngine;
+using UnityEngine.AI;
 using Random = UnityEngine.Random;
 
 namespace Entity
 {
     public class Human : MonoBehaviour , IHuman
     {
-        
         public BuildingType destination = BuildingType.NONE;
         protected ProceduralUiElements proceduralUiElements = new ProceduralUiElements();
-        
+        protected NavMeshAgent navMeshAgent;
         private StateController<HumanState> selfState = new StateController<HumanState>();
 
-        public delegate void AttachAnBuilding(Building myOffice);
-
-        public AttachAnBuilding AttachEvent;
         public void Awake()
         {
             
@@ -36,6 +33,11 @@ namespace Entity
                 Random.Range(position.z-5, position.z+5)    // z
             );
         }
-        
+
+        protected virtual IEnumerator LifeCycle()
+        {
+            yield return null;
+        }
+
     }
 }

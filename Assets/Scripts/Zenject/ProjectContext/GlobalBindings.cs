@@ -6,7 +6,7 @@ using InputWrapper;
 using So_Template;
 using SpawnManager;
 using StateManager;
-using StateManager.State.Template;
+using StateManager.States.GameStates.Template;
 using UnityEngine;
 using UnityEngine.Audio;
 using VideoManager;

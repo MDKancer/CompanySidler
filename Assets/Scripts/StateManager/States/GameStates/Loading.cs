@@ -38,17 +38,17 @@ namespace StateManager.States.GameStates
             this.companyData = companyData;
         }
 
-        public override void OnEnter()
+        public override void OnStateEnter()
         {
              label = GameObject.Find("Loading_Label").GetComponent<TextMeshProUGUI>();
         }
 
-        public override void OnUpdate()
+        public override void OnStateUpdate()
         {
             label.SetText($"Loading ... {sceneManager.SceneProgress}");
         }
 
-        public override void OnExit()
+        public override void OnStateExit()
         {
         }
 

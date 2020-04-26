@@ -39,7 +39,7 @@ namespace StateManager.States.GameStates
             this.customerGenerator = new CustomerGenerator();
         }
 
-        public override void OnEnter()
+        public override void OnStateEnter()
         {
             // set the Container data and the Company Data
              cloud.SetDatas();
@@ -59,13 +59,13 @@ namespace StateManager.States.GameStates
              //Debug.Log($"Current State {this}");
         }
 
-        public override void OnUpdate()
+        public override void OnStateUpdate()
         {
             inputController.InputEvents();
             PlayerViewController.playerViewController.CurrentBudget();
         }
 
-        public override void OnExit()
+        public override void OnStateExit()
         {
         }
 

@@ -1,17 +1,18 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
-using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Threading.Tasks;
 using Enums;
 using JetBrains.Annotations;
 using PathFinder;
 using ProjectPackage.ProjectTasks;
-using Sirenix.OdinInspector;
+using StateManager;
+using StateManager.States.EmploeeStates;
 using TMPro;
 using UnityEngine;
 using UnityEngine.AI;
+using Zenject;
 using Random = UnityEngine.Random;
 
 namespace Entity.Employee
@@ -25,8 +26,25 @@ namespace Entity.Employee
         private List<HumanState> employeeStates;
         private Task task;
         private TaskAwaiter awaiter;
+        
+        //_____
+        private StateMachineClass<EmployeeState> stateMachineClass;
+
+        private Dictionary<HumanState,EmployeeState> states;
+        //_____
         private void RegisterAn()
         {
+            //stateMachineClass = new StateMachineClass<EmployeeState>();
+            
+            states = new Dictionary<HumanState,EmployeeState>();
+            states.Add(HumanState.WORK,new Work());
+            states.Add( HumanState.TALK,new Talk());
+            states.Add(HumanState.LEARN,new Learn());
+            states.Add(HumanState.PAUSE,new Pause());
+            states.Add(HumanState.WALK,new Walk());
+            states.Add(HumanState.COMMUNICATION,new Communication());
+            states.Add(HumanState.QUITED,new Quited());
+            
             EmployeeData.Company
                 .GetOffice(EmployeeData.GetHisOffice)
                 .applyWorkerEvent(this);
@@ -39,40 +57,43 @@ namespace Entity.Employee
             navMeshAgent = GetComponent<NavMeshAgent>();
             EmployeeData.Home = transform.position;
             RegisterAn();
-            employeeStates = EmployeeData.EntityWorkCycle.Keys.ToList();
-            StartCoroutine(LifeCycle());
-            StartCoroutine(ShowMyCanvas());
+            
+            //employeeStates = EmployeeData.EntityWorkCycle.Keys.ToList();
+            //StartCoroutine(LifeCycle());
+            //StartCoroutine(ShowMyCanvas());
+            StateController();
         }
-        
-        protected float ActivityDuration()
-        {
-            if (SelfState.CurrentState == HumanState.WALK)
-            {
-                return Random.Range(0.2f,1f);
-            }
-            else if (SelfState.CurrentState == HumanState.WORK)
-            {
-                return Random.Range(5f,20f);
-            }
-            else if (SelfState.CurrentState == HumanState.LEARN)
-            {
-                return Random.Range(5f,15f);
-            }
-            else if (SelfState.CurrentState == HumanState.PAUSE)
-            {
-                return Random.Range(2f,15f);
-            }
-            else if (SelfState.CurrentState == HumanState.TALK)
-            {
-                return Random.Range(0.3f,5f);
-            }
-            else if (SelfState.CurrentState == HumanState.NONE)
-            {
-                return Random.Range(0.3f,5f);
-            }
 
-            return 0f;
-        }
+        #region oldversion
+        protected float ActivityDuration()
+                 {
+                     if (SelfState.CurrentState == HumanState.WALK)
+                     {
+                         return Random.Range(0.2f,1f);
+                     }
+                     else if (SelfState.CurrentState == HumanState.WORK)
+                     {
+                         return Random.Range(5f,20f);
+                     }
+                     else if (SelfState.CurrentState == HumanState.LEARN)
+                     {
+                         return Random.Range(5f,15f);
+                     }
+                     else if (SelfState.CurrentState == HumanState.PAUSE)
+                     {
+                         return Random.Range(2f,15f);
+                     }
+                     else if (SelfState.CurrentState == HumanState.TALK)
+                     {
+                         return Random.Range(0.3f,5f);
+                     }
+                     else if (SelfState.CurrentState == HumanState.NONE)
+                     {
+                         return Random.Range(0.3f,5f);
+                     }
+         
+                     return 0f;
+                 }
         
         [CanBeNull]
         protected Activity GetActivity()
@@ -233,6 +254,40 @@ namespace Entity.Employee
         {
             return (Math.Abs(transform.position.x - targetPosition.x) <= 0.1f && Math.Abs(transform.position.z - targetPosition.z) <= 0.1f);
         }
+        #endregion
+
+        private void StateController()
+        {
+            var state = states[HumanState.WORK];
+            state.emploee = this;
+            stateMachineClass.onStateEnter += OnEnter;
+            stateMachineClass.onStateUpdated += OnUpdate;
+            stateMachineClass.onStateExit += OnExit;
+            stateMachineClass.onStateCompleted += GoNext;
+            stateMachineClass.CurrentState = state;
+        }
+
+        private void OnEnter()
+        {
+            stateMachineClass.CurrentState.OnStateEnter();
+        }
+        private IEnumerator OnUpdate()
+        {
+            while (true)
+            {
+                stateMachineClass.CurrentState.OnStateUpdate();
+                yield return null;
+            }
+        }
+        private void OnExit()
+        {
+            stateMachineClass.CurrentState.OnStateExit();
+        }
+        private void GoNext()
+        {
+            Debug.Log($"current State {stateMachineClass.CurrentState} is Completed");
+        }
+        
         private void OnDestroy()
         {
             Destroy(namePoster);

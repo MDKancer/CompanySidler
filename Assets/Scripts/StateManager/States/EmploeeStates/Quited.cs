@@ -1,38 +1,28 @@
-﻿using AudioManager;
-using Container;
-using Enums;
-using InputManager;
-using So_Template;
-using SpawnManager;
-using StateManager.States.GameStates.Template;
-using UnityEngine;
-using VideoManager;
-using Zenject;
+﻿using PathFinder;
+using UnityEngine.AI;
 
 namespace StateManager.States.EmploeeStates
 {
     public class Quited : EmployeeState
     {
-        public override void Init(SignalBus signalBus, Cloud cloud, StateController<RunTimeState> runTimeStateController, InputController inputController,
-            AudioController audioController, VideoController videoController, MonoBehaviour monoBehaviour,
-            SceneManager.SceneManager sceneManager, SpawnController spawnController, CompanyData companyData)
+        public override void OnStateEnter()
         {
-            throw new System.NotImplementedException();
+            navMeshAgent = emploee.GetComponent<NavMeshAgent>();
+            Navigator.MoveTo(navMeshAgent,EmployeeData.Home);
         }
 
-        public override void OnEnter()
+        public override void OnStateUpdate()
         {
-            throw new System.NotImplementedException();
+            if (IsOnPosition(EmployeeData.Home))
+            {
+                UnityEngine.Object.Destroy(emploee.gameObject,0.1f);
+                onCompleted.Invoke();
+            }
         }
 
-        public override void OnUpdate()
+        public override void OnStateExit()
         {
-            throw new System.NotImplementedException();
-        }
-
-        public override void OnExit()
-        {
-            throw new System.NotImplementedException();
+            time = 0f;
         }
     }
 }

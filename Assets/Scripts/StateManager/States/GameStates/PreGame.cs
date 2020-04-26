@@ -35,17 +35,17 @@ namespace StateManager.States.GameStates
             
         }
 
-        public override void OnEnter()
+        public override void OnStateEnter()
         {
             runTimeStateController.CurrentState = RunTimeState.NONE;
             //Debug.Log($"Current State {this}");
         }
 
-        public override void OnUpdate()
+        public override void OnStateUpdate()
         {
         }
 
-        public override void OnExit()
+        public override void OnStateExit()
         {
         }
 

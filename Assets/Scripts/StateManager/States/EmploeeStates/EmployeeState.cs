@@ -1,4 +1,5 @@
-﻿using AudioManager;
+﻿using System;
+using AudioManager;
 using Container;
 using Entity.Employee;
 using Enums;
@@ -9,20 +10,27 @@ using So_Template;
 using SpawnManager;
 using StateManager.States.GameStates.Template;
 using UnityEngine;
+using UnityEngine.AI;
 using VideoManager;
 using Zenject;
+using Random = UnityEngine.Random;
 
 namespace StateManager.States.EmploeeStates
 {
     public class EmployeeState : AState
     {
         public Employee emploee;
-                
+        public BuildingType destination = BuildingType.NONE;
+        public delegate void OnCompleted();
+
+        public OnCompleted onCompleted;
+        protected NavMeshAgent navMeshAgent;
+        protected Vector3 targetPosition;
         protected Activity chore;
-        protected float taskDuration;
+        protected float duration;
         protected float time = 0;
         protected float part;
-        protected (float percentDoneProgress, float howMuchNeed) taskProgressBar;
+        protected (float percentDoneProgress, float howMuchNeed) progress;
         public override void Init(SignalBus signalBus, Cloud cloud, StateController<RunTimeState> runTimeStateController, InputController inputController,
             AudioController audioController, VideoController videoController, MonoBehaviour monoBehaviour,
             SceneManager.SceneManager sceneManager, SpawnController spawnController, CompanyData companyData)
@@ -39,21 +47,28 @@ namespace StateManager.States.EmploeeStates
             this.companyData = companyData;
         }
 
-        public override void OnEnter()
+        public override void OnStateEnter()
         {
             throw new System.NotImplementedException();
         }
 
-        public override void OnUpdate()
+        public override void OnStateUpdate()
         {
             throw new System.NotImplementedException();
         }
 
-        public override void OnExit()
+        public override void OnStateExit()
         {
             throw new System.NotImplementedException();
         }
-        
+        protected Vector3 GenerateRandomPosition(Vector3 position)
+        {
+            return new Vector3(
+                Random.Range(position.x-5, position.x+5),      // x
+                position.y,                                    // y
+                Random.Range(position.z-5, position.z+5)    // z
+            );
+        }
         [CanBeNull]
         protected Activity GetActivity()
         {
@@ -75,5 +90,12 @@ namespace StateManager.States.EmploeeStates
             return null;
         }
         protected EmployeeData EmployeeData => emploee.EmployeeData;
+        
+        protected bool IsOnPosition(Vector3 targetPosition)
+        {
+            return (Mathf.Abs(emploee.transform.position.x - targetPosition.x) <= 0.1f && Math.Abs(emploee.transform.position.z - targetPosition.z) <= 0.1f);
+        }
+
+        protected float GetActivityDuration => Random.Range(2f, 15f);
     }
 }

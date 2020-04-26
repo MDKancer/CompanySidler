@@ -12,6 +12,7 @@ namespace StateManager.States.GameStates
 {
     public class Intro : AState
     {
+        //TODO: need to implement the OnCompleted Event
         public override void Init(SignalBus signalBus,
             Container.Cloud cloud,
             StateController<RunTimeState> runTimeStateController,
@@ -34,7 +35,7 @@ namespace StateManager.States.GameStates
             this.monoBehaviour = monoBehaviour;
             this.companyData = companyData;
         }
-        public override void OnEnter()
+        public override void OnStateEnter()
         {
             cloud.LoadAllResources();
             audioController.SetImportData();
@@ -43,12 +44,12 @@ namespace StateManager.States.GameStates
             sceneManager.GoTo(Scenes.MAIN_MENU);
         }
 
-        public override void OnUpdate()
+        public override void OnStateUpdate()
         {
             //Debug.Log($"Current State On Update {this}");
         }
 
-        public override void OnExit()
+        public override void OnStateExit()
         {
             //Debug.Log($"Current State On Exit {this}");
         }

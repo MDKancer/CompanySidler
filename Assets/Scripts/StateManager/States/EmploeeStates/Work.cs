@@ -1,42 +1,52 @@
-﻿using System.Threading.Tasks;
+﻿using PathFinder;
 using UnityEngine;
 
 namespace StateManager.States.EmploeeStates
 {
     public class Work : EmployeeState
     {
-        public override void OnEnter()
+        public override void OnStateEnter()
         {
+            destination = EmployeeData.GetHisOffice;
+            targetPosition = GenerateRandomPosition(EmployeeData.MyOfficePosition);
+
+            
+            Navigator.MoveTo(navMeshAgent,targetPosition);
+            
             chore = GetActivity();
             if (chore != null)
             {
                 chore.ApplyTaskTaker(emploee);
                         
-                taskDuration = chore.TimeDuration;
-                taskProgressBar = chore.ProgressBar;
+                duration = chore.TimeDuration;
+                progress = chore.ProgressBar;
                             
                 time = 0f;
-                part = taskProgressBar.howMuchNeed / (taskDuration / Time.smoothDeltaTime);
+                part = progress.howMuchNeed / (duration / Time.smoothDeltaTime);
             }
         }
 
-        public override void OnUpdate()
+        public override void OnStateUpdate()
         {
-            if (time <= taskDuration)
+            if (IsOnPosition(targetPosition))
             {
-                time += Time.smoothDeltaTime;
-                taskProgressBar.percentDoneProgress += part;
+                if (time <= duration)
+                {
+                    time += Time.smoothDeltaTime;
+                    progress.percentDoneProgress += part;
 
-                chore.ProgressBar = taskProgressBar;
-                
-                Task.Delay((int)Time.smoothDeltaTime);
+                    chore.ProgressBar = progress;
+                }
+                else
+                {
+                    onCompleted.Invoke();
+                }
             }
         }
 
-        public override void OnExit()
+        public override void OnStateExit()
         {
-            throw new System.NotImplementedException();
+            time = 0f;
         }
-        
     }
 }

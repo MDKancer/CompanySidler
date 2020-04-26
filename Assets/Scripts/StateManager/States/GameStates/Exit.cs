@@ -36,7 +36,7 @@ namespace StateManager.States.GameStates
 
         }
 
-        public override void OnEnter()
+        public override void OnStateEnter()
         {
             // before the application will be closed
             // the data need to be saved 
@@ -47,11 +47,11 @@ namespace StateManager.States.GameStates
             }
         }
 
-        public override void OnUpdate()
+        public override void OnStateUpdate()
         {
         }
 
-        public override void OnExit()
+        public override void OnStateExit()
         {
             
         }

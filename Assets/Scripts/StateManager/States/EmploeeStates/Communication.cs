@@ -1,38 +1,36 @@
-﻿using AudioManager;
-using Container;
-using Enums;
-using InputManager;
-using So_Template;
-using SpawnManager;
-using StateManager.States.GameStates.Template;
+﻿using Enums;
+using PathFinder;
 using UnityEngine;
-using VideoManager;
-using Zenject;
 
 namespace StateManager.States.EmploeeStates
 {
     public class Communication : EmployeeState
     {
-        public override void Init(SignalBus signalBus, Cloud cloud, StateController<RunTimeState> runTimeStateController, InputController inputController,
-            AudioController audioController, VideoController videoController, MonoBehaviour monoBehaviour,
-            SceneManager.SceneManager sceneManager, SpawnController spawnController, CompanyData companyData)
+        public override void OnStateEnter()
         {
-            throw new System.NotImplementedException();
+            destination = EmployeeData.EntityWorkCycle[HumanState.COMMUNICATION];
+            targetPosition = EmployeeData.OfficePosition(destination);
+            targetPosition = GenerateRandomPosition(targetPosition);
+
+            Navigator.MoveTo(navMeshAgent, targetPosition);
         }
 
-        public override void OnEnter()
+        public override void OnStateUpdate()
         {
-            throw new System.NotImplementedException();
+            if (IsOnPosition(targetPosition))
+            {
+                duration = GetActivityDuration;
+                while (time <= duration)
+                {
+                    time += Time.deltaTime;
+                }
+                onCompleted.Invoke();
+            }
         }
 
-        public override void OnUpdate()
+        public override void OnStateExit()
         {
-            throw new System.NotImplementedException();
-        }
-
-        public override void OnExit()
-        {
-            throw new System.NotImplementedException();
+            time = 0f;
         }
     }
 }

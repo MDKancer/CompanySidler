@@ -36,18 +36,18 @@ namespace StateManager.States.GameStates
 
         }
 
-        public override void OnEnter()
+        public override void OnStateEnter()
         {
             
             //Debug.Log($"Current State On Enter {this}");
         }
 
-        public override void OnUpdate()
+        public override void OnStateUpdate()
         {
             //Debug.Log($"Current State On Update {this}");
         }
 
-        public override void OnExit()
+        public override void OnStateExit()
         {
             //Debug.Log($"Current State On Exit {this}");
         }

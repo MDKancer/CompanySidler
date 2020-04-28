@@ -1,5 +1,6 @@
 ﻿using PathFinder;
 using UnityEngine;
+using UnityEngine.AI;
 
 namespace StateManager.States.EmploeeStates
 {
@@ -8,11 +9,11 @@ namespace StateManager.States.EmploeeStates
         public override void OnStateEnter()
         {
             destination = EmployeeData.GetHisOffice;
+            emploee.destination = destination;
             targetPosition = GenerateRandomPosition(EmployeeData.MyOfficePosition);
-
-            
+            navMeshAgent = emploee.GetComponent<NavMeshAgent>();
             Navigator.MoveTo(navMeshAgent,targetPosition);
-            
+            // Debug.Log($"Enter {this} emploee {emploee.name} position {emploee.transform.position} onCompletedEvent {onCompleted}");
             chore = GetActivity();
             if (chore != null)
             {
@@ -28,9 +29,10 @@ namespace StateManager.States.EmploeeStates
 
         public override void OnStateUpdate()
         {
+            // Debug.Log($"Update {this} emploee {emploee.name} position {emploee.transform.position}");
             if (IsOnPosition(targetPosition))
             {
-                if (time <= duration)
+                if (chore != null && time <= duration)
                 {
                     time += Time.smoothDeltaTime;
                     progress.percentDoneProgress += part;

@@ -20,9 +20,11 @@ namespace SpawnManager
         private Container.Cloud cloud;
         private CompanyData companyData;
         private MonoBehaviour monoBehaviour;
+        private DiContainer diContainer;
         [Inject]
-        private void Init(SignalBus signalBus,Container.Cloud cloud,CompanyData companyData,MonoBehaviourSignal monoBehaviourSignal)
+        private void Init(DiContainer diContainer,SignalBus signalBus,Container.Cloud cloud,CompanyData companyData,MonoBehaviourSignal monoBehaviourSignal)
         {
+            this.diContainer = diContainer;
             this.signalBus = signalBus;
             this.cloud = cloud;
             this.companyData = companyData;
@@ -68,7 +70,7 @@ namespace SpawnManager
                    
                    employee.EmployeeData = employeeData;
                    
-                   employee.Work();
+                   employee.Work(diContainer);
                 }
 
                 cloud.AddSpawnedGameObject(objectInstance);

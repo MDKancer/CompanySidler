@@ -44,10 +44,11 @@ namespace Entity.Employee
             if (GetEntityType != EntityType.NONE && GetEntityType != EntityType.CUSTOMER)
             {
                     EntityWorkCycle.Add(HumanState.WORK,GetHisOffice);
-                    EntityWorkCycle.Add(HumanState.TALK,BuildingType.SOCIAL_RAUM);
+                    EntityWorkCycle.Add(HumanState.TALK,BuildingType.MARKETING);
                     EntityWorkCycle.Add(HumanState.PAUSE,BuildingType.SOCIAL_RAUM);
+                    EntityWorkCycle.Add(HumanState.COMMUNICATION,BuildingType.OFFICE);
                     EntityWorkCycle.Add(HumanState.LEARN,BuildingType.AZUBIS);
-                    EntityWorkCycle.Add(HumanState.WALK,BuildingType.NONE);
+                    EntityWorkCycle.Add(HumanState.WALK,BuildingType.SOCIAL_RAUM);
             }
         }
     }

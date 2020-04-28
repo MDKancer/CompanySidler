@@ -112,15 +112,17 @@ namespace StateManager
                     spawnController: spawnController,
                     companyData: companyData);
                 
+                //will be executed, when the state finished / completed 
+                currentState.onCompleted += Completed;
+                
                 //now the current state was changed, and that mean the state is initialized
                 // OnEnter()
                 onStateEnter?.Invoke();
                 //set the coroutine to start the OnUpdate()
                 update = onStateUpdated?.Invoke();
                 //started a coroutine for the update
-                //will be executed, when the state finished / completed 
-                currentState.onCompleted += Completed;
                 //OnUpdate()
+                
                 if(update != null) monoBehaviour.StartCoroutine(update);
             }
             get => currentState;

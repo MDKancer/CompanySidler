@@ -1,5 +1,6 @@
 using AudioManager;
 using Container;
+using Entity.Employee;
 using Enums;
 using InputManager;
 using InputWrapper;
@@ -28,6 +29,7 @@ namespace Zenject.ProjectContext
             Container.Bind<StateController<GameState>>().AsSingle().NonLazy();
             Container.Bind<StateController<RunTimeState>>().AsSingle().NonLazy();
             Container.Bind<StateMachineClass<AState>>().AsSingle().NonLazy();
+            Container.Bind<StateMachineClass<EmployeeState>>().AsTransient().NonLazy();
             Container.Bind<InputController>().AsSingle().NonLazy();
             Container.Bind<AudioController>().AsSingle().NonLazy();
             Container.Bind<VideoController>().AsSingle().NonLazy();
@@ -38,6 +40,12 @@ namespace Zenject.ProjectContext
             Container.Bind<SpawnController>().AsSingle().NonLazy();
             Container.Bind<SceneManager.SceneManager>().AsSingle().NonLazy();
             Container.Bind<MonoBehaviourSignal>().FromNewComponentOnNewGameObject().AsSingle().NonLazy();
+        }
+
+        private void SetOnInstatiated(InjectContext arg1, Employee arg2)
+        {
+            arg2.stateMachineClass = new StateMachineClass<EmployeeState>();
+            
         }
     }
 }

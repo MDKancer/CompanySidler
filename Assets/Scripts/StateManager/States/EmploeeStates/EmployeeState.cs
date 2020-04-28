@@ -21,9 +21,6 @@ namespace StateManager.States.EmploeeStates
     {
         public Employee emploee;
         public BuildingType destination = BuildingType.NONE;
-        public delegate void OnCompleted();
-
-        public OnCompleted onCompleted;
         protected NavMeshAgent navMeshAgent;
         protected Vector3 targetPosition;
         protected Activity chore;
@@ -96,6 +93,15 @@ namespace StateManager.States.EmploeeStates
             return (Mathf.Abs(emploee.transform.position.x - targetPosition.x) <= 0.1f && Math.Abs(emploee.transform.position.z - targetPosition.z) <= 0.1f);
         }
 
-        protected float GetActivityDuration => Random.Range(2f, 15f);
+        protected float GetActivityDuration
+        {
+            get
+            {
+               var value = Random.Range(1f, 2f);
+               // Debug.Log(value);
+               return value;
+            }
+        }
+            
     }
 }

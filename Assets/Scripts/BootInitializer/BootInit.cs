@@ -1,12 +1,15 @@
 ﻿using System;
 using StateManager;
-using StateManager.State;
-using StateManager.State.Template;
+using StateManager.States.GameStates;
+using StateManager.States.GameStates.Template;
 using UnityEngine;
 using Zenject;
 
 namespace BootInitializer
 {
+    /// <summary>
+    /// This class initialize the finale state machine and the game.
+    /// </summary>
     public class BootInit : MonoBehaviour
     {
         private StateMachineClass<AState> stateMachineClass;
@@ -17,7 +20,6 @@ namespace BootInitializer
             this.stateMachineClass = stateMachineClass;
         }
     
-        // Start is called before the first frame update
         void Start()
         {
             try

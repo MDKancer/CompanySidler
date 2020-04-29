@@ -5,7 +5,7 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace UIDispatcher.GameComponents
+namespace UIDispatcher.UiComponents
 {
     [Serializable,GUIColor(0.3f, 0.8f, 0.8f, 1f)]
     public struct UIAudioComponents

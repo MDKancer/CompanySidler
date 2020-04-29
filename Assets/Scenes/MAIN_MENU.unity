@@ -506,7 +506,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 047cdc78c8e070a60af50225fe88c258, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  simulate: 0
+  simulate: 1
   scenes: 2
 --- !u!4 &716942338
 Transform:

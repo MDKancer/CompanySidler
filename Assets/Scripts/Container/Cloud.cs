@@ -1,14 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using Building;
+using Buildings;
 using Enums;
 using GameSettings;
-using JSon_Manager;
+using Json_Manager;
 using So_Template;
 using StateManager;
-using StateManager.State;
-using StateManager.State.Template;
+using StateManager.States.GameStates;
+using StateManager.States.GameStates.Template;
 using UnityEngine;
 using Zenject;
 using Action = Enums.Action;
@@ -26,21 +26,20 @@ using Resources = UnityEngine.Resources;
         private List<Material> particleMaterials = new List<Material>();
         private List<GameObject> particleSystems = new List<GameObject>();
         private Dictionary<Scenes,AState> gameStates = new Dictionary<Scenes, AState>();
-        Json_Stream jSon_manager = new Json_Stream("InputBindings");
+        private JsonStream jSon_manager = new JsonStream("InputBindings.json");
         
         private SignalBus signalBus;
-        private StateController<GameState> gameStateController;
         private CompanyData companyData;
         
         [Inject]
-        private void Init(SignalBus signalBus, StateController<GameState> gameStateController,CompanyData companyData)
+        private void Init(SignalBus signalBus,CompanyData companyData)
         {
             this.signalBus = signalBus;
-            this.gameStateController = gameStateController;
             this.companyData = companyData;
         }
         /// <summary>
         /// Es wird ganz am anfang alle Prefabs aus den Ordnern im Dictionary reingepackt.
+        /// It loaded all the stuff what will be need in the project.
         /// </summary>
         public void LoadAllResources()
         {
@@ -68,6 +67,7 @@ using Resources = UnityEngine.Resources;
         }
         /// <summary>
         /// Es wird ausgeführt wenn man alle wichtige Daten schon eingegeben hat um ein Unternehmen zu erstellen.
+        /// It loaded/created all data what the company need.
         /// </summary>
         public void SetDatas()
         {
@@ -79,7 +79,7 @@ using Resources = UnityEngine.Resources;
         public List<GameObject> ParticleSystems => particleSystems;
         public AudioData AudiosData => settingsData.audioData;
         public VideoData VideosData => settingsData.videoData;
-        public Dictionary<Action, KeyCode> InputKeyboardData => settingsData.keyboardData;
+        public KeyboardsData[] InputKeyboardData => settingsData.inputBindings;
 
         public List<Company> Companies
         {
@@ -94,6 +94,7 @@ using Resources = UnityEngine.Resources;
         public IList<AState> GetGameStates => gameStates.Values.ToList().AsReadOnly();
         
         public AState GetGameState(Scenes scene) => gameStates[scene];
+        
         public List<GameObject> GetPrefabsByType(EntityType entityType)
         {
             List<GameObject> gameObjects = new List<GameObject>();
@@ -129,7 +130,7 @@ using Resources = UnityEngine.Resources;
 
         private void LoadSettingsData()
         {
-             settingsData = jSon_manager.GetSettings();
+             settingsData = jSon_manager.ReadJson<SettingsData>();
         }
         
         

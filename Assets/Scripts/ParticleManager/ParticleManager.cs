@@ -1,4 +1,4 @@
-﻿using Building;
+﻿using Buildings;
 using Enums;
 using Sirenix.OdinInspector;
 using UnityEngine;

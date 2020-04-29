@@ -16,11 +16,11 @@ namespace ProjectPackage
         private int punishment;
         private int wastagePercent = 10;
         private bool isDone = false;
-        private List<Task> tasks;
+        private List<Activity> tasks;
 
         public Project(int workersCount,MonoBehaviour monoBehaviour)
         {
-            tasks = new List<Task>(workersCount);
+            tasks = new List<Activity>(workersCount);
             GenerateTasks(workersCount);
             
             timeDuration += tasks.Sum(task => task.TimeDuration);
@@ -42,13 +42,13 @@ namespace ProjectPackage
         public bool IsDone => isDone;
 
 
-        public List<Task> Tasks => tasks;
+        public List<Activity> Tasks => tasks;
 
         private void GenerateTasks(int taskCount)
         {
             for (int i = 0; i < taskCount; i++)
             {
-                tasks.Add(new Task());
+                tasks.Add(new Activity());
             }
         }
 

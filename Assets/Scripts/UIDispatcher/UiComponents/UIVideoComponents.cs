@@ -6,7 +6,7 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace UIDispatcher.GameComponents
+namespace UIDispatcher.UiComponents
 {
     [Serializable,GUIColor(1f,1f,0f,1f)]
     public struct UIVideoComponents

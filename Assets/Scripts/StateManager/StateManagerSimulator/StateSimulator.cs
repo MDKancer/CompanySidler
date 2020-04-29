@@ -2,7 +2,7 @@ using AudioManager;
 using Container;
 using Enums;
 using Sirenix.OdinInspector;
-using StateManager.State.Template;
+using StateManager.States.GameStates.Template;
 using UnityEngine;
 using VideoManager;
 using Zenject;

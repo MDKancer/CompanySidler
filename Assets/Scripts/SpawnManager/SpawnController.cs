@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections;
+using Buildings;
 using Entity.Customer;
 using Entity.Employee;
 using Enums;
@@ -19,9 +20,11 @@ namespace SpawnManager
         private Container.Cloud cloud;
         private CompanyData companyData;
         private MonoBehaviour monoBehaviour;
+        private DiContainer diContainer;
         [Inject]
-        private void Init(SignalBus signalBus,Container.Cloud cloud,CompanyData companyData,MonoBehaviourSignal monoBehaviourSignal)
+        private void Init(DiContainer diContainer,SignalBus signalBus,Container.Cloud cloud,CompanyData companyData,MonoBehaviourSignal monoBehaviourSignal)
         {
+            this.diContainer = diContainer;
             this.signalBus = signalBus;
             this.cloud = cloud;
             this.companyData = companyData;
@@ -52,29 +55,26 @@ namespace SpawnManager
         /// <param name="employeeData"></param>
         /// <param name="spawnPosition"></param>
         /// <returns>Wenn das Object Instantiert wurde und in den Container gepseichert wurde, bekommt man zurrück ein true.</returns>
-        public Boolean SpawnWorker(Building.Building workerOffice,EmployeeData employeeData,Vector3 spawnPosition) //GameObject prefab, EntityType workerEntityType
+        public Boolean SpawnWorker(Building workerOffice,EmployeeData employeeData,Vector3 spawnPosition) //GameObject prefab, EntityType workerEntityType
         {
             try
             {
-                GameObject objectInstace = Object.Instantiate(employeeData.GetPrefab, spawnPosition, Quaternion.identity);
-                objectInstace.name = employeeData.GetEntityType.ToString();
-                if(objectInstace.GetComponent<NavMeshAgent>() == null)
+                var objectInstance = Object.Instantiate(employeeData.GetPrefab, spawnPosition, Quaternion.identity);
+                if(objectInstance.GetComponent<NavMeshAgent>() == null)
                 {
-                    NavMeshAgent agent = objectInstace.AddComponent<NavMeshAgent>();
+                    var agent = objectInstance.AddComponent<NavMeshAgent>();
+                    agent.radius = 0.3f;
                 }
-
-                if (objectInstace.GetComponent<Employee>() == null)
+                if (objectInstance.GetComponent<Employee>() == null)
                 {
-                   Employee employee = objectInstace.AddComponent<Employee>();
+                   var employee = objectInstance.AddComponent<Employee>();
                    
                    employee.EmployeeData = employeeData;
-                   //TODO: der Employee soll automatisch den Zugriff auf Container kriegen.
-                   //Vieleicht die Company in Employeedata weitergeben, und nicht den Container.
-                   employee.AttachEvent(workerOffice);
-                   employee.Work();
+                   
+                   employee.Work(diContainer);
                 }
 
-                cloud.AddSpawnedGameObject(objectInstace);
+                cloud.AddSpawnedGameObject(objectInstance);
 
                 return true;
             }
@@ -143,7 +143,7 @@ namespace SpawnManager
         }
 
 
-        private IEnumerator SpawnAfterInstancing(Building.Building building)
+        private IEnumerator SpawnAfterInstancing(Building building)
         {
             while (building.BuildingData.prefab == null)
             {

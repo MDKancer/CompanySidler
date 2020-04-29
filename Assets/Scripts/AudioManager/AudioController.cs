@@ -70,6 +70,10 @@ namespace AudioManager
             audioMixer.SetFloat("ambientVol", Mathf.Log10(volume) * 20);
         }
 
+        /// <summary>
+        /// Set the channel count of the speakers.
+        /// </summary>
+        /// <remarks>AudioSpeakerMode.Raw (Obsolete)</remarks>
         public void SetSpeakerMode(AudioSpeakerMode audioSpeakerMode)
         {
             audioData.stereo = audioSpeakerMode;

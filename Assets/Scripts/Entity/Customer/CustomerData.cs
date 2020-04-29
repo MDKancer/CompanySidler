@@ -1,6 +1,6 @@
 using System;
-using Building;
-using Building.Tarent;
+using Buildings;
+using Buildings.Tarent;
 using Enums;
 using ProjectPackage;
 using UnityEngine;

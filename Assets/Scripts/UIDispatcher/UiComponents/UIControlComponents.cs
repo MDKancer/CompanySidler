@@ -1,13 +1,14 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using GameSettings;
 using Sirenix.OdinInspector;
 using TMPro;
 using UnityEngine;
 using Action = Enums.Action;
 
 
-namespace UIDispatcher.GameComponents
+namespace UIDispatcher.UiComponents
 {
     [Serializable]
     public struct UIControlComponents
@@ -17,13 +18,12 @@ namespace UIDispatcher.GameComponents
         [HideLabel,HorizontalGroup("Controls")]
         public List<TextMeshProUGUI> events;
 
-        public void SetDatas(Dictionary<Action, KeyCode> data)
+        public void SetData(KeyboardsData[] data)
         {
-            for (int i = 0; i < data.Count; i++)
+            for (int i = 0; i < data.Length; i++)
             {
-                var item =  data.ElementAt(i);
-                action[i].SetText(item.Key.ToString());
-                events[i].SetText(item.Value.ToString());
+                action[i].SetText(data[i].action);
+                events[i].SetText(data[i].keyCode);
             }
         }
     }

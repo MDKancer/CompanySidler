@@ -1,4 +1,5 @@
-using Building.Bank;
+using Buildings;
+using Buildings.Bank;
 using TMPro;
 using UIDispatcher.GameComponents.UIBuildingContent;
 using UnityEngine;
@@ -15,7 +16,7 @@ namespace UIDispatcher.GameComponents
         private UIData uiData;
         private ProceduralUiElements proceduralUiElements;
         private MonoBehaviour monoBehaviour;
-        public BankUIData(SignalBus signalBus,MonoBehaviour monoBehaviour,ref UIData uiData, Building.Building bank)
+        public BankUIData(SignalBus signalBus,MonoBehaviour monoBehaviour,ref UIData uiData, Building bank)
         {
             this.uiData = uiData;
             this.proceduralUiElements = new ProceduralUiElements();

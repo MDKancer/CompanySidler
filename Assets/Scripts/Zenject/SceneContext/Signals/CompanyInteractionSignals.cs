@@ -1,4 +1,4 @@
-using Building;
+using Buildings;
 using Entity.Employee;
 using Enums;
 using ProjectPackage;

@@ -1,4 +1,5 @@
-using Building.Bank;
+using Buildings;
+using Buildings.Bank;
 using UnityEngine;
 using Zenject;
 
@@ -11,7 +12,7 @@ namespace UIDispatcher.GameComponents.UIBuildingContent
     public class BuildingContent
     {
         private readonly ProceduralUiElements proceduralUiElements;        
-        private Building.Building building;
+        private Building building;
         private UIData uiData;
         private SignalBus signalBus;
         private Container.Cloud cloud;
@@ -26,7 +27,7 @@ namespace UIDispatcher.GameComponents.UIBuildingContent
         }
 
 
-        public void CreateBuildingContent(Building.Building building)
+        public void CreateBuildingContent(Building building)
         {
             this.building = building;
             if (building.GetType() == typeof(Bank))
@@ -36,7 +37,7 @@ namespace UIDispatcher.GameComponents.UIBuildingContent
             }
             else
             {
-                var buildingUIData = new BuildingUIData<Building.Building>(signalBus,monoBehaviour,cloud,ref uiData,building);
+                var buildingUIData = new BuildingUIData<Building>(signalBus,monoBehaviour,cloud,ref uiData,building);
                 buildingUIData.SetBuildingInteractions();
             }
         }

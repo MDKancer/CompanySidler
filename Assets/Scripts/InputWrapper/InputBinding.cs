@@ -1,8 +1,9 @@
-using System.Collections.Generic;
+using System;
 using Container;
-using Enums;
+using GameSettings;
 using UnityEngine;
 using Zenject;
+using Action = Enums.Action;
 
 namespace InputWrapper
 {
@@ -17,38 +18,83 @@ namespace InputWrapper
             this.cloud = cloud;
         }
 
-        public Dictionary<Action, KeyCode> KeyBoardData => cloud.InputKeyboardData;
+        public KeyboardsData[] KeyBoardData => cloud.InputKeyboardData;
 
         public bool OnPress(Action action)
         {
-            return Input.GetKey(cloud.InputKeyboardData[action]);
+            return Input.GetKey(GetKeyCode(action));
         }
         public void ChangeBinding(KeyCode oldKeyCode, KeyCode newKeyCode)
         {
             var targetAction = GetAction(oldKeyCode);
-            if (cloud.InputKeyboardData.ContainsValue(newKeyCode))
+            if (ContainsKeyCode(newKeyCode))
             {
                 var affectedAction = GetAction(newKeyCode);
                 if (affectedAction != Action.NONE)
                 {
-                    cloud.InputKeyboardData[affectedAction] = oldKeyCode;
+                    var keyboardsData = GetBiding(affectedAction);
+                    keyboardsData.keyCode = oldKeyCode.ToString();
                 }
             }
 
-            cloud.InputKeyboardData[targetAction] = newKeyCode;
+            var biding = GetBiding(targetAction);
+            biding.keyCode = newKeyCode.ToString();
         }
 
+        
         public void Reset()
         {
             cloud.SettingsDataReset();
         }
         private Action GetAction(KeyCode keyCode)
         {
-            foreach (var item in cloud.InputKeyboardData)
+            Action action = Action.NONE;
+            foreach (var keyboards in KeyBoardData)
             {
-                if (item.Value == keyCode) return item.Key;
+                if (keyboards.keyCode.Equals(keyCode.ToString()))
+                {
+                    Enum.TryParse(keyboards.action, out action);
+                    return action;
+                }
             }
-            return Action.NONE;
+            return action;
+        }
+        private KeyCode GetKeyCode(Action action)
+        {
+            KeyCode keyCode = KeyCode.None;
+            foreach (var keyboards in KeyBoardData)
+            {
+                if (keyboards.action.Equals(action.ToString()))
+                {
+                    Enum.TryParse(keyboards.keyCode, out keyCode);
+                    return keyCode;
+                }
+            }
+
+            return keyCode;
+        }
+
+        private bool ContainsKeyCode(KeyCode keyCode)
+        {
+            foreach (var keyboards in KeyBoardData)
+            {
+                if (keyboards.keyCode.Equals(keyCode.ToString())) return true;
+            }
+
+            return false;
+        }
+
+        private KeyboardsData GetBiding(Action action)
+        {
+            foreach (var keyboards in KeyBoardData)
+            {
+                if (keyboards.action.Equals(action.ToString()))
+                {
+                    return keyboards;
+                }
+            }
+
+            return new KeyboardsData();
         }
     }
 }

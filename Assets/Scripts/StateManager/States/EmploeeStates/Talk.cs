@@ -3,17 +3,17 @@ using PathFinder;
 using UnityEngine;
 using UnityEngine.AI;
 
-namespace StateManager.States.EmploeeStates
+namespace StateManager.States.EmployeeStates
 {
     public class Talk : EmployeeState
     {
         public override void OnStateEnter()
         {
             destination = EmployeeData.EntityWorkCycle[HumanState.TALK];
-            emploee.destination = destination;
+            employee.destination = destination;
             targetPosition = EmployeeData.OfficePosition(destination);
             targetPosition = GenerateRandomPosition(targetPosition);
-            navMeshAgent = emploee.GetComponent<NavMeshAgent>();
+            navMeshAgent = employee.GetComponent<NavMeshAgent>();
             // Debug.Log($"Enter {this} emploee {emploee.name} position {emploee.transform.position} onCompletedEvent {onCompleted}");
             Navigator.MoveTo(navMeshAgent, targetPosition);
             duration = GetActivityDuration;

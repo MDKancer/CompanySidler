@@ -9,7 +9,7 @@ using JetBrains.Annotations;
 using PathFinder;
 using ProjectPackage.ProjectTasks;
 using StateManager;
-using StateManager.States.EmploeeStates;
+using StateManager.States.EmployeeStates;
 using TMPro;
 using UnityEngine;
 using UnityEngine.AI;
@@ -56,7 +56,9 @@ namespace Entity.Employee
             gameObject.name = EmployeeData.GetEntityType.ToString();
             navMeshAgent = GetComponent<NavMeshAgent>();
             EmployeeData.Home = transform.position;
+            
             stateMachineClass = diContainer.Resolve<StateMachineClass<EmployeeState>>();
+            
             RegisterAn();
             AttachEvent();
             GoNext();
@@ -75,22 +77,19 @@ namespace Entity.Employee
         }
         private void OnExit()
         {
-            
             stateMachineClass.CurrentState.OnStateExit();
         }
         private void GoNext()
         {
-            // Debug.Log($"current State {stateMachineClass.CurrentState} is Completed");
             SetState();
         }
 
         private void SetState()
         {
-            // if(stateMachineClass.LastState != null) DetachEvent();
             index = index < states.Count-2 ? index+1 : 0;
             var state = states.ElementAt(index).Value; // State
             Debug.Log(state);
-            state.emploee = this;
+            state.employee = this;
             
             stateMachineClass.CurrentState = state;
         }

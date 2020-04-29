@@ -15,11 +15,11 @@ using VideoManager;
 using Zenject;
 using Random = UnityEngine.Random;
 
-namespace StateManager.States.EmploeeStates
+namespace StateManager.States.EmployeeStates
 {
     public class EmployeeState : AState
     {
-        public Employee emploee;
+        public Employee employee;
         public BuildingType destination = BuildingType.NONE;
         protected NavMeshAgent navMeshAgent;
         protected Vector3 targetPosition;
@@ -86,11 +86,11 @@ namespace StateManager.States.EmploeeStates
             }
             return null;
         }
-        protected EmployeeData EmployeeData => emploee.EmployeeData;
+        protected EmployeeData EmployeeData => employee.EmployeeData;
         
         protected bool IsOnPosition(Vector3 targetPosition)
         {
-            return (Mathf.Abs(emploee.transform.position.x - targetPosition.x) <= 0.1f && Math.Abs(emploee.transform.position.z - targetPosition.z) <= 0.1f);
+            return (Mathf.Abs(employee.transform.position.x - targetPosition.x) <= 0.1f && Math.Abs(employee.transform.position.z - targetPosition.z) <= 0.1f);
         }
 
         protected float GetActivityDuration

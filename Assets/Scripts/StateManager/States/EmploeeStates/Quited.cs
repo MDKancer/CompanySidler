@@ -1,13 +1,13 @@
 ﻿using PathFinder;
 using UnityEngine.AI;
 
-namespace StateManager.States.EmploeeStates
+namespace StateManager.States.EmployeeStates
 {
     public class Quited : EmployeeState
     {
         public override void OnStateEnter()
         {
-            navMeshAgent = emploee.GetComponent<NavMeshAgent>();
+            navMeshAgent = employee.GetComponent<NavMeshAgent>();
             Navigator.MoveTo(navMeshAgent,EmployeeData.Home);
         }
 
@@ -15,7 +15,7 @@ namespace StateManager.States.EmploeeStates
         {
             if (IsOnPosition(EmployeeData.Home))
             {
-                UnityEngine.Object.Destroy(emploee.gameObject,0.1f);
+                UnityEngine.Object.Destroy(employee.gameObject,0.1f);
                 onCompleted.Invoke();
             }
         }

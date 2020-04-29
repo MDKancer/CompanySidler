@@ -6,7 +6,7 @@ using InputManager;
 using InputWrapper;
 using So_Template;
 using SpawnManager;
-using StateManager.States.EmploeeStates;
+using StateManager.States.EmployeeStates;
 using StateManager.States.GameStates.Template;
 using UnityEngine;
 using VideoManager;
@@ -18,6 +18,7 @@ namespace StateManager
     /// <summary>
     /// It is a based class state machine.
     /// <remarks>Are accepted only the classes that inherit from AState or IState</remarks>
+    /// <remarks>First, need to add a bind self into a any Zenject Context to be workable. This class need any injected fields.</remarks>
     /// </summary>
     public class StateMachineClass<T> where T : AState,IState
     {

@@ -2,22 +2,22 @@
 using UnityEngine;
 using UnityEngine.AI;
 
-namespace StateManager.States.EmploeeStates
+namespace StateManager.States.EmployeeStates
 {
     public class Work : EmployeeState
     {
         public override void OnStateEnter()
         {
             destination = EmployeeData.GetHisOffice;
-            emploee.destination = destination;
+            employee.destination = destination;
             targetPosition = GenerateRandomPosition(EmployeeData.MyOfficePosition);
-            navMeshAgent = emploee.GetComponent<NavMeshAgent>();
+            navMeshAgent = employee.GetComponent<NavMeshAgent>();
             Navigator.MoveTo(navMeshAgent,targetPosition);
             // Debug.Log($"Enter {this} emploee {emploee.name} position {emploee.transform.position} onCompletedEvent {onCompleted}");
             chore = GetActivity();
             if (chore != null)
             {
-                chore.ApplyTaskTaker(emploee);
+                chore.ApplyTaskTaker(employee);
                         
                 duration = chore.TimeDuration;
                 progress = chore.ProgressBar;

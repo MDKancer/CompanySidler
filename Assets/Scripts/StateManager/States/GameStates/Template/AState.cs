@@ -4,7 +4,7 @@ using Enums;
 using InputManager;
 using So_Template;
 using SpawnManager;
-using StateManager.States.EmploeeStates;
+using StateManager.States.EmployeeStates;
 using UnityEngine;
 using UnityEngine.Events;
 using VideoManager;

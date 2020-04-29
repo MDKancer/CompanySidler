@@ -87,7 +87,7 @@ namespace Entity.Employee
         private void SetState()
         {
             // if(stateMachineClass.LastState != null) DetachEvent();
-            index = index < states.Count-1 ? index+1 : 0;
+            index = index < states.Count-2 ? index+1 : 0;
             var state = states.ElementAt(index).Value; // State
             Debug.Log(state);
             state.emploee = this;

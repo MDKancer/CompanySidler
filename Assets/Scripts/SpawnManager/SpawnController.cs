@@ -63,6 +63,7 @@ namespace SpawnManager
                 if(objectInstance.GetComponent<NavMeshAgent>() == null)
                 {
                     var agent = objectInstance.AddComponent<NavMeshAgent>();
+                    agent.radius = 0.3f;
                 }
                 if (objectInstance.GetComponent<Employee>() == null)
                 {

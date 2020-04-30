@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Globalization;
+using Buildings;
 using Entity.Employee;
 using Enums;
 using SpawnManager;
@@ -149,7 +150,7 @@ namespace UIDispatcher.GameComponents
                 } 
         }
 
-        public void FocusedBuilding(Building.Building focusedBuilding)
+        public void FocusedBuilding(Building focusedBuilding)
         {
             Building = focusedBuilding;
         }
@@ -235,7 +236,7 @@ namespace UIDispatcher.GameComponents
                     
             uiData.numberOfCustomers_Label?.SetText(cloud.Companies[0].numberOfCustomers.ToString());
         }
-        private Building.Building Building { get; set; }
+        private Building Building { get; set; }
 
         private void GenerateBuildingContent()
         {

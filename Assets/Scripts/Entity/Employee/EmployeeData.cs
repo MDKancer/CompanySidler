@@ -1,5 +1,6 @@
+using System;
 using System.Collections.Generic;
-using Building;
+using Buildings;
 using Enums;
 using ProjectPackage;
 using UnityEngine;
@@ -12,55 +13,42 @@ namespace Entity.Employee
         /// Wie viel kriegt ein Mitarbeiter pro "Stunde".
         /// </summary>
         public int hourlyWage = 10;
-        
-        private EntityType entityType = EntityType.NONE;
-        private BuildingType hisOffice = BuildingType.NONE;
-        private Project project;
-        private Dictionary<HumanState,BuildingType> entityWorkCycle = new Dictionary<HumanState, BuildingType>();
-        private GameObject prefab = null;
-
-        private Company company;
-
+        public readonly Dictionary<HumanState,BuildingType> EntityWorkCycle = new Dictionary<HumanState, BuildingType>();
         public EmployeeData(Company company,GameObject prefab,EntityType entityType, BuildingType hisOffice)
         {
-            this.company = company;
-            this.hisOffice = hisOffice;
-            this.entityType = entityType;
-            this.prefab = prefab;
+            this.Company = company;
+            this.GetHisOffice = hisOffice;
+            this.GetEntityType = entityType;
+            this.GetPrefab = prefab;
             SetDataFields();
         }
-        public GameObject GetPrefab => prefab;
+        public GameObject GetPrefab { get; }
+        public Company Company { get; }
+        public Project Project { get; set; }
+        public BuildingType GetHisOffice { get;}
+        public EntityType GetEntityType { get; }
+        public Vector3 Home { get; set; }
 
-        public Company Company => company;
+        public Vector3 MyOfficePosition => Company.GetOffice(GetHisOffice).transform.position;
 
-        public Project Project
+        public Vector3 OfficePosition(BuildingType buildingType)
         {
-            get => project;
-            set => project = value;
+            return Company.GetOffice(buildingType).transform.position;
         }
-
-        public BuildingType GetHisOffice { 
-            get => hisOffice;
-            set => hisOffice = value;
-        }
-        public Dictionary<HumanState,BuildingType> GetEntityWorkingCycle { get=> entityWorkCycle; }
-        public EntityType GetEntityType { get=> entityType; }
-
         private void SetDataFields()
         {
-         SetEntityWorkCycleField();
+            SetEntityWorkCycleField();
         }
-
-
         private void SetEntityWorkCycleField()
         {
-            if (entityType != EntityType.NONE && entityType != EntityType.CUSTOMER)
+            if (GetEntityType != EntityType.NONE && GetEntityType != EntityType.CUSTOMER)
             {
-                    entityWorkCycle.Add(HumanState.WORK,hisOffice);
-                    entityWorkCycle.Add(HumanState.TALK,BuildingType.SOCIAL_RAUM);
-                    entityWorkCycle.Add(HumanState.PAUSE,BuildingType.SOCIAL_RAUM);
-                    entityWorkCycle.Add(HumanState.LEARN,BuildingType.AZUBIS);
-                    entityWorkCycle.Add(HumanState.WALK,BuildingType.NONE);
+                    EntityWorkCycle.Add(HumanState.WORK,GetHisOffice);
+                    EntityWorkCycle.Add(HumanState.TALK,BuildingType.MARKETING);
+                    EntityWorkCycle.Add(HumanState.PAUSE,BuildingType.SOCIAL_RAUM);
+                    EntityWorkCycle.Add(HumanState.COMMUNICATION,BuildingType.OFFICE);
+                    EntityWorkCycle.Add(HumanState.LEARN,BuildingType.AZUBIS);
+                    EntityWorkCycle.Add(HumanState.WALK,BuildingType.SOCIAL_RAUM);
             }
         }
     }

@@ -1,7 +1,7 @@
 ﻿using System.Collections;
 using Container;
 using Enums;
-using StateManager.State.Template;
+using StateManager.States.GameStates.Template;
 using Zenject;
 using Application = UnityEngine.Application;
 
@@ -26,11 +26,11 @@ namespace StateManager
             this.stateMachineClass = stateMachineClass;
             this.cloud = cloud;
             //first need to exit from the last State
-            this.stateMachineClass.stateChanged += OnExit;
+            this.stateMachineClass.onStateExit += OnExit;
             //than initialize the currentState
-            this.stateMachineClass.stateChanged += OnEnter;
+            this.stateMachineClass.onStateEnter += OnEnter;
             //will be On Update inside current state in loop executed
-            this.stateMachineClass.currentStateUpdated += OnUpdate;
+            this.stateMachineClass.onStateUpdated += OnUpdate;
             Application.quitting += OnQuitting;
         }
 
@@ -38,14 +38,12 @@ namespace StateManager
         {
             stateMachineClass.CurrentState = cloud.GetGameState(Scenes.EXIT);
         }
-
-
         /// <summary>
         /// Here the process is handled when the state signal is received.
         /// </summary>
         public void OnEnter()
         {
-                stateMachineClass.CurrentState.OnEnter();
+                stateMachineClass.CurrentState.OnStateEnter();
         }
         /// <summary>
         /// After receiving the state signal,
@@ -55,7 +53,7 @@ namespace StateManager
         {
             while (true)
             {
-                stateMachineClass.CurrentState.OnUpdate();
+                stateMachineClass.CurrentState.OnStateUpdate();
                 yield return null;
             }
         }
@@ -66,7 +64,7 @@ namespace StateManager
         /// </summary>
         public void OnExit()
         {
-            stateMachineClass.CurrentState.OnExit();
+            stateMachineClass.CurrentState.OnStateExit();
         }
 
         /// <summary>
@@ -74,6 +72,10 @@ namespace StateManager
         /// </summary>
         ~FinalStateManager()
         {
+            this.stateMachineClass.onStateEnter -= OnExit;
+            this.stateMachineClass.onStateEnter -= OnEnter;
+            this.stateMachineClass.onStateUpdated -= OnUpdate;
+            Application.quitting -= OnQuitting;
         }
     }
 }

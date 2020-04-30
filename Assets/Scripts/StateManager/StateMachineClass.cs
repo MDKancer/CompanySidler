@@ -3,10 +3,9 @@ using System.Collections;
 using AudioManager;
 using Enums;
 using InputManager;
-using InputWrapper;
 using So_Template;
 using SpawnManager;
-using StateManager.State.Template;
+using StateManager.States.GameStates.Template;
 using UnityEngine;
 using VideoManager;
 using Zenject;
@@ -17,20 +16,31 @@ namespace StateManager
     /// <summary>
     /// It is a based class state machine.
     /// <remarks>Are accepted only the classes that inherit from AState or IState</remarks>
+    /// <remarks>First, need to add a bind self into a any Zenject Context to be workable. This class need any injected fields.</remarks>
     /// </summary>
     public class StateMachineClass<T> where T : AState,IState
     {
-        internal delegate void OnStateEnter();
-
-        internal delegate IEnumerator OnStateUpdated();
+        public delegate void OnEnter();
+        public delegate void OnExit();
+        public delegate IEnumerator OnUpdate();
+        public delegate void OnCompleted();
         /// <summary>
         /// When a new current state was inserted.
         /// </summary>
-        internal event OnStateEnter stateChanged;
+        public OnEnter onStateEnter;
         /// <summary>
         /// When the current state is updated
         /// </summary>
-        internal event OnStateUpdated currentStateUpdated;
+        public OnUpdate onStateUpdated;
+        /// <summary>
+        /// When a new current state was changed.
+        /// </summary>
+        public OnExit onStateExit;
+        /// <summary>
+        /// When the current state was completed / finished.
+        /// </summary>
+        public OnCompleted onStateCompleted;
+
         
         private T currentState;
         private T lastState;
@@ -84,7 +94,8 @@ namespace StateManager
                     
                     //before the current state is changed, should be to exit from the last state
                     //OnExit()
-                    stateChanged.GetInvocationList()[0].DynamicInvoke();
+                    onStateExit?.Invoke();
+                    //onStateEnter.GetInvocationList()[0].DynamicInvoke();
                 }
                 currentState = value;
                 
@@ -100,15 +111,18 @@ namespace StateManager
                     spawnController: spawnController,
                     companyData: companyData);
                 
+                //will be executed, when the state finished / completed 
+                currentState.onCompleted += Completed;
+                
                 //now the current state was changed, and that mean the state is initialized
                 // OnEnter()
-                stateChanged.GetInvocationList()[1].DynamicInvoke();
-                
+                onStateEnter?.Invoke();
                 //set the coroutine to start the OnUpdate()
-                update = currentStateUpdated.Invoke();
+                update = onStateUpdated?.Invoke();
                 //started a coroutine for the update
                 //OnUpdate()
-                monoBehaviour.StartCoroutine(update);
+                
+                if(update != null) monoBehaviour.StartCoroutine(update);
             }
             get => currentState;
         }
@@ -131,6 +145,11 @@ namespace StateManager
                 Debug.LogError(e);
                 Console.WriteLine(e);
             }
+        }
+
+        private void Completed()
+        {
+            onStateCompleted?.Invoke();   
         }
     }
 }

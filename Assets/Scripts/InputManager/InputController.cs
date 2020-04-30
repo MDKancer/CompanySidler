@@ -1,3 +1,6 @@
+using System;
+using Buildings;
+using CameraManager;
 using Enums;
 using InputWrapper;
 using So_Template;
@@ -8,6 +11,7 @@ using UIDispatcher.GameComponents.UIBuildingContent;
 using Zenject;
 using Zenject.ProjectContext.Signals;
 using Zenject.SceneContext.Signals;
+using Action = Enums.Action;
 
 namespace InputManager
 {
@@ -15,11 +19,11 @@ namespace InputManager
     {
         public float speed = 1f;
 
-        public delegate void FocusedBuild(Building.Building focusesBuilding);
+        public delegate void FocusedBuild(Building focusesBuilding);
         public FocusedBuild showBuildingDataEvent;
         
         private GameObject focusObject;
-        private CameraController.CameraController cameraController;
+        private CameraController cameraController;
         private Ray ray;
         private RaycastHit rayCastHit;
         private Vector3 middleDirection = Vector3.zero;
@@ -51,14 +55,14 @@ namespace InputManager
         }
         public void SetCameraController()
         {
-            cameraController = new CameraController.CameraController(signalBus,monoBehaviour,runtimeStateController);
+            cameraController = new CameraController(signalBus,monoBehaviour,runtimeStateController);
             focusObject = GameObject.Find(companyName)?.gameObject;
             focusPoint = focusObject.transform.position;
-            buildingLabel = proceduralUiElements.GetCanvas("");
+            buildingLabel = proceduralUiElements.GetCanvas(String.Empty);
             buildingLabel.gameObject.SetActive(false);
         }
 
-        public void CameraEvents()
+        public void InputEvents()
         {
             var transform = cameraController.mainCamera.transform;
             middleDirection = (transform.up + transform.forward) / 2; 
@@ -97,13 +101,13 @@ namespace InputManager
                     
                     if (Physics.Raycast(ray,out rayCastHit))
                     {
-                        if(isBuilding(rayCastHit.collider.gameObject))
+                        if(IsBuilding(rayCastHit.collider.gameObject))
                         {
                             
                             focusPoint = rayCastHit.point;
                             focusedBuilding = rayCastHit.collider.gameObject;
                             
-                            var building = (Building.Building)focusedBuilding?.GetComponent(typeof(Building.Building));
+                            var building = (Building)focusedBuilding?.GetComponent(typeof(Building));
                             
                             showBuildingDataEvent(building);
                             
@@ -128,23 +132,26 @@ namespace InputManager
             }
             ShowNameOffice();
         }
-        private bool isBuilding(GameObject targetObject)
+        private bool IsBuilding(GameObject targetObject)
         {
-            Component[] buildingComponent = targetObject.GetComponents(typeof(Building.Building));
+            Component[] buildingComponent = targetObject.GetComponents(typeof(Building));
 
             return buildingComponent.Length > 0;
         }
 
+        /// <summary>
+        /// TODO: das kann man mit dem Timeline machen 
+        /// </summary>
         private void ShowNameOffice()
         {
             ray = cameraController.mainCamera.ScreenPointToRay(Input.mousePosition);
               
             if (Physics.Raycast(ray,out rayCastHit))
             {
-                if(isBuilding(rayCastHit.collider.gameObject))
+                if(IsBuilding(rayCastHit.collider.gameObject))
                 {
                     buildingLabel.gameObject.SetActive(true);        
-                    var targetBuilding = (Building.Building)rayCastHit.collider.GetComponent(typeof(Building.Building));
+                    var targetBuilding = (Building)rayCastHit.collider.GetComponent(typeof(Building));
                     buildingLabel.SetText(targetBuilding.BuildingData.name);
                     
                     

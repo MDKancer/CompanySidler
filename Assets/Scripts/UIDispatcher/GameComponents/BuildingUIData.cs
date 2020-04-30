@@ -1,5 +1,6 @@
 using System.Collections;
-using Building.Tarent;
+using Buildings;
+using Buildings.Tarent;
 using Entity.Employee;
 using Enums;
 using ProjectPackage;
@@ -12,7 +13,7 @@ using Zenject.SceneContext.Signals;
 
 namespace UIDispatcher.GameComponents
 {
-    public class BuildingUIData<T> where T : Building.Building
+    public class BuildingUIData<T> where T : Building
     {
         private T building;
         private SignalBus signalBus;
@@ -22,7 +23,7 @@ namespace UIDispatcher.GameComponents
         private MonoBehaviour monoBehaviour;
         private Material projectButtonMaterial;
         
-        public BuildingUIData(SignalBus signalBus,MonoBehaviour monoBehaviour,Container.Cloud cloud,ref UIData uiData, Building.Building office)
+        public BuildingUIData(SignalBus signalBus,MonoBehaviour monoBehaviour,Container.Cloud cloud,ref UIData uiData, Building office)
         {
             this.signalBus = signalBus;
             this.cloud = cloud;

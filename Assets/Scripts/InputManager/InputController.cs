@@ -37,7 +37,7 @@ namespace InputManager
         private StateController<RunTimeState> runtimeStateController;
         private InputBinding inputBinding;
         private MonoBehaviour monoBehaviour;
-        private string companyName = "Company";
+        private string companyName;
         
         [Inject]
         private void Init(SignalBus signalBus,
@@ -58,7 +58,7 @@ namespace InputManager
             cameraController = new CameraController(signalBus,monoBehaviour,runtimeStateController);
             focusObject = GameObject.Find(companyName)?.gameObject;
             focusPoint = focusObject.transform.position;
-            buildingLabel = proceduralUiElements.GetCanvas(String.Empty);
+            buildingLabel = proceduralUiElements.GetCanvas(string.Empty);
             buildingLabel.gameObject.SetActive(false);
         }
 

@@ -14,7 +14,6 @@ namespace StateManager.States.EmployeeStates
             targetPosition = EmployeeData.OfficePosition(destination);
             targetPosition = GenerateRandomPosition(targetPosition);
             navMeshAgent = employee.GetComponent<NavMeshAgent>();
-            // Debug.Log($"Enter {this} emploee {emploee.name} position {emploee.transform.position} onCompletedEvent {onCompleted}");
             Navigator.MoveTo(navMeshAgent, targetPosition);
             duration = GetActivityDuration;
         }

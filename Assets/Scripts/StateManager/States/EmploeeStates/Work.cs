@@ -12,8 +12,9 @@ namespace StateManager.States.EmployeeStates
             employee.destination = destination;
             targetPosition = GenerateRandomPosition(EmployeeData.MyOfficePosition);
             navMeshAgent = employee.GetComponent<NavMeshAgent>();
+            
             Navigator.MoveTo(navMeshAgent,targetPosition);
-            // Debug.Log($"Enter {this} emploee {emploee.name} position {emploee.transform.position} onCompletedEvent {onCompleted}");
+
             chore = GetActivity();
             if (chore != null)
             {
@@ -29,7 +30,6 @@ namespace StateManager.States.EmployeeStates
 
         public override void OnStateUpdate()
         {
-            // Debug.Log($"Update {this} emploee {emploee.name} position {emploee.transform.position}");
             if (IsOnPosition(targetPosition))
             {
                 if (chore != null && time <= duration)

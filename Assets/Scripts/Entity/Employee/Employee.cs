@@ -1,12 +1,9 @@
-using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Threading.Tasks;
 using Enums;
-using JetBrains.Annotations;
-using PathFinder;
 using ProjectPackage.ProjectTasks;
 using StateManager;
 using StateManager.States.EmployeeStates;
@@ -14,7 +11,6 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.AI;
 using Zenject;
-using Random = UnityEngine.Random;
 
 namespace Entity.Employee
 {
